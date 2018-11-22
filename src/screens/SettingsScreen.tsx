@@ -11,14 +11,14 @@ const styles = StyleSheet.create({
   },
 })
 
-class MissionScreen extends React.PureComponent {
+class SettingsScreen extends React.PureComponent {
   render() {
     return (
       <SafeAreaView style={styles.container}>
-        <Header title="별빛뒤로" />
+        <Header title="설정" />
       </SafeAreaView>
     )
   }
 }
 
-export default MissionScreen
+export default SettingsScreen

@@ -8,18 +8,18 @@ import { palette } from 'src/styles'
 
 const styles = StyleSheet.create({
   wrapper: {
-    width: 120,
-    height: 120,
+    width: 48,
+    height: 48,
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 8,
     borderWidth: 1,
-    borderColor: palette.black.default,
-    backgroundColor: palette.gray['90'],
+    borderColor: palette.gray['90'],
+    backgroundColor: palette.primary.default,
   },
   image: {
-    width: 90,
-    height: 90,
+    width: 40,
+    height: 40,
   },
 })
 
