@@ -15,14 +15,13 @@ export default {
     40: '#E0E0E0',
     30: '#EEEEEE',
     20: '#F5F5F5',
-    10: '#FAFAFA',
+    10: '#FCFCFC',
   },
   primary: {
-    default: '#F9D14C',
-    light: '#FFFF72',
-    dark: '#FDD835',
+    default: '#EB9842',
+    dark: '#DB7D2D',
   },
   secondary: {
-    default: '#272F44',
+    default: '#201F34',
   },
 }

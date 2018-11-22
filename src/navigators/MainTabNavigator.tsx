@@ -1,6 +1,6 @@
 import React from 'react'
-import Icon from 'react-native-vector-icons/Ionicons'
 import { createBottomTabNavigator } from 'react-navigation'
+import { Icon } from 'src/components'
 import {
   MissionScreen,
   StatsScreen,
@@ -37,7 +37,8 @@ export default createBottomTabNavigator({
     inactiveTintColor: palette.gray['60'],
     showLabel: false,
     style: {
-      backgroundColor: palette.white.default,
+      borderTopColor: palette.gray['50'],
+      backgroundColor: palette.gray['10'],
     },
   },
 })

@@ -6,14 +6,14 @@ export default {
       black: {
         fontSize: 24,
         fontWeight: '600',
-        color: palette.gray['90'],
+        color: palette.gray['100'],
       },
     },
     2: {
       black: {
         fontSize: 18,
         fontWeight: '600',
-        color: palette.gray['90'],
+        color: palette.gray['100'],
       },
     },
   },
