@@ -3,10 +3,10 @@ import {
   TouchableOpacity,
   TouchableNativeFeedback,
   Platform,
-  ViewProps,
+  TouchableNativeFeedbackProps,
 } from 'react-native'
 
-export interface ButtonProps extends ViewProps {
+export interface ButtonProps extends TouchableNativeFeedbackProps {
   onPress: () => void,
   children: React.ReactElement<any>,
 }
@@ -17,7 +17,7 @@ const Button: React.SFC<ButtonProps> = ({
   ...props
 }) => Platform.OS === 'ios' ? (
   <TouchableOpacity
-    activeOpacity={0.9}
+    activeOpacity={0.5}
     onPress={onPress}
     {...props}
   >
