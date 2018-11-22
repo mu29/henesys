@@ -16,7 +16,7 @@ class Text extends PureComponent<TextProps> {
     },
     android: {
       fontFamily: 'sans-serif',
-      includeFontFadding: false,
+      includeFontPadding: false,
     },
   })
 
