@@ -12,9 +12,10 @@ export default {
     70: '#757575',
     60: '#9E9E9E',
     50: '#BDBDBD',
-    40: '#E0E0E0',
+    40: '#E5E5E5',
     30: '#EEEEEE',
     20: '#F5F5F5',
+    15: '#FAFAFA',
     10: '#FCFCFC',
   },
   primary: {
