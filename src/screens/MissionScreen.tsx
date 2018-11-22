@@ -5,6 +5,7 @@ import {
   Button,
   Icon,
   Header,
+  MissionList,
 } from 'src/components'
 import { palette } from 'src/styles'
 
@@ -21,11 +22,16 @@ class MissionScreen extends React.PureComponent {
   render() {
     return (
       <SafeAreaView style={styles.container}>
-        <Header title="친구">
-          <Button style={styles.swapButton} onPress={() => {}}>
+        <Header title="기록">
+          <Button
+            hitSlop={{ top: 12, bottom: 12, left: 12, right: 12 }}
+            onPress={() => {}}
+            style={styles.swapButton}
+          >
             <Icon name="md-swap" size={20} color={palette.gray['90']} />
           </Button>
         </Header>
+        <MissionList />
       </SafeAreaView>
     )
   }
