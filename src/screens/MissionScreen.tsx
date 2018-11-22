@@ -1,12 +1,15 @@
 import React from 'react'
-import { SafeAreaView } from 'react-navigation'
-import { StyleSheet } from 'react-native'
+import {
+  View,
+  StyleSheet,
+} from 'react-native'
 import {
   Button,
   Icon,
   Header,
   MissionList,
 } from 'src/components'
+import { withSafeArea } from 'src/wrappers'
 import { palette } from 'src/styles'
 
 const styles = StyleSheet.create({
@@ -18,23 +21,19 @@ const styles = StyleSheet.create({
   },
 })
 
-class MissionScreen extends React.PureComponent {
-  render() {
-    return (
-      <SafeAreaView style={styles.container}>
-        <Header title="기록">
-          <Button
-            hitSlop={{ top: 12, bottom: 12, left: 12, right: 12 }}
-            onPress={() => {}}
-            style={styles.swapButton}
-          >
-            <Icon name="md-swap" size={20} color={palette.gray['90']} />
-          </Button>
-        </Header>
-        <MissionList />
-      </SafeAreaView>
-    )
-  }
-}
+const MissionScreen: React.SFC<{}> = () => (
+  <View style={styles.container}>
+    <Header title="기록">
+      <Button
+        hitSlop={{ top: 12, bottom: 12, left: 12, right: 12 }}
+        onPress={() => {}}
+        style={styles.swapButton}
+      >
+        <Icon name="md-swap" size={20} color={palette.gray['90']} />
+      </Button>
+    </Header>
+    <MissionList />
+  </View>
+)
 
-export default MissionScreen
+export default withSafeArea(React.memo(MissionScreen))

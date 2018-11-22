@@ -1,9 +1,12 @@
 import React from 'react'
-import { SafeAreaView } from 'react-navigation'
-import { StyleSheet } from 'react-native'
+import {
+  View,
+  StyleSheet,
+} from 'react-native'
 import {
   Header,
 } from 'src/components'
+import { withSafeArea } from 'src/wrappers'
 
 const styles = StyleSheet.create({
   container: {
@@ -11,14 +14,10 @@ const styles = StyleSheet.create({
   },
 })
 
-class SettingsScreen extends React.PureComponent {
-  render() {
-    return (
-      <SafeAreaView style={styles.container}>
-        <Header title="설정" />
-      </SafeAreaView>
-    )
-  }
-}
+const SettingsScreen: React.SFC<{}> = () => (
+  <View style={styles.container}>
+    <Header title="설정" />
+  </View>
+)
 
-export default SettingsScreen
+export default withSafeArea(React.memo(SettingsScreen))
