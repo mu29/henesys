@@ -25,6 +25,9 @@ const styles = StyleSheet.create({
     width: 48,
     height: 48,
   },
+  divider: {
+    marginHorizontal: 4,
+  },
   description: {
     marginLeft: 8,
     marginRight: 'auto',
@@ -49,7 +52,7 @@ const UserInfo: React.SFC<UserInfoProps> = ({
 }) => (
   <View style={styles.container}>
     <Image style={styles.avatar} source={{ uri: imageUrl }} />
-    <Divider vertical />
+    <Divider style={styles.divider} vertical />
     <View style={styles.description}>
       <Text style={typography.heading[3].black}>
         {name}

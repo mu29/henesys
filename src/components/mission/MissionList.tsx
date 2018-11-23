@@ -1,12 +1,10 @@
 import React from 'react'
 import {
-  View,
-  SectionList,
   SectionListData,
-  ScrollView,
   StyleSheet,
 } from 'react-native'
 import {
+  DividedSectionList,
   UserInfo,
   Section,
   MissionItem,
@@ -26,11 +24,11 @@ const uri = 'https://avatar.maplestory.nexon.com/Character/MFEBDDMBFFJDDGOHBNHCO
 export interface MissionListProps {}
 
 interface ISectionHeader {
-  section: SectionListData<{ title: string }>
+  section: SectionListData<Mission>
 }
 
 class MissionList extends React.PureComponent {
-  keyExtractor = ({ item }: { item: Mission }) => item.key
+  keyExtractor = (item: Mission) => item.key
 
   renderHeader = () => (
     <UserInfo
@@ -52,9 +50,9 @@ class MissionList extends React.PureComponent {
 
   render() {
     return (
-      <SectionList
+      <DividedSectionList
         sections={Object.values(missions).map(m => ({ title: m.label, data: m.items }))}
-        keyExtractor={(item, index) => item + index}
+        keyExtractor={this.keyExtractor}
         ListHeaderComponent={this.renderHeader}
         renderSectionHeader={this.renderSectionHeader}
         renderItem={this.renderItem}
