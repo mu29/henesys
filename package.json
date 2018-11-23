@@ -10,6 +10,7 @@
   "dependencies": {
     "humps": "2.0.1",
     "lodash": "4.17.11",
+    "moment": "^2.22.2",
     "normalizr": "3.3.0",
     "query-string": "6.2.0",
     "react": "16.6.1",
@@ -27,6 +28,7 @@
   "devDependencies": {
     "@types/humps": "1.1.2",
     "@types/lodash": "4.14.118",
+    "@types/moment": "^2.13.0",
     "@types/node": "10.12.10",
     "@types/normalizr": "2.0.18",
     "@types/query-string": "6.1.1",
