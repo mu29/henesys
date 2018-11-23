@@ -31,7 +31,7 @@ export default {
     1: {
       black: {
         fontSize: 16,
-        color: palette.gray[100],
+        color: palette.gray[90],
         lineHeight: 24,
       },
     },
@@ -46,9 +46,9 @@ export default {
   tiny: {
     1: {
       gray: {
-        fontSize: 10,
+        fontSize: 11,
         color: palette.gray[70],
-        lineHeight: 12,
+        lineHeight: 14,
       },
     },
   },

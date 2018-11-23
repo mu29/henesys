@@ -1,13 +1,17 @@
 import React from 'react'
 import {
   View,
+  SectionList,
+  SectionListData,
   ScrollView,
   StyleSheet,
 } from 'react-native'
 import {
   UserInfo,
+  Section,
   MissionItem,
 } from 'src/components'
+import { missions, Mission } from 'src/constants/missions'
 
 const styles = StyleSheet.create({
   container: {
@@ -21,11 +25,45 @@ const uri = 'https://avatar.maplestory.nexon.com/Character/MFEBDDMBFFJDDGOHBNHCO
 
 export interface MissionListProps {}
 
-const MissionList: React.SFC<MissionListProps> = () => (
-  <ScrollView style={styles.container}>
-    <UserInfo name="적류" level={221} job="메르세데스" imageUrl={uri} progress={0.58} />
-    <MissionItem label="드림 브레이커" image="lacheln" />
-  </ScrollView>
-)
+interface ISectionHeader {
+  section: SectionListData<{ title: string }>
+}
 
-export default React.memo(MissionList)
+class MissionList extends React.PureComponent {
+  keyExtractor = ({ item }: { item: Mission }) => item.key
+
+  renderHeader = () => (
+    <UserInfo
+      name="적류"
+      level={221}
+      job="메르세데스"
+      imageUrl={uri}
+      progress={0.58}
+    />
+  )
+
+  renderSectionHeader = ({ section: { title } }: ISectionHeader) => (
+    <Section title={title} />
+  )
+
+  renderItem = ({ item }: { item: Mission }) => (
+    <MissionItem label={item.label} image={item.key} />
+  )
+
+  render() {
+    return (
+      <SectionList
+        sections={Object.values(missions).map(m => ({ title: m.label, data: m.items }))}
+        keyExtractor={(item, index) => item + index}
+        ListHeaderComponent={this.renderHeader}
+        renderSectionHeader={this.renderSectionHeader}
+        renderItem={this.renderItem}
+        stickySectionHeadersEnabled={false}
+        showsVerticalScrollIndicator={false}
+        style={styles.container}
+      />
+    )
+  }
+}
+
+export default MissionList
