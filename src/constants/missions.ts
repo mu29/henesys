@@ -1,4 +1,14 @@
-export const daily = {
+export interface Mission {
+  label: string,
+  key: string,
+}
+
+export interface MissionList {
+  label: string,
+  items: Mission[],
+}
+
+export const dailyMissions: { [key: string]: MissionList } = {
   contents: {
     label: '콘텐츠',
     items: [{
@@ -104,9 +114,9 @@ export const daily = {
   },
 }
 
-export const weekly = {
-  boss: {
-    label: '일일 보스',
+export const weeklyMissions: { [key: string]: MissionList } = {
+  hardBoss: {
+    label: '주간 보스',
     items: [{
       label: '카오스 자쿰',
       key: 'zaqqum',
@@ -146,3 +156,5 @@ export const weekly = {
     }],
   },
 }
+
+export const missions = Object.assign({}, dailyMissions, weeklyMissions)
