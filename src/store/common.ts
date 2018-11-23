@@ -140,8 +140,8 @@ export default actionCreatorFactory
 
 export function bindAsyncAction<P, R>(
   actionCreators: AsyncActionCreators<P, R, any>,
-  onSuccess?: ({ params, result }: { params: P; result: R }) => Effect,
-  onError?: ({ params, error }: { params: P; error: any }) => Effect,
+  onSuccess?: (params: P, result: R) => Effect,
+  onError?: (params: P, error: any) => Effect,
 ): {
   (worker: (params: P) => Promise<R> | SagaIterator):
     (params: P) => SagaIterator;
@@ -160,8 +160,8 @@ export function bindAsyncAction<P, R>(
 
 export function bindAsyncAction<P, R>(
   actionCreator: AsyncActionCreators<P, R, any>,
-  onSuccess?: ({ params, result }: { params: P; result: R }) => Effect,
-  onError?: ({ params, error }: { params: P; error: any }) => Effect,
+  onSuccess?: (params: P, result: R) => Effect,
+  onError?: (params: P, error: any) => Effect,
 ) {
   return (
     worker: (params: P, ...args: any[]) => Promise<any> | SagaIterator,
@@ -171,13 +171,13 @@ export function bindAsyncAction<P, R>(
         const result = yield (call as any)(worker, params, ...args)
         yield put(actionCreator.success({ params, result }))
         if (onSuccess) {
-          yield onSuccess({ params, result })
+          yield onSuccess(params, result)
         }
         return result
       } catch (error) {
         yield put(actionCreator.failure({ params, error }))
         if (onError) {
-          yield onError({ params, error })
+          yield onError(params, error)
         }
       } finally {
         if (yield cancelled()) {
