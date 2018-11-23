@@ -5,10 +5,10 @@ import {
 } from 'react-native'
 import {
   DividedSectionList,
-  UserInfo,
   Section,
   MissionItem,
 } from 'src/components'
+import { UserInfo } from 'src/containers'
 import { missions, Mission } from 'src/constants/missions'
 
 const styles = StyleSheet.create({
@@ -17,27 +17,17 @@ const styles = StyleSheet.create({
   },
 })
 
-const uri = 'https://avatar.maplestory.nexon.com/Character/MFEBDDMBFFJDDGOHBNHCOHCHPJENEOIMBCFGMLEFAKLBAIPFHDFDAML' +
-'GJPPEGHDFPOHJHGEKIINFKPIKIBCGBEFDLCHFOOHHPFJGDNEEJJJOCHOKNMAPMDHEJLPADDEEBLNIBEGJPKAADGHPJPLKIOIJDKCHOCBBEGMPDPKH' +
-'CMPIPGHFNLMDJMFLHMKACGKNGENBLELDKEAMOMGFAHFIKHDCIFJGOBAGFCBIFCEEADBDKPPFKAMCMLBNFNGFDIAD.png'
-
 export interface MissionListProps {}
 
 interface ISectionHeader {
   section: SectionListData<Mission>
 }
 
-class MissionList extends React.PureComponent {
+class MissionList extends React.PureComponent<MissionListProps> {
   keyExtractor = (item: Mission) => item.key
 
   renderHeader = () => (
-    <UserInfo
-      name="적류"
-      level={221}
-      job="메르세데스"
-      imageUrl={uri}
-      progress={0.58}
-    />
+    <UserInfo progress={0.58} />
   )
 
   renderSectionHeader = ({ section: { title } }: ISectionHeader) => (

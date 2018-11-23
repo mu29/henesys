@@ -6,7 +6,7 @@ export type UserState = {
 }
 
 const initialState: UserState = {
-  name: '',
+  name: '적류',
   level: 0,
   job: '',
   imageUrl: '',

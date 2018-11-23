@@ -10,6 +10,7 @@ import {
   Progress,
 } from 'src/components'
 import { palette, typography } from 'src/styles'
+import { GetUserInfoParams } from 'src/store/actions'
 
 const styles = StyleSheet.create({
   container: {
@@ -41,35 +42,47 @@ export interface UserInfoProps {
   job: string,
   imageUrl: string,
   progress: number,
+  getUserInfo: (params: GetUserInfoParams) => void,
 }
 
-const UserInfo: React.SFC<UserInfoProps> = ({
-  name,
-  level,
-  job,
-  imageUrl,
-  progress,
-}) => (
-  <View style={styles.container}>
-    <Image style={styles.avatar} source={{ uri: imageUrl }} />
-    <Divider style={styles.divider} vertical />
-    <View style={styles.description}>
-      <Text style={typography.heading[3].black}>
-        {name}
-      </Text>
-      <Text style={typography.body[2].gray}>
-        Lv. {level} {job}
-      </Text>
-    </View>
-    <Progress.Circle
-      color={palette.secondary.default}
-      unfilledColor={palette.gray[30]}
-      borderWidth={0}
-      progress={progress}
-      animated={false}
-      showsText
-    />
-  </View>
-)
+class UserInfo extends React.PureComponent<UserInfoProps> {
+  componentWillMount() {
+    const { name, getUserInfo } = this.props
+    getUserInfo({ name })
+  }
 
-export default React.memo(UserInfo)
+  render() {
+    const {
+      name,
+      level,
+      job,
+      imageUrl,
+      progress,
+    } = this.props
+
+    return (
+      <View style={styles.container}>
+        <Image style={styles.avatar} source={{ uri: imageUrl }} />
+        <Divider style={styles.divider} vertical />
+        <View style={styles.description}>
+          <Text style={typography.heading[3].black}>
+            {name}
+          </Text>
+          <Text style={typography.body[2].gray}>
+            Lv. {level} {job}
+          </Text>
+        </View>
+        <Progress.Circle
+          color={palette.secondary.default}
+          unfilledColor={palette.gray[30]}
+          borderWidth={0}
+          progress={progress}
+          animated={false}
+          showsText
+        />
+      </View>
+    )
+  }
+}
+
+export default UserInfo
