@@ -5,7 +5,7 @@ import {
   MissionScreen,
   StatsScreen,
   SettingsScreen,
-} from 'src/screens'
+} from 'src/components'
 import { palette } from 'src/styles'
 
 export default createBottomTabNavigator({
