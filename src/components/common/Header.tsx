@@ -29,7 +29,7 @@ export interface HeaderProps {
 
 const Header: React.SFC<HeaderProps> = ({ title, border, children }) => (
   <View style={[styles.container, border && styles.border]}>
-    <Text style={typography.heading[1].black}>
+    <Text style={typography.heading[1].black.bold}>
       {title}
     </Text>
     <View>

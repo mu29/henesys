@@ -65,7 +65,7 @@ class UserInfo extends React.PureComponent<UserInfoProps> {
         <Image style={styles.avatar} source={{ uri: imageUrl }} />
         <Divider style={styles.divider} vertical />
         <View style={styles.description}>
-          <Text style={typography.heading[3].black}>
+          <Text style={typography.heading[3].black.bold}>
             {name}
           </Text>
           <Text style={typography.body[2].gray}>

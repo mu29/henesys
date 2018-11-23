@@ -38,7 +38,7 @@ export default createBottomTabNavigator({
     showLabel: false,
     style: {
       borderTopColor: palette.gray[50],
-      backgroundColor: palette.gray[10],
+      backgroundColor: palette.white.default,
     },
   },
 })

@@ -4,26 +4,44 @@ export default {
   heading: {
     1: {
       black: {
-        fontSize: 24,
-        fontWeight: '600',
-        color: palette.gray[100],
-        lineHeight: 32,
+        bold: {
+          fontSize: 24,
+          fontWeight: '600',
+          color: palette.gray[100],
+          lineHeight: 32,
+        },
       },
     },
     2: {
       black: {
-        fontSize: 18,
-        fontWeight: '600',
-        color: palette.gray[100],
-        lineHeight: 28,
+        normal: {
+          fontSize: 18,
+          fontWeight: '400',
+          color: palette.gray[100],
+          lineHeight: 28,
+        },
+        bold: {
+          fontSize: 18,
+          fontWeight: '600',
+          color: palette.gray[100],
+          lineHeight: 28,
+        },
       },
     },
     3: {
       black: {
-        fontSize: 16,
-        fontWeight: '600',
-        color: palette.gray[100],
-        lineHeight: 24,
+        normal: {
+          fontSize: 16,
+          fontWeight: '400',
+          color: palette.gray[100],
+          lineHeight: 24,
+        },
+        bold: {
+          fontSize: 16,
+          fontWeight: '600',
+          color: palette.gray[100],
+          lineHeight: 24,
+        },
       },
     },
   },
@@ -48,6 +66,11 @@ export default {
       gray: {
         fontSize: 11,
         color: palette.gray[70],
+        lineHeight: 14,
+      },
+      black: {
+        fontSize: 11,
+        color: palette.gray[100],
         lineHeight: 14,
       },
     },
