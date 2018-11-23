@@ -34,7 +34,7 @@ const Divider: React.SFC<DividerProps> = ({
 }
 
 Divider.defaultProps = {
-  color: palette.gray['30'],
+  color: palette.gray[30],
 }
 
 export default React.memo(Divider)

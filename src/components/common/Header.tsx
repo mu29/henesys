@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
   },
   border: {
-    borderBottomColor: palette.gray['30'],
+    borderBottomColor: palette.gray[30],
     borderBottomWidth: 1,
   },
 })
@@ -29,7 +29,7 @@ export interface HeaderProps {
 
 const Header: React.SFC<HeaderProps> = ({ title, border, children }) => (
   <View style={[styles.container, border && styles.border]}>
-    <Text style={typography.heading['1'].black}>
+    <Text style={typography.heading[1].black}>
       {title}
     </Text>
     <View>

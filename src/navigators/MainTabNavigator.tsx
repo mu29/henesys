@@ -29,16 +29,16 @@ export default createBottomTabNavigator({
           break
       }
 
-      return <Icon name={ iconName } size={ 25 } color={ tintColor || palette.gray['60'] } />
+      return <Icon name={ iconName } size={ 25 } color={ tintColor || palette.gray[60] } />
     },
   }),
   tabBarOptions: {
     activeTintColor: palette.primary.default,
-    inactiveTintColor: palette.gray['60'],
+    inactiveTintColor: palette.gray[60],
     showLabel: false,
     style: {
-      borderTopColor: palette.gray['50'],
-      backgroundColor: palette.gray['10'],
+      borderTopColor: palette.gray[50],
+      backgroundColor: palette.gray[10],
     },
   },
 })

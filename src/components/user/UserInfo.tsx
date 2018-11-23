@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 16,
     padding: 8,
     borderRadius: 8,
-    backgroundColor: palette.gray['15'],
+    backgroundColor: palette.gray[15],
   },
   avatar: {
     width: 48,
@@ -51,16 +51,16 @@ const UserInfo: React.SFC<UserInfoProps> = ({
     <Image style={styles.avatar} source={{ uri: imageUrl }} />
     <Divider vertical />
     <View style={styles.description}>
-      <Text style={typography.heading['3'].black}>
+      <Text style={typography.heading[3].black}>
         {name}
       </Text>
-      <Text style={typography.body['2'].gray}>
+      <Text style={typography.body[2].gray}>
         Lv. {level} {job}
       </Text>
     </View>
     <Progress.Circle
       color={palette.secondary.default}
-      unfilledColor={palette.gray['30']}
+      unfilledColor={palette.gray[30]}
       borderWidth={0}
       progress={progress}
       animated={false}

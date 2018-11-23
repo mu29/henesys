@@ -29,7 +29,7 @@ const MissionScreen: React.SFC<{}> = () => (
         onPress={() => {}}
         style={styles.swapButton}
       >
-        <Icon name="md-swap" size={20} color={palette.gray['90']} />
+        <Icon name="md-swap" size={20} color={palette.gray[90]} />
       </Button>
     </Header>
     <MissionList />
