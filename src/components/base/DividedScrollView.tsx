@@ -1,15 +1,15 @@
 import React from 'react'
 import {
-  SectionList,
-  SectionListProps,
+  ScrollView,
+  ScrollViewProps,
   NativeSyntheticEvent,
   NativeScrollEvent,
 } from 'react-native'
 import { Divider } from 'src/components'
 
-export interface DividedSectionListProps<T> extends SectionListProps<T> {}
+export interface DividedScrollViewProps extends ScrollViewProps {}
 
-class DividedSectionList<T> extends React.PureComponent<DividedSectionListProps<T>> {
+class DividedScrollView extends React.PureComponent<DividedScrollViewProps> {
   state = { showDivider: false }
 
   onScroll = ({ nativeEvent }: NativeSyntheticEvent<NativeScrollEvent>) => this.setState({
@@ -17,15 +17,14 @@ class DividedSectionList<T> extends React.PureComponent<DividedSectionListProps<
   })
 
   render() {
-    const { children, ...props } = this.props
     const { showDivider } = this.state
     return (
       <React.Fragment>
         <Divider hidden={!showDivider} />
-        <SectionList {...props} onScroll={this.onScroll} />
+        <ScrollView {...this.props} onScroll={this.onScroll} />
       </React.Fragment>
     )
   }
 }
 
-export default DividedSectionList
+export default DividedScrollView
