@@ -87,7 +87,7 @@ class Calendar extends React.PureComponent<CalendarProps> {
 
   _renderDay = (day: number) => {
     const { progressList } = this.props
-    return this._renderItem(typography.body[2].black, progressList[day] || 0)(day)
+    return this._renderItem(typography.body[2].black, progressList[day - 1])(day)
   }
 
   _renderRow = (days: number[]) => (
