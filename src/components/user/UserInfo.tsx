@@ -27,6 +27,7 @@ const styles = StyleSheet.create({
     height: 48,
   },
   divider: {
+    height: '100%',
     marginHorizontal: 4,
   },
   description: {

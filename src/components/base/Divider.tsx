@@ -10,10 +10,8 @@ import { palette } from 'src/styles'
 const styles = StyleSheet.create({
   vertical: {
     width: 1,
-    height: '100%',
   },
   horizontal: {
-    width: '100%',
     height: 1,
   },
   hidden: {

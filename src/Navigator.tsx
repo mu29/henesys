@@ -16,16 +16,16 @@ export default createBottomTabNavigator({
   navigationOptions: ({ navigation }) => ({
     tabBarIcon: ({ tintColor }) => {
       const { routeName } = navigation.state
-      let iconName = 'md-'
+      let iconName = ''
       switch (routeName) {
         case 'Mission':
-          iconName += 'list-box'
+          iconName += 'md-list-box'
           break
         case 'Stats':
-          iconName += 'pie'
+          iconName += 'md-pie'
           break
         case 'Settings':
-          iconName += 'settings'
+          iconName += 'md-settings'
           break
       }
 
