@@ -19,8 +19,10 @@ export { default as MissionScreen } from './screens/MissionScreen'
 export { default as SettingsScreen } from './screens/SettingsScreen'
 export { default as StatsScreen } from './screens/StatsScreen'
 
+export { default as AchievementDays } from './stats/AchievementDays'
 export { default as Calendar } from './stats/Calendar'
 export { default as ProgressChart } from './stats/ProgressChart'
 export { default as StatsView } from './stats/StatsView'
+export { default as Streaks } from './stats/Streaks'
 
 export { default as UserInfo } from './user/UserInfo'
