@@ -7,9 +7,11 @@ import {
   Dimensions,
   StyleProp,
   ViewStyle,
+  TextStyle,
 } from 'react-native'
 import {
   Text,
+  Divider,
 } from 'src/components'
 import { typography } from 'src/styles'
 
@@ -17,11 +19,14 @@ const DEVICE_WIDTH = Dimensions.get('window').width
 
 const styles = StyleSheet.create({
   container: {
+    marginTop: 8,
     paddingHorizontal: 16,
   },
   header: {
     flexDirection: 'row',
+    justifyContent: 'center',
     alignItems: 'center',
+    marginTop: 8,
   },
   horizontal: {
     flex: 1,
@@ -50,10 +55,10 @@ class Calendar extends React.PureComponent<CalendarProps> {
     ].map((_, i) => Math.max(0, i - startWeekday + 1))
   }
 
-  _renderItem = (day: number | string) => (
+  _renderItem = (style?: StyleProp<TextStyle>) => (day: number | string) => (
     <View style={styles.item}>
       {!!day && (
-        <Text>
+        <Text style={style}>
           {day}
         </Text>
       )}
@@ -62,7 +67,7 @@ class Calendar extends React.PureComponent<CalendarProps> {
 
   _renderRow = (days: number[]) => (
     <View style={styles.horizontal}>
-      {days.map(this._renderItem)}
+      {days.map(this._renderItem())}
     </View>
   )
 
@@ -70,16 +75,9 @@ class Calendar extends React.PureComponent<CalendarProps> {
     const { style } = this.props
     return (
       <View style={[styles.container, style]}>
-        <View style={styles.header}>
-          <Text style={typography.heading[3].black.normal}>
-            2018년
-          </Text>
-          <Text style={typography.heading[3].black.bold}>
-            11월
-          </Text>
-        </View>
+        <Divider />
         <View style={styles.horizontal}>
-          {moment.weekdaysMin().map(this._renderItem)}
+          {moment.weekdaysMin().map(this._renderItem(typography.tiny[1].gray))}
         </View>
         {chunk(this._days(), 7).map(this._renderRow)}
       </View>
