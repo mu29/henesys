@@ -1,9 +1,9 @@
 import React from 'react'
 import {
+  SafeAreaView,
   StatusBar,
   StyleSheet,
 } from 'react-native'
-import { SafeAreaView } from 'react-navigation'
 import { palette } from 'src/styles'
 
 const styles = StyleSheet.create({
