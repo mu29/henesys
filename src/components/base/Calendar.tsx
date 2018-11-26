@@ -13,9 +13,10 @@ import {
   Text,
   Divider,
 } from 'src/components'
-import { typography } from 'src/styles'
+import { typography, palette } from 'src/styles'
 
 const DEVICE_WIDTH = Dimensions.get('window').width
+const ITEM_SIZE = (DEVICE_WIDTH - 32) / 7
 
 const styles = StyleSheet.create({
   container: {
@@ -34,21 +35,33 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   item: {
-    width: (DEVICE_WIDTH - 32) / 7,
-    height: (DEVICE_WIDTH - 32) / 7,
+    width: ITEM_SIZE,
+    height: ITEM_SIZE,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  background: {
+    position: 'absolute',
+    height: 4,
+    bottom: ITEM_SIZE / 12,
+    left: ITEM_SIZE / 6,
+    right: ITEM_SIZE / 6,
+    zIndex: -1,
+    borderRadius: 2,
+    backgroundColor: palette.primary.default,
   },
 })
 
 export interface CalendarProps {
   month?: string,
+  progressList: number[],
   style?: StyleProp<ViewStyle>,
 }
 
 class Calendar extends React.PureComponent<CalendarProps> {
   static defaultProps = {
     month: moment().format('YYYY-MM'),
+    progressList: [],
   }
 
   _days = () => {
@@ -61,19 +74,25 @@ class Calendar extends React.PureComponent<CalendarProps> {
     ].map((_, i) => Math.max(0, i - startWeekday + 1))
   }
 
-  _renderItem = (style?: StyleProp<TextStyle>) => (day: number | string) => (
+  _renderItem = (style?: StyleProp<TextStyle>, opacity: number = 0) => (day: number | string) => (
     <View style={styles.item}>
       {!!day && (
         <Text style={style}>
           {day}
         </Text>
       )}
+      <View style={[styles.background, { opacity }]} />
     </View>
   )
 
+  _renderDay = (day: number) => {
+    const { progressList } = this.props
+    return this._renderItem(typography.body[2].black, progressList[day] || 0)(day)
+  }
+
   _renderRow = (days: number[]) => (
     <View style={styles.horizontal}>
-      {days.map(this._renderItem())}
+      {days.map(this._renderDay)}
     </View>
   )
 
