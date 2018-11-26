@@ -42,13 +42,19 @@ const styles = StyleSheet.create({
 })
 
 export interface CalendarProps {
+  month?: string,
   style?: StyleProp<ViewStyle>,
 }
 
 class Calendar extends React.PureComponent<CalendarProps> {
+  static defaultProps = {
+    month: moment().format('YYYY-MM'),
+  }
+
   _days = () => {
-    const startWeekday = moment().startOf('month').weekday()
-    const daysInMonth = moment().daysInMonth()
+    const { month } = this.props
+    const startWeekday = moment(month).startOf('month').weekday()
+    const daysInMonth = moment(month).daysInMonth()
     return [
       ...Array(startWeekday),
       ...Array(daysInMonth),
