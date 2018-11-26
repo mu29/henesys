@@ -11,6 +11,14 @@ export default {
           lineHeight: 32,
         },
       },
+      white: {
+        bold: {
+          fontSize: 24,
+          fontWeight: '600',
+          color: palette.white.default,
+          lineHeight: 32,
+        },
+      },
     },
     2: {
       black: {
@@ -59,6 +67,11 @@ export default {
         color: palette.gray[90],
         lineHeight: 18,
       },
+      white: {
+        fontSize: 14,
+        color: palette.gray[10],
+        lineHeight: 18,
+      },
     },
     3: {
       gray: {
@@ -83,6 +96,11 @@ export default {
       black: {
         fontSize: 11,
         color: palette.gray[100],
+        lineHeight: 14,
+      },
+      white: {
+        fontSize: 11,
+        color: palette.white.default,
         lineHeight: 14,
       },
     },
