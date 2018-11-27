@@ -1,4 +1,5 @@
 import { missions } from 'src/constants/missions'
+import { today } from 'src/utils'
 
 export type MissionState = {
   todos: string[];
@@ -11,3 +12,13 @@ const initialState: MissionState = {
 }
 
 export default initialState
+
+export const getRecordByKey = (state: MissionState, key: string) => state.records[key] || {}
+
+export const getDailyProgress = (state: MissionState) => {
+  const record = getRecordByKey(state, today())
+  const todos = Math.max(Object.keys(record).length, 1)
+  const closed = Object.values(record).filter(v => v === true).length
+
+  return closed / todos
+}
