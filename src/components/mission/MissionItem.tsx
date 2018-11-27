@@ -1,8 +1,11 @@
 import React from 'react'
+import throttle from 'lodash/throttle'
+import HapticFeedback from 'react-native-haptic-feedback'
 import {
   View,
   Image,
   StyleSheet,
+  Platform,
 } from 'react-native'
 import {
   Button,
@@ -25,7 +28,7 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
   },
   closed: {
-    color: palette.gray[60],
+    color: palette.gray[50],
     textDecorationLine: 'line-through',
   },
 })
@@ -38,6 +41,19 @@ export interface MissionItemProps {
 }
 
 class MissionItem extends React.PureComponent<MissionItemProps> {
+  pressWithHaptic = () => {
+    const { onPress } = this.props
+    if (onPress) {
+      if (Platform.OS === 'ios') {
+        HapticFeedback.trigger('selection', false)
+      }
+      onPress()
+    }
+  }
+
+  // tslint:disable-next-line
+  onPress = throttle(this.pressWithHaptic, 200)
+
   renderInner() {
     const {
       label,
@@ -55,9 +71,8 @@ class MissionItem extends React.PureComponent<MissionItemProps> {
   }
 
   render() {
-    const { onPress } = this.props
-    return onPress ? (
-      <Button onPress={onPress}>
+    return this.props.onPress ? (
+      <Button onPress={this.onPress} activeOpacity={0.8}>
         {this.renderInner()}
       </Button>
     ) : this.renderInner()

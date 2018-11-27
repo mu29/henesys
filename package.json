@@ -16,6 +16,7 @@
     "react": "16.6.1",
     "react-native": "0.57.5",
     "react-native-cheerio": "1.0.0-rc.4",
+    "react-native-haptic-feedback": "^1.4.2",
     "react-native-progress": "3.5.0",
     "react-native-svg": "^8.0.8",
     "react-native-svg-charts": "^5.2.0",

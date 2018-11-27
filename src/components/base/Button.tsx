@@ -3,10 +3,11 @@ import {
   TouchableOpacity,
   TouchableNativeFeedback,
   Platform,
+  TouchableOpacityProps,
   TouchableNativeFeedbackProps,
 } from 'react-native'
 
-export interface ButtonProps extends TouchableNativeFeedbackProps {
+export interface ButtonProps extends TouchableOpacityProps, TouchableNativeFeedbackProps {
   onPress: () => void,
   children: React.ReactElement<any>,
 }
