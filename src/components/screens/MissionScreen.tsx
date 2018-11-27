@@ -8,8 +8,8 @@ import {
   Icon,
   Header,
   MissionList,
+  withSafeArea,
 } from 'src/components'
-import { withSafeArea } from 'src/wrappers'
 import { palette } from 'src/styles'
 
 const styles = StyleSheet.create({

@@ -27,3 +27,5 @@ export { default as StatsView } from './stats/StatsView'
 export { default as Streaks } from './stats/Streaks'
 
 export { default as UserInfo } from './user/UserInfo'
+
+export { default as withSafeArea } from './wrappers/withSafeArea'
