@@ -14,10 +14,10 @@ const styles = StyleSheet.create({
   },
 })
 
-const SettingsScreen: React.SFC<{}> = () => (
+const ProfileScreen: React.SFC<{}> = () => (
   <View style={styles.container}>
-    <Header title="설정" />
+    <Header title="프로필" />
   </View>
 )
 
-export default withSafeArea(React.memo(SettingsScreen))
+export default withSafeArea(React.memo(ProfileScreen))
