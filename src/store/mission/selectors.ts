@@ -1,7 +1,5 @@
-import mergeWith from 'lodash/mergeWith'
-import { createSelector } from 'reselect'
+import createCachedSelector from 're-reselect'
 import { missions as missionList } from 'src/constants/missions'
-import { today } from 'src/utils'
 import { AppState } from '../selectors'
 
 type Record = { [key: string]: boolean }
@@ -34,13 +32,13 @@ export const getProgress = (record: Record) => {
   return source.filter(v => v).length / (source.length || 1)
 }
 
-export const getDailyCompletes = createSelector(getRecordOfDay, getCompletes)
-export const getDailyProgress = createSelector(getRecordOfDay, getProgress)
-export const getPeriodCompletes = createSelector(
+export const getDailyCompletes = createCachedSelector(getRecordOfDay, getCompletes)((_, day) => day)
+export const getDailyProgress = createCachedSelector(getRecordOfDay, getProgress)((_, day) => day)
+export const getPeriodCompletes = createCachedSelector(
   getRecordsOfPeriod,
   (records) => records.reduce((completes, record) => completes + getCompletes(record), 0),
-)
-export const getPeriodProgress = createSelector(
+)((_, period) => period)
+export const getPeriodProgress = createCachedSelector(
   getRecordsOfPeriod,
   (records) => records.reduce((completes, record) => completes + getProgress(record), 0) / records.length,
-)
+)((_, period) => period)
