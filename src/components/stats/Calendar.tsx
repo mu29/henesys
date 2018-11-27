@@ -74,8 +74,17 @@ class Calendar extends React.PureComponent<CalendarProps> {
     ].map((_, i) => Math.max(0, i - startWeekday + 1))
   }
 
-  _renderItem = (style?: StyleProp<TextStyle>, opacity: number = 0) => (day: number | string) => (
-    <View style={styles.item}>
+  _renderItem = (
+    style?: StyleProp<TextStyle>,
+    opacity: number = 0,
+  ) => (
+    day: number | string,
+    index: number,
+  ) => (
+    <View
+      key={`calendar-item-${index}`}
+      style={styles.item}
+    >
       {!!day && (
         <Text style={style}>
           {day}
@@ -85,13 +94,16 @@ class Calendar extends React.PureComponent<CalendarProps> {
     </View>
   )
 
-  _renderDay = (day: number) => {
+  _renderDay = (day: number, index: number) => {
     const { progressList } = this.props
-    return this._renderItem(typography.body[2].black, progressList[day - 1])(day)
+    return this._renderItem(typography.body[2].black, progressList[day - 1])(day, index)
   }
 
-  _renderRow = (days: number[]) => (
-    <View style={styles.horizontal}>
+  _renderRow = (days: number[], index: number) => (
+    <View
+      key={`calendar-row-${index}`}
+      style={styles.horizontal}
+    >
       {days.map(this._renderDay)}
     </View>
   )
