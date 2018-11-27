@@ -8,7 +8,7 @@ import {
   Section,
 } from 'src/components'
 import {
-  UserInfo,
+  DailyUserInfo,
   MissionItem,
 } from 'src/containers'
 import {
@@ -34,7 +34,7 @@ class MissionList extends React.PureComponent<MissionListProps> {
   keyExtractor = (item: MissionType) => item.key
 
   renderHeader = () => (
-    <UserInfo progress={0.58} />
+    <DailyUserInfo />
   )
 
   renderSectionHeader = ({ section: { title } }: ISectionHeader) => (
