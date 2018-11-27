@@ -1,8 +1,12 @@
-import { Moment } from 'moment'
+import moment, { Moment } from 'moment'
 
-export default (start: Moment, end: Moment) => {
+export default (start: string | undefined, end: Moment) => {
+  if (!start) {
+    return [moment().format('YYYY-MM-DD')]
+  }
+
   const dates = []
-  const current = start.startOf('day')
+  const current = moment(start).startOf('day')
   const last = end.startOf('day')
 
   while (current.add(1, 'days').diff(last) <= 0) {
