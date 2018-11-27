@@ -5,7 +5,7 @@ export default (start: Moment, end: Moment) => {
   const current = start.startOf('day')
   const last = end.startOf('day')
 
-  while (current.add(1, 'days').diff(last) < 0) {
+  while (current.add(1, 'days').diff(last) <= 0) {
     dates.push(current.clone().format('YYYY-MM-DD'))
   }
 
