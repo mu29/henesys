@@ -15,8 +15,9 @@ export { default as Section } from './common/Section'
 export { default as MissionItem } from './mission/MissionItem'
 export { default as MissionList } from './mission/MissionList'
 
+export { default as CommunityScreen } from './screens/CommunityScreen'
 export { default as MissionScreen } from './screens/MissionScreen'
-export { default as SettingsScreen } from './screens/SettingsScreen'
+export { default as ProfileScreen } from './screens/ProfileScreen'
 export { default as StatsScreen } from './screens/StatsScreen'
 
 export { default as AchievementDays } from './stats/AchievementDays'

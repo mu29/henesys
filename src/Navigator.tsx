@@ -4,14 +4,16 @@ import { Icon } from 'src/components'
 import {
   MissionScreen,
   StatsScreen,
-  SettingsScreen,
+  CommunityScreen,
+  ProfileScreen,
 } from 'src/components'
 import { palette } from 'src/styles'
 
 export default createBottomTabNavigator({
   Mission: MissionScreen,
   Stats: StatsScreen,
-  Settings: SettingsScreen,
+  Community: CommunityScreen,
+  Profile: ProfileScreen,
 }, {
   navigationOptions: ({ navigation }) => ({
     tabBarIcon: ({ tintColor }) => {
@@ -24,8 +26,11 @@ export default createBottomTabNavigator({
         case 'Stats':
           iconName += 'md-pie'
           break
-        case 'Settings':
-          iconName += 'md-settings'
+        case 'Community':
+          iconName += 'ios-text'
+          break
+        case 'Profile':
+          iconName += 'md-person'
           break
       }
 
