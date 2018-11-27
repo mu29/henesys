@@ -2,6 +2,7 @@ import React from 'react'
 import {
   View,
   StyleSheet,
+  Platform,
 } from 'react-native'
 import {
   Text,
@@ -29,8 +30,14 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginRight: 8,
-    paddingTop: 1,
-    paddingLeft: 1,
+    paddingTop: Platform.select({
+      ios: 1,
+      android: 0,
+    }),
+    paddingLeft: Platform.select({
+      ios: 1,
+      android: 0,
+    }),
     borderRadius: 14,
     borderColor: palette.primary.default,
     borderWidth: 2,
