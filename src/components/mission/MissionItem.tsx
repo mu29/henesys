@@ -24,27 +24,44 @@ const styles = StyleSheet.create({
     marginRight: 8,
     resizeMode: 'contain',
   },
+  closed: {
+    color: palette.gray[60],
+    textDecorationLine: 'line-through',
+  },
 })
 
 export interface MissionItemProps {
   label: string,
-  image: string,
-  completed?: boolean,
+  name: string,
+  closed?: boolean,
+  onPress?: () => void,
 }
 
-const MissionItem: React.SFC<MissionItemProps> = ({
-  label,
-  image,
-  completed,
-}) => (
-  <Button onPress={() => {}}>
-    <View style={styles.container}>
-      <Image source={{uri: image}} style={styles.icon} />
-      <Text style={typography.body[1].black}>
-        {label}
-      </Text>
-    </View>
-  </Button>
-)
+class MissionItem extends React.PureComponent<MissionItemProps> {
+  renderInner() {
+    const {
+      label,
+      name,
+      closed,
+    } = this.props
+    return (
+      <View style={styles.container}>
+        <Image source={{uri: name}} style={styles.icon} />
+        <Text style={[typography.body[1].black, closed && styles.closed]}>
+          {label}
+        </Text>
+      </View>
+    )
+  }
 
-export default React.memo(MissionItem)
+  render() {
+    const { onPress } = this.props
+    return onPress ? (
+      <Button onPress={onPress}>
+        {this.renderInner()}
+      </Button>
+    ) : this.renderInner()
+  }
+}
+
+export default MissionItem
