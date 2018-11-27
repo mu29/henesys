@@ -7,9 +7,9 @@ import {
   Button,
   Icon,
   Header,
-  MissionList,
-  withSafeArea,
 } from 'src/components'
+import { MissionList } from 'src/containers'
+import { withSafeArea } from 'src/wrappers'
 import { palette } from 'src/styles'
 
 const styles = StyleSheet.create({

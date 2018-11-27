@@ -5,8 +5,8 @@ import {
 } from 'react-native'
 import {
   Header,
-  withSafeArea,
 } from 'src/components'
+import { withSafeArea } from 'src/wrappers'
 
 const styles = StyleSheet.create({
   container: {
