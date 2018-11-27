@@ -21,7 +21,7 @@ class DividedScrollView extends React.PureComponent<DividedScrollViewProps> {
     return (
       <React.Fragment>
         <Divider hidden={!showDivider} />
-        <ScrollView {...this.props} onScroll={this.onScroll} />
+        <ScrollView {...this.props} onScroll={this.onScroll} scrollEventThrottle={1600} />
       </React.Fragment>
     )
   }
