@@ -54,4 +54,4 @@ const AchievementDays: React.SFC<AchievementDaysProps> = ({
   </View>
 )
 
-export default AchievementDays
+export default React.memo(AchievementDays)

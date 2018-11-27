@@ -53,4 +53,4 @@ const StatsView: React.SFC<StatsViewProps> = () => (
   </DividedScrollView>
 )
 
-export default StatsView
+export default React.memo(StatsView)

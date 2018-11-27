@@ -79,4 +79,4 @@ const ProgressChart: React.SFC<ProgressChartProps> = ({
   </View>
 )
 
-export default ProgressChart
+export default React.memo(ProgressChart)
