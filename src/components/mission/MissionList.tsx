@@ -47,9 +47,12 @@ class MissionList extends React.PureComponent<MissionListProps> {
 
   render() {
     const { missions } = this.props
+    const sections = missions
+      .map(m => ({ title: m.label, data: m.items }))
+      .filter(m => m.data.length > 0)
     return (
       <DividedSectionList
-        sections={missions.map(m => ({ title: m.label, data: m.items }))}
+        sections={sections}
         keyExtractor={this.keyExtractor}
         ListHeaderComponent={this.renderHeader}
         renderSectionHeader={this.renderSectionHeader}
