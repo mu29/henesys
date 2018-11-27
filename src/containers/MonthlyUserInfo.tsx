@@ -9,19 +9,19 @@ import {
 } from 'src/store/actions'
 import {
   AppState,
-  getMonthlyProgress,
+  getPeriodProgress,
   getIsLoading,
 } from 'src/store/selectors'
 
 const MonthlyUserInfoContainer: React.SFC<UserInfoProps> = props => <UserInfo { ...props } />
 
-const mapStateToProps = ({ user, mission, loading }: AppState) => ({
-  name: user.name,
-  level: user.level,
-  job: user.job,
-  imageUrl: user.imageUrl,
-  progress: getMonthlyProgress(mission),
-  isLoading: getIsLoading(loading, getUserInfoActions.type),
+const mapStateToProps = (state: AppState) => ({
+  name: state.user.name,
+  level: state.user.level,
+  job: state.user.job,
+  imageUrl: state.user.imageUrl,
+  progress: getPeriodProgress(state, 30),
+  isLoading: getIsLoading(state.loading, getUserInfoActions.type),
 })
 
 const mapDispatchToProps = (dispatch: Dispatch<Action>) => ({

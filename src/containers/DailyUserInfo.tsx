@@ -9,19 +9,20 @@ import {
 } from 'src/store/actions'
 import {
   AppState,
-  getTodayProgress,
+  getDailyProgress,
   getIsLoading,
 } from 'src/store/selectors'
+import { today } from 'src/utils'
 
 const DailyUserInfoContainer: React.SFC<UserInfoProps> = props => <UserInfo { ...props } />
 
-const mapStateToProps = ({ user, mission, loading }: AppState) => ({
-  name: user.name,
-  level: user.level,
-  job: user.job,
-  imageUrl: user.imageUrl,
-  progress: getTodayProgress(mission),
-  isLoading: getIsLoading(loading, getUserInfoActions.type),
+const mapStateToProps = (state: AppState) => ({
+  name: state.user.name,
+  level: state.user.level,
+  job: state.user.job,
+  imageUrl: state.user.imageUrl,
+  progress: getDailyProgress(state, today()),
+  isLoading: getIsLoading(state.loading, getUserInfoActions.type),
 })
 
 const mapDispatchToProps = (dispatch: Dispatch<Action>) => ({
