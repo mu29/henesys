@@ -65,7 +65,7 @@ export const boss: MissionList = {
     key: 'arkarium',
   }, {
     label: '핑크빈',
-    key: 'pickbean',
+    key: 'pinkbean',
   }, {
     label: '우르스',
     key: 'urus',
@@ -119,7 +119,7 @@ export const hardBoss: MissionList = {
   label: '주간 보스',
   items: [{
     label: '카오스 자쿰',
-    key: 'zaqqum',
+    key: 'chaoszaqqum',
   }, {
     label: '시그너스 여제',
     key: 'cygnus',
@@ -137,7 +137,7 @@ export const hardBoss: MissionList = {
     key: 'vellum',
   }, {
     label: '하드 매그너스',
-    key: 'magnus',
+    key: 'hardmagnus',
   }, {
     label: '스우',
     key: 'lotus',
@@ -146,7 +146,7 @@ export const hardBoss: MissionList = {
     key: 'damian',
   }, {
     label: '카오스 파풀라투스',
-    key: 'pafulatu',
+    key: 'chaospafulatu',
   }, {
     label: '루시드',
     key: 'lucid',
