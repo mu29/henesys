@@ -8,19 +8,17 @@ import {
   Calendar,
   Streaks,
   ProgressChart,
-  AchievementDays,
   DividedScrollView,
 } from 'src/components'
-import { MonthlyUserInfo } from 'src/containers'
+import {
+  MonthlyUserInfo,
+  AchievementList,
+} from 'src/containers'
 import { palette } from 'src/styles'
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-  },
-  achievements: {
-    flexDirection: 'row',
-    padding: 8,
   },
 })
 
@@ -44,11 +42,7 @@ const StatsView: React.SFC<StatsViewProps> = () => (
       <Section title="최근 30일" />
       <ProgressChart progressList={progressList.map(p => p * 10)} />
       <Section title="누적 기록" />
-      <View style={styles.achievements}>
-        <AchievementDays title="완료!" days={182} color={palette.primary.default} />
-        <AchievementDays title="거의 완료" days={45} color={palette.primary.light} />
-        <AchievementDays title="성과 저조" days={11} color={palette.gray[50]} />
-      </View>
+      <AchievementList />
     </View>
   </DividedScrollView>
 )

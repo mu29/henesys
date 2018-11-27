@@ -1,3 +1,4 @@
+export { default as AchievementList } from './AchievementList'
 export { default as DailyUserInfo } from './DailyUserInfo'
 export { default as MissionItem } from './MissionItem'
 export { default as MissionList } from './MissionList'

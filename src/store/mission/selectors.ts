@@ -1,4 +1,5 @@
 import createCachedSelector from 're-reselect'
+import { createSelector } from 'reselect'
 import { missions as missionList } from 'src/constants/missions'
 import { AppState } from '../selectors'
 
@@ -36,9 +37,26 @@ export const getDailyCompletes = createCachedSelector(getRecordOfDay, getComplet
 export const getDailyProgress = createCachedSelector(getRecordOfDay, getProgress)((_, day) => day)
 export const getPeriodCompletes = createCachedSelector(
   getRecordsOfPeriod,
-  (records) => records.reduce((completes, record) => completes + getCompletes(record), 0),
+  records => records.reduce((completes, record) => completes + getCompletes(record), 0),
 )((_, period) => period)
 export const getPeriodProgress = createCachedSelector(
   getRecordsOfPeriod,
-  (records) => records.reduce((completes, record) => completes + getProgress(record), 0) / records.length,
+  records => records.reduce((progresses, record) => progresses + getProgress(record), 0) / records.length,
 )((_, period) => period)
+
+const accumulator = (percent: number) => (
+  days: number,
+  record: Record,
+) => days + (getProgress(record) >= percent ? 1 : 0)
+export const getCompleteDays = createSelector(
+  getRecordsOfPeriod,
+  records => records.reduce(accumulator(1), 0),
+)
+export const getAlmostCompleteDays = createSelector(
+  [getRecordsOfPeriod, getCompleteDays],
+  (records, completes) => records.reduce(accumulator(0.7), 0) - completes,
+)
+export const getIncompleteDays = createSelector(
+  [getRecordsOfPeriod, getCompleteDays, getAlmostCompleteDays],
+  (records, completes, almostCompletes) => records.length - (completes + almostCompletes),
+)
