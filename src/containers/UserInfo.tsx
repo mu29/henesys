@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import { Action, Dispatch } from 'redux'
 import { connect } from 'react-redux'
 import { UserInfo } from 'src/components'

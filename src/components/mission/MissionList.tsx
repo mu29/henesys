@@ -6,10 +6,15 @@ import {
 import {
   DividedSectionList,
   Section,
-  MissionItem,
 } from 'src/components'
-import { UserInfo } from 'src/containers'
-import { missions, Mission } from 'src/constants/missions'
+import {
+  UserInfo,
+  MissionItem,
+} from 'src/containers'
+import {
+  Mission as MissionType,
+  MissionList as MissionListType,
+} from 'src/constants/missions'
 
 const styles = StyleSheet.create({
   container: {
@@ -17,14 +22,16 @@ const styles = StyleSheet.create({
   },
 })
 
-export interface MissionListProps {}
+export interface MissionListProps {
+  missions: MissionListType[]
+}
 
 interface ISectionHeader {
-  section: SectionListData<Mission>
+  section: SectionListData<MissionType>,
 }
 
 class MissionList extends React.PureComponent<MissionListProps> {
-  keyExtractor = (item: Mission) => item.key
+  keyExtractor = (item: MissionType) => item.key
 
   renderHeader = () => (
     <UserInfo progress={0.58} />
@@ -34,14 +41,15 @@ class MissionList extends React.PureComponent<MissionListProps> {
     <Section title={title} />
   )
 
-  renderItem = ({ item }: { item: Mission }) => (
-    <MissionItem label={item.label} image={item.key} />
+  renderItem = ({ item }: { item: MissionType }) => (
+    <MissionItem label={item.label} name={item.key} />
   )
 
   render() {
+    const { missions } = this.props
     return (
       <DividedSectionList
-        sections={Object.values(missions).map(m => ({ title: m.label, data: m.items }))}
+        sections={missions.map(m => ({ title: m.label, data: m.items }))}
         keyExtractor={this.keyExtractor}
         ListHeaderComponent={this.renderHeader}
         renderSectionHeader={this.renderSectionHeader}

@@ -46,5 +46,4 @@ export default createBottomTabNavigator({
       backgroundColor: palette.white.default,
     },
   },
-  initialRouteName: 'Stats',
 })
