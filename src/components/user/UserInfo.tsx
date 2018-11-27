@@ -63,7 +63,10 @@ class UserInfo extends React.PureComponent<UserInfoProps> {
 
     return (
       <View style={styles.container}>
-        <Image style={styles.avatar} source={{ uri: imageUrl }} />
+        <Image
+          source={Object.assign({}, imageUrl ? { uri: imageUrl } : {})}
+          style={styles.avatar}
+        />
         <Divider style={styles.divider} vertical />
         <View style={styles.description}>
           <Text style={typography.heading[3].black.bold}>
