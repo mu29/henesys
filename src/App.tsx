@@ -6,6 +6,7 @@ import moment from 'moment'
 import momentLocaleKorea from 'moment/locale/ko'
 import { api } from 'src/services/api'
 import { parser } from 'src/services/parser'
+import { fillTodoAction } from 'src/store/actions'
 import configureStore from 'src/store/configure'
 import Navigator from 'src/Navigator'
 
@@ -16,8 +17,18 @@ YellowBox.ignoreWarnings(['relay:check'])
 // @ts-ignore
 const store = configureStore({}, { api, parser })
 
-export default () => (
-  <Provider store={store}>
-    <Navigator />
-  </Provider>
-)
+class App extends React.Component {
+  componentDidMount() {
+    store.dispatch(fillTodoAction())
+  }
+
+  render() {
+    return (
+      <Provider store={store}>
+        <Navigator />
+      </Provider>
+    )
+  }
+}
+
+export default App
