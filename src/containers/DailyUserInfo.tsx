@@ -9,18 +9,18 @@ import {
 } from 'src/store/actions'
 import {
   AppState,
-  getDailyProgress,
+  getTodayProgress,
   getIsLoading,
 } from 'src/store/selectors'
 
-const UserInfoContainer: React.SFC<UserInfoProps> = props => <UserInfo { ...props } />
+const DailyUserInfoContainer: React.SFC<UserInfoProps> = props => <UserInfo { ...props } />
 
 const mapStateToProps = ({ user, mission, loading }: AppState) => ({
   name: user.name,
   level: user.level,
   job: user.job,
   imageUrl: user.imageUrl,
-  progress: getDailyProgress(mission),
+  progress: getTodayProgress(mission),
   isLoading: getIsLoading(loading, getUserInfoActions.type),
 })
 
@@ -28,4 +28,4 @@ const mapDispatchToProps = (dispatch: Dispatch<Action>) => ({
   getUserInfo: (params: GetUserInfoParams) => dispatch(getUserInfoActions.request(params)),
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(UserInfoContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(DailyUserInfoContainer)

@@ -11,7 +11,7 @@ import {
   AchievementDays,
   DividedScrollView,
 } from 'src/components'
-import { UserInfo } from 'src/containers'
+import { MonthlyUserInfo } from 'src/containers'
 import { palette } from 'src/styles'
 
 const styles = StyleSheet.create({
@@ -37,7 +37,7 @@ const StatsView: React.SFC<StatsViewProps> = () => (
     style={styles.container}
   >
     <View>
-      <UserInfo progress={0.1} />
+      <MonthlyUserInfo />
       <Calendar progressList={progressList} />
       <Section title="연속 달성" />
       <Streaks current={12} most={86} />
