@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
     marginRight: 8,
     resizeMode: 'contain',
   },
-  closed: {
+  completed: {
     color: palette.gray[50],
     textDecorationLine: 'line-through',
   },
@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
 export interface MissionItemProps {
   label: string,
   name: string,
-  closed?: boolean,
+  completed?: boolean,
   onPress?: () => void,
 }
 
@@ -58,12 +58,12 @@ class MissionItem extends React.PureComponent<MissionItemProps> {
     const {
       label,
       name,
-      closed,
+      completed,
     } = this.props
     return (
       <View style={styles.container}>
         <Image source={{uri: name}} style={styles.icon} />
-        <Text style={[typography.body[1].black, closed && styles.closed]}>
+        <Text style={[typography.body[1].black, completed && styles.completed]}>
           {label}
         </Text>
       </View>

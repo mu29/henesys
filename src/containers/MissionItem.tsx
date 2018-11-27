@@ -10,7 +10,7 @@ import { today } from 'src/utils'
 const MissionItemContainer: React.SFC<MissionItemProps> = props => <MissionItem { ...props } />
 
 const mapStateToProps = ({ mission }: AppState, { name }: MissionItemProps) => ({
-  closed: mission.records[today()][name],
+  completed: mission.records[today()][name],
 })
 
 const mapDispatchToProps = (dispatch: Dispatch<Action>, { name }: MissionItemProps) => ({
