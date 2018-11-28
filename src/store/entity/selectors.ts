@@ -20,4 +20,4 @@ const initialState: EntityState = {
 
 export default initialState
 
-export const getEntity = (state: AppState) => state.entity
+export const getEntity = (state: AppState) => state.entity || {}

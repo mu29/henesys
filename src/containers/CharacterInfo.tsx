@@ -20,7 +20,7 @@ export interface CharacterInfoContainerProps {
 const CharacterInfoContainer: React.SFC<CharacterInfoProps> = props => <CharacterInfo { ...props } />
 
 const mapStateToProps = (state: AppState, { name }: CharacterInfoContainerProps) => {
-  const character = getCharacterByName(state, name) || { level: 0, job: '', imageUrl: undefined }
+  const character = getCharacterByName(state, name) || {}
   return {
     name,
     level: character.level,

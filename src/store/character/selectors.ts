@@ -1,35 +1,29 @@
 import createCachedSelector from 're-reselect'
-import { AppState } from '../selectors'
-
-export type Character = {
-  name: string;
-  level: number;
-  job: string;
-  imageUrl: string;
-}
+import { createSelector } from 'reselect'
+import { AppState, getEntity } from '../selectors'
 
 export type CharacterState = {
-  characters: Character[];
-  selected: number;
+  characters: string[];
+  selected: string;
 }
 
 const initialState: CharacterState = {
-  characters: [{
-    name: '별빛뒤로',
-    level: 0,
-    job: '',
-    imageUrl: '',
-  }],
-  selected: 0,
+  characters: ['적류', '별빛뒤로', '백동요'],
+  selected: '적류',
 }
 
 export default initialState
 
-export const getCharacters = (state: AppState) => state.character.characters
+export const getCharacters = (state: AppState) => getEntity(state).characters
 
-export const getSelectedCharacter = (state: AppState) => state.character.characters[state.character.selected]
+export const getSelectedCharacterName = (state: AppState) => state.character.selected
+
+export const getSelectedCharacter = createSelector(
+  [getCharacters, getSelectedCharacterName],
+  (characters, name) => characters[name] || { name },
+)
 
 export const getCharacterByName = createCachedSelector(
   [getCharacters, (_: AppState, name: string) => name],
-  (characters, name) => characters.find(c => c.name === name),
+  (characters, name) => characters[name],
 )((_, name) => name)
