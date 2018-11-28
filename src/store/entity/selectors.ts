@@ -9,9 +9,13 @@ export type ApiError = {
 }
 
 export type EntityState = {
+  characters: {
+    [key: string]: any;
+  };
 }
 
 const initialState: EntityState = {
+  characters: {},
 }
 
 export default initialState
