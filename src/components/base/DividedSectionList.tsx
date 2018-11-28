@@ -22,7 +22,7 @@ class DividedSectionList<T> extends React.PureComponent<DividedSectionListProps<
     return (
       <React.Fragment>
         <Divider hidden={!showDivider} />
-        <SectionList {...props} onScroll={this.onScroll} scrollEventThrottle={1600} />
+        <SectionList {...props} onScroll={this.onScroll} scrollEventThrottle={160} />
       </React.Fragment>
     )
   }
