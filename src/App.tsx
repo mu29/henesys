@@ -4,10 +4,13 @@ import { Provider } from 'react-redux'
 import moment from 'moment'
 // @ts-ignore
 import momentLocaleKorea from 'moment/locale/ko'
+
 import { api } from 'src/services/api'
 import { parser } from 'src/services/parser'
-import { fillTodoAction } from 'src/store/actions'
 import configureStore from 'src/store/configure'
+import { fillTodoAction } from 'src/store/actions'
+
+import { today } from 'src/utils'
 import Navigator from 'src/Navigator'
 
 moment.updateLocale('ko', momentLocaleKorea)
@@ -19,7 +22,7 @@ const store = configureStore({}, { api, parser })
 
 class App extends React.Component {
   componentDidMount() {
-    store.dispatch(fillTodoAction())
+    store.dispatch(fillTodoAction({ to: today() }))
   }
 
   render() {

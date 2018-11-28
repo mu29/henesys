@@ -1,4 +1,3 @@
-import moment from 'moment'
 import { Action } from 'redux'
 import { isType } from '../common'
 import {
@@ -55,7 +54,7 @@ export default (state: MissionState = initialState, action: Action): MissionStat
 
   if (isType(action, fillTodoAction)) {
     const lastDay = Object.keys(state.records).sort().slice(-1)[0]
-    const dates = datesBetween(lastDay, today())
+    const dates = datesBetween(lastDay, action.payload.to)
     const freshTodos = state.todos.reduce((result, name) => ({ ...result, [name]: false }), {})
     return {
       ...state,
