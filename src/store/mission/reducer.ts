@@ -11,57 +11,81 @@ import { datesBetween, today } from 'src/utils'
 
 export default (state: MissionState = initialState, action: Action): MissionState => {
   if (isType(action, addTodoAction)) {
+    const { character, name } = action.payload
     const now = today()
     return {
       ...state,
-      todos: [...state.todos, action.payload.name],
+      todos: [...state.todos, name],
       records: {
         ...state.records,
-        [now]: {
-          ...state.records[now],
-          [action.payload.name]: false,
+        [character]: {
+          ...state.records[character],
+          [now]: {
+            ...state.records[character][now],
+            [name]: false,
+          },
         },
       },
     }
   }
 
   if (isType(action, removeTodoAction)) {
+    const { character, name } = action.payload
     const now = today()
-    const removedRecord = Object.assign({}, state.records[now])
-    delete removedRecord[action.payload.name]
+    const removedRecord = Object.assign({}, state.records[character][now])
+    delete removedRecord[name]
     return {
       ...state,
-      todos: state.todos.filter(todo => todo !== action.payload.name),
+      todos: state.todos.filter(todo => todo !== name),
       records: {
         ...state.records,
-        [now]: removedRecord,
+        [character]: {
+          ...state.records[character],
+          [now]: removedRecord,
+        },
       },
     }
   }
 
   if (isType(action, toggleTodoAction)) {
+    const { character, name } = action.payload
+    const now = today()
     return {
       ...state,
       records: {
         ...state.records,
-        [today()]: {
-          ...state.records[today()],
-          [action.payload.name]: !state.records[today()][action.payload.name],
+        [character]: {
+          ...state.records[character],
+          [now]: {
+            ...state.records[character][now],
+            [name]: !state.records[character][now][name],
+          },
         },
       },
     }
   }
 
   if (isType(action, fillTodoAction)) {
-    const lastDay = Object.keys(state.records).sort().slice(-1)[0]
-    const dates = datesBetween(lastDay, action.payload.to)
+    const characters = Object.keys(state.records)
+      .map(character => ({
+        name: character,
+        day: Object.keys(state.records[character]).sort().slice(-1)[0],
+      }))
+      .map(lastDay => ({
+        name: lastDay.name,
+        dates: datesBetween(lastDay.day, action.payload.to),
+      }))
     const freshTodos = state.todos.reduce((result, name) => ({ ...result, [name]: false }), {})
     return {
       ...state,
-      records: {
-        ...state.records,
-        ...dates.map(date => ({ [date]: freshTodos })).reduce((r, c) => ({ ...r, ...c }), {}),
-      },
+      records: characters
+        .map(character => ({
+          [character.name]: {
+            ...state.records[character.name],
+            ...character.dates.map(date => ({ [date]: freshTodos })).reduce((r, c) => ({ ...r, ...c }), {}),
+          },
+        }))
+        .reduce((r, c) => ({ ...r, ...c }), {}),
     }
   }
 

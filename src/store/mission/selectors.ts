@@ -1,22 +1,32 @@
+// tslint:disable object-literal-key-quotes
 import createCachedSelector from 're-reselect'
 import { missions as missionList } from 'src/constants/missions'
-import { AppState } from '../selectors'
+import {
+  AppState,
+  getSelectedCharacterName,
+} from '../selectors'
 
 type Record = { [key: string]: boolean }
 
 export type MissionState = {
   todos: string[];
-  records: { [key: string]: Record };
+  records: {
+    [key: string]: {
+      [key: string]: Record;
+    };
+  };
 }
 
 const initialState: MissionState = {
   todos: Object.values(missionList).reduce((r: string[], c) => [...r, ...c.items.map(i => i.key)], []),
   records: {
-    '2018-11-01': {zaqqum: true},
-    '2018-11-02': {zaqqum: true},
-    '2018-11-03': {zaqqum: true},
-    '2018-11-04': {zaqqum: true},
-    '2018-11-05': {zaqqum: true},
+    '적류': {
+      '2018-11-01': {zaqqum: true},
+      '2018-11-02': {zaqqum: true},
+      '2018-11-03': {zaqqum: true},
+      '2018-11-04': {zaqqum: true},
+      '2018-11-05': {zaqqum: true},
+    },
   },
 }
 
@@ -25,11 +35,11 @@ export default initialState
 export const getRecordOfDay = (
   state: AppState,
   day: string,
-) => state.mission.records[day] || {}
+) => state.mission.records[getSelectedCharacterName(state)][day] || {}
 export const getRecordsOfPeriod = (
   state: AppState,
   period: number,
-) => Object.values(state.mission.records).slice(-period) || []
+) => Object.values(state.mission.records[getSelectedCharacterName(state)]).slice(-period) || []
 export const getCompletes = (record: Record) => Object.values(record).filter(v => v).length
 export const getProgress = (record: Record) => {
   const source = Object.values(record)
