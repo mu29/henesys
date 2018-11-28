@@ -9,12 +9,22 @@ import { today } from 'src/utils'
 
 const MissionItemContainer: React.SFC<MissionItemProps> = props => <MissionItem { ...props } />
 
-const mapStateToProps = ({ mission }: AppState, { name }: MissionItemProps) => ({
-  completed: mission.records[today()][name],
+const mapStateToProps = ({ character, mission }: AppState, { name }: MissionItemProps) => ({
+  character: character.selected,
+  completed: mission.records[character.selected][today()][name],
 })
 
 const mapDispatchToProps = (dispatch: Dispatch<Action>, { name }: MissionItemProps) => ({
-  onPress: () => dispatch(toggleTodoAction({ name })),
+  toggleTodo: (character: string) => () => dispatch(toggleTodoAction({ character, name })),
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(MissionItemContainer)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+  (stateProps, dispatchProps, ownProps) => ({
+    ...stateProps,
+    ...dispatchProps,
+    ...ownProps,
+    onPress: dispatchProps.toggleTodo(stateProps.character),
+  }),
+)(MissionItemContainer)

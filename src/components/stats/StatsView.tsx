@@ -8,7 +8,7 @@ import {
   DividedScrollView,
 } from 'src/components'
 import {
-  MonthlyUserInfo,
+  MonthlyCharacterStatus,
   Calendar,
   Streaks,
   ProgressChart,
@@ -29,7 +29,7 @@ const StatsView: React.SFC<StatsViewProps> = () => (
     style={styles.container}
   >
     <View>
-      <MonthlyUserInfo />
+      <MonthlyCharacterStatus />
       <Calendar />
       <Section title="연속 달성" />
       <Streaks />

@@ -8,8 +8,8 @@ import { today } from 'src/utils'
 
 const MissionListContainer: React.SFC<MissionListProps> = props => <MissionList { ...props } />
 
-const mapStateToProps = ({ mission }: AppState) => {
-  const missions = Object.keys(mission.records[today()] || {})
+const mapStateToProps = ({ character, mission }: AppState) => {
+  const missions = Object.keys(mission.records[character.selected][today()] || {})
   return {
     missions: [{
       ...contents,
