@@ -56,22 +56,22 @@ const accumulator = (percent: number) => (
   record: Record,
 ) => days + (getProgress(record) >= percent ? 1 : 0)
 
-export const getCompleteDays = createSelector(
+export const getCompleteDays = createCachedSelector(
   getRecordsOfPeriod,
   records => records.reduce(accumulator(1), 0),
-)
+)((_, period) => period)
 
-export const getAlmostCompleteDays = createSelector(
+export const getAlmostCompleteDays = createCachedSelector(
   [getRecordsOfPeriod, getCompleteDays],
   (records, completes) => records.reduce(accumulator(0.7), 0) - completes,
-)
+)((_, period) => period)
 
-export const getIncompleteDays = createSelector(
+export const getIncompleteDays = createCachedSelector(
   [getRecordsOfPeriod, getCompleteDays, getAlmostCompleteDays],
   (records, completes, almostCompletes) => records.length - (completes + almostCompletes),
-)
+)((_, period) => period)
 
-export const getCurrentStreaks = createSelector(
+export const getCurrentStreaks = createCachedSelector(
   getRecordsOfPeriod,
   records => {
     let streak = records.length - 1
@@ -84,9 +84,9 @@ export const getCurrentStreaks = createSelector(
     }
     return records.length - streak - 1
   },
-)
+)((_, period) => period)
 
-export const getLongestStreaks = createSelector(
+export const getLongestStreaks = createCachedSelector(
   getRecordsOfPeriod,
   records => {
     const streaks = records.reduce((result, record) => getProgress(record) === 1 ? ({
@@ -101,4 +101,4 @@ export const getLongestStreaks = createSelector(
     })
     return Math.max(streaks.current, streaks.max)
   },
-)
+)((_, period) => period)
