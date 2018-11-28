@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { MissionList } from 'src/components'
 import { MissionListProps } from 'src/components/mission/MissionList'
 import { AppState } from 'src/store/selectors'
-import { contents, boss, quest, symbol, hardBoss } from 'src/constants/missions'
+import { contents, boss, quest, symbol } from 'src/constants/missions'
 import { today } from 'src/utils'
 
 const MissionListContainer: React.SFC<MissionListProps> = props => <MissionList { ...props } />
@@ -23,9 +23,6 @@ const mapStateToProps = ({ mission }: AppState) => {
     }, {
       ...symbol,
       items: symbol.items.filter(i => missions.includes(i.key)),
-    }, {
-      ...hardBoss,
-      items: hardBoss.items.filter(i => missions.includes(i.key)),
     }],
   }
 }

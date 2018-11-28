@@ -1,5 +1,4 @@
 import createCachedSelector from 're-reselect'
-import { createSelector } from 'reselect'
 import { missions as missionList } from 'src/constants/missions'
 import { AppState } from '../selectors'
 

@@ -41,7 +41,7 @@ export const contents: MissionList = {
 }
 
 export const boss: MissionList = {
-  label: '일일 보스',
+  label: '보스',
   items: [{
     label: '자쿰',
     key: 'zaqqum',
@@ -156,4 +156,4 @@ export const hardBoss: MissionList = {
   }],
 }
 
-export const missions = { contents, boss, quest, symbol, hardBoss }
+export const missions = { contents, boss, quest, symbol }
