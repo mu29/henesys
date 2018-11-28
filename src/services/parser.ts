@@ -1,10 +1,10 @@
 import cheerio from 'react-native-cheerio'
 
-const USER_INFO_URL = 'https://maplestory.nexon.com/Common/Character/Detail'
+const CHARACTER_INFO_URL = 'https://maplestory.nexon.com/Common/Character/Detail'
 
 export class Parser {
-  getUserInfo = async (name: string) => {
-    const $ = await this.parse(`${USER_INFO_URL}/${name}`)
+  getCharacterInfo = async (name: string) => {
+    const $ = await this.parse(`${CHARACTER_INFO_URL}/${name}`)
     return {
       name,
       job: $('.char_info').find('dd').eq(1).text().split('/')[1],

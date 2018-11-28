@@ -1,8 +1,8 @@
 import { all, fork } from 'redux-saga/effects'
 import { Services } from '../services'
-import user from './user/sagas'
+import character from './character/sagas'
 
-const sagas = [user]
+const sagas = [character]
 
 export default function*(services: Services) {
   yield all(sagas.map(saga => fork(saga, services)))
