@@ -7,49 +7,42 @@ import {
 import {
   Divider,
   Text,
-  Progress,
 } from 'src/components'
-import { palette, typography } from 'src/styles'
-import { GetUserInfoParams } from 'src/store/actions'
+import { typography } from 'src/styles'
+import { GetCharacterInfoParams } from 'src/store/actions'
 
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginVertical: 8,
-    marginHorizontal: 16,
-    padding: 8,
-    borderRadius: 8,
-    backgroundColor: palette.gray[15],
   },
   avatar: {
     width: 48,
     height: 48,
   },
   divider: {
-    height: '100%',
-    marginHorizontal: 4,
+    margin: 4,
   },
   description: {
     marginLeft: 8,
-    marginRight: 'auto',
     justifyContent: 'center',
   },
 })
 
-export interface UserInfoProps {
+export interface CharacterInfoProps {
   name: string,
-  level: number,
-  job: string,
-  imageUrl: string,
-  progress: number,
-  getUserInfo: (params: GetUserInfoParams) => void,
+  level?: number,
+  job?: string,
+  imageUrl?: string,
+  getCharacterInfo: (params: GetCharacterInfoParams) => void,
 }
 
-class UserInfo extends React.PureComponent<UserInfoProps> {
+class CharacterInfo extends React.PureComponent<CharacterInfoProps> {
   componentWillMount() {
-    const { name, getUserInfo } = this.props
-    getUserInfo({ name })
+    const { name, imageUrl, getCharacterInfo } = this.props
+    if (!imageUrl) {
+      getCharacterInfo({ name })
+    }
   }
 
   render() {
@@ -58,7 +51,6 @@ class UserInfo extends React.PureComponent<UserInfoProps> {
       level,
       job,
       imageUrl,
-      progress,
     } = this.props
 
     return (
@@ -76,17 +68,9 @@ class UserInfo extends React.PureComponent<UserInfoProps> {
             Lv. {level} {job}
           </Text>
         </View>
-        <Progress.Circle
-          color={palette.secondary.default}
-          unfilledColor={palette.gray[30]}
-          borderWidth={0}
-          progress={progress}
-          animated={false}
-          showsText
-        />
       </View>
     )
   }
 }
 
-export default UserInfo
+export default CharacterInfo

@@ -2,6 +2,7 @@ import * as Progress from 'react-native-progress'
 export { Progress }
 export * from 'react-native-svg-charts'
 export { default as Icon } from 'react-native-vector-icons/Ionicons'
+export { default as Modal } from 'react-native-modal'
 
 export { default as Button } from './base/Button'
 export { default as DividedScrollView } from './base/DividedScrollView'
@@ -27,4 +28,6 @@ export { default as ProgressChart } from './stats/ProgressChart'
 export { default as StatsView } from './stats/StatsView'
 export { default as Streaks } from './stats/Streaks'
 
-export { default as UserInfo } from './user/UserInfo'
+export { default as CharacterInfo } from './user/CharacterInfo'
+export { default as CharacterSelectModal } from './user/CharacterSelectModal'
+export { default as CharacterStatus } from './user/CharacterStatus'
