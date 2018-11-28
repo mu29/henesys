@@ -46,10 +46,10 @@ const styles = StyleSheet.create({
 
 export interface StreaksProps {
   current: number,
-  most: number,
+  longest: number,
 }
 
-const Streaks: React.SFC<StreaksProps> = ({ current, most }) => (
+const Streaks: React.SFC<StreaksProps> = ({ current, longest }) => (
   <View style={styles.container}>
     <View style={styles.streak}>
       <View style={styles.icon}>
@@ -71,7 +71,7 @@ const Streaks: React.SFC<StreaksProps> = ({ current, most }) => (
       </View>
       <View>
         <Text style={typography.heading[1].black.bold}>
-          {most}
+          {longest}
         </Text>
         <Text style={typography.tiny[1].gray}>
           최고 연속 달성

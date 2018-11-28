@@ -13,7 +13,11 @@ export type MissionState = {
 const initialState: MissionState = {
   todos: Object.values(missionList).reduce((r: string[], c) => [...r, ...c.items.map(i => i.key)], []),
   records: {
-    '2018-11-01': {},
+    '2018-11-01': {zaqqum: true},
+    '2018-11-02': {zaqqum: true},
+    '2018-11-03': {zaqqum: true},
+    '2018-11-04': {zaqqum: true},
+    '2018-11-05': {zaqqum: true},
   },
 }
 
@@ -34,11 +38,14 @@ export const getProgress = (record: Record) => {
 }
 
 export const getDailyCompletes = createCachedSelector(getRecordOfDay, getCompletes)((_, day) => day)
+
 export const getDailyProgress = createCachedSelector(getRecordOfDay, getProgress)((_, day) => day)
+
 export const getPeriodCompletes = createCachedSelector(
   getRecordsOfPeriod,
   records => records.reduce((completes, record) => completes + getCompletes(record), 0),
 )((_, period) => period)
+
 export const getPeriodProgress = createCachedSelector(
   getRecordsOfPeriod,
   records => records.reduce((progresses, record) => progresses + getProgress(record), 0) / (records.length || 1),
@@ -48,15 +55,50 @@ const accumulator = (percent: number) => (
   days: number,
   record: Record,
 ) => days + (getProgress(record) >= percent ? 1 : 0)
+
 export const getCompleteDays = createSelector(
   getRecordsOfPeriod,
   records => records.reduce(accumulator(1), 0),
 )
+
 export const getAlmostCompleteDays = createSelector(
   [getRecordsOfPeriod, getCompleteDays],
   (records, completes) => records.reduce(accumulator(0.7), 0) - completes,
 )
+
 export const getIncompleteDays = createSelector(
   [getRecordsOfPeriod, getCompleteDays, getAlmostCompleteDays],
   (records, completes, almostCompletes) => records.length - (completes + almostCompletes),
+)
+
+export const getCurrentStreaks = createSelector(
+  getRecordsOfPeriod,
+  records => {
+    let streak = records.length - 1
+    while (streak >= 0) {
+      if (getProgress(records[streak]) === 1) {
+        streak--
+      } else {
+        break
+      }
+    }
+    return records.length - streak - 1
+  },
+)
+
+export const getLongestStreaks = createSelector(
+  getRecordsOfPeriod,
+  records => {
+    const streaks = records.reduce((result, record) => getProgress(record) === 1 ? ({
+      ...result,
+      current: result.current + 1,
+    }) : ({
+      current: 0,
+      max: Math.max(result.max, result.current),
+    }), {
+      current: 0,
+      max: 0,
+    })
+    return Math.max(streaks.current, streaks.max)
+  },
 )

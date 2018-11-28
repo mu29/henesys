@@ -6,15 +6,14 @@ import {
 import {
   Section,
   Calendar,
-  Streaks,
   DividedScrollView,
 } from 'src/components'
 import {
   MonthlyUserInfo,
+  Streaks,
   ProgressChart,
   AchievementList,
 } from 'src/containers'
-import { palette } from 'src/styles'
 
 const styles = StyleSheet.create({
   container: {
@@ -38,7 +37,7 @@ const StatsView: React.SFC<StatsViewProps> = () => (
       <MonthlyUserInfo />
       <Calendar progressList={progressList} />
       <Section title="연속 달성" />
-      <Streaks current={12} most={86} />
+      <Streaks />
       <Section title="최근 30일" />
       <ProgressChart />
       <Section title="누적 기록" />
