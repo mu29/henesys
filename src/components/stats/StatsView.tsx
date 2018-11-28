@@ -5,11 +5,11 @@ import {
 } from 'react-native'
 import {
   Section,
-  Calendar,
   DividedScrollView,
 } from 'src/components'
 import {
   MonthlyUserInfo,
+  Calendar,
   Streaks,
   ProgressChart,
   AchievementList,
@@ -21,11 +21,6 @@ const styles = StyleSheet.create({
   },
 })
 
-const progressList = [
-  1, 0.2, 0.4, 0.5, 0.2, 0.1, 1, 0.7, 0.9, 0, 0.1, 0, 1, 1, 0.7,
-  1, 0.2, 0.4, 0.5, 0.2, 0.1, 1, 0.7, 0.9, 0, 0.1, 0, 1, 1, 0.7,
-]
-
 export interface StatsViewProps {}
 
 const StatsView: React.SFC<StatsViewProps> = () => (
@@ -35,7 +30,7 @@ const StatsView: React.SFC<StatsViewProps> = () => (
   >
     <View>
       <MonthlyUserInfo />
-      <Calendar progressList={progressList} />
+      <Calendar />
       <Section title="연속 달성" />
       <Streaks />
       <Section title="최근 30일" />

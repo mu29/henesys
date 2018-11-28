@@ -122,4 +122,4 @@ class Calendar extends React.PureComponent<CalendarProps> {
   }
 }
 
-export default React.memo(Calendar)
+export default Calendar
