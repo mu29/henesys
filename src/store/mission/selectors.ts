@@ -41,7 +41,7 @@ export const getPeriodCompletes = createCachedSelector(
 )((_, period) => period)
 export const getPeriodProgress = createCachedSelector(
   getRecordsOfPeriod,
-  records => records.reduce((progresses, record) => progresses + getProgress(record), 0) / records.length,
+  records => records.reduce((progresses, record) => progresses + getProgress(record), 0) / (records.length || 1),
 )((_, period) => period)
 
 const accumulator = (percent: number) => (

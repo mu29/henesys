@@ -7,11 +7,11 @@ import {
   Section,
   Calendar,
   Streaks,
-  ProgressChart,
   DividedScrollView,
 } from 'src/components'
 import {
   MonthlyUserInfo,
+  ProgressChart,
   AchievementList,
 } from 'src/containers'
 import { palette } from 'src/styles'
@@ -40,7 +40,7 @@ const StatsView: React.SFC<StatsViewProps> = () => (
       <Section title="연속 달성" />
       <Streaks current={12} most={86} />
       <Section title="최근 30일" />
-      <ProgressChart progressList={progressList.map(p => p * 10)} />
+      <ProgressChart />
       <Section title="누적 기록" />
       <AchievementList />
     </View>

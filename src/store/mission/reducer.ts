@@ -55,7 +55,7 @@ export default (state: MissionState = initialState, action: Action): MissionStat
 
   if (isType(action, fillTodoAction)) {
     const lastDay = Object.keys(state.records).sort().slice(-1)[0]
-    const dates = datesBetween(lastDay, moment())
+    const dates = datesBetween(lastDay, today())
     const freshTodos = state.todos.reduce((result, name) => ({ ...result, [name]: false }), {})
     return {
       ...state,

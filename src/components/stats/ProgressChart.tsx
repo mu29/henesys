@@ -40,17 +40,21 @@ const styles = StyleSheet.create({
 })
 
 export interface ProgressChartProps {
+  completes: number,
+  monthlyProgress: number,
   progressList: number[],
 }
 
 const ProgressChart: React.SFC<ProgressChartProps> = ({
+  completes,
+  monthlyProgress,
   progressList,
 }) => (
   <View style={styles.container}>
     <View style={styles.descriptionArea}>
       <View style={styles.description}>
         <Text style={typography.heading[1].black.bold}>
-          {progressList.reduce((p, c) => p + c, 0)}회
+          {completes}회
         </Text>
         <Text style={typography.tiny[1].lightGray}>
           완료 횟수
@@ -59,7 +63,7 @@ const ProgressChart: React.SFC<ProgressChartProps> = ({
       <Divider vertical style={styles.divider} />
       <View style={styles.description}>
         <Text style={typography.heading[1].black.bold}>
-          45.4%
+          {(monthlyProgress * 100).toFixed(1)}%
         </Text>
         <Text style={typography.tiny[1].lightGray}>
           완료율
