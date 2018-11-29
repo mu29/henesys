@@ -60,6 +60,11 @@ export default {
         color: palette.gray[90],
         lineHeight: 24,
       },
+      white: {
+        fontSize: 16,
+        color: palette.gray[10],
+        lineHeight: 24,
+      },
     },
     2: {
       black: {

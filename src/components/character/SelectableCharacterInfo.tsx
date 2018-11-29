@@ -1,8 +1,6 @@
 import React from 'react'
-import {
-  View,
-  StyleSheet,
-} from 'react-native'
+import { StyleSheet } from 'react-native'
+import { Button } from 'src/components'
 import { CharacterInfo } from 'src/containers'
 import { palette } from 'src/styles'
 
@@ -22,15 +20,20 @@ const styles = StyleSheet.create({
 export interface SelectableCharacterInfoProps {
   name: string,
   selected?: boolean,
+  onSelect: () => void,
 }
 
 const SelectableCharacterInfo: React.SFC<SelectableCharacterInfoProps> = ({
   name,
   selected,
+  onSelect,
 }) => (
-  <View style={[styles.container, selected && styles.selected]}>
+  <Button
+    onPress={onSelect}
+    style={[styles.container, selected && styles.selected]}
+  >
     <CharacterInfo name={name} color={palette.gray[selected ? 30 : 20]} />
-  </View>
+  </Button>
 )
 
 export default React.memo(SelectableCharacterInfo)

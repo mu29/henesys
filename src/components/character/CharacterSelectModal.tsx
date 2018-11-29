@@ -1,15 +1,14 @@
-/* tslint:disable */
 import React from 'react'
 import {
   View,
-  Image,
   StyleSheet,
 } from 'react-native'
 import {
   Modal,
   Text,
-  SelectableCharacterInfo,
+  Button,
 } from 'src/components'
+import { SelectableCharacterInfo } from 'src/containers'
 import { palette, typography } from 'src/styles'
 
 const styles = StyleSheet.create({
@@ -22,10 +21,18 @@ const styles = StyleSheet.create({
   header: {
     justifyContent: 'center',
     alignItems: 'center',
-    padding: 16,
+    paddingVertical: 24,
+    paddingHorizontal: 12,
   },
   title: {
     marginBottom: 12,
+  },
+  button: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingVertical: 14,
+    backgroundColor: palette.primary.default,
   },
 })
 
@@ -48,9 +55,14 @@ const CharacterSelectModal: React.SFC<CharacterSelectModalProps> = ({
           일과를 기록할 캐릭터를 선택하세요.
         </Text>
       </View>
-      <SelectableCharacterInfo name="적류" />
-      <SelectableCharacterInfo name="별빛뒤로" selected />
-      <SelectableCharacterInfo name="백동요" />
+      {characters.map(character => <SelectableCharacterInfo key={character} name={character} />)}
+      <Button onPress={() => {}}>
+        <View style={styles.button}>
+          <Text style={typography.body[1].white}>
+            다른 캐릭터 추가
+          </Text>
+        </View>
+      </Button>
     </View>
   </Modal>
 )

@@ -72,7 +72,7 @@ class MissionItem extends React.PureComponent<MissionItemProps> {
 
   render() {
     return this.props.onPress ? (
-      <Button onPress={this.onPress} activeOpacity={0.8}>
+      <Button onPress={this.onPress}>
         {this.renderInner()}
       </Button>
     ) : this.renderInner()

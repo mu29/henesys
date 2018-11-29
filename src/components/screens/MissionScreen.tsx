@@ -7,9 +7,11 @@ import {
   Button,
   Icon,
   Header,
-  CharacterSelectModal,
 } from 'src/components'
-import { MissionList } from 'src/containers'
+import {
+  MissionList,
+  CharacterSelectModal,
+} from 'src/containers'
 import { withSafeArea } from 'src/wrappers'
 import { palette } from 'src/styles'
 
@@ -34,7 +36,7 @@ const MissionScreen: React.SFC<{}> = () => (
       </Button>
     </Header>
     <MissionList />
-    <CharacterSelectModal characters={[]} isVisible />
+    <CharacterSelectModal isVisible />
   </View>
 )
 
