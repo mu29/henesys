@@ -1,6 +1,10 @@
 import React from 'react'
 import debounce from 'lodash/debounce'
 import {
+  withNavigation,
+  NavigationInjectedProps,
+} from 'react-navigation'
+import {
   View,
   Image,
   ImageBackground,
@@ -59,16 +63,25 @@ const styles = StyleSheet.create({
   },
 })
 
-export interface AddCharacterViewProps {
+export interface AddCharacterViewProps extends Partial<NavigationInjectedProps> {
   imageUrl?: string,
   search: (name: string) => void,
+  confirm: () => void,
 }
 
 class AddCharacterView extends React.PureComponent<AddCharacterViewProps> {
   onSearch = debounce(this.props.search, 200)
 
+  onConfirm = () => {
+    const { navigation, confirm } = this.props
+    confirm()
+    if (navigation) {
+      navigation.goBack()
+    }
+  }
+
   render() {
-    const { imageUrl } = this.props
+    const { imageUrl, confirm } = this.props
     return (
       <KeyboardAvoidingView
         behavior="padding"
@@ -101,7 +114,7 @@ class AddCharacterView extends React.PureComponent<AddCharacterViewProps> {
             style={[typography.body[1].black, styles.name]}
           />
         </View>
-        <Button onPress={() => {}} style={[styles.button, styles.center]}>
+        <Button onPress={this.onConfirm} style={[styles.button, styles.center]}>
           <Text style={typography.body[1].white}>
             확인
           </Text>
@@ -111,4 +124,4 @@ class AddCharacterView extends React.PureComponent<AddCharacterViewProps> {
   }
 }
 
-export default AddCharacterView
+export default withNavigation(AddCharacterView)

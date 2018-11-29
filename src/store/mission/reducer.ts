@@ -1,4 +1,6 @@
 import { Action } from 'redux'
+import { elevateCandidateAction } from 'src/store/actions'
+import { datesBetween, today } from 'src/utils'
 import { isType } from '../common'
 import {
   addTodoAction,
@@ -7,7 +9,6 @@ import {
   fillTodoAction,
 } from './actions'
 import initialState, { MissionState } from './selectors'
-import { datesBetween, today } from 'src/utils'
 
 export default (state: MissionState = initialState, action: Action): MissionState => {
   if (isType(action, addTodoAction)) {
@@ -86,6 +87,19 @@ export default (state: MissionState = initialState, action: Action): MissionStat
           },
         }))
         .reduce((r, c) => ({ ...r, ...c }), {}),
+    }
+  }
+
+  if (isType(action, elevateCandidateAction)) {
+    const freshTodos = state.todos.reduce((result, name) => ({ ...result, [name]: false }), {})
+    return {
+      ...state,
+      records: {
+        ...state.records,
+        [action.payload.name]: {
+          [today()]: freshTodos,
+        },
+      },
     }
   }
 
