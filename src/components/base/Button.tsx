@@ -18,7 +18,7 @@ const Button: React.SFC<ButtonProps> = ({
   ...props
 }) => Platform.OS === 'ios' ? (
   <TouchableOpacity
-    activeOpacity={0.5}
+    activeOpacity={0.8}
     onPress={onPress}
     {...props}
   >
