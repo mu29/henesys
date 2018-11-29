@@ -2,7 +2,7 @@ import React from 'react'
 import { Action, Dispatch } from 'redux'
 import { connect } from 'react-redux'
 import { CharacterInfo } from 'src/components'
-import { CharacterInfoProps } from 'src/components/user/CharacterInfo'
+import { CharacterInfoProps } from 'src/components/character/CharacterInfo'
 import {
   getCharacterInfoActions,
   GetCharacterInfoParams,
