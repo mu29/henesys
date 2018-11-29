@@ -8,8 +8,8 @@ const styles = StyleSheet.create({
   container: {
     width: '100%',
     paddingHorizontal: 4,
-    borderTopWidth: 1,
-    borderTopColor: palette.gray[20],
+    borderBottomWidth: 1,
+    borderBottomColor: palette.gray[20],
     backgroundColor: palette.white.default,
   },
   selected: {

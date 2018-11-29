@@ -35,6 +35,7 @@ const AddCharacterScreen: React.SFC<NavigationInjectedProps> = ({
 }) => (
   <View style={styles.container}>
     <Button
+      hitSlop={{ top: 16, bottom: 16, left: 16, right: 16 }}
       onPress={() => navigation.goBack()}
       style={navigation.state.params && navigation.state.params.close ? styles.close : styles.hidden}
     >

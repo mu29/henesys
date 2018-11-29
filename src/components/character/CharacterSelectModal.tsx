@@ -5,6 +5,7 @@ import {
 } from 'react-navigation'
 import {
   View,
+  ScrollView,
   StyleSheet,
 } from 'react-native'
 import {
@@ -27,9 +28,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingVertical: 24,
     paddingHorizontal: 12,
+    borderBottomWidth: 1,
+    borderBottomColor: palette.gray[20],
   },
   title: {
     marginBottom: 12,
+  },
+  characters: {
+    maxHeight: 195,
   },
   button: {
     justifyContent: 'center',
@@ -39,7 +45,7 @@ const styles = StyleSheet.create({
   },
 })
 
-export interface CharacterSelectModalProps extends NavigationInjectedProps {
+export interface CharacterSelectModalProps extends Partial<NavigationInjectedProps> {
   characters: string[],
   isVisible: boolean,
   close: () => void,
@@ -49,7 +55,9 @@ class CharacterSelectModal extends React.PureComponent<CharacterSelectModalProps
   onAdd = () => {
     const { close, navigation } = this.props
     close()
-    navigation.push('AddCharacter', { close: true })
+    if (navigation) {
+      navigation.push('AddCharacter', { close: true })
+    }
   }
 
   render() {
@@ -68,7 +76,11 @@ class CharacterSelectModal extends React.PureComponent<CharacterSelectModalProps
               일과를 기록할 캐릭터를 선택하세요.
             </Text>
           </View>
-          {characters.map(character => <SelectableCharacterInfo key={character} name={character} />)}
+          <ScrollView style={styles.characters}>
+            <View>
+              {characters.map(character => <SelectableCharacterInfo key={character} name={character} />)}
+            </View>
+          </ScrollView>
           <Button onPress={this.onAdd} style={styles.button}>
             <Text style={typography.body[1].white}>
               다른 캐릭터 추가
