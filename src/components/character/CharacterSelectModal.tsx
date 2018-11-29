@@ -1,5 +1,9 @@
 import React from 'react'
 import {
+  withNavigation,
+  NavigationInjectedProps,
+} from 'react-navigation'
+import {
   View,
   StyleSheet,
 } from 'react-native'
@@ -35,33 +39,45 @@ const styles = StyleSheet.create({
   },
 })
 
-export interface CharacterSelectModalProps {
+export interface CharacterSelectModalProps extends NavigationInjectedProps {
   characters: string[],
   isVisible: boolean,
+  close: () => void,
 }
 
-const CharacterSelectModal: React.SFC<CharacterSelectModalProps> = ({
-  characters,
-  isVisible,
-}) => (
-  <Modal isVisible={isVisible}>
-    <View style={styles.container}>
-      <View style={styles.header}>
-        <Text style={typography.heading[2].black.bold}>
-          캐릭터 선택
-        </Text>
-        <Text style={typography.body[3].gray}>
-          일과를 기록할 캐릭터를 선택하세요.
-        </Text>
-      </View>
-      {characters.map(character => <SelectableCharacterInfo key={character} name={character} />)}
-      <Button onPress={() => {}} style={styles.button}>
-        <Text style={typography.body[1].white}>
-          다른 캐릭터 추가
-        </Text>
-      </Button>
-    </View>
-  </Modal>
-)
+class CharacterSelectModal extends React.PureComponent<CharacterSelectModalProps> {
+  onAdd = () => {
+    const { close, navigation } = this.props
+    close()
+    navigation.push('AddCharacter', { close: true })
+  }
 
-export default React.memo(CharacterSelectModal)
+  render() {
+    const {
+      characters,
+      isVisible,
+    } = this.props
+    return (
+      <Modal isVisible={isVisible}>
+        <View style={styles.container}>
+          <View style={styles.header}>
+            <Text style={typography.heading[2].black.bold}>
+              캐릭터 선택
+            </Text>
+            <Text style={typography.body[3].gray}>
+              일과를 기록할 캐릭터를 선택하세요.
+            </Text>
+          </View>
+          {characters.map(character => <SelectableCharacterInfo key={character} name={character} />)}
+          <Button onPress={this.onAdd} style={styles.button}>
+            <Text style={typography.body[1].white}>
+              다른 캐릭터 추가
+            </Text>
+          </Button>
+        </View>
+      </Modal>
+    )
+  }
+}
+
+export default withNavigation(CharacterSelectModal)

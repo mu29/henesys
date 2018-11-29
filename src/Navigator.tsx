@@ -1,7 +1,8 @@
 import React from 'react'
-import { createBottomTabNavigator } from 'react-navigation'
+import { createBottomTabNavigator, createStackNavigator } from 'react-navigation'
 import { Icon } from 'src/components'
 import {
+  AddCharacterScreen,
   MissionScreen,
   StatsScreen,
   CommunityScreen,
@@ -9,7 +10,7 @@ import {
 } from 'src/components'
 import { palette } from 'src/styles'
 
-export default createBottomTabNavigator({
+const MainTab = createBottomTabNavigator({
   Mission: MissionScreen,
   Stats: StatsScreen,
   Community: CommunityScreen,
@@ -46,4 +47,12 @@ export default createBottomTabNavigator({
       backgroundColor: palette.white.default,
     },
   },
+})
+
+export default createStackNavigator({
+  Main: MainTab,
+  AddCharacter: AddCharacterScreen,
+}, {
+  mode: 'modal',
+  headerMode: 'none',
 })

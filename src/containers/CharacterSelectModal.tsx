@@ -1,7 +1,9 @@
 import React from 'react'
+import { Action, Dispatch } from 'redux'
 import { connect } from 'react-redux'
 import { CharacterSelectModal } from 'src/components'
 import { CharacterSelectModalProps } from 'src/components/character/CharacterSelectModal'
+import { hideModalAction } from 'src/store/actions'
 import {
   AppState,
   isModalVisible,
@@ -16,4 +18,8 @@ const mapStateToProps = (state: AppState) => ({
   isVisible: isModalVisible(state, 'CharacterSelect'),
 })
 
-export default connect(mapStateToProps)(CharacterSelectModalContainer)
+const mapDispatchToProps = (dispatch: Dispatch<Action>) => ({
+  close: () => dispatch(hideModalAction({ modal: 'CharacterSelect' })),
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(CharacterSelectModalContainer)
