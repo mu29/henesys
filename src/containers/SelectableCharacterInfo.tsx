@@ -3,7 +3,10 @@ import { Action, Dispatch } from 'redux'
 import { connect } from 'react-redux'
 import { SelectableCharacterInfo } from 'src/components'
 import { SelectableCharacterInfoProps } from 'src/components/character/SelectableCharacterInfo'
-import { selectCharacterAction } from 'src/store/actions'
+import {
+  selectCharacterAction,
+  hideModalAction,
+} from 'src/store/actions'
 import { AppState } from 'src/store/selectors'
 
 export interface SelectableCharacterInfoContainerProps {
@@ -19,7 +22,10 @@ const mapStateToProps = (state: AppState, { name }: SelectableCharacterInfoConta
 })
 
 const mapDispatchToProps = (dispatch: Dispatch<Action>, { name }: SelectableCharacterInfoContainerProps) => ({
-  onSelect: () => dispatch(selectCharacterAction({ name })),
+  onSelect: () => {
+    dispatch(selectCharacterAction({ name }))
+    dispatch(hideModalAction({ modal: 'CharacterSelect' }))
+  },
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(SelectableCharacterInfoContainer)
