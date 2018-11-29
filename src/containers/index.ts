@@ -1,4 +1,5 @@
 export { default as AchievementList } from './AchievementList'
+export { default as AddCharacterView } from './AddCharacterView'
 export { default as Calendar } from './Calendar'
 export { default as CharacterInfo } from './CharacterInfo'
 export { default as CharacterSelectModal } from './CharacterSelectModal'

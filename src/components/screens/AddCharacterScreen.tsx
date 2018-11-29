@@ -10,8 +10,8 @@ import {
 import {
   Icon,
   Button,
-  AddCharacterView,
 } from 'src/components'
+import { AddCharacterView } from 'src/containers'
 import { withSafeArea } from 'src/wrappers'
 import { palette } from 'src/styles'
 

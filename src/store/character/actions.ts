@@ -5,18 +5,26 @@ import { ApiError } from '../entity/selectors'
 const actionCreator = actionCreatorFactory('Character')
 
 export type GetCharacterInfoParams = { name: string }
-export type GetUesrInfoResult = {
+export type GetCharacterInfoResult = {
   name: string;
   level: number;
   job: string;
   imageUrl: string;
 }
+export type SearchCharacterInfoParams = { name: string }
+export type SearchCharacterInfoResult = { imageUrl: string }
 export type SelectCharacterParams = { name: string }
 
 export const getCharacterInfoActions = actionCreator.async<
   GetCharacterInfoParams,
-  GetUesrInfoResult,
+  GetCharacterInfoResult,
   ApiError
 >('GET_CHARACTER_INFO', { schema: characterSchema })
+
+export const searchCharacterInfoActions = actionCreator.async<
+  SearchCharacterInfoParams,
+  SearchCharacterInfoResult,
+  ApiError
+>('SEARCH_CHARACTER_INFO')
 
 export const selectCharacterAction = actionCreator<SelectCharacterParams>('SELECT_CHARACTER')

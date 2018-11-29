@@ -5,11 +5,19 @@ import { AppState, getEntity } from '../selectors'
 export type CharacterState = {
   characters: string[];
   selected: string;
+  candidate: {
+    name: string;
+    imageUrl: string;
+  };
 }
 
 const initialState: CharacterState = {
   characters: ['적류', '별빛뒤로', '백동요'],
   selected: '적류',
+  candidate: {
+    name: '',
+    imageUrl: '',
+  },
 }
 
 export default initialState

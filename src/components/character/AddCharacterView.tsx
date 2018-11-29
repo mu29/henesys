@@ -1,4 +1,5 @@
 import React from 'react'
+import debounce from 'lodash/debounce'
 import {
   View,
   Image,
@@ -60,9 +61,12 @@ const styles = StyleSheet.create({
 
 export interface AddCharacterViewProps {
   imageUrl?: string,
+  search: (name: string) => void,
 }
 
 class AddCharacterView extends React.PureComponent<AddCharacterViewProps> {
+  onSearch = debounce(this.props.search, 200)
+
   render() {
     const { imageUrl } = this.props
     return (
@@ -92,6 +96,7 @@ class AddCharacterView extends React.PureComponent<AddCharacterViewProps> {
             />
           </ImageBackground>
           <TextInput
+            onChangeText={this.onSearch}
             placeholder="추가할 캐릭터의 이름을 입력하세요"
             style={[typography.body[1].black, styles.name]}
           />
