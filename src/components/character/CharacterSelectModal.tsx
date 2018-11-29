@@ -28,7 +28,6 @@ const styles = StyleSheet.create({
     marginBottom: 12,
   },
   button: {
-    flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
     paddingVertical: 14,
@@ -56,12 +55,10 @@ const CharacterSelectModal: React.SFC<CharacterSelectModalProps> = ({
         </Text>
       </View>
       {characters.map(character => <SelectableCharacterInfo key={character} name={character} />)}
-      <Button onPress={() => {}}>
-        <View style={styles.button}>
-          <Text style={typography.body[1].white}>
-            다른 캐릭터 추가
-          </Text>
-        </View>
+      <Button onPress={() => {}} style={styles.button}>
+        <Text style={typography.body[1].white}>
+          다른 캐릭터 추가
+        </Text>
       </Button>
     </View>
   </Modal>
