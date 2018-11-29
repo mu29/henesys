@@ -27,6 +27,8 @@ const initialState: MissionState = {
       '2018-11-04': {zaqqum: true},
       '2018-11-05': {zaqqum: true},
     },
+    '별빛뒤로': {},
+    '백동요': {},
   },
 }
 

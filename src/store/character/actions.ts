@@ -11,9 +11,12 @@ export type GetUesrInfoResult = {
   job: string;
   imageUrl: string;
 }
+export type SelectCharacterParams = { name: string }
 
 export const getCharacterInfoActions = actionCreator.async<
   GetCharacterInfoParams,
   GetUesrInfoResult,
   ApiError
 >('GET_CHARACTER_INFO', { schema: characterSchema })
+
+export const selectCharacterAction = actionCreator<SelectCharacterParams>('SELECT_CHARACTER')
