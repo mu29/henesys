@@ -43,9 +43,9 @@ export interface CharacterSelectModalProps {
 
 const CharacterSelectModal: React.SFC<CharacterSelectModalProps> = ({
   characters,
-  ...props
+  isVisible,
 }) => (
-  <Modal {...props}>
+  <Modal isVisible={isVisible}>
     <View style={styles.container}>
       <View style={styles.header}>
         <Text style={typography.heading[2].black.bold}>
@@ -67,4 +67,4 @@ const CharacterSelectModal: React.SFC<CharacterSelectModalProps> = ({
   </Modal>
 )
 
-export default CharacterSelectModal
+export default React.memo(CharacterSelectModal)
