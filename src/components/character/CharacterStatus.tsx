@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
     marginVertical: 8,
     marginHorizontal: 16,
     borderRadius: 8,
-    backgroundColor: palette.gray[15],
+    backgroundColor: palette.gray[10],
   },
   progress: {
     marginRight: 8,
@@ -27,28 +27,22 @@ export interface CharacterStatusProps {
   progress: number,
 }
 
-class CharacterStatus extends React.PureComponent<CharacterStatusProps> {
-  render() {
-    const {
-      name,
-      progress,
-    } = this.props
+const CharacterStatus: React.SFC<CharacterStatusProps> = ({
+  name,
+  progress,
+}) => (
+  <View style={styles.container}>
+    <CharacterInfo name={name} />
+    <Progress.Circle
+      color={palette.secondary.default}
+      unfilledColor={palette.gray[30]}
+      borderWidth={0}
+      progress={progress}
+      animated={false}
+      style={styles.progress}
+      showsText
+    />
+  </View>
+)
 
-    return (
-      <View style={styles.container}>
-        <CharacterInfo name={name} />
-        <Progress.Circle
-          color={palette.secondary.default}
-          unfilledColor={palette.gray[30]}
-          borderWidth={0}
-          progress={progress}
-          animated={false}
-          style={styles.progress}
-          showsText
-        />
-      </View>
-    )
-  }
-}
-
-export default CharacterStatus
+export default React.memo(CharacterStatus)

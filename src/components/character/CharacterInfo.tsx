@@ -15,13 +15,15 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     alignItems: 'center',
+    padding: 8,
   },
   avatar: {
     width: 48,
     height: 48,
   },
   divider: {
-    margin: 4,
+    height: 44,
+    marginHorizontal: 4,
   },
   description: {
     marginLeft: 8,
@@ -34,6 +36,7 @@ export interface CharacterInfoProps {
   level?: number,
   job?: string,
   imageUrl?: string,
+  color?: string,
   getCharacterInfo: (params: GetCharacterInfoParams) => void,
 }
 
@@ -51,6 +54,7 @@ class CharacterInfo extends React.PureComponent<CharacterInfoProps> {
       level,
       job,
       imageUrl,
+      color,
     } = this.props
 
     return (
@@ -59,7 +63,7 @@ class CharacterInfo extends React.PureComponent<CharacterInfoProps> {
           source={Object.assign({}, imageUrl ? { uri: imageUrl } : {})}
           style={styles.avatar}
         />
-        <Divider style={styles.divider} vertical />
+        <Divider color={color} style={styles.divider} vertical />
         <View style={styles.description}>
           <Text style={typography.heading[3].black.bold}>
             {name}

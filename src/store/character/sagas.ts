@@ -1,5 +1,5 @@
 import { SagaIterator } from 'redux-saga'
-import { call, takeLatest } from 'redux-saga/effects'
+import { call, takeEvery } from 'redux-saga/effects'
 import { Services } from 'src/services'
 import { bindAsyncAction } from '../common'
 import {
@@ -15,5 +15,5 @@ const getCharacterInfoWorker = bindAsyncAction(getCharacterInfoActions)(
 )
 
 export default function*(services: Services) {
-  yield takeLatest(getCharacterInfoActions.request, action => getCharacterInfoWorker(action.payload, services))
+  yield takeEvery(getCharacterInfoActions.request, action => getCharacterInfoWorker(action.payload, services))
 }

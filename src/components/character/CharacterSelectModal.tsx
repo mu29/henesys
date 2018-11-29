@@ -8,19 +8,24 @@ import {
 import {
   Modal,
   Text,
-  Button,
-  Divider,
+  SelectableCharacterInfo,
 } from 'src/components'
 import { palette, typography } from 'src/styles'
 
 const styles = StyleSheet.create({
   container: {
-    justifyContent: 'center',
-    alignItems: 'center',
     overflow: 'hidden',
-    padding: 16,
+    margin: 16,
     borderRadius: 4,
     backgroundColor: palette.white.default,
+  },
+  header: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 16,
+  },
+  title: {
+    marginBottom: 12,
   },
 })
 
@@ -35,60 +40,17 @@ const CharacterSelectModal: React.SFC<CharacterSelectModalProps> = ({
 }) => (
   <Modal {...props}>
     <View style={styles.container}>
-      <Text style={typography.heading[2].black.bold}>
-        캐릭터 선택
-      </Text>
-      <View style={{ flexDirection: 'row', padding: 16 }}>
-        <Image
-          source={{ uri: 'https://avatar.maplestory.nexon.com/Character/MFEBDDMBFFJDDGOHBNHCOHCHPJENEOIMBCFGMLEFAKLBAIPFHDFDAMLGJPPEGHDFPOHJHGEKIINFKPIKIBCGBEFDLCHFOOHHPFJGDNEEJJJOCHOKNMAPMDHEJLPADDEEBLNIBEGJPKAADGHPJPLKIOIJDKCHOCBBEGMPDPKHCMPIPGHFNLMDJMFLHMKACGKNGENBLELDKEAMOMGFAHFIKHDCIFJGOBAGFCBIFCEEADBDKPPFKAMCMLBNFNGFDIAD.png' }}
-          style={{
-            width: 48,
-            height: 48,
-          }}
-        />
-        <View style={{ marginLeft: 8, justifyContent: 'center' }}>
-          <Text style={typography.heading[3].black.bold}>
-            적류
-          </Text>
-          <Text style={typography.body[3].gray}>
-            Lv. 226 메르세데스
-          </Text>
-        </View>
+      <View style={styles.header}>
+        <Text style={typography.heading[2].black.bold}>
+          캐릭터 선택
+        </Text>
+        <Text style={typography.body[3].gray}>
+          일과를 기록할 캐릭터를 선택하세요.
+        </Text>
       </View>
-      <View style={{ flexDirection: 'row', padding: 16 }}>
-        <Image
-          source={{ uri: 'https://avatar.maplestory.nexon.com/Character/IKGJOMPMLEOPKLPJEJMFGGDGBAEGPFFNHAMFPMCHIEOFAKCJPDKKHOJDHMPIGIFDDFLDAPJOHCOKAKLMOJNIKFKHAMLKGDMKCECFDDGGGPPKAOCMIGJCEHOEOLEEJHNCCGCCLLDOBMANEHLDNMEFBADGMPCOLCNHMNBPPECALNCMAEBIEHAPODIBBOHBNPIKDHOBNMLOCKMMHBJAMMIOICKAIBAMBMGCGODGJGNMLMLICOKBLMNOHKLJMMJLLMFF.png' }}
-          style={{
-            width: 48,
-            height: 48,
-          }}
-        />
-        <View style={{ marginLeft: 8, justifyContent: 'center' }}>
-          <Text style={typography.heading[3].black.bold}>
-            별빛뒤로
-          </Text>
-          <Text style={typography.body[3].gray}>
-            Lv. 222 팬텀
-          </Text>
-        </View>
-      </View>
-      <View style={{ flexDirection: 'row', padding: 16, borderRadius: 4, borderColor: palette.primary.default, borderWidth: 2 }}>
-        <Image
-          source={{ uri: 'https://avatar.maplestory.nexon.com/Character/AICICNMPGFOBPNJBHJJOAMLGPKFHKEHELMENCGMHACIEPLBLLHLLLMFBEBFABOEENMGHEJGMKHPFPGBHPGJNEGGNMMBJAGPLBOHPKJOJOCJKEELFAMAGMGHGGBJOLODNKNCNKFFDNBDIIHACLNEJJDCLCGKACBAHGFKPLCPMBDCCMFDFCFAGDBDJAEOPEACHMCIFENGOOLABNJKFILEACCELKLKMPCAFBHKLMDAMEPPGCFGKDHKFNPEIBNJJMFMC.png' }}
-          style={{
-            width: 48,
-            height: 48,
-          }}
-        />
-        <View style={{ marginLeft: 8, justifyContent: 'center' }}>
-          <Text style={typography.heading[3].black.bold}>
-            백동요
-          </Text>
-          <Text style={typography.body[3].gray}>
-            Lv. 200 듀얼블레이더
-          </Text>
-        </View>
-      </View>
+      <SelectableCharacterInfo name="적류" />
+      <SelectableCharacterInfo name="별빛뒤로" selected />
+      <SelectableCharacterInfo name="백동요" />
     </View>
   </Modal>
 )
