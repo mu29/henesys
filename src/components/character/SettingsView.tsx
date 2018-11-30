@@ -5,6 +5,10 @@ import {
   StyleSheet,
 } from 'react-native'
 import {
+  withNavigation,
+  NavigationInjectedProps,
+} from 'react-navigation'
+import {
   Button,
   Text,
 } from 'src/components'
@@ -23,23 +27,37 @@ const styles = StyleSheet.create({
   },
 })
 
-export interface SettingsViewProps {
+export interface SettingsViewProps extends Partial<NavigationInjectedProps> {
   character: string,
+  canRemove: boolean,
   remove: () => void,
 }
 
 class SettingsView extends React.PureComponent<SettingsViewProps> {
   onRemove = () => {
-    const { character, remove } = this.props
-    Alert.alert(
+    const {
       character,
-      '정말 삭제하시겠습니까?',
-      [
-        { text: '아니오', onPress: () => {} },
-        { text: '예', onPress: () => remove() },
-      ],
-      { cancelable: true },
-    )
+      canRemove,
+      remove,
+      navigation,
+    } = this.props
+
+    Alert.alert(character, '정말 삭제하시겠습니까?', [{
+      text: '아니오',
+      onPress: () => {},
+    }, {
+      text: '예',
+      onPress: () => {
+        if (canRemove) {
+          remove()
+        }
+        if (navigation) {
+          navigation.goBack()
+        }
+      },
+    }], {
+      cancelable: true,
+    })
   }
 
   render() {
@@ -56,4 +74,4 @@ class SettingsView extends React.PureComponent<SettingsViewProps> {
   }
 }
 
-export default SettingsView
+export default withNavigation(SettingsView)

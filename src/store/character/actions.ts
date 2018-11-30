@@ -15,6 +15,7 @@ export type SearchCharacterInfoParams = { name: string }
 export type SearchCharacterInfoResult = { imageUrl: string }
 export type SelectCharacterParams = { name: string }
 export type ElevateCandidateParams = { name: string }
+export type RemoveCharacterParams = { name: string }
 
 export const getCharacterInfoActions = actionCreator.async<
   GetCharacterInfoParams,
@@ -31,3 +32,5 @@ export const searchCharacterInfoActions = actionCreator.async<
 export const selectCharacterAction = actionCreator<SelectCharacterParams>('SELECT_CHARACTER')
 
 export const elevateCandidateAction = actionCreator<ElevateCandidateParams>('ELEVATE_CANDIDATE')
+
+export const removeCharacterAction = actionCreator<RemoveCharacterParams>('REMOVE_CHARACTER')

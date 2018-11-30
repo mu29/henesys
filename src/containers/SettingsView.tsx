@@ -15,6 +15,7 @@ const SettingsViewContainer: React.FunctionComponent<SettingsViewProps> = props 
 
 const mapStateToProps = (state: AppState) => ({
   character: getSelectedCharacterName(state),
+  canRemove: state.character.characters.length > 1,
 })
 
 const mapDispatchToProps = (dispatch: Dispatch<Action>) => ({

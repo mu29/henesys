@@ -4,6 +4,7 @@ import {
   searchCharacterInfoActions,
   selectCharacterAction,
   elevateCandidateAction,
+  removeCharacterAction,
 } from './actions'
 import initialState, { CharacterState } from './selectors'
 
@@ -35,6 +36,15 @@ export default (state: CharacterState = initialState, action: Action): Character
         name: '',
         imageUrl: '',
       },
+    }
+  }
+
+  if (isType(action, removeCharacterAction)) {
+    const characters = state.characters.filter(c => c !== action.payload.name)
+    return {
+      ...state,
+      characters,
+      selected: characters[0],
     }
   }
 
