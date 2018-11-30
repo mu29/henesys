@@ -1,5 +1,6 @@
 import React from 'react'
 import {
+  View,
   StyleSheet,
   StyleProp,
   ViewStyle,
@@ -13,13 +14,16 @@ import { palette } from 'src/styles'
 
 const styles = StyleSheet.create({
   container: {
-    padding: 4,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 })
 
 export interface IconButtonProps extends Partial<ButtonProps> {
   icon: string,
   size: number,
+  width?: number,
+  height?: number,
   style?: StyleProp<ViewStyle>,
   onPress: () => void,
 }
@@ -27,18 +31,25 @@ export interface IconButtonProps extends Partial<ButtonProps> {
 const IconButton: React.FunctionComponent<IconButtonProps> = ({
   icon,
   size,
-  hitSlop = { top: 4, bottom: 4, left: 4, right: 4 },
+  width,
+  height,
   style,
   onPress,
-}) => (
-  <Button
-    hitSlop={hitSlop}
-    onPress={onPress}
-    style={[styles.container, style]}
-    round
-  >
-    <Icon name={icon} size={size} color={palette.gray[90]} />
-  </Button>
-)
+}) => {
+  const withSize = {
+    width: width || size,
+    height: height || size,
+  }
+  return (
+    <Button
+      onPress={onPress}
+      round
+    >
+      <View style={[style, styles.container, withSize]}>
+        <Icon name={icon} size={size} color={palette.gray[90]} />
+      </View>
+    </Button>
+  )
+}
 
 export default IconButton

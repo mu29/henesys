@@ -23,11 +23,11 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   settings: {
-    marginLeft: 16,
+    marginRight: -4,
   },
 })
 
-class MissionScreen extends React.Component<NavigationInjectedProps> {
+class MissionScreen extends React.PureComponent<NavigationInjectedProps> {
   openSettingsScreen = () => {
     const { navigation } = this.props
     navigation.push('Settings')
@@ -41,9 +41,10 @@ class MissionScreen extends React.Component<NavigationInjectedProps> {
           <IconButton
             icon="md-more"
             size={22}
-            hitSlop={{ top: 4, bottom: 4, left: 8, right: 8 }}
-            onPress={this.openSettingsScreen}
+            width={32}
+            height={44}
             style={styles.settings}
+            onPress={this.openSettingsScreen}
           />
         </Header>
         <MissionList />

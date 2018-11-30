@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
   close: {
     position: 'absolute',
     top: 8,
-    right: 16,
+    right: 8,
   },
 })
 
@@ -31,6 +31,8 @@ const AddCharacterScreen: React.FunctionComponent<NavigationInjectedProps> = ({
     <IconButton
       icon="md-close"
       size={25}
+      width={32}
+      height={44}
       style={styles.close}
       onPress={() => navigation.goBack()}
       round

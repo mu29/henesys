@@ -12,7 +12,7 @@ const SwapButtonContainer: React.FunctionComponent<SwapButtonContainerProps> = (
   children,
   ...props
 }) => (
-  <IconButton icon="md-swap" size={22} { ...props } />
+  <IconButton icon="md-swap" size={22} width={32} height={44} { ...props } />
 )
 
 const mapDispatchToProps = (dispatch: Dispatch<Action>) => ({

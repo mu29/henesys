@@ -4,20 +4,19 @@ import {
   StyleSheet,
 } from 'react-native'
 import { Text } from 'src/components'
-import { typography, palette } from 'src/styles'
+import { typography } from 'src/styles'
 
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems: 'center',
-    paddingTop: 16,
-    paddingBottom: 8,
-    paddingHorizontal: 16,
+    alignItems: 'flex-end',
+    paddingRight: 8,
   },
-  border: {
-    borderBottomColor: palette.gray[30],
-    borderBottomWidth: 1,
+  title: {
+    marginTop: 16,
+    marginBottom: 8,
+    marginLeft: 16,
   },
   children: {
     flexDirection: 'row',
@@ -27,13 +26,12 @@ const styles = StyleSheet.create({
 
 export interface HeaderProps {
   title: string,
-  border?: boolean,
   children?: React.ReactElement<any> | Array<React.ReactElement<any>>,
 }
 
-const Header: React.FunctionComponent<HeaderProps> = ({ title, border, children }) => (
-  <View style={[styles.container, border && styles.border]}>
-    <Text style={typography.heading[1].black.bold}>
+const Header: React.FunctionComponent<HeaderProps> = ({ title, children }) => (
+  <View style={styles.container}>
+    <Text style={[typography.heading[1].black.bold, styles.title]}>
       {title}
     </Text>
     <View style={styles.children}>

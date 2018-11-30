@@ -28,6 +28,8 @@ const SettingsScreen: React.FunctionComponent<NavigationInjectedProps> = ({
       <IconButton
         icon="md-close"
         size={25}
+        width={32}
+        height={44}
         onPress={() => navigation.goBack()}
       />
     </Header>

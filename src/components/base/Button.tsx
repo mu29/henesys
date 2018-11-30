@@ -22,17 +22,9 @@ const Button: React.FunctionComponent<ButtonProps> = ({
   round,
   style,
   children,
-  hitSlop = {},
   ...props
 }) => {
   const wrappedByView = typeof children.type !== 'string' && children.type.displayName === 'View'
-  const withHitSlop = {
-    paddingTop: hitSlop.top,
-    paddingBottom: hitSlop.bottom,
-    paddingLeft: hitSlop.left,
-    paddingRight: hitSlop.right,
-  }
-
   return Platform.OS === 'ios' ? (
     <TouchableOpacity
       activeOpacity={0.8}
@@ -49,10 +41,10 @@ const Button: React.FunctionComponent<ButtonProps> = ({
         ? TouchableNativeFeedback.SelectableBackgroundBorderless()
         : TouchableNativeFeedback.SelectableBackground()
       }
-      style={[wrappedByView ? style : {}, withHitSlop]}
+      style={wrappedByView ? style : {}}
       {...props}
     >
-      {wrappedByView ? children : (<View style={[style, withHitSlop]}>{children}</View>)}
+      {wrappedByView ? children : (<View style={style}>{children}</View>)}
     </TouchableNativeFeedback>
   )
 }
