@@ -71,6 +71,7 @@ class CharacterSelectModal extends React.PureComponent<CharacterSelectModalProps
         isVisible={isVisible}
         onBackdropPress={close}
         onBackButtonPress={close}
+        useNativeDriver
       >
         <View style={styles.container}>
           <View style={styles.header}>
