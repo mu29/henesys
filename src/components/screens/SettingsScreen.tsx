@@ -11,12 +11,21 @@ import {
   Header,
   IconButton,
 } from 'src/components'
-import { EditableMissionList } from 'src/containers'
+import { SettingsView } from 'src/containers'
 import { withSafeArea } from 'src/wrappers'
+import { palette } from 'src/styles'
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  button: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    margin: 24,
+    paddingVertical: 12,
+    borderRadius: 24,
+    backgroundColor: palette.primary.default,
   },
 })
 
@@ -33,7 +42,7 @@ const SettingsScreen: React.FunctionComponent<NavigationInjectedProps> = ({
         onPress={() => navigation.goBack()}
       />
     </Header>
-    <EditableMissionList />
+    <SettingsView />
   </View>
 )
 

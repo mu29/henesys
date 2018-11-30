@@ -11,6 +11,13 @@ export { default as Divider } from './base/Divider'
 export { default as IconButton } from './base/IconButton'
 export { default as Text } from './base/Text'
 
+export { default as AddCharacterView } from './character/AddCharacterView'
+export { default as CharacterInfo } from './character/CharacterInfo'
+export { default as CharacterSelectModal } from './character/CharacterSelectModal'
+export { default as CharacterStatus } from './character/CharacterStatus'
+export { default as SelectableCharacterInfo } from './character/SelectableCharacterInfo'
+export { default as SettingsView } from './character/SettingsView'
+
 export { default as Header } from './common/Header'
 export { default as Section } from './common/Section'
 
@@ -31,9 +38,3 @@ export { default as Calendar } from './stats/Calendar'
 export { default as ProgressChart } from './stats/ProgressChart'
 export { default as StatsView } from './stats/StatsView'
 export { default as Streaks } from './stats/Streaks'
-
-export { default as AddCharacterView } from './character/AddCharacterView'
-export { default as CharacterInfo } from './character/CharacterInfo'
-export { default as CharacterSelectModal } from './character/CharacterSelectModal'
-export { default as CharacterStatus } from './character/CharacterStatus'
-export { default as SelectableCharacterInfo } from './character/SelectableCharacterInfo'
