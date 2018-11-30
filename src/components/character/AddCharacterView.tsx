@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
     flex: 1,
     marginVertical: 24,
     justifyContent: 'center',
-    backgroundColor: palette.white.default,
+    zIndex: -1,
   },
   center: {
     justifyContent: 'center',
@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
     height: 48,
   },
   name: {
-    width: 240,
+    width: '100%',
     padding: 8,
     textAlign: 'center',
     backgroundColor: palette.white.default,

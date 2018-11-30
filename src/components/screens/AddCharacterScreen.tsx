@@ -18,12 +18,12 @@ import { palette } from 'src/styles'
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: palette.white.default,
   },
   close: {
     position: 'absolute',
     top: 8,
-    right: 24,
-    zIndex: 1,
+    right: 16,
   },
   hidden: {
     display: 'none',
@@ -35,9 +35,10 @@ const AddCharacterScreen: React.SFC<NavigationInjectedProps> = ({
 }) => (
   <View style={styles.container}>
     <Button
-      hitSlop={{ top: 16, bottom: 16, left: 16, right: 16 }}
+      hitSlop={{ top: 4, bottom: 4, left: 4, right: 4 }}
       onPress={() => navigation.goBack()}
       style={navigation.state.params && navigation.state.params.close ? styles.close : styles.hidden}
+      round
     >
       <Icon name="md-close" size={25} color={palette.gray[100]} />
     </Button>
