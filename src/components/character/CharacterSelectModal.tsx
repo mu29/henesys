@@ -64,9 +64,14 @@ class CharacterSelectModal extends React.PureComponent<CharacterSelectModalProps
     const {
       characters,
       isVisible,
+      close,
     } = this.props
     return (
-      <Modal isVisible={isVisible}>
+      <Modal
+        isVisible={isVisible}
+        onBackdropPress={close}
+        onBackButtonPress={close}
+      >
         <View style={styles.container}>
           <View style={styles.header}>
             <Text style={typography.heading[2].black.bold}>

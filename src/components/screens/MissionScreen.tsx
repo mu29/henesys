@@ -41,6 +41,7 @@ class MissionScreen extends React.Component<NavigationInjectedProps> {
           <IconButton
             icon="md-more"
             size={22}
+            hitSlop={{ top: 4, bottom: 4, left: 8, right: 8 }}
             onPress={this.openSettingsScreen}
             style={styles.settings}
           />

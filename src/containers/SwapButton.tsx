@@ -8,7 +8,10 @@ export interface SwapButtonContainerProps {
   onPress: () => void,
 }
 
-const SwapButtonContainer: React.FunctionComponent<SwapButtonContainerProps> = props => (
+const SwapButtonContainer: React.FunctionComponent<SwapButtonContainerProps> = ({
+  children,
+  ...props
+}) => (
   <IconButton icon="md-swap" size={22} { ...props } />
 )
 
