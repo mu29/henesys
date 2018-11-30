@@ -31,7 +31,7 @@ export interface HeaderProps {
   children?: React.ReactElement<any> | Array<React.ReactElement<any>>,
 }
 
-const Header: React.SFC<HeaderProps> = ({ title, border, children }) => (
+const Header: React.FunctionComponent<HeaderProps> = ({ title, border, children }) => (
   <View style={[styles.container, border && styles.border]}>
     <Text style={typography.heading[1].black.bold}>
       {title}

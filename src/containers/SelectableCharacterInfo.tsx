@@ -13,7 +13,7 @@ export interface SelectableCharacterInfoContainerProps {
   name: string,
 }
 
-const SelectableCharacterInfoContainer: React.SFC<SelectableCharacterInfoProps> = props => (
+const SelectableCharacterInfoContainer: React.FunctionComponent<SelectableCharacterInfoProps> = props => (
   <SelectableCharacterInfo { ...props } />
 )
 

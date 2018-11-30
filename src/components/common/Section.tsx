@@ -22,7 +22,7 @@ export interface SectionProps {
   title: string,
 }
 
-const Section: React.SFC<SectionProps> = ({ title }) => (
+const Section: React.FunctionComponent<SectionProps> = ({ title }) => (
   <View style={styles.container}>
     <Text style={typography.tiny[1].gray}>
       {title}

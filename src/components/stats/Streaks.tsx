@@ -49,7 +49,7 @@ export interface StreaksProps {
   longest: number,
 }
 
-const Streaks: React.SFC<StreaksProps> = ({ current, longest }) => (
+const Streaks: React.FunctionComponent<StreaksProps> = ({ current, longest }) => (
   <View style={styles.container}>
     <View style={styles.streak}>
       <View style={styles.icon}>

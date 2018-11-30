@@ -27,7 +27,7 @@ export interface CharacterStatusProps {
   progress: number,
 }
 
-const CharacterStatus: React.SFC<CharacterStatusProps> = ({
+const CharacterStatus: React.FunctionComponent<CharacterStatusProps> = ({
   name,
   progress,
 }) => (

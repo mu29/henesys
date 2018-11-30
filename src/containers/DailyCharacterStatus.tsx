@@ -9,7 +9,9 @@ import {
 } from 'src/store/selectors'
 import { today } from 'src/utils'
 
-const DailyCharacterStatusContainer: React.SFC<CharacterStatusProps> = props => <CharacterStatus { ...props } />
+const DailyCharacterStatusContainer: React.FunctionComponent<CharacterStatusProps> = props => (
+  <CharacterStatus { ...props } />
+)
 
 const mapStateToProps = (state: AppState) => ({
   name: getSelectedCharacter(state).name,

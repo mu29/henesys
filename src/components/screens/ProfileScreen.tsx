@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
   },
 })
 
-const ProfileScreen: React.SFC<{}> = () => (
+const ProfileScreen: React.FunctionComponent<{}> = () => (
   <View style={styles.container}>
     <Header title="프로필" />
   </View>

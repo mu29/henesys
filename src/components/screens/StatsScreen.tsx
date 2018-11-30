@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
   },
 })
 
-const StatsScreen: React.SFC<{}> = () => (
+const StatsScreen: React.FunctionComponent<{}> = () => (
   <View style={styles.container}>
     <Header title="통계">
       <SwapButton />

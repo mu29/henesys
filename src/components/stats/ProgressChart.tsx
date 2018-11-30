@@ -45,7 +45,7 @@ export interface ProgressChartProps {
   progressList: number[],
 }
 
-const ProgressChart: React.SFC<ProgressChartProps> = ({
+const ProgressChart: React.FunctionComponent<ProgressChartProps> = ({
   completes,
   monthlyProgress,
   progressList,

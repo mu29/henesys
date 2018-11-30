@@ -8,7 +8,7 @@ import {
   getLongestStreaks,
 } from 'src/store/selectors'
 
-const StreaksContainer: React.SFC<StreaksProps> = props => <Streaks { ...props } />
+const StreaksContainer: React.FunctionComponent<StreaksProps> = props => <Streaks { ...props } />
 
 const mapStateToProps = (state: AppState) => ({
   current: getCurrentStreaks(state, 0),

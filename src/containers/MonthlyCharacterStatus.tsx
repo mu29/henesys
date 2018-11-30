@@ -8,7 +8,9 @@ import {
   getPeriodProgress,
 } from 'src/store/selectors'
 
-const MonthlyCharacterStatusContainer: React.SFC<CharacterStatusProps> = props => <CharacterStatus { ...props } />
+const MonthlyCharacterStatusContainer: React.FunctionComponent<CharacterStatusProps> = props => (
+  <CharacterStatus { ...props } />
+)
 
 const mapStateToProps = (state: AppState) => ({
   name: getSelectedCharacter(state).name,

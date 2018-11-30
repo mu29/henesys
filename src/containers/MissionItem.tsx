@@ -7,7 +7,7 @@ import { toggleTodoAction } from 'src/store/actions'
 import { AppState } from 'src/store/selectors'
 import { today } from 'src/utils'
 
-const MissionItemContainer: React.SFC<MissionItemProps> = props => <MissionItem { ...props } />
+const MissionItemContainer: React.FunctionComponent<MissionItemProps> = props => <MissionItem { ...props } />
 
 const mapStateToProps = ({ character, mission }: AppState, { name }: MissionItemProps) => ({
   character: character.selected,

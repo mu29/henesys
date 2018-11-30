@@ -10,7 +10,9 @@ import {
 } from 'src/store/actions'
 import { AppState } from 'src/store/selectors'
 
-const AddCharacterViewContainer: React.SFC<AddCharacterViewProps> = props => <AddCharacterView { ...props } />
+const AddCharacterViewContainer: React.FunctionComponent<AddCharacterViewProps> = props => (
+  <AddCharacterView { ...props } />
+)
 
 const mapStateToProps = (state: AppState) => ({
   candidate: state.character.candidate.name,

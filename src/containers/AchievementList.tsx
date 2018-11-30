@@ -9,7 +9,9 @@ import {
   getIncompleteDays,
 } from 'src/store/selectors'
 
-const AchievementListContainer: React.SFC<AchievementListProps> = props => <AchievementList { ...props } />
+const AchievementListContainer: React.FunctionComponent<AchievementListProps> = props => (
+  <AchievementList { ...props } />
+)
 
 const mapStateToProps = (state: AppState) => ({
   completes: getCompleteDays(state, 0),

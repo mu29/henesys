@@ -10,7 +10,7 @@ import {
 } from 'src/store/selectors'
 import { lastMonth, today, datesBetween } from 'src/utils'
 
-const ProgressChartContainer: React.SFC<ProgressChartProps> = props => <ProgressChart { ...props } />
+const ProgressChartContainer: React.FunctionComponent<ProgressChartProps> = props => <ProgressChart { ...props } />
 
 const mapStateToProps = (state: AppState) => ({
   completes: getPeriodCompletes(state, 30),

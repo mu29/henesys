@@ -23,7 +23,7 @@ export interface SelectableCharacterInfoProps {
   onSelect: () => void,
 }
 
-const SelectableCharacterInfo: React.SFC<SelectableCharacterInfoProps> = ({
+const SelectableCharacterInfo: React.FunctionComponent<SelectableCharacterInfoProps> = ({
   name,
   selected,
   onSelect,

@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
   },
 })
 
-const CommunityScreen: React.SFC<{}> = () => (
+const CommunityScreen: React.FunctionComponent<{}> = () => (
   <View style={styles.container}>
     <Header title="커뮤니티" />
   </View>

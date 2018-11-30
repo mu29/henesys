@@ -6,7 +6,7 @@ import { AppState } from 'src/store/selectors'
 import { contents, boss, quest, symbol } from 'src/constants/missions'
 import { today } from 'src/utils'
 
-const MissionListContainer: React.SFC<MissionListProps> = props => <MissionList { ...props } />
+const MissionListContainer: React.FunctionComponent<MissionListProps> = props => <MissionList { ...props } />
 
 const mapStateToProps = ({ character, mission }: AppState) => {
   const missions = Object.keys(mission.records[character.selected][today()] || {})

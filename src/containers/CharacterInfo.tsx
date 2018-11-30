@@ -17,7 +17,7 @@ export interface CharacterInfoContainerProps {
   name: string,
 }
 
-const CharacterInfoContainer: React.SFC<CharacterInfoProps> = props => <CharacterInfo { ...props } />
+const CharacterInfoContainer: React.FunctionComponent<CharacterInfoProps> = props => <CharacterInfo { ...props } />
 
 const mapStateToProps = (state: AppState, { name }: CharacterInfoContainerProps) => {
   const character = getCharacterByName(state, name) || {}

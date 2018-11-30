@@ -19,7 +19,7 @@ export interface AchievementListProps {
   incompletes: number,
 }
 
-const AchievementList: React.SFC<AchievementListProps> = ({
+const AchievementList: React.FunctionComponent<AchievementListProps> = ({
   completes,
   almostCompletes,
   incompletes,

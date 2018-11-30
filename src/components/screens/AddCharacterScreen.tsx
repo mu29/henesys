@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
   },
 })
 
-const AddCharacterScreen: React.SFC<NavigationInjectedProps> = ({
+const AddCharacterScreen: React.FunctionComponent<NavigationInjectedProps> = ({
   navigation,
 }) => (
   <View style={styles.container}>

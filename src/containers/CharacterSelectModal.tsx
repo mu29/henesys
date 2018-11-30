@@ -9,7 +9,7 @@ import {
   isModalVisible,
 } from 'src/store/selectors'
 
-const CharacterSelectModalContainer: React.SFC<CharacterSelectModalProps> = props => (
+const CharacterSelectModalContainer: React.FunctionComponent<CharacterSelectModalProps> = props => (
   <CharacterSelectModal { ...props } />
 )
 

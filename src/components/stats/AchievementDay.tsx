@@ -34,7 +34,7 @@ export interface AchievementDaysProps {
   color: string,
 }
 
-const AchievementDays: React.SFC<AchievementDaysProps> = ({
+const AchievementDays: React.FunctionComponent<AchievementDaysProps> = ({
   title,
   days,
   color,

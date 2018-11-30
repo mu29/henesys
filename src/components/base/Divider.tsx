@@ -26,7 +26,7 @@ export interface DividerProps {
   hidden?: boolean,
 }
 
-const Divider: React.SFC<DividerProps> = ({
+const Divider: React.FunctionComponent<DividerProps> = ({
   vertical,
   color,
   style,

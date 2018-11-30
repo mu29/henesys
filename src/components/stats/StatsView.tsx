@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
 
 export interface StatsViewProps {}
 
-const StatsView: React.SFC<StatsViewProps> = () => (
+const StatsView: React.FunctionComponent<StatsViewProps> = () => (
   <DividedScrollView
     showsVerticalScrollIndicator={false}
     style={styles.container}
