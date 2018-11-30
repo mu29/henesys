@@ -2,14 +2,17 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { MissionList } from 'src/components'
 import { MissionListProps } from 'src/components/mission/MissionList'
-import { AppState } from 'src/store/selectors'
+import {
+  AppState,
+  getCurrentDate,
+  getRecordOfDate,
+} from 'src/store/selectors'
 import { contents, boss, quest, symbol } from 'src/constants/missions'
-import { today } from 'src/utils'
 
 const MissionListContainer: React.FunctionComponent<MissionListProps> = props => <MissionList { ...props } />
 
-const mapStateToProps = ({ character, mission }: AppState) => {
-  const missions = Object.keys(mission.records[character.selected][today()] || {})
+const mapStateToProps = (state: AppState) => {
+  const missions = Object.keys(getRecordOfDate(state, getCurrentDate(state)))
   return {
     missions: [{
       ...contents,

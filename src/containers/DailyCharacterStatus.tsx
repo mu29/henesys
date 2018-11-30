@@ -5,9 +5,9 @@ import { CharacterStatusProps } from 'src/components/character/CharacterStatus'
 import {
   AppState,
   getSelectedCharacter,
+  getCurrentDate,
   getDailyProgress,
 } from 'src/store/selectors'
-import { today } from 'src/utils'
 
 const DailyCharacterStatusContainer: React.FunctionComponent<CharacterStatusProps> = props => (
   <CharacterStatus { ...props } />
@@ -15,7 +15,7 @@ const DailyCharacterStatusContainer: React.FunctionComponent<CharacterStatusProp
 
 const mapStateToProps = (state: AppState) => ({
   name: getSelectedCharacter(state).name,
-  progress: getDailyProgress(state, today()),
+  progress: getDailyProgress(state, getCurrentDate(state)),
 })
 
 export default connect(mapStateToProps)(DailyCharacterStatusContainer)

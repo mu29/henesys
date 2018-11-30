@@ -8,6 +8,7 @@ import {
   removeTodoAction,
   toggleTodoAction,
   fillTodoAction,
+  changeDateAction,
 } from './actions'
 import initialState, { MissionState } from './selectors'
 
@@ -56,17 +57,16 @@ export default (state: MissionState = initialState, action: Action): MissionStat
   }
 
   if (isType(action, toggleTodoAction)) {
-    const { character, name } = action.payload
-    const now = today()
+    const { character, date, name } = action.payload
     return {
       ...state,
       records: {
         ...state.records,
         [character]: {
           ...state.records[character],
-          [now]: {
-            ...state.records[character][now],
-            [name]: !state.records[character][now][name],
+          [date]: {
+            ...state.records[character][date],
+            [name]: !state.records[character][date][name],
           },
         },
       },
@@ -114,6 +114,13 @@ export default (state: MissionState = initialState, action: Action): MissionStat
           [today()]: freshTodos,
         },
       },
+    }
+  }
+
+  if (isType(action, changeDateAction)) {
+    return {
+      ...state,
+      date: action.payload.date,
     }
   }
 

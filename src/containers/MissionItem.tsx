@@ -4,18 +4,23 @@ import { connect } from 'react-redux'
 import { MissionItem } from 'src/components'
 import { MissionItemProps } from 'src/components/mission/MissionItem'
 import { toggleTodoAction } from 'src/store/actions'
-import { AppState } from 'src/store/selectors'
-import { today } from 'src/utils'
+import {
+  AppState,
+  getSelectedCharacterName,
+  getMissionStatus,
+  getCurrentDate,
+} from 'src/store/selectors'
 
 const MissionItemContainer: React.FunctionComponent<MissionItemProps> = props => <MissionItem { ...props } />
 
-const mapStateToProps = ({ character, mission }: AppState, { name }: MissionItemProps) => ({
-  character: character.selected,
-  completed: mission.records[character.selected][today()][name],
+const mapStateToProps = (state: AppState, { name }: MissionItemProps) => ({
+  date: getCurrentDate(state),
+  character: getSelectedCharacterName(state),
+  completed: getMissionStatus(state, getCurrentDate(state), name),
 })
 
 const mapDispatchToProps = (dispatch: Dispatch<Action>, { name }: MissionItemProps) => ({
-  toggleTodo: (character: string) => () => dispatch(toggleTodoAction({ character, name })),
+  toggleTodo: (character: string, date: string) => () => dispatch(toggleTodoAction({ character, date, name })),
 })
 
 export default connect(
@@ -25,6 +30,6 @@ export default connect(
     ...stateProps,
     ...dispatchProps,
     ...ownProps,
-    onPress: dispatchProps.toggleTodo(stateProps.character),
+    onPress: dispatchProps.toggleTodo(stateProps.character, stateProps.date),
   }),
 )(MissionItemContainer)

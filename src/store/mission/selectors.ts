@@ -1,6 +1,7 @@
 // tslint:disable object-literal-key-quotes
 import createCachedSelector from 're-reselect'
 import { missionList } from 'src/constants/missions'
+import { today } from 'src/utils'
 import {
   AppState,
   getSelectedCharacterName,
@@ -17,6 +18,7 @@ export type MissionState = {
       [key: string]: Record;
     };
   };
+  date: string;
 }
 
 const initialState: MissionState = {
@@ -36,13 +38,16 @@ const initialState: MissionState = {
     '별빛뒤로': {},
     '백동요': {},
   },
+  date: today(),
 }
 
 export default initialState
 
+export const getCurrentDate = (state: AppState) => state.mission.date
+
 export const getTodos = (state: AppState) => state.mission.todos[getSelectedCharacterName(state)]
 
-export const getRecordOfDay = (
+export const getRecordOfDate = (
   state: AppState,
   day: string,
 ) => state.mission.records[getSelectedCharacterName(state)][day] || {}
@@ -59,9 +64,14 @@ export const getProgress = (record: Record) => {
   return source.filter(v => v).length / (source.length || 1)
 }
 
-export const getDailyCompletes = createCachedSelector(getRecordOfDay, getCompletes)((_, day) => day)
+export const getMissionStatus = createCachedSelector(
+  [getRecordOfDate, (_: AppState, __: string, name: string) => name],
+  (missions, name) => missions[name],
+)((_: AppState, day: string, name: string) => `${day}-${name}`)
 
-export const getDailyProgress = createCachedSelector(getRecordOfDay, getProgress)((_, day) => day)
+export const getDailyCompletes = createCachedSelector(getRecordOfDate, getCompletes)((_, day) => day)
+
+export const getDailyProgress = createCachedSelector(getRecordOfDate, getProgress)((_, day) => day)
 
 export const getPeriodCompletes = createCachedSelector(
   getRecordsOfPeriod,

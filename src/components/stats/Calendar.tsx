@@ -7,10 +7,10 @@ import {
   Dimensions,
   StyleProp,
   ViewStyle,
-  TextStyle,
 } from 'react-native'
 import {
   Text,
+  Button,
   Divider,
 } from 'src/components'
 import { typography, palette } from 'src/styles'
@@ -40,6 +40,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  selected: {
+    color: palette.primary.default,
+  },
   background: {
     position: 'absolute',
     height: 4,
@@ -53,58 +56,74 @@ const styles = StyleSheet.create({
 })
 
 export interface CalendarProps {
-  month?: string,
+  current?: string,
   progressList: number[],
+  changeDate: (date: string) => void,
   style?: StyleProp<ViewStyle>,
 }
 
 class Calendar extends React.PureComponent<CalendarProps> {
   static defaultProps = {
-    month: moment().format('YYYY-MM'),
+    current: moment().format('YYYY-MM-DD'),
     progressList: [],
   }
 
+  _onSelect = (date: number) => () => {
+    const { current, changeDate } = this.props
+    const nextDate = moment(current).startOf('month').add(date - 1, 'days').format('YYYY-MM-DD')
+    changeDate(nextDate)
+  }
+
   _days = () => {
-    const { month } = this.props
-    const startWeekday = moment(month).startOf('month').weekday()
-    const daysInMonth = moment(month).daysInMonth()
+    const { current } = this.props
+    const startWeekday = moment(current).startOf('month').weekday()
+    const daysInMonth = moment(current).daysInMonth()
     return [
       ...Array(startWeekday),
       ...Array(daysInMonth),
     ].map((_, i) => Math.max(0, i - startWeekday + 1))
   }
 
-  _renderItem = (
-    style?: StyleProp<TextStyle>,
-    opacity: number = 0,
-  ) => (
-    day: number | string,
-    index: number,
-  ) => (
+  _renderDay = (day: string) => (
     <View
-      key={`calendar-item-${index}`}
+      key={`calendar-day-${day}`}
       style={styles.item}
     >
-      {!!day && (
-        <Text style={style}>
-          {day}
-        </Text>
-      )}
-      <View style={[styles.background, { opacity }]} />
+      <Text style={typography.tiny[1].gray}>
+        {day}
+      </Text>
     </View>
   )
 
-  _renderDay = (day: number, index: number) => {
-    const { progressList } = this.props
-    return this._renderItem(typography.body[2].black, progressList[day - 1])(day, index)
+  _renderDate = (date: number, index: number) => {
+    const { current, progressList } = this.props
+    const opacity = progressList[date - 1] || 0
+    const selected = moment(current).date() === date
+
+    return (
+      <Button
+        key={`calendar-date-${index}`}
+        onPress={this._onSelect(date)}
+        round
+      >
+        <View style={styles.item}>
+          {!!date && (
+            <Text style={[typography.body[2].black, selected && styles.selected]}>
+              {date}
+            </Text>
+          )}
+          <View style={[styles.background, { opacity }]} />
+        </View>
+      </Button>
+    )
   }
 
-  _renderRow = (days: number[], index: number) => (
+  _renderDates = (days: number[], index: number) => (
     <View
       key={`calendar-row-${index}`}
       style={styles.horizontal}
     >
-      {days.map(this._renderDay)}
+      {days.map(this._renderDate)}
     </View>
   )
 
@@ -114,9 +133,9 @@ class Calendar extends React.PureComponent<CalendarProps> {
       <View style={[styles.container, style]}>
         <Divider />
         <View style={styles.horizontal}>
-          {moment.weekdaysMin().map(this._renderItem(typography.tiny[1].gray))}
+          {moment.weekdaysMin().map(this._renderDay)}
         </View>
-        {chunk(this._days(), 7).map(this._renderRow)}
+        {chunk(this._days(), 7).map(this._renderDates)}
       </View>
     )
   }
