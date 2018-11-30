@@ -21,6 +21,7 @@ export { default as AddCharacterScreen } from './screens/AddCharacterScreen'
 export { default as CommunityScreen } from './screens/CommunityScreen'
 export { default as MissionScreen } from './screens/MissionScreen'
 export { default as ProfileScreen } from './screens/ProfileScreen'
+export { default as SettingsScreen } from './screens/SettingsScreen'
 export { default as StatsScreen } from './screens/StatsScreen'
 
 export { default as AchievementDay } from './stats/AchievementDay'

@@ -2,11 +2,12 @@ import React from 'react'
 import { createBottomTabNavigator, createStackNavigator } from 'react-navigation'
 import { Icon } from 'src/components'
 import {
-  AddCharacterScreen,
   MissionScreen,
   StatsScreen,
   CommunityScreen,
   ProfileScreen,
+  AddCharacterScreen,
+  SettingsScreen,
 } from 'src/components'
 import { palette } from 'src/styles'
 
@@ -52,6 +53,7 @@ const MainTab = createBottomTabNavigator({
 export default createStackNavigator({
   Main: MainTab,
   AddCharacter: AddCharacterScreen,
+  Settings: SettingsScreen,
 }, {
   mode: 'modal',
   headerMode: 'none',
