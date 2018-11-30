@@ -11,6 +11,7 @@ import {
   Header,
   IconButton,
 } from 'src/components'
+import { EditableMissionList } from 'src/containers'
 import { withSafeArea } from 'src/wrappers'
 
 const styles = StyleSheet.create({
@@ -30,6 +31,7 @@ const SettingsScreen: React.FunctionComponent<NavigationInjectedProps> = ({
         onPress={() => navigation.goBack()}
       />
     </Header>
+    <EditableMissionList />
   </View>
 )
 

@@ -31,6 +31,10 @@ const styles = StyleSheet.create({
     color: palette.gray[50],
     textDecorationLine: 'line-through',
   },
+  children: {
+    marginLeft: 'auto',
+    alignItems: 'center',
+  },
 })
 
 export interface MissionItemProps {
@@ -59,6 +63,7 @@ class MissionItem extends React.PureComponent<MissionItemProps> {
       label,
       name,
       completed,
+      children,
     } = this.props
     return (
       <View style={styles.container}>
@@ -66,6 +71,9 @@ class MissionItem extends React.PureComponent<MissionItemProps> {
         <Text style={[typography.body[1].black, completed && styles.completed]}>
           {label}
         </Text>
+        <View style={styles.children}>
+          {children}
+        </View>
       </View>
     )
   }

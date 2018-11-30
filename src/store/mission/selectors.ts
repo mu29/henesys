@@ -40,15 +40,20 @@ const initialState: MissionState = {
 
 export default initialState
 
+export const getTodos = (state: AppState) => state.mission.todos[getSelectedCharacterName(state)]
+
 export const getRecordOfDay = (
   state: AppState,
   day: string,
 ) => state.mission.records[getSelectedCharacterName(state)][day] || {}
+
 export const getRecordsOfPeriod = (
   state: AppState,
   period: number,
 ) => Object.values(state.mission.records[getSelectedCharacterName(state)]).slice(-period) || []
+
 export const getCompletes = (record: Record) => Object.values(record).filter(v => v).length
+
 export const getProgress = (record: Record) => {
   const source = Object.values(record)
   return source.filter(v => v).length / (source.length || 1)

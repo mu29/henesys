@@ -14,6 +14,7 @@ export { default as Text } from './base/Text'
 export { default as Header } from './common/Header'
 export { default as Section } from './common/Section'
 
+export { default as EditableMissionList } from './mission/EditableMissionList'
 export { default as MissionItem } from './mission/MissionItem'
 export { default as MissionList } from './mission/MissionList'
 
