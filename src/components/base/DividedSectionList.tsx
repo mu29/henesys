@@ -1,11 +1,18 @@
 import React from 'react'
 import {
   SectionList,
+  StyleSheet,
   SectionListProps,
   NativeSyntheticEvent,
   NativeScrollEvent,
 } from 'react-native'
 import { Divider } from 'src/components'
+
+const styles = StyleSheet.create({
+  contentContainer: {
+    paddingBottom: 8,
+  },
+})
 
 export interface DividedSectionListProps<T> extends SectionListProps<T> {}
 
@@ -17,12 +24,16 @@ class DividedSectionList<T> extends React.PureComponent<DividedSectionListProps<
   })
 
   render() {
-    const { children, ...props } = this.props
     const { showDivider } = this.state
     return (
       <React.Fragment>
         <Divider hidden={!showDivider} />
-        <SectionList {...props} onScroll={this.onScroll} scrollEventThrottle={160} />
+        <SectionList
+          onScroll={this.onScroll}
+          scrollEventThrottle={160}
+          contentContainerStyle={styles.contentContainer}
+          {...this.props}
+        />
       </React.Fragment>
     )
   }

@@ -1,11 +1,18 @@
 import React from 'react'
 import {
   ScrollView,
+  StyleSheet,
   ScrollViewProps,
   NativeSyntheticEvent,
   NativeScrollEvent,
 } from 'react-native'
 import { Divider } from 'src/components'
+
+const styles = StyleSheet.create({
+  contentContainer: {
+    paddingBottom: 8,
+  },
+})
 
 export interface DividedScrollViewProps extends ScrollViewProps {}
 
@@ -21,7 +28,12 @@ class DividedScrollView extends React.PureComponent<DividedScrollViewProps> {
     return (
       <React.Fragment>
         <Divider hidden={!showDivider} />
-        <ScrollView {...this.props} onScroll={this.onScroll} scrollEventThrottle={160} />
+        <ScrollView
+          onScroll={this.onScroll}
+          scrollEventThrottle={160}
+          contentContainerStyle={styles.contentContainer}
+          {...this.props}
+        />
       </React.Fragment>
     )
   }
