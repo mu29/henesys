@@ -1,6 +1,6 @@
 // tslint:disable object-literal-key-quotes
 import createCachedSelector from 're-reselect'
-import { missions as missionList } from 'src/constants/missions'
+import { missionList } from 'src/constants/missions'
 import {
   AppState,
   getSelectedCharacterName,
@@ -9,7 +9,9 @@ import {
 type Record = { [key: string]: boolean }
 
 export type MissionState = {
-  todos: string[];
+  todos: {
+    [key: string]: string[];
+  };
   records: {
     [key: string]: {
       [key: string]: Record;
@@ -18,7 +20,11 @@ export type MissionState = {
 }
 
 const initialState: MissionState = {
-  todos: Object.values(missionList).reduce((r: string[], c) => [...r, ...c.items.map(i => i.key)], []),
+  todos: {
+    '적류': missionList,
+    '별빛뒤로': missionList,
+    '백동요': missionList,
+  },
   records: {
     '적류': {
       '2018-11-01': {zaqqum: true},

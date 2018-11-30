@@ -1,5 +1,6 @@
 import { Action } from 'redux'
 import { elevateCandidateAction } from 'src/store/actions'
+import { missionList } from 'src/constants/missions'
 import { datesBetween, today } from 'src/utils'
 import { isType } from '../common'
 import {
@@ -16,7 +17,10 @@ export default (state: MissionState = initialState, action: Action): MissionStat
     const now = today()
     return {
       ...state,
-      todos: [...state.todos, name],
+      todos: {
+        ...state.todos,
+        [character]: [...state.todos[character], name],
+      },
       records: {
         ...state.records,
         [character]: {
@@ -37,7 +41,10 @@ export default (state: MissionState = initialState, action: Action): MissionStat
     delete removedRecord[name]
     return {
       ...state,
-      todos: state.todos.filter(todo => todo !== name),
+      todos: {
+        ...state.todos,
+        [character]: state.todos[character].filter(todo => todo !== name),
+      },
       records: {
         ...state.records,
         [character]: {
@@ -76,27 +83,34 @@ export default (state: MissionState = initialState, action: Action): MissionStat
         name: lastDay.name,
         dates: datesBetween(lastDay.day, action.payload.to),
       }))
-    const freshTodos = state.todos.reduce((result, name) => ({ ...result, [name]: false }), {})
     return {
       ...state,
       records: characters
-        .map(character => ({
-          [character.name]: {
-            ...state.records[character.name],
-            ...character.dates.map(date => ({ [date]: freshTodos })).reduce((r, c) => ({ ...r, ...c }), {}),
-          },
-        }))
+        .map(character => {
+          const freshTodos = state.todos[character.name].reduce((result, todo) => ({ ...result, [todo]: false }), {})
+          return {
+            [character.name]: {
+              ...state.records[character.name],
+              ...character.dates.map(date => ({ [date]: freshTodos })).reduce((r, c) => ({ ...r, ...c }), {}),
+            },
+          }
+        })
         .reduce((r, c) => ({ ...r, ...c }), {}),
     }
   }
 
   if (isType(action, elevateCandidateAction)) {
-    const freshTodos = state.todos.reduce((result, name) => ({ ...result, [name]: false }), {})
+    const { name } = action.payload
+    const freshTodos = missionList.reduce((result, todo) => ({ ...result, [todo]: false }), {})
     return {
       ...state,
+      todos: {
+        ...state.todos,
+        [name]: missionList,
+      },
       records: {
         ...state.records,
-        [action.payload.name]: {
+        [name]: {
           [today()]: freshTodos,
         },
       },

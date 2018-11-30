@@ -157,3 +157,5 @@ export const hardBoss: MissionList = {
 }
 
 export const missions = { contents, boss, quest, symbol }
+
+export const missionList = Object.values(missions).reduce((r: string[], c) => [...r, ...c.items.map(i => i.key)], [])
