@@ -7,10 +7,7 @@ import {
   withNavigation,
   NavigationInjectedProps,
 } from 'react-navigation'
-import {
-  Icon,
-  Button,
-} from 'src/components'
+import { IconButton } from 'src/components'
 import { AddCharacterView } from 'src/containers'
 import { withSafeArea } from 'src/wrappers'
 import { palette } from 'src/styles'
@@ -25,23 +22,19 @@ const styles = StyleSheet.create({
     top: 8,
     right: 16,
   },
-  hidden: {
-    display: 'none',
-  },
 })
 
 const AddCharacterScreen: React.SFC<NavigationInjectedProps> = ({
   navigation,
 }) => (
   <View style={styles.container}>
-    <Button
-      hitSlop={{ top: 4, bottom: 4, left: 4, right: 4 }}
+    <IconButton
+      icon="md-close"
+      size={25}
+      style={styles.close}
       onPress={() => navigation.goBack()}
-      style={navigation.state.params && navigation.state.params.close ? styles.close : styles.hidden}
       round
-    >
-      <Icon name="md-close" size={25} color={palette.gray[100]} />
-    </Button>
+    />
     <AddCharacterView />
   </View>
 )

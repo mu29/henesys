@@ -8,6 +8,7 @@ import {
   Icon,
   Button,
 } from 'src/components'
+import { ButtonProps } from 'src/components/base/Button'
 import { palette } from 'src/styles'
 
 const styles = StyleSheet.create({
@@ -16,10 +17,9 @@ const styles = StyleSheet.create({
   },
 })
 
-export interface IconButtonProps {
+export interface IconButtonProps extends Partial<ButtonProps> {
   icon: string,
   size: number,
-  hitSlop?: number,
   style?: StyleProp<ViewStyle>,
   onPress: () => void,
 }
@@ -27,12 +27,12 @@ export interface IconButtonProps {
 const IconButton: React.FunctionComponent<IconButtonProps> = ({
   icon,
   size,
-  hitSlop = 4,
+  hitSlop = { top: 4, bottom: 4, left: 4, right: 4 },
   style,
   onPress,
 }) => (
   <Button
-    hitSlop={{ top: hitSlop, bottom: hitSlop, left: hitSlop, right: hitSlop }}
+    hitSlop={hitSlop}
     onPress={onPress}
     style={[styles.container, style]}
     round
