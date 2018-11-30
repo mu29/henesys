@@ -1,12 +1,15 @@
 import React from 'react'
 import { Action, Dispatch } from 'redux'
 import { connect } from 'react-redux'
-import { SwapButton } from 'src/components'
-import { SwapButtonProps } from 'src/components/common/SwapButton'
+import { IconButton } from 'src/components'
 import { showModalAction } from 'src/store/actions'
 
-const SwapButtonContainer: React.SFC<SwapButtonProps> = props => (
-  <SwapButton { ...props } />
+export interface SwapButtonContainerProps {
+  onPress: () => void,
+}
+
+const SwapButtonContainer: React.FunctionComponent<SwapButtonContainerProps> = props => (
+  <IconButton icon="md-swap" size={22} { ...props } />
 )
 
 const mapDispatchToProps = (dispatch: Dispatch<Action>) => ({

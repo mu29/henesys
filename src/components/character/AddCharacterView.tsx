@@ -81,7 +81,7 @@ class AddCharacterView extends React.PureComponent<AddCharacterViewProps> {
   }
 
   render() {
-    const { imageUrl, confirm } = this.props
+    const { imageUrl } = this.props
     return (
       <KeyboardAvoidingView
         behavior="padding"

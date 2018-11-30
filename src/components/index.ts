@@ -8,11 +8,11 @@ export { default as Button } from './base/Button'
 export { default as DividedScrollView } from './base/DividedScrollView'
 export { default as DividedSectionList } from './base/DividedSectionList'
 export { default as Divider } from './base/Divider'
+export { default as IconButton } from './base/IconButton'
 export { default as Text } from './base/Text'
 
 export { default as Header } from './common/Header'
 export { default as Section } from './common/Section'
-export { default as SwapButton } from './common/SwapButton'
 
 export { default as MissionItem } from './mission/MissionItem'
 export { default as MissionList } from './mission/MissionList'

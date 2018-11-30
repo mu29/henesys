@@ -19,12 +19,16 @@ const styles = StyleSheet.create({
     borderBottomColor: palette.gray[30],
     borderBottomWidth: 1,
   },
+  children: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
 })
 
 export interface HeaderProps {
   title: string,
   border?: boolean,
-  children?: React.ReactElement<any>,
+  children?: React.ReactElement<any> | Array<React.ReactElement<any>>,
 }
 
 const Header: React.SFC<HeaderProps> = ({ title, border, children }) => (
@@ -32,7 +36,7 @@ const Header: React.SFC<HeaderProps> = ({ title, border, children }) => (
     <Text style={typography.heading[1].black.bold}>
       {title}
     </Text>
-    <View>
+    <View style={styles.children}>
       {children}
     </View>
   </View>

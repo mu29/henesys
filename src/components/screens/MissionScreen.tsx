@@ -8,6 +8,7 @@ import {
   MissionList,
   CharacterSelectModal,
   SwapButton,
+  SettingsButton,
 } from 'src/containers'
 import { withSafeArea } from 'src/wrappers'
 
@@ -21,6 +22,7 @@ const MissionScreen: React.SFC<{}> = () => (
   <View style={styles.container}>
     <Header title="기록">
       <SwapButton />
+      <SettingsButton />
     </Header>
     <MissionList />
     <CharacterSelectModal />
