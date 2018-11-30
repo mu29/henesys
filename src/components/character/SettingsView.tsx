@@ -22,7 +22,9 @@ const styles = StyleSheet.create({
   button: {
     justifyContent: 'center',
     alignItems: 'center',
+    margin: 16,
     paddingVertical: 12,
+    borderRadius: 24,
     backgroundColor: palette.primary.default,
   },
 })
@@ -60,15 +62,18 @@ class SettingsView extends React.PureComponent<SettingsViewProps> {
     })
   }
 
+  renderFooter = () => (
+    <Button onPress={this.onRemove} style={styles.button}>
+      <Text style={typography.body[1].white}>
+        캐릭터 삭제
+      </Text>
+    </Button>
+  )
+
   render() {
     return (
       <View style={styles.container}>
-        <EditableMissionList />
-        <Button onPress={this.onRemove} style={styles.button}>
-          <Text style={typography.body[1].white}>
-            캐릭터 삭제
-          </Text>
-        </Button>
+        <EditableMissionList footer={this.renderFooter} />
       </View>
     )
   }

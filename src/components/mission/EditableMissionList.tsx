@@ -20,6 +20,7 @@ const styles = StyleSheet.create({
 
 export interface EditableMissionListProps {
   todos: string[],
+  footer?: React.FunctionComponent<any>,
   toggle: (name: string, add: boolean) => void,
 }
 
@@ -51,12 +52,14 @@ class EditableMissionList extends React.PureComponent<EditableMissionListProps> 
   }
 
   render() {
+    const { footer } = this.props
     const sections = Object.values(missions).map(m => ({ title: m.label, data: m.items }))
     return (
       <DividedSectionList
         sections={sections}
         keyExtractor={this.keyExtractor}
         renderSectionHeader={this.renderSectionHeader}
+        ListFooterComponent={footer}
         renderItem={this.renderItem}
         stickySectionHeadersEnabled={false}
         showsVerticalScrollIndicator={false}
