@@ -5,16 +5,20 @@ import { CharacterStatusProps } from 'src/components/character/CharacterStatus'
 import {
   AppState,
   getSelectedCharacter,
-  getPeriodProgress,
+  getMonthlyProgress,
 } from 'src/store/selectors'
+
+export interface MonthlyCharacterStatusContainerProps {
+  month: string,
+}
 
 const MonthlyCharacterStatusContainer: React.FunctionComponent<CharacterStatusProps> = props => (
   <CharacterStatus { ...props } />
 )
 
-const mapStateToProps = (state: AppState) => ({
+const mapStateToProps = (state: AppState, { month }: MonthlyCharacterStatusContainerProps) => ({
   name: getSelectedCharacter(state).name,
-  progress: getPeriodProgress(state, 30),
+  progress: getMonthlyProgress(state, month),
 })
 
 export default connect(mapStateToProps)(MonthlyCharacterStatusContainer)

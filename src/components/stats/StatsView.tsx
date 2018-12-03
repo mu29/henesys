@@ -29,8 +29,8 @@ const StatsView: React.FunctionComponent<StatsViewProps> = () => (
     style={styles.container}
   >
     <View>
-      <MonthlyCharacterStatus />
-      <Calendar />
+      <MonthlyCharacterStatus month="2018-12" />
+      <Calendar month="2018-12" />
       <Section title="연속 달성" />
       <Streaks />
       <Section title="최근 30일" />

@@ -52,6 +52,14 @@ export const getRecordOfDate = (
   day: string,
 ) => state.mission.records[getSelectedCharacterName(state)][day] || {}
 
+export const getRecordsOfMonth = (
+  state: AppState,
+  month: string,
+) => {
+  const records = state.mission.records[getSelectedCharacterName(state)]
+  return Object.keys(records).filter(key => key.startsWith(month)).map(key => records[key])
+}
+
 export const getRecordsOfPeriod = (
   state: AppState,
   period: number,
@@ -72,6 +80,16 @@ export const getMissionStatus = createCachedSelector(
 export const getDailyCompletes = createCachedSelector(getRecordOfDate, getCompletes)((_, day) => day)
 
 export const getDailyProgress = createCachedSelector(getRecordOfDate, getProgress)((_, day) => day)
+
+export const getMonthlyCompletes = createCachedSelector(
+  getRecordsOfMonth,
+  records => records.reduce((completes, record) => completes + getCompletes(record), 0),
+)((_, period) => period)
+
+export const getMonthlyProgress = createCachedSelector(
+  getRecordsOfMonth,
+  records => records.reduce((progresses, record) => progresses + getProgress(record), 0) / (records.length || 1),
+)((_, period) => period)
 
 export const getPeriodCompletes = createCachedSelector(
   getRecordsOfPeriod,
@@ -105,7 +123,7 @@ export const getIncompleteDays = createCachedSelector(
 
 export const getCurrentStreaks = createCachedSelector(
   getRecordsOfPeriod,
-  records => {
+  (records) => {
     let streak = records.length - 1
     while (streak >= 0) {
       if (getProgress(records[streak]) === 1) {
@@ -120,7 +138,7 @@ export const getCurrentStreaks = createCachedSelector(
 
 export const getLongestStreaks = createCachedSelector(
   getRecordsOfPeriod,
-  records => {
+  (records) => {
     const streaks = records.reduce((result, record) => getProgress(record) === 1 ? ({
       ...result,
       current: result.current + 1,
