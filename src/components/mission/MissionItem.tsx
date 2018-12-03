@@ -45,7 +45,7 @@ export interface MissionItemProps {
 }
 
 class MissionItem extends React.PureComponent<MissionItemProps> {
-  pressWithHaptic = () => {
+  _pressWithHaptic = () => {
     const { onPress } = this.props
     if (onPress) {
       if (Platform.OS === 'ios') {
@@ -56,7 +56,7 @@ class MissionItem extends React.PureComponent<MissionItemProps> {
   }
 
   // tslint:disable-next-line
-  onPress = throttle(this.pressWithHaptic, 200)
+  _onPress = throttle(this._pressWithHaptic, 200)
 
   renderInner() {
     const {
@@ -80,7 +80,7 @@ class MissionItem extends React.PureComponent<MissionItemProps> {
 
   render() {
     return this.props.onPress ? (
-      <Button onPress={this.onPress}>
+      <Button onPress={this._onPress}>
         {this.renderInner()}
       </Button>
     ) : this.renderInner()

@@ -29,13 +29,13 @@ interface ISectionHeader {
 }
 
 class EditableMissionList extends React.PureComponent<EditableMissionListProps> {
-  keyExtractor = (item: MissionType) => item.key
+  _keyExtractor = (item: MissionType) => item.key
 
-  renderSectionHeader = ({ section: { title } }: ISectionHeader) => (
+  _renderSectionHeader = ({ section: { title } }: ISectionHeader) => (
     <Section title={title} />
   )
 
-  renderItem = ({ item }: { item: MissionType }) => {
+  _renderItem = ({ item }: { item: MissionType }) => {
     const { todos, toggle } = this.props
     return (
       <MissionItem label={item.label} name={item.key}>
@@ -57,10 +57,10 @@ class EditableMissionList extends React.PureComponent<EditableMissionListProps> 
     return (
       <DividedSectionList
         sections={sections}
-        keyExtractor={this.keyExtractor}
-        renderSectionHeader={this.renderSectionHeader}
+        keyExtractor={this._keyExtractor}
+        renderSectionHeader={this._renderSectionHeader}
+        renderItem={this._renderItem}
         ListFooterComponent={footer}
-        renderItem={this.renderItem}
         stickySectionHeadersEnabled={false}
         showsVerticalScrollIndicator={false}
         style={styles.container}

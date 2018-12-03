@@ -19,7 +19,7 @@ export interface DividedScrollViewProps extends ScrollViewProps {}
 class DividedScrollView extends React.PureComponent<DividedScrollViewProps> {
   state = { showDivider: false }
 
-  onScroll = ({ nativeEvent }: NativeSyntheticEvent<NativeScrollEvent>) => this.setState({
+  _onScroll = ({ nativeEvent }: NativeSyntheticEvent<NativeScrollEvent>) => this.setState({
     showDivider: nativeEvent.contentOffset.y > 0,
   })
 
@@ -29,7 +29,7 @@ class DividedScrollView extends React.PureComponent<DividedScrollViewProps> {
       <React.Fragment>
         <Divider hidden={!showDivider} />
         <ScrollView
-          onScroll={this.onScroll}
+          onScroll={this._onScroll}
           scrollEventThrottle={160}
           contentContainerStyle={styles.contentContainer}
           {...this.props}

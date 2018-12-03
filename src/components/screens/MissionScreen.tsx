@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
 })
 
 class MissionScreen extends React.PureComponent<NavigationInjectedProps> {
-  openEditScreen = () => {
+  _openEditScreen = () => {
     const { navigation } = this.props
     navigation.push('Edit')
   }
@@ -44,7 +44,7 @@ class MissionScreen extends React.PureComponent<NavigationInjectedProps> {
             width={32}
             height={44}
             style={styles.settings}
-            onPress={this.openEditScreen}
+            onPress={this._openEditScreen}
           />
         </Header>
         <MissionList />

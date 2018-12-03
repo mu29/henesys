@@ -70,9 +70,9 @@ export interface AddCharacterViewProps extends Partial<NavigationInjectedProps> 
 }
 
 class AddCharacterView extends React.PureComponent<AddCharacterViewProps> {
-  onSearch = debounce(this.props.search, 200)
+  _onSearch = debounce(this.props.search, 200)
 
-  onConfirm = () => {
+  _onConfirm = () => {
     const { navigation, confirm } = this.props
     confirm()
     if (navigation) {
@@ -109,12 +109,12 @@ class AddCharacterView extends React.PureComponent<AddCharacterViewProps> {
             />
           </ImageBackground>
           <TextInput
-            onChangeText={this.onSearch}
+            onChangeText={this._onSearch}
             placeholder="추가할 캐릭터의 이름을 입력하세요"
             style={[typography.body[1].black, styles.name]}
           />
         </View>
-        <Button onPress={this.onConfirm} style={[styles.button, styles.center]}>
+        <Button onPress={this._onConfirm} style={[styles.button, styles.center]}>
           <Text style={typography.body[1].white}>
             확인
           </Text>

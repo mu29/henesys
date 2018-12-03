@@ -19,7 +19,7 @@ export interface DividedSectionListProps<T> extends SectionListProps<T> {}
 class DividedSectionList<T> extends React.PureComponent<DividedSectionListProps<T>> {
   state = { showDivider: false }
 
-  onScroll = ({ nativeEvent }: NativeSyntheticEvent<NativeScrollEvent>) => this.setState({
+  _onScroll = ({ nativeEvent }: NativeSyntheticEvent<NativeScrollEvent>) => this.setState({
     showDivider: nativeEvent.contentOffset.y > 0,
   })
 
@@ -29,7 +29,7 @@ class DividedSectionList<T> extends React.PureComponent<DividedSectionListProps<
       <React.Fragment>
         <Divider hidden={!showDivider} />
         <SectionList
-          onScroll={this.onScroll}
+          onScroll={this._onScroll}
           scrollEventThrottle={160}
           contentContainerStyle={styles.contentContainer}
           {...this.props}

@@ -31,17 +31,17 @@ interface ISectionHeader {
 }
 
 class MissionList extends React.PureComponent<MissionListProps> {
-  keyExtractor = (item: MissionType) => item.key
+  _keyExtractor = (item: MissionType) => item.key
 
-  renderHeader = () => (
+  _renderHeader = () => (
     <DailyCharacterStatus />
   )
 
-  renderSectionHeader = ({ section: { title } }: ISectionHeader) => (
+  _renderSectionHeader = ({ section: { title } }: ISectionHeader) => (
     <Section title={title} />
   )
 
-  renderItem = ({ item }: { item: MissionType }) => (
+  _renderItem = ({ item }: { item: MissionType }) => (
     <MissionItem label={item.label} name={item.key} />
   )
 
@@ -53,10 +53,10 @@ class MissionList extends React.PureComponent<MissionListProps> {
     return (
       <DividedSectionList
         sections={sections}
-        keyExtractor={this.keyExtractor}
-        ListHeaderComponent={this.renderHeader}
-        renderSectionHeader={this.renderSectionHeader}
-        renderItem={this.renderItem}
+        keyExtractor={this._keyExtractor}
+        renderSectionHeader={this._renderSectionHeader}
+        renderItem={this._renderItem}
+        ListHeaderComponent={this._renderHeader}
         stickySectionHeadersEnabled={false}
         showsVerticalScrollIndicator={false}
         style={styles.container}

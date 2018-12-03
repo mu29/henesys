@@ -36,7 +36,7 @@ export interface EditViewProps extends Partial<NavigationInjectedProps> {
 }
 
 class EditView extends React.PureComponent<EditViewProps> {
-  onRemove = () => {
+  _onRemove = () => {
     const {
       character,
       canRemove,
@@ -62,8 +62,8 @@ class EditView extends React.PureComponent<EditViewProps> {
     })
   }
 
-  renderFooter = () => (
-    <Button onPress={this.onRemove} style={styles.button}>
+  _renderFooter = () => (
+    <Button onPress={this._onRemove} style={styles.button}>
       <Text style={typography.body[1].white}>
         캐릭터 삭제
       </Text>
@@ -73,7 +73,7 @@ class EditView extends React.PureComponent<EditViewProps> {
   render() {
     return (
       <View style={styles.container}>
-        <EditableMissionList footer={this.renderFooter} />
+        <EditableMissionList footer={this._renderFooter} />
       </View>
     )
   }

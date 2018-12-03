@@ -52,7 +52,7 @@ export interface CharacterSelectModalProps extends Partial<NavigationInjectedPro
 }
 
 class CharacterSelectModal extends React.PureComponent<CharacterSelectModalProps> {
-  onAdd = () => {
+  _onAdd = () => {
     const { close, navigation } = this.props
     close()
     if (navigation) {
@@ -87,7 +87,7 @@ class CharacterSelectModal extends React.PureComponent<CharacterSelectModalProps
               {characters.map(character => <SelectableCharacterInfo key={character} name={character} />)}
             </View>
           </ScrollView>
-          <Button onPress={this.onAdd} style={styles.button}>
+          <Button onPress={this._onAdd} style={styles.button}>
             <Text style={typography.body[1].white}>
               다른 캐릭터 추가
             </Text>
