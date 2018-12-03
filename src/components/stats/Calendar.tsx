@@ -56,6 +56,7 @@ const styles = StyleSheet.create({
 })
 
 export interface CalendarProps {
+  month?: string,
   current?: string,
   progressList: number[],
   changeDate: (date: string) => void,
@@ -68,16 +69,27 @@ class Calendar extends React.PureComponent<CalendarProps> {
     progressList: [],
   }
 
+  _getDateOf = (date: number) => {
+    const { month } = this.props
+    return moment(month).startOf('month').add(date - 1, 'days')
+  }
+
+  _isSelectable = (date: number) => moment() >= this._getDateOf(date)
+
   _onSelect = (date: number) => () => {
-    const { current, changeDate } = this.props
-    const nextDate = moment(current).startOf('month').add(date - 1, 'days').format('YYYY-MM-DD')
+    if (!this._isSelectable(date)) {
+      return
+    }
+
+    const { changeDate } = this.props
+    const nextDate = this._getDateOf(date).format('YYYY-MM-DD')
     changeDate(nextDate)
   }
 
   _days = () => {
-    const { current } = this.props
-    const startWeekday = moment(current).startOf('month').weekday()
-    const daysInMonth = moment(current).daysInMonth()
+    const { month } = this.props
+    const startWeekday = moment(month).startOf('month').weekday()
+    const daysInMonth = moment(month).daysInMonth()
     return [
       ...Array(startWeekday),
       ...Array(daysInMonth),
@@ -108,7 +120,12 @@ class Calendar extends React.PureComponent<CalendarProps> {
       >
         <View style={styles.item}>
           {!!date && (
-            <Text style={[typography.body[2].black, selected && styles.selected]}>
+            <Text
+              style={[
+                this._isSelectable(date) ? typography.body[2].black : typography.body[2].gray,
+                selected && styles.selected,
+              ]}
+            >
               {date}
             </Text>
           )}

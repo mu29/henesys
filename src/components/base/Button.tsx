@@ -11,14 +11,12 @@ import {
 } from 'react-native'
 
 export interface ButtonProps extends TouchableOpacityProps, TouchableNativeFeedbackProps {
-  onPress: () => void,
   round?: boolean,
   style?: StyleProp<ViewStyle>,
   children: React.ReactElement<any>,
 }
 
 const Button: React.FunctionComponent<ButtonProps> = ({
-  onPress,
   round,
   style,
   children,
@@ -28,7 +26,6 @@ const Button: React.FunctionComponent<ButtonProps> = ({
   return Platform.OS === 'ios' ? (
     <TouchableOpacity
       activeOpacity={0.8}
-      onPress={onPress}
       style={style}
       {...props}
     >
@@ -36,7 +33,6 @@ const Button: React.FunctionComponent<ButtonProps> = ({
     </TouchableOpacity>
   ) : (
     <TouchableNativeFeedback
-      onPress={onPress}
       background={round
         ? TouchableNativeFeedback.SelectableBackgroundBorderless()
         : TouchableNativeFeedback.SelectableBackground()
