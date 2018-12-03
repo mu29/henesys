@@ -25,9 +25,13 @@ const styles = StyleSheet.create({
   },
   header: {
     flexDirection: 'row',
-    justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 8,
+  },
+  divider: {
+    flex: 1,
+  },
+  month: {
+    marginHorizontal: 4,
   },
   horizontal: {
     flex: 1,
@@ -56,8 +60,8 @@ const styles = StyleSheet.create({
 })
 
 export interface CalendarProps {
-  month?: string,
-  current?: string,
+  month: string,
+  current: string,
   progressList: number[],
   onPressDate: (date: string) => void,
   style?: StyleProp<ViewStyle>,
@@ -65,7 +69,6 @@ export interface CalendarProps {
 
 class Calendar extends React.PureComponent<CalendarProps> {
   static defaultProps = {
-    current: moment().format('YYYY-MM-DD'),
     progressList: [],
   }
 
@@ -145,10 +148,16 @@ class Calendar extends React.PureComponent<CalendarProps> {
   )
 
   render() {
-    const { style } = this.props
+    const { month, style } = this.props
     return (
       <View style={[styles.container, style]}>
-        <Divider />
+        <View style={styles.header}>
+          <Divider style={styles.divider} />
+          <Text style={[typography.tiny[1].lightGray, { marginHorizontal: 8 }]}>
+            {month.replace('-', '.')}
+          </Text>
+          <Divider style={styles.divider} />
+        </View>
         <View style={styles.horizontal}>
           {moment.weekdaysMin().map(this._renderDay)}
         </View>

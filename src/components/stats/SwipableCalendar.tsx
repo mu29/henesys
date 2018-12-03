@@ -11,7 +11,7 @@ export interface SwipableCalendarProps {
   onUpdate: (month: string) => void,
 }
 
-class SwipableCalendar extends React.Component<SwipableCalendarProps> {
+class SwipableCalendar extends React.PureComponent<SwipableCalendarProps> {
   _getMonths = () => {
     const { startMonth } = this.props
     return monthsBetween(startMonth, thisMonth())

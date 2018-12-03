@@ -23,7 +23,7 @@ export type MissionState = {
 
 const initialState: MissionState = {
   todos: {
-    '적류': missionList,
+    '적류': ['zaqqum', 'mvp'],
     '별빛뒤로': missionList,
     '백동요': missionList,
   },

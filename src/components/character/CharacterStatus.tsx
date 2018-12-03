@@ -38,8 +38,8 @@ const CharacterStatus: React.FunctionComponent<CharacterStatusProps> = ({
       unfilledColor={palette.gray[30]}
       borderWidth={0}
       progress={progress}
-      animated={false}
       style={styles.progress}
+      animated
       showsText
     />
   </View>
