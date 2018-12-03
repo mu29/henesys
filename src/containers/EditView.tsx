@@ -1,16 +1,16 @@
 import React from 'react'
 import { Action, Dispatch } from 'redux'
 import { connect } from 'react-redux'
-import { SettingsView } from 'src/components'
-import { SettingsViewProps } from 'src/components/character/SettingsView'
+import { EditView } from 'src/components'
+import { EditViewProps } from 'src/components/character/EditView'
 import { removeCharacterAction } from 'src/store/actions'
 import {
   AppState,
   getSelectedCharacterName,
 } from 'src/store/selectors'
 
-const SettingsViewContainer: React.FunctionComponent<SettingsViewProps> = props => (
-  <SettingsView { ...props } />
+const EditViewContainer: React.FunctionComponent<EditViewProps> = props => (
+  <EditView { ...props } />
 )
 
 const mapStateToProps = (state: AppState) => ({
@@ -31,4 +31,4 @@ export default connect(
     ...ownProps,
     remove: dispatchProps.remove(stateProps.character),
   }),
-)(SettingsViewContainer)
+)(EditViewContainer)

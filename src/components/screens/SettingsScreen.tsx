@@ -4,14 +4,8 @@ import {
   StyleSheet,
 } from 'react-native'
 import {
-  withNavigation,
-  NavigationInjectedProps,
-} from 'react-navigation'
-import {
   Header,
-  IconButton,
 } from 'src/components'
-import { SettingsView } from 'src/containers'
 import { withSafeArea } from 'src/wrappers'
 
 const styles = StyleSheet.create({
@@ -20,21 +14,10 @@ const styles = StyleSheet.create({
   },
 })
 
-const SettingsScreen: React.FunctionComponent<NavigationInjectedProps> = ({
-  navigation,
-}) => (
+const SettingsScreen: React.FunctionComponent<{}> = () => (
   <View style={styles.container}>
-    <Header title="편집">
-      <IconButton
-        icon="md-close"
-        size={25}
-        width={32}
-        height={44}
-        onPress={() => navigation.goBack()}
-      />
-    </Header>
-    <SettingsView />
+    <Header title="프로필" />
   </View>
 )
 
-export default withSafeArea(withNavigation(SettingsScreen))
+export default withSafeArea(React.memo(SettingsScreen))

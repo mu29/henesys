@@ -29,13 +29,13 @@ const styles = StyleSheet.create({
   },
 })
 
-export interface SettingsViewProps extends Partial<NavigationInjectedProps> {
+export interface EditViewProps extends Partial<NavigationInjectedProps> {
   character: string,
   canRemove: boolean,
   remove: () => void,
 }
 
-class SettingsView extends React.PureComponent<SettingsViewProps> {
+class EditView extends React.PureComponent<EditViewProps> {
   onRemove = () => {
     const {
       character,
@@ -79,4 +79,4 @@ class SettingsView extends React.PureComponent<SettingsViewProps> {
   }
 }
 
-export default withNavigation(SettingsView)
+export default withNavigation(EditView)
