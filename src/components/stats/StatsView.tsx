@@ -10,6 +10,7 @@ import {
 import {
   MonthlyCharacterStatus,
   Calendar,
+  SwipableCalendar,
   Streaks,
   ProgressChart,
   AchievementList,
@@ -30,7 +31,7 @@ const StatsView: React.FunctionComponent<StatsViewProps> = () => (
   >
     <View>
       <MonthlyCharacterStatus month="2018-12" />
-      <Calendar month="2018-12" />
+      <SwipableCalendar />
       <Section title="연속 달성" />
       <Streaks />
       <Section title="최근 30일" />

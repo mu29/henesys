@@ -59,7 +59,7 @@ export interface CalendarProps {
   month?: string,
   current?: string,
   progressList: number[],
-  changeDate: (date: string) => void,
+  onPressDate: (date: string) => void,
   style?: StyleProp<ViewStyle>,
 }
 
@@ -81,9 +81,9 @@ class Calendar extends React.PureComponent<CalendarProps> {
       return
     }
 
-    const { changeDate } = this.props
+    const { onPressDate } = this.props
     const nextDate = this._getDateOf(date).format('YYYY-MM-DD')
-    changeDate(nextDate)
+    onPressDate(nextDate)
   }
 
   _days = () => {
@@ -108,9 +108,9 @@ class Calendar extends React.PureComponent<CalendarProps> {
   )
 
   _renderDate = (date: number, index: number) => {
-    const { current, progressList } = this.props
+    const { current, month, progressList } = this.props
     const opacity = progressList[date - 1] || 0
-    const selected = moment(current).date() === date
+    const selected = moment(current).date() === date && moment(current).format('YYYY-MM') === month
 
     return (
       <Button
@@ -146,6 +146,7 @@ class Calendar extends React.PureComponent<CalendarProps> {
 
   render() {
     const { style } = this.props
+    console.log(this.props.progressList)
     return (
       <View style={[styles.container, style]}>
         <Divider />

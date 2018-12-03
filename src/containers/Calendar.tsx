@@ -11,11 +11,16 @@ import {
 } from 'src/store/selectors'
 import { datesBetween, today } from 'src/utils'
 
+export interface CalendarContainerProps {
+  month: string,
+}
+
 const CalendarContainer: React.FunctionComponent<CalendarProps> = props => <Calendar { ...props } />
 
-const mapStateToProps = (state: AppState) => {
-  const firstDay = moment(state.mission.date).startOf('month').format('YYYY-MM-DD')
-  const dates = [firstDay, ...datesBetween(firstDay, today())]
+const mapStateToProps = (state: AppState, { month }: CalendarContainerProps) => {
+  const firstDay = moment(month).startOf('month').format('YYYY-MM-DD')
+  const lastDay = moment(month).endOf('month').format('YYYY-MM-DD')
+  const dates = [firstDay, ...datesBetween(firstDay, lastDay)]
   return {
     current: state.mission.date,
     progressList: dates.map(day => getDailyProgress(state, day)),
@@ -23,7 +28,7 @@ const mapStateToProps = (state: AppState) => {
 }
 
 const mapDispatchToProps = (dispatch: Dispatch<Action>) => ({
-  changeDate: (date: string) => dispatch(changeDateAction({ date })),
+  onPressDate: (date: string) => dispatch(changeDateAction({ date })),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(CalendarContainer)

@@ -47,6 +47,10 @@ export const getCurrentDate = (state: AppState) => state.mission.date
 
 export const getTodos = (state: AppState) => state.mission.todos[getSelectedCharacterName(state)]
 
+export const getFirstDate = (state: AppState) => {
+  return Object.keys(state.mission.records[getSelectedCharacterName(state)])[0]
+}
+
 export const getRecordOfDate = (
   state: AppState,
   day: string,
