@@ -9,12 +9,12 @@ import {
 } from 'src/components'
 import {
   MonthlyCharacterStatus,
-  Calendar,
   SwipableCalendar,
   Streaks,
   ProgressChart,
   AchievementList,
 } from 'src/containers'
+import { thisMonth } from 'src/utils'
 
 const styles = StyleSheet.create({
   container: {
@@ -24,22 +24,37 @@ const styles = StyleSheet.create({
 
 export interface StatsViewProps {}
 
-const StatsView: React.FunctionComponent<StatsViewProps> = () => (
-  <DividedScrollView
-    showsVerticalScrollIndicator={false}
-    style={styles.container}
-  >
-    <View>
-      <MonthlyCharacterStatus month="2018-12" />
-      <SwipableCalendar />
-      <Section title="연속 달성" />
-      <Streaks />
-      <Section title="최근 30일" />
-      <ProgressChart />
-      <Section title="누적 기록" />
-      <AchievementList />
-    </View>
-  </DividedScrollView>
-)
+export interface StatsViewState {
+  month: string,
+}
 
-export default React.memo(StatsView)
+class StatsView extends React.PureComponent<StatsViewProps, StatsViewState> {
+  state = {
+    month: thisMonth(),
+  }
+
+  _onUpdate = (month: string) => this.setState({ month })
+
+  render() {
+    const { month } = this.state
+    return (
+      <DividedScrollView
+        showsVerticalScrollIndicator={false}
+        style={styles.container}
+      >
+        <View>
+          <MonthlyCharacterStatus month={month} />
+          <SwipableCalendar onUpdate={this._onUpdate} />
+          <Section title="연속 달성" />
+          <Streaks />
+          <Section title="최근 30일" />
+          <ProgressChart />
+          <Section title="누적 기록" />
+          <AchievementList />
+        </View>
+      </DividedScrollView>
+    )
+  }
+}
+
+export default StatsView

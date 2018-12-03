@@ -8,6 +8,7 @@ const DEVICE_WIDTH = Dimensions.get('window').width
 
 export interface SwipableCalendarProps {
   startMonth: string,
+  onUpdate: (month: string) => void,
 }
 
 class SwipableCalendar extends React.Component<SwipableCalendarProps> {
@@ -16,7 +17,13 @@ class SwipableCalendar extends React.Component<SwipableCalendarProps> {
     return monthsBetween(startMonth, thisMonth())
   }
 
-  renderItem({ item }: { item: string }) {
+  _onSnapToItem = (index: number) => {
+    const { onUpdate } = this.props
+    const month = this._getMonths()[index]
+    onUpdate(month)
+  }
+
+  _renderItem({ item }: { item: string }) {
     return <Calendar key={`swipable-calendar-${item}`} month={item} />
   }
 
@@ -28,7 +35,8 @@ class SwipableCalendar extends React.Component<SwipableCalendarProps> {
         inactiveSlideOpacity={1}
         inactiveSlideScale={1}
         firstItem={this._getMonths().length - 1}
-        renderItem={this.renderItem}
+        renderItem={this._renderItem}
+        onSnapToItem={this._onSnapToItem}
         sliderWidth={DEVICE_WIDTH}
         itemWidth={DEVICE_WIDTH}
       />

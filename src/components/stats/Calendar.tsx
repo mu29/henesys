@@ -146,7 +146,6 @@ class Calendar extends React.PureComponent<CalendarProps> {
 
   render() {
     const { style } = this.props
-    console.log(this.props.progressList)
     return (
       <View style={[styles.container, style]}>
         <Divider />
