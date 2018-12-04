@@ -34,6 +34,7 @@ export { default as EditScreen } from './screens/EditScreen'
 export { default as MissionScreen } from './screens/MissionScreen'
 export { default as SettingsScreen } from './screens/SettingsScreen'
 export { default as StatsScreen } from './screens/StatsScreen'
+export { default as WebViewScreen } from './screens/WebViewScreen'
 
 export { default as AppInfo } from './settings/AppInfo'
 export { default as SettingsItem } from './settings/SettingsItem'

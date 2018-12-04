@@ -7,6 +7,7 @@ import {
   SettingsScreen,
   AddCharacterScreen,
   EditScreen,
+  WebViewScreen,
 } from 'src/components'
 import { palette } from 'src/styles'
 
@@ -52,6 +53,7 @@ export default createStackNavigator({
   Main: MainTab,
   AddCharacter: AddCharacterScreen,
   Edit: EditScreen,
+  WebView: WebViewScreen,
 }, {
   mode: 'modal',
   headerMode: 'none',
