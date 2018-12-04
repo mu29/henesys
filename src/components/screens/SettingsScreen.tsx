@@ -5,6 +5,8 @@ import {
 } from 'react-native'
 import {
   Header,
+  SettingsList,
+  AppInfo,
 } from 'src/components'
 import { withSafeArea } from 'src/wrappers'
 
@@ -16,7 +18,9 @@ const styles = StyleSheet.create({
 
 const SettingsScreen: React.FunctionComponent<{}> = () => (
   <View style={styles.container}>
-    <Header title="프로필" />
+    <Header title="설정" />
+    <SettingsList />
+    <AppInfo />
   </View>
 )
 

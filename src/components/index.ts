@@ -5,6 +5,8 @@ export { default as Icon } from 'react-native-vector-icons/Ionicons'
 export { default as Modal } from 'react-native-modal'
 export { default as Carousel } from 'react-native-snap-carousel'
 
+export { default as AccountInfo } from './account/AccountInfo'
+
 export { default as Button } from './base/Button'
 export { default as DividedScrollView } from './base/DividedScrollView'
 export { default as DividedSectionList } from './base/DividedSectionList'
@@ -32,6 +34,11 @@ export { default as EditScreen } from './screens/EditScreen'
 export { default as MissionScreen } from './screens/MissionScreen'
 export { default as SettingsScreen } from './screens/SettingsScreen'
 export { default as StatsScreen } from './screens/StatsScreen'
+
+export { default as AppInfo } from './settings/AppInfo'
+export { default as SettingsItem } from './settings/SettingsItem'
+export { default as SettingsList } from './settings/SettingsList'
+export { default as SettingsSection } from './settings/SettingsSection'
 
 export { default as AchievementDay } from './stats/AchievementDay'
 export { default as AchievementList } from './stats/AchievementList'
