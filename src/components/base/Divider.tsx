@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
     height: 1,
   },
   hidden: {
-    backgroundColor: 'transparent',
+    backgroundColor: palette.white.default,
   },
 })
 
