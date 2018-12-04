@@ -4,7 +4,7 @@ import {
   StyleSheet,
 } from 'react-native'
 import { Text } from 'src/components'
-import { typography } from 'src/styles'
+import { palette, typography } from 'src/styles'
 
 const styles = StyleSheet.create({
   container: {
@@ -12,6 +12,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'flex-end',
     paddingRight: 8,
+    backgroundColor: palette.white.default,
   },
   title: {
     marginTop: 16,
