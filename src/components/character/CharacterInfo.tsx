@@ -68,7 +68,7 @@ class CharacterInfo extends React.PureComponent<CharacterInfoProps> {
           <Text style={typography.heading[3].black.bold}>
             {name}
           </Text>
-          <Text style={typography.body[3].gray}>
+          <Text style={typography.body[3].lightGray}>
             Lv. {level} {job}
           </Text>
         </View>

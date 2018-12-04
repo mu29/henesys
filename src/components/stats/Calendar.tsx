@@ -125,7 +125,7 @@ class Calendar extends React.PureComponent<CalendarProps> {
           {!!date && (
             <Text
               style={[
-                this._isSelectable(date) ? typography.body[2].black : typography.body[2].gray,
+                this._isSelectable(date) ? typography.body[2].black : typography.body[2].lightGray,
                 selected && styles.selected,
               ]}
             >

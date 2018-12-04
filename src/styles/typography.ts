@@ -77,14 +77,14 @@ export default {
         color: palette.gray[10],
         lineHeight: 18,
       },
-      gray: {
+      lightGray: {
         fontSize: 14,
         color: palette.gray[60],
         lineHeight: 18,
       },
     },
     3: {
-      gray: {
+      lightGray: {
         fontSize: 12,
         color: palette.gray[60],
         lineHeight: 16,

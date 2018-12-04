@@ -78,7 +78,7 @@ class CharacterSelectModal extends React.PureComponent<CharacterSelectModalProps
             <Text style={typography.heading[2].black.bold}>
               캐릭터 선택
             </Text>
-            <Text style={typography.body[3].gray}>
+            <Text style={typography.body[3].lightGray}>
               일과를 기록할 캐릭터를 선택하세요.
             </Text>
           </View>

@@ -92,7 +92,7 @@ class AddCharacterView extends React.PureComponent<AddCharacterViewProps> {
           <Text style={[typography.heading[1].black.bold, styles.title]}>
             캐릭터 추가
           </Text>
-          <Text style={typography.body[2].gray}>
+          <Text style={typography.body[2].lightGray}>
             새로운 캐릭터를 등록합니다.
             캐릭터 이름을 입력하면 자동으로 정보를 가져옵니다.
             공식 홈페이지 랭킹에 표시되지 않는 캐릭터는 가져올 수 없습니다.
