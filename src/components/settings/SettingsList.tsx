@@ -3,7 +3,9 @@ import {
   View,
   Switch,
   Linking,
+  Share,
   StyleSheet,
+  Platform,
 } from 'react-native'
 import {
   withNavigation,
@@ -31,18 +33,23 @@ const styles = StyleSheet.create({
 export interface SettingsListProps extends NavigationInjectedProps {}
 
 class SettingsList extends React.PureComponent<SettingsListProps> {
-  _openUrl = (url: string) => {
-    if (Linking.canOpenURL(url)) {
-      Linking.openURL(url)
-    }
-  }
+  _openUrl = (url: string) => Linking.canOpenURL(url)
+    .then(r => r && Linking.openURL(url))
+    .catch(() => {})
 
   _openEmailClient = () => this._openUrl('mailto:mu29@yeoubi.net')
 
   _openTermsPage = () => {
     const { navigation } = this.props
-    navigation.push('WebView', { url: 'https://naver.com' })
+    navigation.push('WebView', { url: 'https://google.com' })
   }
+
+  _share = () => Share.share({
+    message: '헤네시스 - 메이플스토리 일과 기록, 통계 및 커뮤니티\n' + Platform.select({
+      ios: 'https://itunes.com/',
+      android: 'https://play.google.com/',
+    }),
+  })
 
   render() {
     return (
@@ -52,14 +59,19 @@ class SettingsList extends React.PureComponent<SettingsListProps> {
           <SettingsSection title="알림">
             <SettingsItem title="할 일 완료 알림" text="오후 9시" />
             <SettingsItem title="우르스 알림" last>
-              <Switch />
+              <Switch
+                trackColor={{
+                  true: palette.primary.light,
+                  false: palette.gray[30],
+                }}
+              />
             </SettingsItem>
           </SettingsSection>
           <SettingsSection title="기타">
             <SettingsItem title="문의하기" onPress={this._openEmailClient} />
             <SettingsItem title="이용약관" onPress={this._openTermsPage} />
             <SettingsItem title="오픈소스 라이센스" />
-            <SettingsItem title="친구에게 추천하기" last />
+            <SettingsItem title="친구에게 추천하기" onPress={this._share} last />
           </SettingsSection>
         </View>
       </DividedScrollView>
