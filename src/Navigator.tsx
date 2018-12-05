@@ -1,5 +1,9 @@
 import React from 'react'
-import { createBottomTabNavigator, createStackNavigator } from 'react-navigation'
+import {
+  createBottomTabNavigator,
+  createSwitchNavigator,
+  createStackNavigator,
+} from 'react-navigation'
 import { Icon } from 'src/components'
 import {
   MissionScreen,
@@ -8,6 +12,7 @@ import {
   AddCharacterScreen,
   EditScreen,
   WebViewScreen,
+  WelcomeScreen,
 } from 'src/components'
 import { palette } from 'src/styles'
 
@@ -49,8 +54,16 @@ const MainTab = createBottomTabNavigator({
   },
 })
 
-export default createStackNavigator({
+const AppSwitch = createSwitchNavigator({
+  Welcome: WelcomeScreen,
   Main: MainTab,
+  Create: AddCharacterScreen,
+}, {
+  initialRouteName: 'Welcome',
+})
+
+export default createStackNavigator({
+  App: AppSwitch,
   AddCharacter: AddCharacterScreen,
   Edit: EditScreen,
   WebView: WebViewScreen,
