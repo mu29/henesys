@@ -65,23 +65,35 @@ const styles = StyleSheet.create({
 
 export interface AddCharacterViewProps extends Partial<NavigationInjectedProps> {
   imageUrl?: string,
+  isLoading?: boolean,
   search: (name: string) => void,
   confirm: () => void,
+  afterConfirm?: () => void,
 }
 
 class AddCharacterView extends React.PureComponent<AddCharacterViewProps> {
   _onSearch = debounce(this.props.search, 200)
 
   _onConfirm = () => {
-    const { navigation, confirm } = this.props
+    const {
+      navigation,
+      confirm,
+      afterConfirm,
+    } = this.props
     confirm()
+
+    if (afterConfirm) {
+      afterConfirm()
+      return
+    }
+
     if (navigation) {
       navigation.goBack()
     }
   }
 
   render() {
-    const { imageUrl } = this.props
+    const { imageUrl, isLoading } = this.props
     return (
       <KeyboardAvoidingView
         behavior="padding"
@@ -114,7 +126,11 @@ class AddCharacterView extends React.PureComponent<AddCharacterViewProps> {
             style={[typography.body[1].black, styles.name]}
           />
         </View>
-        <Button onPress={this._onConfirm} style={[styles.button, styles.center]}>
+        <Button
+          isLoading={isLoading}
+          onPress={this._onConfirm}
+          style={[styles.button, styles.center]}
+        >
           <Text style={typography.body[1].white}>
             확인
           </Text>

@@ -1,6 +1,7 @@
 import React from 'react'
 import {
   View,
+  ActivityIndicator,
   TouchableOpacity,
   TouchableNativeFeedback,
   Platform,
@@ -9,27 +10,31 @@ import {
   StyleProp,
   ViewStyle,
 } from 'react-native'
+import { palette } from 'src/styles'
 
 export interface ButtonProps extends TouchableOpacityProps, TouchableNativeFeedbackProps {
   round?: boolean,
+  isLoading?: boolean,
   style?: StyleProp<ViewStyle>,
   children: React.ReactElement<any>,
 }
 
 const Button: React.FunctionComponent<ButtonProps> = ({
   round,
+  isLoading,
   style,
   children,
   ...props
 }) => {
-  const wrappedByView = typeof children.type !== 'string' && children.type.displayName === 'View'
+  const loadableChildren = isLoading ? <ActivityIndicator color={palette.white.default} /> : children
+  const wrappedByView = typeof loadableChildren.type !== 'string' && loadableChildren.type.displayName === 'View'
   return Platform.OS === 'ios' ? (
     <TouchableOpacity
       activeOpacity={0.8}
       style={style}
       {...props}
     >
-      {children}
+      {loadableChildren}
     </TouchableOpacity>
   ) : (
     <TouchableNativeFeedback
@@ -40,7 +45,7 @@ const Button: React.FunctionComponent<ButtonProps> = ({
       style={wrappedByView ? style : {}}
       {...props}
     >
-      {wrappedByView ? children : (<View style={style}>{children}</View>)}
+      {wrappedByView ? loadableChildren : (<View style={style}>{loadableChildren}</View>)}
     </TouchableNativeFeedback>
   )
 }

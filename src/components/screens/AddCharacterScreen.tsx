@@ -22,23 +22,29 @@ const styles = StyleSheet.create({
     top: 8,
     right: 8,
   },
+  hidden: {
+    display: 'none',
+  },
 })
 
 const AddCharacterScreen: React.FunctionComponent<NavigationInjectedProps> = ({
   navigation,
-}) => (
-  <View style={styles.container}>
-    <IconButton
-      icon="md-close"
-      size={25}
-      width={32}
-      height={44}
-      style={styles.close}
-      onPress={() => navigation.goBack()}
-      round
-    />
-    <AddCharacterView />
-  </View>
-)
+}) => {
+  const close = navigation.state.params && navigation.state.params.close
+  return (
+    <View style={styles.container}>
+      <IconButton
+        icon="md-close"
+        size={25}
+        width={32}
+        height={44}
+        onPress={() => close && navigation.goBack()}
+        style={close ? styles.close : styles.hidden}
+        round
+      />
+      <AddCharacterView afterConfirm={close ? () => {} : () => navigation.navigate('Welcome')} />
+    </View>
+  )
+}
 
 export default withSafeArea(withNavigation(AddCharacterScreen))
