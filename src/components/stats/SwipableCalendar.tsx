@@ -48,6 +48,7 @@ class SwipableCalendar extends React.PureComponent<SwipableCalendarProps> {
         onSnapToItem={this._onSnapToItem}
         sliderWidth={DEVICE_WIDTH}
         itemWidth={DEVICE_WIDTH}
+        removeClippedSubviews={false}
       />
     )
   }
