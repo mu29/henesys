@@ -11,11 +11,14 @@ import { palette, typography } from 'src/styles'
 
 const styles = StyleSheet.create({
   container: {
+    padding: 16,
+    paddingTop: 8,
+    backgroundColor: palette.white.default,
+  },
+  info: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    margin: 16,
-    marginTop: 8,
     padding: 12,
     borderRadius: 8,
     backgroundColor: palette.gray[10],
@@ -32,15 +35,17 @@ const AccountInfo: React.FunctionComponent<AccountInfoProps> = ({
   email = '계정을 만들어 커뮤니티를 100% 이용하세요',
 }) => (
   <View style={styles.container}>
-    <View>
-      <Text style={typography.heading[3].black.bold}>
-        {name}
-      </Text>
-      <Text style={typography.body[3].lightGray}>
-        {email}
-      </Text>
+    <View style={styles.info}>
+      <View>
+        <Text style={typography.heading[3].black.bold}>
+          {name}
+        </Text>
+        <Text style={typography.body[3].lightGray}>
+          {email}
+        </Text>
+      </View>
+      <Icon name="ios-arrow-forward" size={20} color={palette.gray[40]} />
     </View>
-    <Icon name="ios-arrow-forward" size={20} color={palette.gray[40]} />
   </View>
 )
 
