@@ -31,6 +31,7 @@ const Button: React.FunctionComponent<ButtonProps> = ({
   return Platform.OS === 'ios' ? (
     <TouchableOpacity
       activeOpacity={0.8}
+      disabled={isLoading}
       style={style}
       {...props}
     >
@@ -38,6 +39,7 @@ const Button: React.FunctionComponent<ButtonProps> = ({
     </TouchableOpacity>
   ) : (
     <TouchableNativeFeedback
+      disabled={isLoading}
       background={round
         ? TouchableNativeFeedback.SelectableBackgroundBorderless()
         : TouchableNativeFeedback.SelectableBackground()
