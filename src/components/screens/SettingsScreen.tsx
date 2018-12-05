@@ -4,10 +4,8 @@ import {
   StyleSheet,
   Dimensions,
 } from 'react-native'
-import {
-  Header,
-  SettingsList,
-} from 'src/components'
+import { Header } from 'src/components'
+import { SettingsList } from 'src/containers'
 import { withSafeArea } from 'src/wrappers'
 import { palette } from 'src/styles'
 

@@ -30,7 +30,11 @@ const styles = StyleSheet.create({
   },
 })
 
-export interface SettingsListProps extends NavigationInjectedProps {}
+export interface SettingsListProps extends Partial<NavigationInjectedProps> {
+  urusNotification: boolean,
+  enableUrusNotification: () => void,
+  disableUrusNotification: () => void,
+}
 
 class SettingsList extends React.PureComponent<SettingsListProps> {
   _openUrl = (url: string) => Linking.canOpenURL(url)
@@ -41,7 +45,9 @@ class SettingsList extends React.PureComponent<SettingsListProps> {
 
   _openTermsPage = () => {
     const { navigation } = this.props
-    navigation.push('WebView', { url: 'https://google.com' })
+    if (navigation) {
+      navigation.push('WebView', { url: 'https://google.com' })
+    }
   }
 
   _share = () => Share.share({
@@ -51,15 +57,29 @@ class SettingsList extends React.PureComponent<SettingsListProps> {
     }),
   })
 
+  _toggleUrusNotification = (value: boolean) => {
+    const {
+      enableUrusNotification,
+      disableUrusNotification,
+    } = this.props
+    if (value) {
+      enableUrusNotification()
+    } else {
+      disableUrusNotification()
+    }
+  }
+
   render() {
+    const { urusNotification } = this.props
     return (
       <DividedScrollView contentContainerStyle={styles.contentContainer}>
         <View style={styles.container}>
           <AccountInfo />
           <SettingsSection title="알림">
-            <SettingsItem title="할 일 완료 알림" text="오후 9시" />
             <SettingsItem title="우르스 알림" last>
               <Switch
+                onValueChange={this._toggleUrusNotification}
+                value={urusNotification}
                 trackColor={{
                   true: palette.primary.light,
                   false: palette.gray[30],
