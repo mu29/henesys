@@ -36,7 +36,6 @@ export { default as SettingsScreen } from './screens/SettingsScreen'
 export { default as StatsScreen } from './screens/StatsScreen'
 export { default as WebViewScreen } from './screens/WebViewScreen'
 
-export { default as AppInfo } from './settings/AppInfo'
 export { default as SettingsItem } from './settings/SettingsItem'
 export { default as SettingsList } from './settings/SettingsList'
 export { default as SettingsSection } from './settings/SettingsSection'
