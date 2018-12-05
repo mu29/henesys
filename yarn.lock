@@ -734,6 +734,11 @@
   dependencies:
     react-native-modal "*"
 
+"@types/react-native-push-notification@^3.0.3":
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/@types/react-native-push-notification/-/react-native-push-notification-3.0.3.tgz#738e64fe38ccff15b3d4957a2bae51780d670e5f"
+  integrity sha512-d4YUl+antDzCsmHKSojuMpCrWq1DAr+S3NbGu+LvmLGvQT6cpMrP7Nvr4OCAZUPJiGNsORP8PNkFnJcaOZSvFQ==
+
 "@types/react-native-snap-carousel@^3.7.1":
   version "3.7.1"
   resolved "https://registry.yarnpkg.com/@types/react-native-snap-carousel/-/react-native-snap-carousel-3.7.1.tgz#26222d5d23cf1971f40c6b3ae71acdf709589f77"
@@ -5184,6 +5189,11 @@ react-native-progress@3.5.0:
   integrity sha512-Tgc002D0BGes1fTlObu/qNItlsTPYKFrF9XRQaJLme77TNxNX9I04sgIz3kaq8O4R+z/jlai64dk1HDEDQhzMA==
   dependencies:
     prop-types "^15.5.8"
+
+react-native-push-notification@^3.1.2:
+  version "3.1.2"
+  resolved "https://registry.yarnpkg.com/react-native-push-notification/-/react-native-push-notification-3.1.2.tgz#a6129fb2897773a19c7b42bba1b51a9a4aac7df3"
+  integrity sha512-MjjPNXb2Cw7g1D41DtVbTVuGFCAtADxb91pAEFSkQ0AZ2gIooqYkWFHBL6woc15QHhtaZS8VT2GQoyW5OWlxIg==
 
 react-native-safe-area-view@0.11.0:
   version "0.11.0"

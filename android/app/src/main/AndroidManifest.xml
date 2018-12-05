@@ -3,6 +3,15 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    <!-- Start Push Notification -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <permission
+      android:name="net.yeoubi.henesys.permission.C2D_MESSAGE"
+      android:protectionLevel="signature" />
+    <uses-permission android:name="net.yeoubi.henesys.permission.C2D_MESSAGE" />
+    <!-- End Push Notification -->
 
     <application
       android:name=".MainApplication"
@@ -10,6 +19,41 @@
       android:icon="@mipmap/ic_launcher"
       android:allowBackup="false"
       android:theme="@style/AppTheme">
+      <!-- Start Push Notification -->
+      <meta-data
+        android:name="com.dieam.reactnativepushnotification.notification_channel_name"
+        android:value="알림"/>
+      <meta-data 
+        android:name="com.dieam.reactnativepushnotification.notification_channel_description"
+        android:value="우르스 및 할 일 완료 안내"/>
+      <meta-data 
+        android:name="com.dieam.reactnativepushnotification.notification_color"
+        android:resource="@color/primary"/>
+      <receiver
+        android:name="com.google.android.gms.gcm.GcmReceiver"
+        android:exported="true"
+        android:permission="com.google.android.c2dm.permission.SEND" >
+        <intent-filter>
+          <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+          <category android:name="net.yeoubi.henesys" />
+        </intent-filter>
+      </receiver>
+      <receiver android:name="com.dieam.reactnativepushnotification.modules.RNPushNotificationPublisher" />
+      <receiver android:name="com.dieam.reactnativepushnotification.modules.RNPushNotificationBootEventReceiver">
+        <intent-filter>
+          <action android:name="android.intent.action.BOOT_COMPLETED" />
+        </intent-filter>
+      </receiver>
+      <service android:name="com.dieam.reactnativepushnotification.modules.RNPushNotificationRegistrationService"/>
+      <service
+        android:name="com.dieam.reactnativepushnotification.modules.RNPushNotificationListenerServiceGcm"
+        android:exported="false" >
+        <intent-filter>
+          <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+        </intent-filter>
+      </service>
+      <!-- End Push Notification -->
+
       <activity
         android:name=".MainActivity"
         android:label="@string/app_name"

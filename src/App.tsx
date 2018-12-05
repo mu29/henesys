@@ -1,9 +1,13 @@
 import React from 'react'
-import { YellowBox } from 'react-native'
+import {
+  PushNotificationIOS,
+  YellowBox,
+} from 'react-native'
 import { Provider } from 'react-redux'
 import moment from 'moment'
 // @ts-ignore
 import momentLocaleKorea from 'moment/locale/ko'
+import PushNotification from 'react-native-push-notification'
 
 import { api } from 'src/services/api'
 import { parser } from 'src/services/parser'
@@ -23,6 +27,11 @@ const store = configureStore({}, { api, parser })
 class App extends React.Component {
   componentDidMount() {
     store.dispatch(fillTodoAction({ to: today() }))
+    PushNotification.configure({
+      onNotification: (notification) => {
+        notification.finish(PushNotificationIOS.FetchResult.NoData)
+      },
+    })
   }
 
   render() {
