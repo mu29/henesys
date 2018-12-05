@@ -12,8 +12,8 @@ export type CharacterState = {
 }
 
 const initialState: CharacterState = {
-  characters: ['적류', '별빛뒤로', '백동요'],
-  selected: '적류',
+  characters: [],
+  selected: '',
   candidate: {
     name: '',
     imageUrl: '',

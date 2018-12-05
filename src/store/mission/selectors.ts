@@ -22,22 +22,8 @@ export type MissionState = {
 }
 
 const initialState: MissionState = {
-  todos: {
-    '적류': ['zaqqum', 'mvp'],
-    '별빛뒤로': missionList,
-    '백동요': missionList,
-  },
-  records: {
-    '적류': {
-      '2018-11-01': {zaqqum: true},
-      '2018-11-02': {zaqqum: true},
-      '2018-11-03': {zaqqum: true},
-      '2018-11-04': {zaqqum: true},
-      '2018-11-05': {zaqqum: true},
-    },
-    '별빛뒤로': {},
-    '백동요': {},
-  },
+  todos: {},
+  records: {},
   date: today(),
 }
 
