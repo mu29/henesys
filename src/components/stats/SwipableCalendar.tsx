@@ -12,6 +12,14 @@ export interface SwipableCalendarProps {
 }
 
 class SwipableCalendar extends React.PureComponent<SwipableCalendarProps> {
+  _carousel: any = null
+
+  componentDidUpdate() {
+    if (this._carousel) {
+      this._carousel._getWrappedRef().scrollToEnd({ animated: false })
+    }
+  }
+
   _getMonths = () => {
     const { startMonth } = this.props
     return monthsBetween(startMonth, thisMonth())
@@ -30,6 +38,7 @@ class SwipableCalendar extends React.PureComponent<SwipableCalendarProps> {
   render() {
     return (
       <Carousel
+        ref={(c: any) => { this._carousel = c }}
         data={this._getMonths()}
         activeSlideOffset={0}
         inactiveSlideOpacity={1}
