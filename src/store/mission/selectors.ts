@@ -1,6 +1,4 @@
-// tslint:disable object-literal-key-quotes
 import createCachedSelector from 're-reselect'
-import { missionList } from 'src/constants/missions'
 import { today } from 'src/utils'
 import {
   AppState,

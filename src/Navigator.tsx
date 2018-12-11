@@ -8,6 +8,7 @@ import { Icon } from 'src/components'
 import {
   MissionScreen,
   StatsScreen,
+  CommunityScreen,
   SettingsScreen,
   AddCharacterScreen,
   EditScreen,
@@ -19,6 +20,7 @@ import { palette } from 'src/styles'
 const MainTab = createBottomTabNavigator({
   Mission: MissionScreen,
   Stats: StatsScreen,
+  Community: CommunityScreen,
   Settings: SettingsScreen,
 }, {
   navigationOptions: ({ navigation }) => ({
