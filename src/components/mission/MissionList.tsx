@@ -1,12 +1,11 @@
 import React from 'react'
 import {
+  SectionList,
   SectionListData,
   StyleSheet,
 } from 'react-native'
-import {
-  DividedSectionList,
-  Section,
-} from 'src/components'
+import { Section } from 'src/components'
+import { withTopDivider } from 'src/wrappers'
 import {
   DailyCharacterStatus,
   MissionItem,
@@ -15,6 +14,8 @@ import {
   Mission as MissionType,
   MissionList as MissionListType,
 } from 'src/constants/missions'
+
+const DividedSectionList = withTopDivider(SectionList)
 
 const styles = StyleSheet.create({
   container: {

@@ -1,12 +1,11 @@
 import React from 'react'
 import {
   View,
+  ScrollView,
   StyleSheet,
 } from 'react-native'
-import {
-  Section,
-  DividedScrollView,
-} from 'src/components'
+import { Section } from 'src/components'
+import { withTopDivider } from 'src/wrappers'
 import {
   MonthlyCharacterStatus,
   SwipableCalendar,
@@ -15,6 +14,8 @@ import {
   AchievementList,
 } from 'src/containers'
 import { thisMonth } from 'src/utils'
+
+const DividedScrollView = withTopDivider(ScrollView)
 
 const styles = StyleSheet.create({
   container: {

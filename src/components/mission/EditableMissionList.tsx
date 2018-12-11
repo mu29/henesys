@@ -1,16 +1,19 @@
 import React from 'react'
 import {
   Switch,
+  SectionList,
   SectionListData,
   StyleSheet,
 } from 'react-native'
 import {
-  DividedSectionList,
   Section,
   MissionItem,
 } from 'src/components'
+import { withTopDivider } from 'src/wrappers'
 import { missions, Mission as MissionType } from 'src/constants/missions'
 import { palette } from 'src/styles'
+
+const DividedSectionList = withTopDivider(SectionList)
 
 const styles = StyleSheet.create({
   container: {

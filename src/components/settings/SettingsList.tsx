@@ -2,6 +2,7 @@ import React from 'react'
 import {
   View,
   Switch,
+  ScrollView,
   Linking,
   Share,
   StyleSheet,
@@ -12,12 +13,14 @@ import {
   NavigationInjectedProps,
 } from 'react-navigation'
 import {
-  DividedScrollView,
   AccountInfo,
   SettingsSection,
   SettingsItem,
 } from 'src/components'
+import { withTopDivider } from 'src/wrappers'
 import { palette } from 'src/styles'
+
+const DividedScrollView = withTopDivider(ScrollView)
 
 const styles = StyleSheet.create({
   container: {

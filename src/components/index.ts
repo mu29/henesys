@@ -8,8 +8,6 @@ export { default as Carousel } from 'react-native-snap-carousel'
 export { default as AccountInfo } from './account/AccountInfo'
 
 export { default as Button } from './base/Button'
-export { default as DividedScrollView } from './base/DividedScrollView'
-export { default as DividedSectionList } from './base/DividedSectionList'
 export { default as Divider } from './base/Divider'
 export { default as IconButton } from './base/IconButton'
 export { default as Text } from './base/Text'
