@@ -19,7 +19,7 @@
     "react-native-cheerio": "1.0.0-rc.4",
     "react-native-haptic-feedback": "^1.4.2",
     "react-native-modal": "^7.0.1",
-    "react-native-progress": "3.5.0",
+    "react-native-progress": "git+https://github.com/mu29/react-native-progress.git",
     "react-native-push-notification": "^3.1.2",
     "react-native-snap-carousel": "^3.7.5",
     "react-native-svg": "^8.0.8",

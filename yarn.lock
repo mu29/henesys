@@ -5183,10 +5183,9 @@ react-native-parse-html@^2.2.6:
   dependencies:
     react-native-stream "^0.1.0"
 
-react-native-progress@3.5.0:
+"react-native-progress@git+https://github.com/mu29/react-native-progress.git":
   version "3.5.0"
-  resolved "https://registry.yarnpkg.com/react-native-progress/-/react-native-progress-3.5.0.tgz#d1ccc7f96dc17c609aedb43b2e6695d67deae0ec"
-  integrity sha512-Tgc002D0BGes1fTlObu/qNItlsTPYKFrF9XRQaJLme77TNxNX9I04sgIz3kaq8O4R+z/jlai64dk1HDEDQhzMA==
+  resolved "git+https://github.com/mu29/react-native-progress.git#9d89f6a8501b463f103386cdb31fab7e7020e35f"
   dependencies:
     prop-types "^15.5.8"
 
