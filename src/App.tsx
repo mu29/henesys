@@ -4,11 +4,13 @@ import {
   YellowBox,
 } from 'react-native'
 import { Provider } from 'react-redux'
+import { PersistGate } from 'redux-persist/integration/react'
 import moment from 'moment'
 // @ts-ignore
 import momentLocaleKorea from 'moment/locale/ko'
 import PushNotification from 'react-native-push-notification'
 
+import { LoadingView } from 'src/components'
 import { api } from 'src/services/api'
 import { parser } from 'src/services/parser'
 import configureStore from 'src/store/configure'
@@ -22,7 +24,7 @@ moment.updateLocale('ko', momentLocaleKorea)
 YellowBox.ignoreWarnings(['relay:check'])
 
 // @ts-ignore
-const store = configureStore({}, { api, parser })
+const { store, persistor } = configureStore({}, { api, parser })
 
 class App extends React.Component {
   componentDidMount() {
@@ -37,7 +39,9 @@ class App extends React.Component {
   render() {
     return (
       <Provider store={store}>
-        <Navigator />
+        <PersistGate persistor={persistor} loading={<LoadingView />}>
+          <Navigator />
+        </PersistGate>
       </Provider>
     )
   }
