@@ -39,7 +39,7 @@ const CharacterStatus: React.FunctionComponent<CharacterStatusProps> = ({
       borderWidth={0}
       progress={progress}
       style={styles.progress}
-      animated
+      animated={false}
       showsText
     />
   </View>
