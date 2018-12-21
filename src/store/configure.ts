@@ -17,10 +17,16 @@ import sagas from './sagas'
 const loggerMiddleware = __DEV__ ? createLogger() : () => (fn: any) => fn
 export const sagaMiddleware = createSagaMiddleware()
 
-const persistConfig = {
+const rootPersistConfig = {
   key: 'henesys',
   storage,
-  whitelist: ['account', 'character', 'entity', 'mission'],
+  whitelist: ['account', 'character', 'entity'],
+}
+
+const missionPersistConfig = {
+  key: 'mission',
+  storage,
+  blacklist: ['date'],
 }
 
 export default function configureStore(
@@ -33,8 +39,11 @@ export default function configureStore(
       loggerMiddleware,
     ),
   ]
-  const rootReducer = combineReducers(reducers)
-  const persistedReducer = persistReducer(persistConfig, rootReducer)
+  const rootReducer = combineReducers({
+    ...reducers,
+    mission: persistReducer(missionPersistConfig, reducers.mission),
+  })
+  const persistedReducer = persistReducer(rootPersistConfig, rootReducer)
   const store = createStore(persistedReducer, initialState, compose(...enhancers))
   const persistor = persistStore(store)
   sagaMiddleware.run(sagas, services)
