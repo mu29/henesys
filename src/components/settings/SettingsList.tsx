@@ -55,8 +55,8 @@ class SettingsList extends React.PureComponent<SettingsListProps> {
 
   _share = () => Share.share({
     message: '헤네시스 - 메이플스토리 일과 기록, 통계 및 커뮤니티\n' + Platform.select({
-      ios: 'https://itunes.com/',
-      android: 'https://play.google.com/',
+      ios: 'https://itunes.apple.com/',
+      android: 'https://play.google.com/store/apps/details?id=net.yeoubi.henesys',
     }),
   })
 

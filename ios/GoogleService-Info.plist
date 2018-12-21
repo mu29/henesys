@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AD_UNIT_ID_FOR_BANNER_TEST</key>
+	<string>ca-app-pub-3940256099942544/2934735716</string>
+	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
+	<string>ca-app-pub-3940256099942544/4411468910</string>
+	<key>CLIENT_ID</key>
+	<string>246032410818-l7krrd7s2dtdhhr242hne2n3ckn4alq3.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.246032410818-l7krrd7s2dtdhhr242hne2n3ckn4alq3</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAtFIxcwGvqxLX40RMttNGxe3485bsmxww</string>
+	<key>GCM_SENDER_ID</key>
+	<string>246032410818</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>net.yeoubi.henesys</string>
+	<key>PROJECT_ID</key>
+	<string>henesys-20755</string>
+	<key>STORAGE_BUCKET</key>
+	<string>henesys-20755.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<true></true>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<false></false>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:246032410818:ios:b27a2649d6308bac</string>
+	<key>DATABASE_URL</key>
+	<string>https://henesys-20755.firebaseio.com</string>
+</dict>
+</plist>

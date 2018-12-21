@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "246032410818",
+    "firebase_url": "https://henesys-20755.firebaseio.com",
+    "project_id": "henesys-20755",
+    "storage_bucket": "henesys-20755.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:246032410818:android:b27a2649d6308bac",
+        "android_client_info": {
+          "package_name": "net.yeoubi.henesys"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "246032410818-u1d8hoks67pvdusbvi33ibu0d7a1hlu8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBH2l5hoigUM5RwTRBfdH2EgLNLh5L8mNw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
