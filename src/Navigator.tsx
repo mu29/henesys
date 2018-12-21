@@ -20,7 +20,7 @@ import { palette } from 'src/styles'
 const MainTab = createBottomTabNavigator({
   Mission: MissionScreen,
   Stats: StatsScreen,
-  Community: CommunityScreen,
+  // Community: CommunityScreen,
   Settings: SettingsScreen,
 }, {
   navigationOptions: ({ navigation }) => ({
