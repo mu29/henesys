@@ -93,7 +93,6 @@ class SettingsList extends React.PureComponent<SettingsListProps> {
           <SettingsSection title="기타">
             <SettingsItem title="문의하기" onPress={this._openEmailClient} />
             <SettingsItem title="이용약관" onPress={this._openTermsPage} />
-            <SettingsItem title="오픈소스 라이센스" />
             <SettingsItem title="친구에게 추천하기" onPress={this._share} last />
           </SettingsSection>
         </View>
