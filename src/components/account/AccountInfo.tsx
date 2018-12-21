@@ -32,7 +32,7 @@ export interface AccountInfoProps {
 
 const AccountInfo: React.FunctionComponent<AccountInfoProps> = ({
   name = '로그인',
-  email = '계정을 만들어 커뮤니티를 100% 이용하세요',
+  email = '계정을 만들어 커뮤니티를 100% 이용하세요 (개발 중)',
 }) => (
   <View style={styles.container}>
     <View style={styles.info}>
