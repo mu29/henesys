@@ -28,7 +28,6 @@ const { store, persistor } = configureStore({}, { api, parser })
 
 class App extends React.Component {
   componentDidMount() {
-    store.dispatch(fillTodoAction({ to: today() }))
     PushNotification.configure({
       onNotification: (notification) => {
         notification.finish(PushNotificationIOS.FetchResult.NoData)
@@ -36,10 +35,16 @@ class App extends React.Component {
     })
   }
 
+  _fillTodos = () => store.dispatch(fillTodoAction({ to: today() }))
+
   render() {
     return (
       <Provider store={store}>
-        <PersistGate persistor={persistor} loading={<LoadingView />}>
+        <PersistGate
+          persistor={persistor}
+          onBeforeLift={this._fillTodos}
+          loading={<LoadingView />}
+        >
           <Navigator />
         </PersistGate>
       </Provider>
