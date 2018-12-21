@@ -42,7 +42,7 @@ const AddCharacterScreen: React.FunctionComponent<NavigationInjectedProps> = ({
         style={close ? styles.close : styles.hidden}
         round
       />
-      <AddCharacterView afterConfirm={close ? () => {} : () => navigation.navigate('Welcome')} />
+      <AddCharacterView afterConfirm={close ? undefined : () => navigation.navigate('Welcome')} />
     </View>
   )
 }
