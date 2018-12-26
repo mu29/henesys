@@ -56,7 +56,7 @@ class MissionItem extends React.PureComponent<MissionItemProps> {
   }
 
   // tslint:disable-next-line
-  _onPress = throttle(this._pressWithHaptic, 200)
+  _onPress = throttle(this._pressWithHaptic, 100)
 
   renderInner() {
     const {

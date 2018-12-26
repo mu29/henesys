@@ -49,7 +49,7 @@ class SettingsList extends React.PureComponent<SettingsListProps> {
   _openTermsPage = () => {
     const { navigation } = this.props
     if (navigation) {
-      navigation.push('WebView', { url: 'https://google.com' })
+      navigation.push('WebView', { url: 'https://yeoubi.net/policies/henesys.html' })
     }
   }
 
