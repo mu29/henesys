@@ -1,6 +1,6 @@
 import { AnyAction } from 'redux'
 import { normalize } from 'normalizr'
-import { mergeWith } from 'lodash'
+import mergeWith from 'lodash/mergeWith'
 import initialState, { EntityState } from './selectors'
 
 export default (state: EntityState = initialState, action: AnyAction): EntityState => {

@@ -1,20 +1,22 @@
 import { AccountState } from './account/selectors'
+import { ArticleState } from './article/selectors'
 import { CharacterState } from './character/selectors'
 import { EntityState } from './entity/selectors'
 import { LoadingState } from './loading/selectors'
 import { MissionState } from './mission/selectors'
 import { ModalState } from './modal/selectors'
 
+export * from './entity/selectors'
 export * from './account/selectors'
 export * from './article/selectors'
 export * from './character/selectors'
-export * from './entity/selectors'
 export * from './loading/selectors'
 export * from './mission/selectors'
 export * from './modal/selectors'
 
 export type AppState = {
   account: AccountState;
+  article: ArticleState;
   character: CharacterState;
   entity: EntityState;
   loading: LoadingState;

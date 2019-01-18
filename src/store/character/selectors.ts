@@ -1,6 +1,6 @@
 import createCachedSelector from 're-reselect'
 import { createSelector } from 'reselect'
-import { AppState, getEntity } from '../selectors'
+import { AppState, getEntity } from 'src/store/selectors'
 
 export type CharacterState = {
   characters: string[];
