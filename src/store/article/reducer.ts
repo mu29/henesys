@@ -13,7 +13,7 @@ export default (state: ArticleState = initialState, action: Action): ArticleStat
         [action.payload.params.board]: uniq([
           ...(state.boards[action.payload.params.board] || []),
           ...action.payload.result.map(article => article.id),
-        ]),
+        ]).sort((a, b) => b - a),
       },
     }
   }
