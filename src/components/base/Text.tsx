@@ -1,11 +1,12 @@
 import React, { PureComponent } from 'react'
 import {
   Text as RNText,
+  TextProps as RNTextProps,
   Platform,
   StyleProp,
 } from 'react-native'
 
-export interface TextProps {
+export interface TextProps extends RNTextProps {
   style?: StyleProp<any>,
 }
 
