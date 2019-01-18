@@ -19,14 +19,13 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginLeft: 16,
     borderBottomWidth: 1,
     borderBottomColor: palette.gray[30],
   },
   content: {
     flex: 1,
     paddingVertical: 12,
-    paddingRight: 12,
+    paddingHorizontal: 16,
     justifyContent: 'center',
   },
   comment: {
@@ -68,7 +67,11 @@ class ArticleItem extends React.PureComponent<ArticleItemProps> {
       <Button onPress={this.onClick}>
         <View style={styles.container}>
           <View style={styles.content}>
-            <Text style={typography.body[1].black}>
+            <Text
+              numberOfLines={1}
+              ellipsizeMode="tail"
+              style={typography.body[1].black}
+            >
               {title}
             </Text>
             <Text style={typography.body[3].lightGray}>
