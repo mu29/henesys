@@ -64,8 +64,8 @@ class ArticleItem extends React.PureComponent<ArticleItemProps> {
     } = this.props
 
     return (
-      <Button onPress={this.onClick}>
-        <View style={styles.container}>
+      <View style={styles.container}>
+        <Button onPress={this.onClick}>
           <View style={styles.content}>
             <Text
               numberOfLines={1}
@@ -78,16 +78,16 @@ class ArticleItem extends React.PureComponent<ArticleItemProps> {
               {moment(createdAt).fromNow()}, {author}
             </Text>
           </View>
-          <View style={styles.comment}>
-            <Text style={typography.body[1].black}>
-              {commentCount}
-            </Text>
-            <Text style={typography.tiny[1].lightGray}>
-              댓글
-            </Text>
-          </View>
+        </Button>
+        <View style={styles.comment}>
+          <Text style={typography.body[1].black}>
+            {commentCount}
+          </Text>
+          <Text style={typography.tiny[1].lightGray}>
+            댓글
+          </Text>
         </View>
-      </Button>
+      </View>
     )
   }
 }
