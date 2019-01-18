@@ -1,18 +1,16 @@
 import cheerio from 'react-native-cheerio'
 
-const CHARACTER_INFO_URL = 'https://maplestory.nexon.com/Ranking/World'
+const CHARACTER_INFO_URL = 'https://maplestory.nexon.com/Ranking/World/Total'
 const INVEN_BASE_URL = 'http://m.inven.co.kr'
 
 export class Parser {
   getCharacterInfo = async (name: string) => {
     const $ = await this.parse(`${CHARACTER_INFO_URL}?c=${name}`)
-    const search = $('.search_com_chk')
-
-    search.find('td').eq(2).find('br').replaceWith('\n')
+    const search = $('tr.search_com_chk')
 
     return {
       name,
-      job: search.find('dd').eq(0).text().split('/')[1],
+      job: search.find('dd').eq(0).text().split('/')[1].trim(),
       level: parseInt((search.find('td').eq(2).text().match(/\d+/) || ['0'])[0], 10),
       imageUrl: search.find('.char_img').find('img').attr('src').replace('http:', 'https:').replace('/180/', '/'),
     }
