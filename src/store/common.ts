@@ -175,7 +175,7 @@ export function bindAsyncAction<P, R>(
         }
         return result
       } catch (error) {
-        yield put(actionCreator.failure({ params, error }))
+        yield put(actionCreator.failure({ params, error: error.message }))
         if (onError) {
           yield onError(params, error)
         }

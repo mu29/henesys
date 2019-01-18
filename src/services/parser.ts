@@ -27,7 +27,7 @@ export class Parser {
       href: $(article).find('.subject').eq(0).attr('href'),
       viewCount: Number($(article).find('.hit').eq(0).text().replace('조회:', '')),
       commentCount: Number($(article).find('.cmtWrapForList').eq(0).text() || 0),
-      createdAt: new Date($(article).find('.postdate').find('span').attr('title')),
+      createdAt: $(article).find('.postdate').find('span').attr('title'),
     })).toArray()
   }
 

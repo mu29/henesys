@@ -10,7 +10,7 @@ export interface Article {
   href: string,
   viewCount: number,
   commentCount: number,
-  createdAt: Date,
+  createdAt: string,
 }
 
 export type ArticleState = {

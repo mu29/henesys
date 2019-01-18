@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
 const CommunityScreen: React.FunctionComponent<{}> = () => (
   <View style={styles.container}>
     <Header title="커뮤니티" />
-    <ArticleList />
+    <ArticleList board={2299} />
   </View>
 )
 
