@@ -3,6 +3,7 @@ import {
   createBottomTabNavigator,
   createSwitchNavigator,
   createStackNavigator,
+  NavigationScreenConfigProps,
 } from 'react-navigation'
 import { Icon } from 'src/components'
 import {
@@ -10,6 +11,7 @@ import {
   StatsScreen,
   CommunityScreen,
   SettingsScreen,
+  ArticleScreen,
   AddCharacterScreen,
   EditScreen,
   WebViewScreen,
@@ -57,9 +59,43 @@ const MainTab = createBottomTabNavigator({
   },
 })
 
+const MainStack = createStackNavigator({
+  MainTab: {
+    screen: MainTab,
+    navigationOptions: {
+      header: null,
+      headerStyle: {
+        borderBottomWidth: 0,
+        shadowRadius: 0,
+        shadowOffset: {
+          height: 0,
+        },
+      },
+    },
+  },
+  Article: {
+    screen: ArticleScreen,
+    navigationOptions: {
+      headerTintColor: palette.gray[90],
+      headerStyle: {
+        borderBottomWidth: 0,
+        shadowRadius: 0,
+        shadowOffset: {
+          height: 0,
+        },
+      },
+      headerLeftContainerStyle: {
+        paddingLeft: 8,
+      },
+    },
+  },
+}, {
+  headerBackTitleVisible: false,
+})
+
 const AppSwitch = createSwitchNavigator({
   Welcome: WelcomeScreen,
-  Main: MainTab,
+  Main: MainStack,
   Create: AddCharacterScreen,
 }, {
   initialRouteName: 'Welcome',

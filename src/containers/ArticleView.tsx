@@ -1,8 +1,4 @@
 import React from 'react'
-import {
-  withNavigation,
-  NavigationInjectedProps,
-} from 'react-navigation'
 import { Dispatch, Action } from 'redux'
 import { connect } from 'react-redux'
 import { ArticleView } from 'src/components'
@@ -16,30 +12,22 @@ import {
   getArticle,
 } from 'src/store/selectors'
 
-export interface ArticleViewContainerProps extends NavigationInjectedProps {}
+export interface ArticleViewContainerProps {
+  board: number,
+  id: number,
+}
 
 const ArticleViewContainer: React.FunctionComponent<ArticleViewProps> = props => (
   <ArticleView { ...props } />
 )
 
-const mapStateToProps = (state: AppState, { navigation }: ArticleViewContainerProps) => {
-  const { params = {} } = navigation.state
+const mapStateToProps = (state: AppState, { board, id }: ArticleViewContainerProps) => ({
+  article: getArticle(state, board, id),
+  isLoading: getIsLoading(state.loading, getArticleInfoActions.type),
+})
 
-  return {
-    article: getArticle(state, 14130), // params.id),
-    isLoading: getIsLoading(state.loading, getArticleInfoActions.type),
-  }
-}
+const mapDispatchToProps = (dispatch: Dispatch<Action>, { board, id }: ArticleViewContainerProps) => ({
+  fetchArticle: () => dispatch(getArticleInfoActions.request({ board, id })),
+})
 
-const mapDispatchToProps = (dispatch: Dispatch<Action>, { navigation }: ArticleViewContainerProps) => {
-  const { params = {} } = navigation.state
-
-  return {
-    fetchArticle: () => dispatch(getArticleInfoActions.request({
-      board: 2304, // params.board,
-      id: 14130, // params.id,
-    })),
-  }
-}
-
-export default withNavigation(connect(mapStateToProps, mapDispatchToProps)(ArticleViewContainer))
+export default connect(mapStateToProps, mapDispatchToProps)(ArticleViewContainer)

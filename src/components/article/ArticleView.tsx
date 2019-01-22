@@ -1,14 +1,9 @@
 import React from 'react'
 import moment from 'moment'
 import {
-  withNavigation,
-  NavigationInjectedProps,
-} from 'react-navigation'
-import {
   View,
   StyleSheet,
   WebView,
-  NavState,
   ScrollView,
   NativeSyntheticEvent,
   WebViewMessageEventData,
@@ -17,16 +12,23 @@ import {
   Text,
   Button,
 } from 'src/components'
+import { withTopDivider } from 'src/wrappers'
 import { Article } from 'src/store/selectors'
 import { typography, palette } from 'src/styles'
+
+const DividedScrollView = withTopDivider(ScrollView)
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: palette.white.default,
   },
+  contentContainer: {
+    paddingBottom: 16,
+  },
   header: {
     padding: 16,
+    paddingTop: 8,
     borderBottomWidth: 1,
     borderBottomColor: palette.gray[30],
   },
@@ -34,13 +36,13 @@ const styles = StyleSheet.create({
     marginRight: 8,
   },
   info: {
-    marginTop: 2,
+    marginTop: 4,
+    marginHorizontal: 2,
     flexDirection: 'row',
     alignItems: 'center',
   },
   content: {
-    paddingVertical: 16,
-    paddingHorizontal: 12,
+    padding: 8,
   },
 })
 
@@ -65,7 +67,7 @@ img {
   margin-bottom: 16px;
 }
 div {
-  font-size: 28px;
+  font-size: 16px;
   line-height: 1.2;
 }
 font[size = "1"] {
@@ -98,8 +100,10 @@ br {
 </style>
 `
 
-export interface ArticleViewProps extends NavigationInjectedProps {
-  article: Article | undefined,
+export interface ArticleViewProps {
+  id: number,
+  board: number,
+  article: Article,
   isLoading: boolean,
   fetchArticle: () => void,
 }
@@ -123,7 +127,7 @@ class ArticleView extends React.PureComponent<ArticleViewProps> {
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         ${SCRIPT_AND_STYLE}
         <body>
-          ${this.props.article && this.props.article.content}
+          ${this.props.article.content || ''}
         </body>
       </html>
     `,
@@ -142,9 +146,12 @@ class ArticleView extends React.PureComponent<ArticleViewProps> {
     }
 
     return (
-      <View style={styles.container}>
+      <DividedScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
         <View style={styles.header}>
-          <Text style={typography.heading[1].black.bold}>
+          <Text
+            numberOfLines={2}
+            style={typography.heading[1].black.bold}
+          >
             {article.title}
           </Text>
           <View style={styles.info}>
@@ -156,19 +163,19 @@ class ArticleView extends React.PureComponent<ArticleViewProps> {
             </Text>
           </View>
         </View>
-        <ScrollView style={styles.content} contentContainerStyle={{ paddingBottom: 16 }}>
+        <View style={styles.content}>
           <WebView
             source={this._getArticleContent()}
             onMessage={this._onMessage}
-            style={{ height: contentHeight || 300 }}
+            style={{ height: contentHeight, padding: 12 }}
             scrollEnabled={false}
             javaScriptEnabled
             domStorageEnabled
           />
-        </ScrollView>
-      </View>
+        </View>
+      </DividedScrollView>
     )
   }
 }
 
-export default withNavigation(ArticleView)
+export default ArticleView

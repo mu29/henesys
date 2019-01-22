@@ -89,8 +89,8 @@ class ArticleList extends React.PureComponent<ArticleListProps, ArticleListState
         ListFooterComponent={this._renderLoading}
         refreshControl={
           <RefreshControl
-            colors={[palette.primary.extraLight]}
-            tintColor={palette.primary.extraLight}
+            colors={[palette.primary.light]}
+            tintColor={palette.primary.light}
             refreshing={isRefreshing && isLoading}
             onRefresh={this._onRefresh}
           />

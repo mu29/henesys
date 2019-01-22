@@ -33,6 +33,7 @@ export { default as MissionItem } from './mission/MissionItem'
 export { default as MissionList } from './mission/MissionList'
 
 export { default as AddCharacterScreen } from './screens/AddCharacterScreen'
+export { default as ArticleScreen } from './screens/ArticleScreen'
 export { default as CommunityScreen } from './screens/CommunityScreen'
 export { default as EditScreen } from './screens/EditScreen'
 export { default as MissionScreen } from './screens/MissionScreen'

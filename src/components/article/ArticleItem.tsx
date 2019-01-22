@@ -42,14 +42,17 @@ export interface ArticleItemProps extends Partial<NavigationInjectedProps> {
 }
 
 class ArticleItem extends React.PureComponent<ArticleItemProps> {
-  onClick = () => {
+  _onPress = () => {
     const {
-      article: { id },
+      article,
       navigation,
     } = this.props
 
     if (navigation) {
-      navigation.push('PostView', { id })
+      navigation.push('Article', {
+        board: article.board,
+        id: article.id,
+      })
     }
   }
 
@@ -66,7 +69,7 @@ class ArticleItem extends React.PureComponent<ArticleItemProps> {
     return (
       <View style={styles.container}>
         <Button
-          onPress={this.onClick}
+          onPress={this._onPress}
           style={styles.content}
         >
           <View>
