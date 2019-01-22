@@ -47,4 +47,4 @@ const AddCharacterScreen: React.FunctionComponent<NavigationInjectedProps> = ({
   )
 }
 
-export default withSafeArea(withNavigation(AddCharacterScreen))
+export default withSafeArea(withNavigation(React.memo(AddCharacterScreen)))

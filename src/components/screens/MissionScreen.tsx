@@ -54,4 +54,4 @@ class MissionScreen extends React.PureComponent<NavigationInjectedProps> {
   }
 }
 
-export default withSafeArea(withNavigation(MissionScreen))
+export default withSafeArea(withNavigation(React.memo(MissionScreen)))

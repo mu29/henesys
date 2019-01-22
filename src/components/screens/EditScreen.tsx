@@ -37,4 +37,4 @@ const EditScreen: React.FunctionComponent<NavigationInjectedProps> = ({
   </View>
 )
 
-export default withSafeArea(withNavigation(EditScreen))
+export default withSafeArea(withNavigation(React.memo(EditScreen)))
