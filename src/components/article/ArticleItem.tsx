@@ -65,8 +65,11 @@ class ArticleItem extends React.PureComponent<ArticleItemProps> {
 
     return (
       <View style={styles.container}>
-        <Button onPress={this.onClick}>
-          <View style={styles.content}>
+        <Button
+          onPress={this.onClick}
+          style={styles.content}
+        >
+          <View>
             <Text
               numberOfLines={1}
               ellipsizeMode="tail"
