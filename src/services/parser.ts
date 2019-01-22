@@ -26,6 +26,7 @@ export class Parser {
       author: $(article).find('.writer').eq(0).text().replace(/Lv\.\d+/, '').trim(),
       href: $(article).find('.subject').eq(0).attr('href'),
       viewCount: Number($(article).find('.hit').eq(0).text().replace('조회:', '')),
+      voteCount: Number($(article).find('.req').eq(0).text().replace('추천:', '')),
       commentCount: Number($(article).find('.cmtWrapForList').eq(0).text() || 0),
       createdAt: $(article).find('.postdate').find('span').attr('title'),
     })).toArray()

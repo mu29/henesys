@@ -9,6 +9,7 @@ export interface Article {
   author: string,
   href: string,
   viewCount: number,
+  voteCount: number,
   commentCount: number,
   createdAt: string,
 }
