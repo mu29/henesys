@@ -6,6 +6,7 @@ import { Article } from './selectors'
 const actionCreator = actionCreatorFactory('Article')
 
 export type GetArticleInfoParams = {
+  board: number;
   id: number;
 }
 export type GetArticleInfoResult = Article

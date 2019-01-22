@@ -10,8 +10,8 @@ import {
 } from './actions'
 
 const getArticleInfoWorker = bindAsyncAction(getArticleInfoActions)(
-  function*({ id }: GetArticleInfoParams, { parser }: Services): SagaIterator {
-    const result = yield call(parser.getArticleInfo, id)
+  function*({ board, id }: GetArticleInfoParams, { parser }: Services): SagaIterator {
+    const result = yield call(parser.getArticleInfo, board, id)
     return result
   },
 )
