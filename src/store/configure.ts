@@ -20,7 +20,13 @@ export const sagaMiddleware = createSagaMiddleware()
 const rootPersistConfig = {
   key: 'henesys',
   storage,
-  whitelist: ['account', 'character', 'entity'],
+  whitelist: ['account', 'character'],
+}
+
+const entityPersistConfig = {
+  key: 'entity',
+  storage,
+  blacklist: ['articles'],
 }
 
 const missionPersistConfig = {
@@ -41,6 +47,7 @@ export default function configureStore(
   ]
   const rootReducer = combineReducers({
     ...reducers,
+    entity: persistReducer(entityPersistConfig, reducers.entity),
     mission: persistReducer(missionPersistConfig, reducers.mission),
   })
   const persistedReducer = persistReducer(rootPersistConfig, rootReducer)
