@@ -84,6 +84,11 @@ export default {
       },
     },
     3: {
+      gray: {
+        fontSize: 12,
+        color: palette.gray[70],
+        lineHeight: 16,
+      },
       lightGray: {
         fontSize: 12,
         color: palette.gray[60],

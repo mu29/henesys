@@ -9,6 +9,7 @@ export { default as AccountInfo } from './account/AccountInfo'
 
 export { default as ArticleItem } from './article/ArticleItem'
 export { default as ArticleList } from './article/ArticleList'
+export { default as ArticleView } from './article/ArticleView'
 
 export { default as Button } from './base/Button'
 export { default as Divider } from './base/Divider'

@@ -4,7 +4,7 @@ import {
   StyleSheet,
 } from 'react-native'
 import { Header } from 'src/components'
-import { ArticleList } from 'src/containers'
+import { ArticleList, ArticleView } from 'src/containers'
 import { withSafeArea } from 'src/wrappers'
 
 const styles = StyleSheet.create({
@@ -15,8 +15,9 @@ const styles = StyleSheet.create({
 
 const CommunityScreen: React.FunctionComponent<{}> = () => (
   <View style={styles.container}>
-    <Header title="커뮤니티" />
-    <ArticleList board={2299} />
+    {/* <Header title="커뮤니티" /> */}
+    <ArticleView />
+    {/* <ArticleList board={2299} /> */}
   </View>
 )
 
