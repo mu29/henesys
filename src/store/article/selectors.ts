@@ -4,6 +4,7 @@ import { AppState, getEntity } from 'src/store/selectors'
 import { articleSchema } from '../schemas'
 
 export interface Article {
+  board: number,
   id: number,
   title: string,
   author: string,
@@ -30,14 +31,14 @@ export default initialState
 
 export const getArticles = (state: AppState) => getEntity(state).articles
 
-export const getArticleIds = (state: AppState, board: number) => state.article.boards[board]
+export const getArticleIds = (state: AppState, board: number) => state.article.boards[board] || []
 
 export const getArticle = createSelector(
-  [getEntity, (_: AppState, id: number) => id],
+  [getEntity, (_: AppState, board: number, id: number) => `${board}-${id}`],
   (entities, id) => denormalize(id, articleSchema, entities),
 )
 
 export const getArticleList = createSelector(
-  [getEntity, getArticleIds],
-  (entities, ids) => denormalize(ids, [articleSchema], entities),
+  [getEntity, getArticleIds, (_: AppState, board: number) => board],
+  (entities, ids, board) => denormalize(ids.map(id => `${board}-${id}`), [articleSchema], entities),
 )
