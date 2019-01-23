@@ -42,7 +42,16 @@ function awaitPostMessage() {
 
 window.onload = function() {
   awaitPostMessage();
-  window.postMessage(String(document.body.scrollHeight));
+
+  var height = Math.min.apply(Math, [
+    window.innerHeight,
+    document.documentElement.clientHeight,
+    document.documentElement.scrollHeight,
+    document.body.clientHeight,
+    document.body.scrollHeight
+  ].filter(Boolean));
+
+  window.postMessage(String(height));
 }
 </script>
 `
@@ -111,8 +120,8 @@ class HtmlView extends React.PureComponent<HtmlViewProps, HtmlViewState> {
       <html>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         ${STYLE}
+        ${SCRIPT}
         <body>
-          ${SCRIPT}
           <div>
             ${this.props.content}
           </div>

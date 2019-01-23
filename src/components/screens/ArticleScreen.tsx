@@ -22,12 +22,12 @@ const ArticleScreen: React.FunctionComponent<NavigationInjectedProps> = ({
     return null
   }
 
-  const id = navigation.state.params.id
   const board = navigation.state.params.board
+  const id = navigation.state.params.id
 
   return (
     <View style={styles.container}>
-      <ArticleView id={id} board={board} />
+      <ArticleView board={board} id={id} />
     </View>
   )
 }

@@ -2,7 +2,9 @@ import React from 'react'
 import {
   View,
   StyleSheet,
+  Dimensions,
 } from 'react-native'
+import HTML from 'react-native-render-html'
 import {
   Text,
   HtmlView,
@@ -10,17 +12,17 @@ import {
 import { Comment } from 'src/store/selectors'
 import { palette, typography } from 'src/styles'
 
+const MAX_WIDTH = Dimensions.get('window').width - 32
+
 const styles = StyleSheet.create({
   container: {
     marginVertical: 8,
-    padding: 4,
+    padding: 12,
     borderRadius: 8,
     backgroundColor: palette.white.default,
   },
   title: {
     fontSize: 14,
-    paddingTop: 4,
-    paddingHorizontal: 8,
   },
   content: {
     flex: 1,
@@ -41,7 +43,7 @@ const CommentItem: React.FunctionComponent<CommentItemProps> = ({ comment }) => 
       {comment.author}
     </Text>
     <View style={styles.content}>
-      <HtmlView content={`<font size="1">${comment.content}</font>`} />
+      <HTML html={comment.content} imagesMaxWidth={MAX_WIDTH} />
     </View>
   </View>
 )

@@ -4,15 +4,18 @@ import {
   View,
   ScrollView,
   StyleSheet,
+  Dimensions,
 } from 'react-native'
-import {
-  Text,
-  HtmlView,
-} from 'src/components'
+import HTML from 'react-native-render-html'
+import { Text } from 'src/components'
 import { CommentList } from 'src/containers'
 import { withTopDivider } from 'src/wrappers'
 import { Article } from 'src/store/selectors'
 import { typography, palette } from 'src/styles'
+
+const MAX_WIDTH = Dimensions.get('window').width - 32
+
+const BASE_FONT_STYLE = { fontSize: 16 }
 
 const DividedScrollView = withTopDivider(ScrollView)
 
@@ -38,7 +41,7 @@ const styles = StyleSheet.create({
   },
   content: {
     flex: 1,
-    padding: 8,
+    padding: 16,
     overflow: 'hidden',
   },
 })
@@ -79,7 +82,13 @@ class ArticleView extends React.PureComponent<ArticleViewProps> {
             </View>
           </View>
           <View style={styles.content}>
-            {article.content && <HtmlView content={article.content} />}
+            {article.content && (
+              <HTML
+                html={article.content}
+                imagesMaxWidth={MAX_WIDTH}
+                baseFontStyle={BASE_FONT_STYLE}
+              />
+            )}
           </View>
           <CommentList
             board={article.board}
