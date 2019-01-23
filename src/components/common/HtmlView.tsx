@@ -63,27 +63,27 @@ div {
   line-height: 1.2;
 }
 font[size = "1"] {
-  font-size: 24px;
+  font-size: 14px;
   line-height: 1.2;
 }
 font[size = "2"] {
-  font-size: 28px;
+  font-size: 16px;
   line-height: 1.2;
 }
 font[size = "3"] {
-  font-size: 32px;
+  font-size: 18px;
   line-height: 1.2;
 }
 font[size = "4"] {
-  font-size: 36px;
+  font-size: 20px;
   line-height: 1.2;
 }
 font[size = "5"] {
-  font-size: 40px;
+  font-size: 22px;
   line-height: 1.2;
 }
 font[size = "6"] {
-  font-size: 44px;
+  font-size: 24px;
   line-height: 1.2;
 }
 br {
