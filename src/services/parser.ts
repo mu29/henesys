@@ -69,7 +69,7 @@ export class Parser {
     }).then(r => r.text())
 
     const parseComment = (_: number, comment: CheerioElement) => ({
-      id: Number($(comment).attr('cmtidx')),
+      id: `${$(comment).attr('cmtpidx')}-${$(comment).attr('cmtidx')}`,
       author: $(comment).find('o_name').eq(0).text(),
       content: $(comment).find('o_comment').eq(0).text(),
       voteCount: Number($(comment).find('o_recommend').eq(0).text()),

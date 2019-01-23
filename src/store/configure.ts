@@ -26,7 +26,7 @@ const rootPersistConfig = {
 const entityPersistConfig = {
   key: 'entity',
   storage,
-  blacklist: ['articles'],
+  blacklist: ['articles', 'comments'],
 }
 
 const missionPersistConfig = {
