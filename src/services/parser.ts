@@ -40,7 +40,6 @@ export class Parser {
     const $ = await this.parse(`${INVEN_BASE_URL}/board/powerbbs.php?come_idx=${board}&l=${id}`)
     const info = $('div.articleSubject')
     const content = $('div.articleContent').html()
-    const comments = await this.getCommentList(board, id)
 
     return {
       board,
@@ -52,11 +51,10 @@ export class Parser {
       commentCount: Number($(info).find('.comment').eq(0).text().replace('댓글:', '').replace('개', '').trim()),
       createdAt: $(info).find('.postdate').find('span').eq(1).text(),
       content,
-      comments,
     }
   }
 
-  getCommentList = async (board: number, id: number) => {
+  getCommentList = async (board: number, id: number, page: number) => {
     const comments = await fetch(`${INVEN_BASE_URL}/common/board/comment.xml.php`, {
       method: 'POST',
       headers: {
@@ -66,17 +64,24 @@ export class Parser {
         comeidx: board,
         articlecode: id,
         sortorder: 'date',
+        titles: page * 100,
       }),
     }).then(r => r.text())
 
-    const $ = cheerio.load(comments)
-
-    return $('item').map((_, comment) => ({
+    const parseComment = (_: number, comment: CheerioElement) => ({
+      id: Number($(comment).attr('cmtidx')),
       author: $(comment).find('o_name').eq(0).text(),
       content: $(comment).find('o_comment').eq(0).text(),
       voteCount: Number($(comment).find('o_recommend').eq(0).text()),
       createdAt: $(comment).find('o_date').eq(0).text(),
-    })).toArray()
+      isReply: $(comment).attr('cmtidx') !== $(comment).attr('cmtpidx'),
+    })
+    const $ = cheerio.load(comments)
+
+    return [
+      ...$('bestitem').map(parseComment).toArray().map(c => Object.assign(c, { best: true })),
+      ...$('item').map(parseComment).toArray(),
+    ]
   }
 
   parse = (url: string) => fetch(url)
