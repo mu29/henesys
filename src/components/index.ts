@@ -25,6 +25,7 @@ export { default as EnsureCharacterView } from './character/EnsureCharacterView'
 export { default as SelectableCharacterInfo } from './character/SelectableCharacterInfo'
 
 export { default as Header } from './common/Header'
+export { default as HtmlView } from './common/HtmlView'
 export { default as LoadingView } from './common/LoadingView'
 export { default as Section } from './common/Section'
 
