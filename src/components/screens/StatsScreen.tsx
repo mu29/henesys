@@ -7,7 +7,10 @@ import {
   Header,
   StatsView,
 } from 'src/components'
-import { SwapButton } from 'src/containers'
+import {
+  CharacterSelectModal,
+  SwapButton,
+} from 'src/containers'
 import { withSafeArea } from 'src/wrappers'
 
 const styles = StyleSheet.create({
@@ -25,6 +28,7 @@ const StatsScreen: React.FunctionComponent<{}> = () => (
       <SwapButton />
     </Header>
     <StatsView />
+    <CharacterSelectModal />
   </View>
 )
 
