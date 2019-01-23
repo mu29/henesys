@@ -7,6 +7,9 @@ export { default as Carousel } from 'react-native-snap-carousel'
 
 export { default as AccountInfo } from './account/AccountInfo'
 
+export { default as CommentItem } from './comment/CommentItem'
+export { default as CommentList } from './comment/CommentList'
+
 export { default as ArticleItem } from './article/ArticleItem'
 export { default as ArticleList } from './article/ArticleList'
 export { default as ArticleView } from './article/ArticleView'

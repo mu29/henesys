@@ -9,6 +9,7 @@ import {
   Text,
   HtmlView,
 } from 'src/components'
+import { CommentList } from 'src/containers'
 import { withTopDivider } from 'src/wrappers'
 import { Article } from 'src/store/selectors'
 import { typography, palette } from 'src/styles'
@@ -19,9 +20,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: palette.white.default,
-  },
-  contentContainer: {
-    paddingBottom: 16,
   },
   header: {
     padding: 16,
@@ -62,8 +60,8 @@ class ArticleView extends React.PureComponent<ArticleViewProps> {
     const { article } = this.props
 
     return (
-      <DividedScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
-        <View style={styles.container}>
+      <DividedScrollView style={styles.container}>
+        <View>
           <View style={styles.header}>
             <Text
               numberOfLines={2}
@@ -83,6 +81,11 @@ class ArticleView extends React.PureComponent<ArticleViewProps> {
           <View style={styles.content}>
             {article.content && <HtmlView content={article.content} />}
           </View>
+          <CommentList
+            board={article.board}
+            article={article.id}
+            count={article.commentCount}
+          />
         </View>
       </DividedScrollView>
     )
