@@ -14,24 +14,18 @@ export interface Article {
   voteCount: number,
   commentCount: number,
   createdAt: string,
-  comments: any[],
 }
 
 export type ArticleState = {
-  boards: {
-    [board: number]: number[];
-  };
+  [board: number]: number[];
 }
 
 const initialState: ArticleState = {
-  boards: {},
 }
 
 export default initialState
 
-export const getArticles = (state: AppState) => getEntity(state).articles
-
-export const getArticleIds = (state: AppState, board: number) => state.article.boards[board] || []
+export const getArticleIds = (state: AppState, board: number) => state.article[board] || []
 
 export const getArticle = createSelector(
   [getEntity, (_: AppState, board: number, id: number) => `${board}-${id}`],
