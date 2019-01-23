@@ -102,4 +102,4 @@ class ArticleItem extends React.PureComponent<ArticleItemProps> {
   }
 }
 
-export default withNavigation(React.memo(ArticleItem))
+export default withNavigation(ArticleItem)

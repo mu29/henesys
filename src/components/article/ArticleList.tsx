@@ -47,7 +47,7 @@ class ArticleList extends React.PureComponent<ArticleListProps, ArticleListState
     this._paginate()
   }
 
-  _paginate = () => this.setState(
+  _paginate = () => !this.props.isLoading && this.setState(
     ({ page }) => ({ page: page + 1 }),
     () => {
       const { paginate } = this.props
@@ -64,7 +64,7 @@ class ArticleList extends React.PureComponent<ArticleListProps, ArticleListState
     this._paginate()
   })
 
-  _keyExtractor = (item: Article) => `post-item-${item.id}`
+  _keyExtractor = (item: Article) => `article-item-${item.id}`
 
   _renderLoading = () => this.props.isLoading ? (
     <View style={styles.loading}>
