@@ -125,7 +125,7 @@ declare module 'react-native-render-html' {
       /**
        * HTML tags you don't want rendered, see [ignoring HTML content](https://github.com/archriss/react-native-render-html#ignoring-html-content)
        */
-      ingoredTags?: string[]
+      ignoredTags?: string[]
       /**
        * Allow render only certain CSS style properties and ignore every other. If you have some property both in `allowedStyles` and `ignoredStyles`, it will be ignored anyway.
        */

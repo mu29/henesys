@@ -6,7 +6,12 @@ import {
   ActivityIndicator,
   StyleSheet,
   Dimensions,
+  GestureResponderEvent,
 } from 'react-native'
+import {
+  withNavigation,
+  NavigationInjectedProps,
+} from 'react-navigation'
 import HTML from 'react-native-render-html'
 import { Text } from 'src/components'
 import { CommentList } from 'src/containers'
@@ -17,6 +22,14 @@ import { typography, palette } from 'src/styles'
 const MAX_WIDTH = Dimensions.get('window').width - 32
 
 const BASE_FONT_STYLE = { fontSize: 16 }
+
+const IGNORED_TAGS = ['br']
+
+const TAGS_STYLES = {
+  img: {
+    marginBottom: 4,
+  },
+}
 
 const DividedScrollView = withTopDivider(ScrollView)
 
@@ -54,7 +67,7 @@ const styles = StyleSheet.create({
   },
 })
 
-export interface ArticleViewProps {
+export interface ArticleViewProps extends Partial<NavigationInjectedProps> {
   id: number,
   board: number,
   article: Article,
@@ -65,6 +78,13 @@ export interface ArticleViewProps {
 class ArticleView extends React.PureComponent<ArticleViewProps> {
   componentWillMount() {
     this.props.fetchArticle()
+  }
+
+  _openLink = (_: GestureResponderEvent, url: string) => {
+    const { navigation } = this.props
+    if (navigation) {
+      navigation.push('WebView', { url })
+    }
   }
 
   _renderLoading = () => (
@@ -104,6 +124,9 @@ class ArticleView extends React.PureComponent<ArticleViewProps> {
                 html={article.content}
                 imagesMaxWidth={MAX_WIDTH}
                 baseFontStyle={BASE_FONT_STYLE}
+                ignoredTags={IGNORED_TAGS}
+                tagsStyles={TAGS_STYLES}
+                onLinkPress={this._openLink}
               />
             )}
           </View>
@@ -118,4 +141,4 @@ class ArticleView extends React.PureComponent<ArticleViewProps> {
   }
 }
 
-export default ArticleView
+export default withNavigation(ArticleView)

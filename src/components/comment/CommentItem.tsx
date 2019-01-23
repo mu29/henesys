@@ -3,12 +3,14 @@ import {
   View,
   StyleSheet,
   Dimensions,
+  GestureResponderEvent,
 } from 'react-native'
-import HTML from 'react-native-render-html'
 import {
-  Text,
-  HtmlView,
-} from 'src/components'
+  withNavigation,
+  NavigationInjectedProps,
+} from 'react-navigation'
+import HTML from 'react-native-render-html'
+import { Text } from 'src/components'
 import { Comment } from 'src/store/selectors'
 import { palette, typography } from 'src/styles'
 
@@ -34,19 +36,36 @@ const styles = StyleSheet.create({
   },
 })
 
-export interface CommentItemProps {
+export interface CommentItemProps extends Partial<NavigationInjectedProps> {
   comment: Comment,
 }
 
-const CommentItem: React.FunctionComponent<CommentItemProps> = ({ comment }) => (
-  <View style={[styles.container, comment.isReply && styles.reply]}>
-    <Text style={[typography.heading[3].black.bold, styles.title]}>
-      {comment.author}
-    </Text>
-    <View style={styles.content}>
-      <HTML html={comment.content} imagesMaxWidth={MAX_WIDTH - (comment.isReply ? 32 : 0)} />
-    </View>
-  </View>
-)
+class CommentItem extends React.PureComponent<CommentItemProps> {
+  _openLink = (_: GestureResponderEvent, url: string) => {
+    const { navigation } = this.props
+    if (navigation) {
+      navigation.push('WebView', { url })
+    }
+  }
 
-export default React.memo(CommentItem)
+  render() {
+    const { comment } = this.props
+
+    return (
+      <View style={[styles.container, comment.isReply && styles.reply]}>
+        <Text style={[typography.heading[3].black.bold, styles.title]}>
+          {comment.author}
+        </Text>
+        <View style={styles.content}>
+          <HTML
+            html={comment.content}
+            imagesMaxWidth={MAX_WIDTH - (comment.isReply ? 32 : 0)}
+            onLinkPress={this._openLink}
+          />
+        </View>
+      </View>
+    )
+  }
+}
+
+export default withNavigation(CommentItem)
