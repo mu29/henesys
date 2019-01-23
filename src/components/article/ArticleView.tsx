@@ -39,7 +39,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   content: {
+    flex: 1,
     padding: 8,
+    overflow: 'hidden',
   },
 })
 
@@ -61,24 +63,26 @@ class ArticleView extends React.PureComponent<ArticleViewProps> {
 
     return (
       <DividedScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
-        <View style={styles.header}>
-          <Text
-            numberOfLines={2}
-            style={typography.heading[1].black.bold}
-          >
-            {article.title}
-          </Text>
-          <View style={styles.info}>
-            <Text style={[typography.body[3].gray, styles.author]}>
-              {article.author}
+        <View style={styles.container}>
+          <View style={styles.header}>
+            <Text
+              numberOfLines={2}
+              style={typography.heading[1].black.bold}
+            >
+              {article.title}
             </Text>
-            <Text style={typography.body[3].lightGray}>
-              {moment(article.createdAt).fromNow()} · 추천 {article.voteCount} · 조회 {article.viewCount}
-            </Text>
+            <View style={styles.info}>
+              <Text style={[typography.body[3].gray, styles.author]}>
+                {article.author}
+              </Text>
+              <Text style={typography.body[3].lightGray}>
+                {moment(article.createdAt).fromNow()} · 추천 {article.voteCount} · 조회 {article.viewCount}
+              </Text>
+            </View>
           </View>
-        </View>
-        <View style={styles.content}>
-          <HtmlView content={article.content} />
+          <View style={styles.content}>
+            {article.content && <HtmlView content={article.content} />}
+          </View>
         </View>
       </DividedScrollView>
     )

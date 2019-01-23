@@ -1,31 +1,61 @@
 import React from 'react'
 import {
   WebView,
-  StyleSheet,
-  Dimensions,
+  Platform,
   ViewStyle,
   NativeSyntheticEvent,
   WebViewMessageEventData,
 } from 'react-native'
 
-const SCRIPT_AND_STYLE = `
+const SCRIPT = `
 <script>
-function waitForBridge() {
-  if (window.postMessage.length !== 1){
-    setTimeout(waitForBridge, 200);
-  } else {
-    window.postMessage(document.body.scrollHeight);
+function awaitPostMessage() {
+  var isReactNativePostMessageReady = !!window.originalPostMessage;
+  var queue = [];
+  var currentPostMessageFn = function store(message) {
+    if (queue.length > 100) queue.shift();
+    queue.push(message);
+  };
+  if (!isReactNativePostMessageReady) {
+    var originalPostMessage = window.postMessage;
+    Object.defineProperty(window, 'postMessage', {
+      configurable: true,
+      enumerable: true,
+      get: function () {
+        return currentPostMessageFn;
+      },
+      set: function (fn) {
+        currentPostMessageFn = fn;
+        isReactNativePostMessageReady = true;
+        setTimeout(sendQueue, 0);
+      }
+    });
+    window.postMessage.toString = function () {
+      return String(originalPostMessage);
+    };
+  }
+
+  function sendQueue() {
+    while (queue.length > 0) window.postMessage(queue.shift());
   }
 }
-window.onload = waitForBridge;
+
+window.onload = function() {
+  awaitPostMessage();
+  window.postMessage(String(document.body.scrollHeight));
+}
 </script>
+`
+
+const STYLE = `
 <style>
 body {
   font-family: 'Apple SD Gothic Neo', 'Noto Sans CJK';
-  background-color: '#FFFFFF',
+  background-color: '#FFFFFF';
+  overflow: hidden;
 }
 img {
-  width: 100%;
+  width: 100% !important;
   margin-bottom: 16px;
 }
 div {
@@ -62,14 +92,6 @@ br {
 </style>
 `
 
-const WINDOW_HEIGHT = Dimensions.get('window').height
-
-const styles = StyleSheet.create({
-  calculator: {
-    height: 0,
-  },
-})
-
 export interface HtmlViewProps {
   content: string,
   style?: ViewStyle,
@@ -81,16 +103,19 @@ export interface HtmlViewState {
 
 class HtmlView extends React.PureComponent<HtmlViewProps, HtmlViewState> {
   state = {
-    contentHeight: WINDOW_HEIGHT,
+    contentHeight: 0,
   }
 
   _getArticleContent = () => ({
     html: `
       <html>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        ${SCRIPT_AND_STYLE}
+        ${STYLE}
         <body>
-          ${this.props.content || ''}
+          ${SCRIPT}
+          <div>
+            ${this.props.content}
+          </div>
         </body>
       </html>
     `,
@@ -104,22 +129,20 @@ class HtmlView extends React.PureComponent<HtmlViewProps, HtmlViewState> {
     const { style } = this.props
     const { contentHeight: height } = this.state
 
-    return (
-      <React.Fragment>
-        <WebView
-          source={this._getArticleContent()}
-          onMessage={this._onMessage}
-          style={styles.calculator}
-          scrollEnabled={false}
-          javaScriptEnabled
-        />
-        <WebView
-          source={this._getArticleContent()}
-          style={[style, { height }]}
-          scrollEnabled={false}
-          javaScriptEnabled
-        />
-      </React.Fragment>
+    return height === 0 ? (
+      <WebView
+        source={this._getArticleContent()}
+        onMessage={this._onMessage}
+        scrollEnabled={false}
+        javaScriptEnabled
+      />
+    ) : (
+      <WebView
+        source={this._getArticleContent()}
+        style={[style, { height }]}
+        scrollEnabled={Platform.OS === 'android'}
+        javaScriptEnabled
+      />
     )
   }
 }

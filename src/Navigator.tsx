@@ -1,9 +1,9 @@
 import React from 'react'
+import { Platform } from 'react-native'
 import {
   createBottomTabNavigator,
   createSwitchNavigator,
   createStackNavigator,
-  NavigationScreenConfigProps,
 } from 'react-navigation'
 import { Icon } from 'src/components'
 import {
@@ -70,6 +70,7 @@ const MainStack = createStackNavigator({
         shadowOffset: {
           height: 0,
         },
+        elevation: 0,
       },
     },
   },
@@ -83,9 +84,10 @@ const MainStack = createStackNavigator({
         shadowOffset: {
           height: 0,
         },
+        elevation: 0,
       },
       headerLeftContainerStyle: {
-        paddingLeft: 8,
+        paddingLeft: Platform.OS === 'ios' ? 8 : 0,
       },
     },
   },
