@@ -6,6 +6,7 @@ import {
   ScrollViewProps,
 } from 'react-native'
 import { Divider } from 'src/components'
+import { palette } from 'src/styles'
 
 const styles = StyleSheet.create({
   contentContainer: {
@@ -25,7 +26,7 @@ function withTopDivider<T extends ScrollViewProps>(Component: React.ComponentTyp
       const { showDivider } = this.state
       return (
         <React.Fragment>
-          <Divider hidden={!showDivider} />
+          <Divider color={palette.gray[40]} hidden={!showDivider} />
           <Component
             onScroll={this._onScroll}
             scrollEventThrottle={160}
