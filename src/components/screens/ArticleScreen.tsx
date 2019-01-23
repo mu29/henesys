@@ -8,7 +8,6 @@ import {
   NavigationInjectedProps,
 } from 'react-navigation'
 import { ArticleView } from 'src/containers'
-import { withSafeArea } from 'src/wrappers'
 
 const styles = StyleSheet.create({
   container: {
@@ -33,4 +32,4 @@ const ArticleScreen: React.FunctionComponent<NavigationInjectedProps> = ({
   )
 }
 
-export default withSafeArea(withNavigation(React.memo(ArticleScreen)), { forceInset: { top: 'never' } })
+export default withNavigation(React.memo(ArticleScreen))
