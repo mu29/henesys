@@ -26,6 +26,9 @@ const styles = StyleSheet.create({
     flex: 1,
     overflow: 'hidden',
   },
+  reply: {
+    marginLeft: 32,
+  },
 })
 
 export interface CommentItemProps {
@@ -33,7 +36,7 @@ export interface CommentItemProps {
 }
 
 const CommentItem: React.FunctionComponent<CommentItemProps> = ({ comment }) => (
-  <View style={styles.container}>
+  <View style={[styles.container, comment.isReply && styles.reply]}>
     <Text style={[typography.heading[3].black.bold, styles.title]}>
       {comment.author}
     </Text>

@@ -24,12 +24,12 @@ const styles = StyleSheet.create({
   header: {
     paddingVertical: 12,
     paddingHorizontal: 16,
-    borderBottomWidth: 1,
-    borderBottomColor: palette.gray[40],
   },
   content: {
     padding: 16,
     paddingTop: 8,
+    borderTopWidth: 1,
+    borderTopColor: palette.gray[40],
   },
   loading: {
     justifyContent: 'center',
@@ -99,7 +99,7 @@ class CommentList extends React.PureComponent<CommentListProps, CommentListState
           renderItem={this._renderItem}
           ListFooterComponent={this._renderLoading}
           showsVerticalScrollIndicator={false}
-          style={styles.content}
+          contentContainerStyle={count > 0 && styles.content}
         />
       </View>
     )
