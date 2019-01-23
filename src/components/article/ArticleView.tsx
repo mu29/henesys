@@ -3,6 +3,7 @@ import moment from 'moment'
 import {
   View,
   ScrollView,
+  ActivityIndicator,
   StyleSheet,
   Dimensions,
 } from 'react-native'
@@ -44,6 +45,10 @@ const styles = StyleSheet.create({
     padding: 16,
     overflow: 'hidden',
   },
+  loading: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
 })
 
 export interface ArticleViewProps {
@@ -59,8 +64,17 @@ class ArticleView extends React.PureComponent<ArticleViewProps> {
     this.props.fetchArticle()
   }
 
+  _renderLoading = () => (
+    <View style={styles.loading}>
+      <ActivityIndicator color={palette.primary.default} />
+    </View>
+  )
+
   render() {
-    const { article } = this.props
+    const {
+      article,
+      isLoading,
+    } = this.props
 
     return (
       <DividedScrollView style={styles.container}>
@@ -82,7 +96,7 @@ class ArticleView extends React.PureComponent<ArticleViewProps> {
             </View>
           </View>
           <View style={styles.content}>
-            {article.content && (
+            {isLoading || !article.content ? this._renderLoading() : (
               <HTML
                 html={article.content}
                 imagesMaxWidth={MAX_WIDTH}

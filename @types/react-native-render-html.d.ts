@@ -1,6 +1,6 @@
 declare module 'react-native-render-html' {
   import { ComponentType, ReactNode } from "react"
-  import { StyleProp, Text, View, GestureResponderEvent, RecursiveArray, Falsy } from "react-native"
+  import { StyleProp, Text, View, GestureResponderEvent, RecursiveArray, Falsy, TextStyle } from "react-native"
   namespace HTML {
     type HTMLNode = any
     type NonRegisteredStylesProp<T> = T | Falsy | RecursiveArray<T | Falsy>
