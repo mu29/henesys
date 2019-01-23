@@ -71,10 +71,7 @@ class ArticleView extends React.PureComponent<ArticleViewProps> {
   )
 
   render() {
-    const {
-      article,
-      isLoading,
-    } = this.props
+    const { article } = this.props
 
     return (
       <DividedScrollView style={styles.container}>
@@ -96,7 +93,7 @@ class ArticleView extends React.PureComponent<ArticleViewProps> {
             </View>
           </View>
           <View style={styles.content}>
-            {isLoading || !article.content ? this._renderLoading() : (
+            {!article.content ? this._renderLoading() : (
               <HTML
                 html={article.content}
                 imagesMaxWidth={MAX_WIDTH}

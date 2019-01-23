@@ -18,6 +18,7 @@ const styles = StyleSheet.create({
   container: {
     marginVertical: 8,
     padding: 12,
+    paddingTop: 10,
     borderRadius: 8,
     backgroundColor: palette.white.default,
   },
