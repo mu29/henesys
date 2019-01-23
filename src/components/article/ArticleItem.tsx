@@ -22,11 +22,15 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: palette.gray[30],
   },
+  button: {
+    flex: 1,
+  },
   content: {
     flex: 1,
     paddingVertical: 12,
     paddingHorizontal: 16,
     justifyContent: 'center',
+    marginRight: 'auto',
   },
   comment: {
     paddingVertical: 12,
@@ -70,9 +74,9 @@ class ArticleItem extends React.PureComponent<ArticleItemProps> {
       <View style={styles.container}>
         <Button
           onPress={this._onPress}
-          style={styles.content}
+          style={styles.button}
         >
-          <View>
+          <View style={styles.content}>
             <Text
               numberOfLines={1}
               ellipsizeMode="tail"
