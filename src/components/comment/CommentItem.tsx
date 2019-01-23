@@ -12,7 +12,7 @@ import {
 import { Comment } from 'src/store/selectors'
 import { palette, typography } from 'src/styles'
 
-const MAX_WIDTH = Dimensions.get('window').width - 32
+const MAX_WIDTH = Dimensions.get('window').width - 56
 
 const styles = StyleSheet.create({
   container: {
@@ -43,7 +43,7 @@ const CommentItem: React.FunctionComponent<CommentItemProps> = ({ comment }) => 
       {comment.author}
     </Text>
     <View style={styles.content}>
-      <HTML html={comment.content} imagesMaxWidth={MAX_WIDTH} />
+      <HTML html={comment.content} imagesMaxWidth={MAX_WIDTH - (comment.isReply ? 32 : 0)} />
     </View>
   </View>
 )
