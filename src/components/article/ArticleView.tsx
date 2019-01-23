@@ -25,6 +25,9 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: palette.white.default,
   },
+  contentContainer: {
+    paddingBottom: 0,
+  },
   header: {
     padding: 16,
     paddingTop: 8,
@@ -74,7 +77,10 @@ class ArticleView extends React.PureComponent<ArticleViewProps> {
     const { article } = this.props
 
     return (
-      <DividedScrollView style={styles.container}>
+      <DividedScrollView
+        style={styles.container}
+        contentContainerStyle={styles.contentContainer}
+      >
         <View>
           <View style={styles.header}>
             <Text
