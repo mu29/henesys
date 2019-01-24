@@ -39,7 +39,7 @@ export class Parser {
   getArticleInfo = async (board: number, id: number) => {
     const $ = await this.parse(`${INVEN_BASE_URL}/board/powerbbs.php?come_idx=${board}&l=${id}`)
     const info = $('div.articleSubject')
-    const content = $('div.articleContent').html()
+    const content = ($('div.articleContent').html() || '').replace('<br><br>', '<br>')
 
     return {
       board,

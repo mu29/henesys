@@ -23,14 +23,6 @@ const MAX_WIDTH = Dimensions.get('window').width - 32
 
 const BASE_FONT_STYLE = { fontSize: 16 }
 
-const IGNORED_TAGS = ['br']
-
-const TAGS_STYLES = {
-  img: {
-    marginBottom: 4,
-  },
-}
-
 const DividedScrollView = withTopDivider(ScrollView)
 
 const styles = StyleSheet.create({
@@ -124,8 +116,6 @@ class ArticleView extends React.PureComponent<ArticleViewProps> {
                 html={article.content}
                 imagesMaxWidth={MAX_WIDTH}
                 baseFontStyle={BASE_FONT_STYLE}
-                ignoredTags={IGNORED_TAGS}
-                tagsStyles={TAGS_STYLES}
                 onLinkPress={this._openLink}
               />
             )}
