@@ -137,6 +137,7 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-extra-dimensions-android')
     compile project(':react-native-firebase')
     compile project(':react-native-push-notification')
     compile project(':react-native-haptic-feedback')

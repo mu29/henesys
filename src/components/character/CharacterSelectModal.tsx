@@ -7,7 +7,10 @@ import {
   View,
   ScrollView,
   StyleSheet,
+  Platform,
+  Dimensions,
 } from 'react-native'
+import ExtraDimensions from 'react-native-extra-dimensions-android'
 import {
   Modal,
   Text,
@@ -15,6 +18,11 @@ import {
 } from 'src/components'
 import { SelectableCharacterInfo } from 'src/containers'
 import { palette, typography } from 'src/styles'
+
+const deviceWidth = Dimensions.get('window').width
+const deviceHeight = Platform.OS === 'ios'
+  ? Dimensions.get('window').height
+  : ExtraDimensions.get('REAL_WINDOW_HEIGHT')
 
 const styles = StyleSheet.create({
   container: {
@@ -66,11 +74,14 @@ class CharacterSelectModal extends React.PureComponent<CharacterSelectModalProps
       isVisible,
       close,
     } = this.props
+
     return (
       <Modal
         isVisible={isVisible}
         onBackdropPress={close}
         onBackButtonPress={close}
+        deviceWidth={deviceWidth}
+        deviceHeight={deviceHeight}
         useNativeDriver
       >
         <View style={styles.container}>

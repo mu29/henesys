@@ -3,6 +3,7 @@ package net.yeoubi.henesys;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import ca.jaysoo.extradimensions.ExtraDimensionsPackage;
 import io.invertase.firebase.RNFirebasePackage;
 import com.dieam.reactnativepushnotification.ReactNativePushNotificationPackage;
 import com.mkuczera.RNReactNativeHapticFeedbackPackage;
@@ -28,6 +29,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new ExtraDimensionsPackage(),
             new RNFirebasePackage(),
             new ReactNativePushNotificationPackage(),
             new RNReactNativeHapticFeedbackPackage(),
