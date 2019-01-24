@@ -4,7 +4,11 @@ import {
   StyleSheet,
 } from 'react-native'
 import { Header } from 'src/components'
-import { ArticleList, MenuButton } from 'src/containers'
+import {
+  ArticleList,
+  MenuButton,
+  MenuSelectModal,
+} from 'src/containers'
 import { withSafeArea } from 'src/wrappers'
 
 const styles = StyleSheet.create({
@@ -19,6 +23,7 @@ const CommunityScreen: React.FunctionComponent<{}> = () => (
       <MenuButton />
     </Header>
     <ArticleList board={2299} />
+    <MenuSelectModal />
   </View>
 )
 
