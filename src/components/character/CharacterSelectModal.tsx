@@ -82,7 +82,9 @@ class CharacterSelectModal extends React.PureComponent<CharacterSelectModalProps
         onBackButtonPress={close}
         deviceWidth={deviceWidth}
         deviceHeight={deviceHeight}
+        backdropOpacity={0.5}
         useNativeDriver
+        hideModalContentWhileAnimating
       >
         <View style={styles.container}>
           <View style={styles.header}>
