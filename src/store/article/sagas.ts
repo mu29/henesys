@@ -10,15 +10,15 @@ import {
 } from './actions'
 
 const getArticleInfoWorker = bindAsyncAction(getArticleInfoActions)(
-  function*({ board, id }: GetArticleInfoParams, { parser }: Services): SagaIterator {
-    const result = yield call(parser.getArticleInfo, board, id)
+  function*({ board, category, id }: GetArticleInfoParams, { parser }: Services): SagaIterator {
+    const result = yield call(parser.getArticleInfo, board, category, id)
     return result
   },
 )
 
 const getArticleListWorker = bindAsyncAction(getArticleListActions)(
-  function*({ board, page }: GetArticleListParams, { parser }: Services): SagaIterator {
-    const result = yield call(parser.getArticleList, board, page)
+  function*({ board, category, page }: GetArticleListParams, { parser }: Services): SagaIterator {
+    const result = yield call(parser.getArticleList, board, category, page)
     return result
   },
 )

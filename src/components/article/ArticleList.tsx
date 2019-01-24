@@ -35,6 +35,7 @@ export interface ArticleListProps {
 
 export interface ArticleListState {
   board: number,
+  category: string,
   page: number,
   isRefreshing: boolean,
 }
@@ -42,14 +43,16 @@ export interface ArticleListState {
 class ArticleList extends React.PureComponent<ArticleListProps, ArticleListState> {
   state = {
     board: this.props.board,
+    category: this.props.category,
     page: 0,
     isRefreshing: false,
   }
 
   static getDerivedStateFromProps(props: ArticleListProps, state: ArticleListState) {
-    if (props.board !== state.board) {
+    if (props.board !== state.board || props.category !== state.category) {
       return {
         board: props.board,
+        category: props.category,
         page: 0,
       }
     }

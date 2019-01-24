@@ -7,11 +7,13 @@ const actionCreator = actionCreatorFactory('Article')
 
 export type GetArticleInfoParams = {
   board: number;
+  category: string;
   id: number;
 }
 export type GetArticleInfoResult = Article
 export type GetArticleListParams = {
   board: number;
+  category: string;
   page: number;
 }
 export type GetArticleListResult = Article[]

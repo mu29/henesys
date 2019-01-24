@@ -17,10 +17,11 @@ const ArticleListContainer: React.FunctionComponent<ArticleListProps> = props =>
 )
 
 const mapStateToProps = (state: AppState) => {
-  const { board } = state.menu.current
+  const { board, category } = state.menu.current
   return {
-    board: board,
-    articles: getArticleList(state, board),
+    board,
+    category,
+    articles: getArticleList(state, board, category),
     isLoading: getIsLoading(state.loading, getArticleListActions.type),
   }
 }
@@ -28,9 +29,10 @@ const mapStateToProps = (state: AppState) => {
 const mapDispatchToProps = (dispatch: Dispatch<Action>) => ({
   paginate: (
     board: number,
+    category: string,
   ) => (
     page: number,
-  ) => dispatch(getArticleListActions.request({ board, page })),
+  ) => dispatch(getArticleListActions.request({ board, category, page })),
 })
 
 export default connect(
@@ -40,6 +42,6 @@ export default connect(
     ...stateProps,
     ...dispatchProps,
     ...ownProps,
-    paginate: dispatchProps.paginate(stateProps.board),
+    paginate: dispatchProps.paginate(stateProps.board, stateProps.category),
   }),
 )(ArticleListContainer)

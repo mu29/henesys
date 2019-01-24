@@ -17,8 +17,8 @@ export class Parser {
     }
   }
 
-  getArticleList = async (board: number, page: number) => {
-    const $ = await this.parse(`${INVEN_BASE_URL}/board/powerbbs.php?come_idx=${board}&p=${page}`)
+  getArticleList = async (board: number, category: string, page: number) => {
+    const $ = await this.parse(`${INVEN_BASE_URL}/board/powerbbs.php?come_idx=${board}&category=${category}&p=${page}`)
     const articles = $('li.articleSubject').not('.articleNotice')
 
     return articles
@@ -33,10 +33,10 @@ export class Parser {
         createdAt: $(article).find('.postdate').find('span').attr('title'),
       }))
       .toArray()
-      .map(article => Object.assign(article, { board }))
+      .map(article => Object.assign(article, { board, category }))
   }
 
-  getArticleInfo = async (board: number, id: number) => {
+  getArticleInfo = async (board: number, category: string, id: number) => {
     const $ = await this.parse(`${INVEN_BASE_URL}/board/powerbbs.php?come_idx=${board}&l=${id}`)
     const info = $('div.articleSubject')
     const content = ($('div.articleContent').html() || '')
@@ -46,6 +46,7 @@ export class Parser {
 
     return {
       board,
+      category,
       id,
       title: $(info).find('.title').eq(0).text().replace(/\[[가-힣\(\)]+\]/, '').trim(),
       author: $(info).find('.writer').eq(0).text().replace('글쓴이:', '').trim(),

@@ -53,10 +53,7 @@ class ArticleItem extends React.PureComponent<ArticleItemProps> {
     } = this.props
 
     if (navigation) {
-      navigation.push('Article', {
-        board: article.board,
-        id: article.id,
-      })
+      navigation.push('Article', article)
     }
   }
 

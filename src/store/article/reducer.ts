@@ -6,13 +6,17 @@ import initialState, { ArticleState } from './selectors'
 
 export default (state: ArticleState = initialState, action: Action): ArticleState => {
   if (isType(action, getArticleListActions.success)) {
-    const { board } = action.payload.params
+    const { board, category } = action.payload.params
+    const boardData = state[board] || {}
     return {
       ...state,
-      [board]: uniq([
-        ...(state[board] || []),
-        ...action.payload.result.map(article => article.id),
-      ]).sort((a, b) => b - a),
+      [board]: {
+        ...boardData,
+        [category]: uniq([
+          ...(boardData[category] || []),
+          ...action.payload.result.map(article => article.id),
+        ]).sort((a, b) => b - a),
+      },
     }
   }
 
