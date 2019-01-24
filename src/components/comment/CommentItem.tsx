@@ -24,6 +24,9 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     backgroundColor: palette.gray[20],
   },
+  best: {
+    backgroundColor: palette.primary.extraLight,
+  },
   title: {
     fontSize: 14,
   },
@@ -52,7 +55,7 @@ class CommentItem extends React.PureComponent<CommentItemProps> {
     const { comment } = this.props
 
     return (
-      <View style={[styles.container, comment.isReply && styles.reply]}>
+      <View style={[styles.container, comment.isReply && styles.reply, comment.best && styles.best]}>
         <Text style={[typography.heading[3].black.bold, styles.title]}>
           {comment.author}
         </Text>
