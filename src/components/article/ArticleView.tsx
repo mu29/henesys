@@ -23,6 +23,8 @@ const MAX_WIDTH = Dimensions.get('window').width - 32
 
 const BASE_FONT_STYLE = { fontSize: 16 }
 
+const IGNORE_STYLES = ['font-family', 'line-height']
+
 const DividedScrollView = withTopDivider(ScrollView)
 
 const styles = StyleSheet.create({
@@ -116,6 +118,7 @@ class ArticleView extends React.PureComponent<ArticleViewProps> {
                 html={article.content}
                 imagesMaxWidth={MAX_WIDTH}
                 baseFontStyle={BASE_FONT_STYLE}
+                ignoredStyles={IGNORE_STYLES}
                 onLinkPress={this._openLink}
               />
             )}

@@ -24,7 +24,7 @@ export class Parser {
     return articles
       .map((_, article) => ({
         id: Number($(article).find('.subject').eq(0).attr('href').replace(/.*&l=/, '')),
-        title: $(article).find('.title').eq(0).text().replace(/\[[가-힣]+\]/, '').trim(),
+        title: $(article).find('.title').eq(0).text().replace(/\[[가-힣\(\)]+\]/, '').trim(),
         author: $(article).find('.writer').eq(0).text().replace(/Lv\.\d+/, '').trim(),
         href: $(article).find('.subject').eq(0).attr('href'),
         viewCount: Number($(article).find('.hit').eq(0).text().replace('조회:', '').trim()),
@@ -39,12 +39,14 @@ export class Parser {
   getArticleInfo = async (board: number, id: number) => {
     const $ = await this.parse(`${INVEN_BASE_URL}/board/powerbbs.php?come_idx=${board}&l=${id}`)
     const info = $('div.articleSubject')
-    const content = ($('div.articleContent').html() || '').replace('<br><br>', '<br>')
+    const content = ($('div.articleContent').html() || '')
+      .replace(/\<br\>\<br\>/g, '<br>')
+      .replace(/\<p\>\<\/p\>/g, '')
 
     return {
       board,
       id,
-      title: $(info).find('.title').eq(0).text().replace(/\[[가-힣]+\]/, '').trim(),
+      title: $(info).find('.title').eq(0).text().replace(/\[[가-힣\(\)]+\]/, '').trim(),
       author: $(info).find('.writer').eq(0).text().replace('글쓴이:', '').trim(),
       viewCount: Number($(info).find('.hit').eq(0).text().replace('조회:', '').trim()),
       voteCount: Number($(info).find('.req').eq(0).text().replace('추천:', '').trim()),
