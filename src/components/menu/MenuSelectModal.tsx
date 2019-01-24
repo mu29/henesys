@@ -142,7 +142,7 @@ class MenuSelectModal extends React.PureComponent<MenuSelectModalProps> {
               게시판 선택
             </Text>
             <Text style={typography.body[2].lightGray}>
-              열람할 게시판을 선택하세요.
+              열람할 게시판과 카테고리를 선택하세요.
             </Text>
           </View>
           <View>

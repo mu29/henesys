@@ -5,31 +5,20 @@ import {
   FlatList,
   StyleSheet,
 } from 'react-native'
-import {
-  Text,
-  CommentItem,
-} from 'src/components'
+import { CommentItem } from 'src/components'
 import { Comment } from 'src/store/selectors'
-import { palette, typography } from 'src/styles'
+import { palette } from 'src/styles'
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: palette.gray[20],
-    borderTopWidth: 1,
-    borderTopColor: palette.gray[40],
-    borderBottomWidth: 1,
-    borderBottomColor: palette.gray[40],
-  },
-  header: {
-    paddingVertical: 12,
-    paddingHorizontal: 16,
-  },
-  content: {
     padding: 16,
     paddingTop: 8,
     borderTopWidth: 1,
     borderTopColor: palette.gray[40],
+  },
+  empty: {
+    height: 1,
+    backgroundColor: palette.gray[40],
   },
   loading: {
     justifyContent: 'center',
@@ -84,24 +73,21 @@ class CommentList extends React.PureComponent<CommentListProps, CommentListState
   render() {
     const { comments, count } = this.props
 
+    if (count === 0) {
+      return <View style={styles.empty} />
+    }
+
     return (
-      <View style={styles.container}>
-        <View style={styles.header}>
-          <Text style={typography.body[2].black}>
-            {count}개의 댓글
-          </Text>
-        </View>
-        <FlatList
-          data={comments}
-          keyExtractor={this._keyExtractor}
-          onEndReached={this._paginate}
-          onEndReachedThreshold={10}
-          renderItem={this._renderItem}
-          ListFooterComponent={this._renderLoading}
-          showsVerticalScrollIndicator={false}
-          contentContainerStyle={count > 0 && styles.content}
-        />
-      </View>
+      <FlatList
+        data={comments}
+        keyExtractor={this._keyExtractor}
+        onEndReached={this._paginate}
+        onEndReachedThreshold={10}
+        renderItem={this._renderItem}
+        ListFooterComponent={this._renderLoading}
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={styles.container}
+      />
     )
   }
 }

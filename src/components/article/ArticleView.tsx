@@ -6,6 +6,7 @@ import {
   ActivityIndicator,
   StyleSheet,
   Dimensions,
+  Platform,
   GestureResponderEvent,
 } from 'react-native'
 import {
@@ -13,7 +14,10 @@ import {
   NavigationInjectedProps,
 } from 'react-navigation'
 import HTML from 'react-native-render-html'
-import { Text } from 'src/components'
+import {
+  Icon,
+  Text,
+} from 'src/components'
 import { CommentList } from 'src/containers'
 import { withTopDivider } from 'src/wrappers'
 import { Article } from 'src/store/selectors'
@@ -39,7 +43,7 @@ const styles = StyleSheet.create({
     padding: 16,
     paddingTop: 8,
     borderBottomWidth: 1,
-    borderBottomColor: palette.gray[30],
+    borderBottomColor: palette.gray[40],
   },
   author: {
     marginRight: 8,
@@ -54,6 +58,39 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 16,
     overflow: 'hidden',
+  },
+  reactions: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginHorizontal: 16,
+    paddingVertical: 8,
+    paddingHorizontal: 4,
+    borderTopWidth: 1,
+    borderTopColor: palette.gray[40],
+  },
+  vote: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  icon: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: 20,
+    height: 20,
+    marginRight: 4,
+    borderRadius: 20,
+    backgroundColor: palette.primary.default,
+    paddingTop: Platform.select({
+      ios: 1,
+      android: 0,
+    }),
+    paddingLeft: Platform.select({
+      ios: 0.5,
+      android: 0,
+    }),
+  },
+  reactionText: {
+    paddingTop: 2,
   },
   loading: {
     justifyContent: 'center',
@@ -122,6 +159,19 @@ class ArticleView extends React.PureComponent<ArticleViewProps> {
                 onLinkPress={this._openLink}
               />
             )}
+          </View>
+          <View style={styles.reactions}>
+            <View style={styles.vote}>
+              <View style={styles.icon}>
+                <Icon name="md-heart" size={12} color={palette.white.default} />
+              </View>
+              <Text style={[typography.body[3].gray, styles.reactionText]}>
+                {article.voteCount}
+              </Text>
+            </View>
+            <Text style={[typography.body[3].gray, styles.reactionText]}>
+              댓글 {article.commentCount}개
+            </Text>
           </View>
           <CommentList
             board={article.board}

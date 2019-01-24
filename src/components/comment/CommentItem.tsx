@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
     padding: 12,
     paddingTop: 10,
     borderRadius: 8,
-    backgroundColor: palette.white.default,
+    backgroundColor: palette.gray[20],
   },
   title: {
     fontSize: 14,

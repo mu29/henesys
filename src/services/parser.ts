@@ -42,6 +42,7 @@ export class Parser {
     const content = ($('div.articleContent').html() || '')
       .replace(/\<br\>\<br\>/g, '<br>')
       .replace(/\<p\>\<\/p\>/g, '')
+      .replace(/\<p\>\<br\>\<\/p\>/g, '')
 
     return {
       board,
