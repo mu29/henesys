@@ -27,24 +27,44 @@ const styles = StyleSheet.create({
 
 export interface ArticleListProps {
   board: number,
+  category: string,
   articles: Article[],
   isLoading: boolean,
   paginate: (page: number) => void,
 }
 
 export interface ArticleListState {
+  board: number,
   page: number,
   isRefreshing: boolean,
 }
 
 class ArticleList extends React.PureComponent<ArticleListProps, ArticleListState> {
   state = {
+    board: this.props.board,
     page: 0,
     isRefreshing: false,
   }
 
-  componentWillMount() {
+  static getDerivedStateFromProps(props: ArticleListProps, state: ArticleListState) {
+    if (props.board !== state.board) {
+      return {
+        board: props.board,
+        page: 0,
+      }
+    }
+
+    return null
+  }
+
+  componentDidMount() {
     this._paginate()
+  }
+
+  componentDidUpdate() {
+    if (this.state.page === 0) {
+      this._paginate()
+    }
   }
 
   _paginate = () => !this.props.isLoading && this.setState(

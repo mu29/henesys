@@ -22,7 +22,7 @@ const CommunityScreen: React.FunctionComponent<{}> = () => (
     <Header title="커뮤니티">
       <MenuButton />
     </Header>
-    <ArticleList board={2299} />
+    <ArticleList />
     <MenuSelectModal />
   </View>
 )

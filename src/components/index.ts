@@ -13,7 +13,6 @@ export { default as CommentList } from './comment/CommentList'
 export { default as ArticleItem } from './article/ArticleItem'
 export { default as ArticleList } from './article/ArticleList'
 export { default as ArticleView } from './article/ArticleView'
-export { default as MenuSelectModal } from './article/MenuSelectModal'
 
 export { default as Button } from './base/Button'
 export { default as Divider } from './base/Divider'
@@ -32,6 +31,9 @@ export { default as Header } from './common/Header'
 export { default as HtmlView } from './common/HtmlView'
 export { default as LoadingView } from './common/LoadingView'
 export { default as Section } from './common/Section'
+
+export { default as MenuSection } from './menu/MenuSection'
+export { default as MenuSelectModal } from './menu/MenuSelectModal'
 
 export { default as EditableMissionList } from './mission/EditableMissionList'
 export { default as MissionItem } from './mission/MissionItem'

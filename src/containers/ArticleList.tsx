@@ -12,21 +12,34 @@ import {
   getArticleList,
 } from 'src/store/selectors'
 
-export interface ArticleListContainerProps {
-  board: number,
-}
-
 const ArticleListContainer: React.FunctionComponent<ArticleListProps> = props => (
   <ArticleList { ...props } />
 )
 
-const mapStateToProps = (state: AppState, { board }: ArticleListContainerProps) => ({
-  articles: getArticleList(state, board),
-  isLoading: getIsLoading(state.loading, getArticleListActions.type),
+const mapStateToProps = (state: AppState) => {
+  const { board } = state.menu.current
+  return {
+    board: board,
+    articles: getArticleList(state, board),
+    isLoading: getIsLoading(state.loading, getArticleListActions.type),
+  }
+}
+
+const mapDispatchToProps = (dispatch: Dispatch<Action>) => ({
+  paginate: (
+    board: number,
+  ) => (
+    page: number,
+  ) => dispatch(getArticleListActions.request({ board, page })),
 })
 
-const mapDispatchToProps = (dispatch: Dispatch<Action>, { board }: ArticleListContainerProps) => ({
-  paginate: (page: number) => dispatch(getArticleListActions.request({ board, page })),
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(ArticleListContainer)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+  (stateProps, dispatchProps, ownProps) => ({
+    ...stateProps,
+    ...dispatchProps,
+    ...ownProps,
+    paginate: dispatchProps.paginate(stateProps.board),
+  }),
+)(ArticleListContainer)
