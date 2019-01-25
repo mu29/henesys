@@ -69,8 +69,12 @@ class ArticleList extends React.PureComponent<ArticleListProps, ArticleListState
   componentDidUpdate() {
     if (this.state.page === 0) {
       this._paginate()
-      if (this._listRef.current) {
-        this._listRef.current.scrollToOffset({ offset: 0, animated: true })
+      if (this._listRef.current && this.props.articles.length > 0) {
+        this._listRef.current.scrollToIndex({
+          index: 0,
+          viewPosition: 0,
+          animated: true,
+        })
       }
     }
   }
