@@ -48,6 +48,8 @@ class ArticleList extends React.PureComponent<ArticleListProps, ArticleListState
     isRefreshing: false,
   }
 
+  private _listRef = React.createRef<FlatList<Article>>()
+
   static getDerivedStateFromProps(props: ArticleListProps, state: ArticleListState) {
     if (props.board !== state.board || props.category !== state.category) {
       return {
@@ -67,6 +69,9 @@ class ArticleList extends React.PureComponent<ArticleListProps, ArticleListState
   componentDidUpdate() {
     if (this.state.page === 0) {
       this._paginate()
+      if (this._listRef.current) {
+        this._listRef.current.scrollToOffset({ offset: 0, animated: true })
+      }
     }
   }
 
@@ -105,6 +110,7 @@ class ArticleList extends React.PureComponent<ArticleListProps, ArticleListState
 
     return (
       <DividedFlatList
+        listRef={this._listRef}
         data={articles}
         keyExtractor={this._keyExtractor}
         onEndReached={this._paginate}

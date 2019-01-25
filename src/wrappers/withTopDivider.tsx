@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { RefObject } from 'react'
 import {
   StyleSheet,
   NativeSyntheticEvent,
@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
 })
 
 function withTopDivider<T extends ScrollViewProps>(Component: React.ComponentType<T>) {
-  return class WithTopDivider extends React.PureComponent<T> {
+  return class WithTopDivider extends React.PureComponent<T & { listRef?: RefObject<any> }> {
     state = { showDivider: false }
 
     _onScroll = ({ nativeEvent }: NativeSyntheticEvent<NativeScrollEvent>) => this.setState({
@@ -28,6 +28,7 @@ function withTopDivider<T extends ScrollViewProps>(Component: React.ComponentTyp
         <React.Fragment>
           <Divider color={palette.gray[40]} hidden={!showDivider} />
           <Component
+            ref={this.props.listRef}
             onScroll={this._onScroll}
             scrollEventThrottle={160}
             contentContainerStyle={styles.contentContainer}
