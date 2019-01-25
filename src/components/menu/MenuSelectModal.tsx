@@ -77,7 +77,7 @@ class MenuSelectModal extends React.PureComponent<MenuSelectModalProps> {
       switchMenu,
       close,
     } = this.props
-    const handlerKey = typeof key === 'string' ? key : key.label
+    const handlerKey = typeof key === 'string' ? key : `${key.board}-${key.label}`
 
     if (!Object.prototype.hasOwnProperty.call(this.pressHandlers, handlerKey)) {
       if (typeof key === 'string') {
