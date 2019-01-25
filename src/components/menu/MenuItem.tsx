@@ -11,9 +11,9 @@ import { palette, typography } from 'src/styles'
 
 const styles = StyleSheet.create({
   container: {
-    margin: 6,
+    margin: 4,
     paddingVertical: 6,
-    paddingHorizontal: 10,
+    paddingHorizontal: 8,
     borderRadius: 4,
     backgroundColor: palette.gray[20],
   },
@@ -35,7 +35,7 @@ const MenuItem: React.FunctionComponent<MenuItemProps> = ({
 }) => (
   <Button onPress={onPress}>
     <View style={[styles.container, selected && styles.selected]}>
-      <Text style={typography.body[1][selected ? 'white' : 'black']}>
+      <Text style={typography.body[2][selected ? 'white' : 'black']}>
         {label}
       </Text>
     </View>

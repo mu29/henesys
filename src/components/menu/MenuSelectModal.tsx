@@ -33,12 +33,14 @@ const styles = StyleSheet.create({
     paddingVertical: 24,
     paddingHorizontal: 12,
   },
+  wrapper: {
+    paddingVertical: 12,
+    paddingHorizontal: 16,
+  },
   menus: {
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'center',
-    paddingVertical: 12,
-    paddingHorizontal: 16,
   },
   menu: {
     margin: 6,
@@ -136,20 +138,25 @@ class MenuSelectModal extends React.PureComponent<MenuSelectModalProps> {
       >
         <View style={styles.container}>
           <View style={styles.header}>
-            <Text style={typography.heading[1].black.bold}>
+            <Text style={typography.heading[2].black.bold}>
               게시판 선택
             </Text>
-            <Text style={typography.body[2].lightGray}>
+            <Text style={typography.body[3].lightGray}>
               열람할 게시판과 카테고리를 선택하세요.
             </Text>
           </View>
           <View>
             <MenuSection title="게시판" />
-            <View style={styles.menus}>
-              {Object.keys(groups).map(this._renderGroup)}
+            <View style={styles.wrapper}>
+              <View style={styles.menus}>
+                {Object.keys(groups).slice(0, 3).map(this._renderGroup)}
+              </View>
+              <View style={styles.menus}>
+                {Object.keys(groups).slice(3).map(this._renderGroup)}
+              </View>
             </View>
             <MenuSection title="카테고리" />
-            <View style={styles.menus}>
+            <View style={[styles.wrapper, styles.menus]}>
               {groups[group].map(this._renderMenu)}
             </View>
           </View>

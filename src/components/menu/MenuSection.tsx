@@ -8,7 +8,7 @@ import { palette, typography } from 'src/styles'
 
 const styles = StyleSheet.create({
   container: {
-    paddingVertical: 8,
+    paddingVertical: 6,
     paddingHorizontal: 20,
     borderTopWidth: 1,
     borderTopColor: palette.gray[40],
@@ -24,7 +24,7 @@ export interface MenuSectionProps {
 
 const MenuSection: React.FunctionComponent<MenuSectionProps> = ({ title }) => (
   <View style={styles.container}>
-    <Text style={typography.body[1].black}>
+    <Text style={typography.body[2].black}>
       {title}
     </Text>
   </View>

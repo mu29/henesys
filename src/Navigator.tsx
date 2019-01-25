@@ -25,7 +25,6 @@ const MainTab = createBottomTabNavigator({
   Community: CommunityScreen,
   Settings: SettingsScreen,
 }, {
-  initialRouteName: 'Community',
   navigationOptions: ({ navigation }) => ({
     tabBarIcon: ({ tintColor }) => {
       const { routeName } = navigation.state

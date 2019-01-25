@@ -41,12 +41,12 @@ const menus: {
     board: 2299,
     category: '리부트',
   }, {
-    label: '팁과 노하우',
-    board: 2304,
+    label: '베스트 정보',
+    board: 2816,
     category: '',
   }, {
-    label: '동영상',
-    board: 2305,
+    label: '팁과 노하우',
+    board: 2304,
     category: '',
   }, {
     label: '사고팔고',
@@ -55,6 +55,19 @@ const menus: {
   }, {
     label: '질문답변',
     board: 2300,
+    category: '',
+  }],
+  갤러리: [{
+    label: '팬아트 / 카툰',
+    board: 2715,
+    category: '',
+  }, {
+    label: '동영상',
+    board: 2305,
+    category: '',
+  }, {
+    label: '코디 / 스크린샷',
+    board: 2306,
     category: '',
   }],
   전사: [{
