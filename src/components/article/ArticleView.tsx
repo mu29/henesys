@@ -24,6 +24,8 @@ import { typography, palette } from 'src/styles'
 
 const MAX_WIDTH = Dimensions.get('window').width - 32
 
+const MAX_HEIGHT = MAX_WIDTH * 0.5625
+
 const BASE_FONT_STYLE = { fontSize: 16 }
 
 const IGNORE_STYLES = [
@@ -92,6 +94,14 @@ class ArticleView extends React.PureComponent<ArticleViewProps> {
     }
   }
 
+  _alterVideo = (node: { name: string; attribs: any }) => {
+    const { name } = node
+    if (name === 'iframe') {
+        node.attribs = { ...(node.attribs || {}), width: MAX_WIDTH, height: MAX_HEIGHT }
+        return node
+    }
+  }
+
   _renderLoading = () => (
     <View style={styles.loading}>
       <ActivityIndicator color={palette.primary.default} />
@@ -128,9 +138,11 @@ class ArticleView extends React.PureComponent<ArticleViewProps> {
               <HTML
                 html={article.content}
                 imagesMaxWidth={MAX_WIDTH}
+                staticContentMaxWidth={MAX_WIDTH}
                 baseFontStyle={BASE_FONT_STYLE}
                 ignoredStyles={IGNORE_STYLES}
                 onLinkPress={this._openLink}
+                alterNode={this._alterVideo}
               />
             )}
           </View>
