@@ -5,7 +5,7 @@ import {
   createSwitchNavigator,
   createStackNavigator,
 } from 'react-navigation'
-import { Icon } from 'src/components'
+import { Icon, OpenInWebButton } from 'src/components'
 import {
   MissionScreen,
   StatsScreen,
@@ -86,8 +86,18 @@ const MainStack = createStackNavigator({
         },
         elevation: 0,
       },
+      headerRight: <OpenInWebButton />,
+      headerRightContainerStyle: {
+        paddingRight: Platform.select({
+          ios: 20,
+          android: 12,
+        }),
+      },
       headerLeftContainerStyle: {
-        paddingLeft: Platform.OS === 'ios' ? 8 : 0,
+        paddingLeft: Platform.select({
+          ios: 8,
+          android: 0,
+        }),
       },
     },
   },
