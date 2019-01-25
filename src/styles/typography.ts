@@ -118,6 +118,11 @@ export default {
         color: palette.white.default,
         lineHeight: 14,
       },
+      primary: {
+        fontSize: 11,
+        color: palette.primary.default,
+        lineHeight: 14,
+      },
     },
   },
 }

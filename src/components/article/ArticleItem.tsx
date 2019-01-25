@@ -32,6 +32,14 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginRight: 'auto',
   },
+  info: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  best: {
+    marginLeft: 4,
+    padding: 1,
+  },
   comment: {
     paddingVertical: 12,
     paddingHorizontal: 16,
@@ -64,6 +72,7 @@ class ArticleItem extends React.PureComponent<ArticleItemProps> {
         author,
         commentCount,
         createdAt,
+        voteCount,
       },
     } = this.props
 
@@ -81,9 +90,16 @@ class ArticleItem extends React.PureComponent<ArticleItemProps> {
             >
               {title}
             </Text>
-            <Text style={typography.body[3].lightGray}>
-              {moment(createdAt).fromNow()}, {author}
-            </Text>
+            <View style={styles.info}>
+              <Text style={typography.body[3].lightGray}>
+                {moment(createdAt).fromNow()}, {author}
+              </Text>
+              {voteCount >= 10 && (
+                <Text style={[typography.tiny[1].primary, styles.best]}>
+                  인기
+                </Text>
+              )}
+            </View>
           </View>
         </Button>
         <View style={styles.comment}>
