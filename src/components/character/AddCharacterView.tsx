@@ -1,5 +1,4 @@
 import React from 'react'
-import debounce from 'lodash/debounce'
 import {
   withNavigation,
   NavigationInjectedProps,
@@ -72,8 +71,6 @@ export interface AddCharacterViewProps extends Partial<NavigationInjectedProps> 
 }
 
 class AddCharacterView extends React.PureComponent<AddCharacterViewProps> {
-  _onSearch = debounce(this.props.search, 200)
-
   _onConfirm = () => {
     const {
       navigation,
@@ -93,7 +90,7 @@ class AddCharacterView extends React.PureComponent<AddCharacterViewProps> {
   }
 
   render() {
-    const { imageUrl, isLoading } = this.props
+    const { imageUrl, isLoading, search } = this.props
     return (
       <KeyboardAvoidingView
         behavior="padding"
@@ -121,7 +118,7 @@ class AddCharacterView extends React.PureComponent<AddCharacterViewProps> {
             />
           </ImageBackground>
           <TextInput
-            onChangeText={this._onSearch}
+            onChangeText={search}
             placeholder="추가할 캐릭터의 이름을 입력하세요"
             style={[typography.body[1].black, styles.name]}
           />
