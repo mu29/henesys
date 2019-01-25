@@ -3,6 +3,7 @@ import {
   View,
   StyleSheet,
   LayoutAnimation,
+  UIManager,
 } from 'react-native'
 import Modal from 'react-native-modal'
 import {
@@ -61,6 +62,13 @@ export interface MenuSelectModalProps {
 }
 
 class MenuSelectModal extends React.PureComponent<MenuSelectModalProps> {
+  constructor(props: MenuSelectModalProps) {
+    super(props)
+    if (UIManager.setLayoutAnimationEnabledExperimental) {
+      UIManager.setLayoutAnimationEnabledExperimental(true)
+    }
+  }
+
   _renderItem = ({
     key,
     label,
