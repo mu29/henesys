@@ -137,15 +137,17 @@ android {
 }
 
 dependencies {
-    compile project(':react-native-extra-dimensions-android')
-    compile project(':react-native-firebase')
-    compile project(':react-native-push-notification')
-    compile project(':react-native-haptic-feedback')
-    compile project(':react-native-svg')
-    compile project(':react-native-vector-icons')
+    implementation project(':react-native-extra-dimensions-android')
+    implementation project(':react-native-firebase')
+    implementation project(':react-native-push-notification')
+    implementation project(':react-native-haptic-feedback')
+    implementation project(':react-native-svg')
+    implementation project(':react-native-vector-icons')
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "com.android.support:appcompat-v7:${rootProject.ext.supportLibVersion}"
+    implementation "com.google.android.gms:play-services-base:16.1.0"
     implementation 'com.google.firebase:firebase-core:16.0.6'
+    implementation "com.google.firebase:firebase-ads:17.1.2"
     implementation "com.facebook.react:react-native:+"  // From node_modules
 }
 

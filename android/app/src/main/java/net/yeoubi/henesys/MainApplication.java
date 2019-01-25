@@ -5,8 +5,11 @@ import android.app.Application;
 import com.facebook.react.ReactApplication;
 import ca.jaysoo.extradimensions.ExtraDimensionsPackage;
 import io.invertase.firebase.RNFirebasePackage;
+import io.invertase.firebase.analytics.RNFirebaseAnalyticsPackage;
+import io.invertase.firebase.admob.RNFirebaseAdMobPackage;
 import com.dieam.reactnativepushnotification.ReactNativePushNotificationPackage;
 import com.mkuczera.RNReactNativeHapticFeedbackPackage;
+import com.google.android.gms.ads.MobileAds;
 import com.horcrux.svg.SvgPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
 import com.facebook.react.ReactNativeHost;
@@ -31,6 +34,8 @@ public class MainApplication extends Application implements ReactApplication {
           new MainReactPackage(),
             new ExtraDimensionsPackage(),
             new RNFirebasePackage(),
+            new RNFirebaseAnalyticsPackage(),
+            new RNFirebaseAdMobPackage(),
             new ReactNativePushNotificationPackage(),
             new RNReactNativeHapticFeedbackPackage(),
             new SvgPackage(),
@@ -53,5 +58,6 @@ public class MainApplication extends Application implements ReactApplication {
   public void onCreate() {
     super.onCreate();
     SoLoader.init(this, /* native exopackage */ false);
+    MobileAds.initialize(this, "ca-app-pub-6988311040138762~1882176088");
   }
 }

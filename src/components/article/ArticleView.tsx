@@ -20,6 +20,7 @@ import {
 import { CommentList } from 'src/containers'
 import { withTopDivider } from 'src/wrappers'
 import { Article } from 'src/store/selectors'
+import config from 'src/constants/config'
 import { typography, palette } from 'src/styles'
 
 const MAX_WIDTH = Dimensions.get('window').width - 32
@@ -46,7 +47,7 @@ const styles = StyleSheet.create({
     backgroundColor: palette.white.default,
   },
   contentContainer: {
-    paddingBottom: 0,
+    paddingBottom: config.admobEnabled ? 40 : 0,
   },
   header: {
     padding: 16,

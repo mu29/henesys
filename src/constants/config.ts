@@ -1,6 +1,7 @@
 type Config = {
   env?: string;
   apiUrl?: string;
+  admobEnabled?: boolean;
 }
 
 const config: {
@@ -9,6 +10,7 @@ const config: {
   all: {
     env: process.env.NODE_ENV || 'development',
     apiUrl: 'http://localhost:3000',
+    admobEnabled: true,
   },
   production: {
     apiUrl: 'https://api.henesys.net',

@@ -824,7 +824,7 @@
 				TargetAttributes = {
 					00E356ED1AD99517003FC87E = {
 						CreatedOnToolsVersion = 6.2;
-						DevelopmentTeam = N98WPC66JN;
+						DevelopmentTeam = AVXKHR4MKC;
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
@@ -1386,7 +1386,7 @@
 			baseConfigurationReference = E60D4E7DE0F63E049D5755CE /* Pods-henesysTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = N98WPC66JN;
+				DEVELOPMENT_TEAM = AVXKHR4MKC;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -1424,7 +1424,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
-				DEVELOPMENT_TEAM = N98WPC66JN;
+				DEVELOPMENT_TEAM = AVXKHR4MKC;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
@@ -1476,7 +1476,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = net.yeoubi.henesys;
+				PRODUCT_BUNDLE_IDENTIFIER = net.yeoubi.henesys.dev;
 				PRODUCT_NAME = henesys;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1506,7 +1506,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = net.yeoubi.henesys;
+				PRODUCT_BUNDLE_IDENTIFIER = net.yeoubi.henesys.dev;
 				PRODUCT_NAME = henesys;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				VERSIONING_SYSTEM = "apple-generic";

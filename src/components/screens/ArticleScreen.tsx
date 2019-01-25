@@ -7,6 +7,7 @@ import {
   withNavigation,
   NavigationInjectedProps,
 } from 'react-navigation'
+import { AdBanner } from 'src/components'
 import { ArticleView } from 'src/containers'
 import { withSafeArea } from 'src/wrappers'
 
@@ -32,6 +33,7 @@ const ArticleScreen: React.FunctionComponent<NavigationInjectedProps> = ({
   return (
     <View style={styles.container}>
       <ArticleView board={board} category={category} id={id} />
+      <AdBanner />
     </View>
   )
 }
