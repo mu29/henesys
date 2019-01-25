@@ -13,12 +13,6 @@ const styles = StyleSheet.create({
   container: {
     padding: 16,
     paddingTop: 8,
-    borderTopWidth: 1,
-    borderTopColor: palette.gray[40],
-  },
-  empty: {
-    height: 1,
-    backgroundColor: palette.gray[40],
   },
   loading: {
     justifyContent: 'center',
@@ -73,10 +67,6 @@ class CommentList extends React.PureComponent<CommentListProps, CommentListState
   render() {
     const { comments, count } = this.props
 
-    if (count === 0) {
-      return <View style={styles.empty} />
-    }
-
     return (
       <FlatList
         data={comments}
@@ -86,7 +76,7 @@ class CommentList extends React.PureComponent<CommentListProps, CommentListState
         renderItem={this._renderItem}
         ListFooterComponent={this._renderLoading}
         showsVerticalScrollIndicator={false}
-        contentContainerStyle={styles.container}
+        contentContainerStyle={count > 0 && styles.container}
       />
     )
   }
