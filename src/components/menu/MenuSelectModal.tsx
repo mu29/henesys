@@ -8,7 +8,7 @@ import {
 import Modal from 'react-native-modal'
 import {
   Text,
-  Button,
+  MenuItem,
   MenuSection,
 } from 'src/components'
 import { Menu } from 'src/store/selectors'
@@ -62,6 +62,8 @@ export interface MenuSelectModalProps {
 }
 
 class MenuSelectModal extends React.PureComponent<MenuSelectModalProps> {
+  pressHandlers: { [key: string]: () => any } = {}
+
   constructor(props: MenuSelectModalProps) {
     super(props)
     if (UIManager.setLayoutAnimationEnabledExperimental) {
@@ -69,63 +71,51 @@ class MenuSelectModal extends React.PureComponent<MenuSelectModalProps> {
     }
   }
 
-  _renderItem = ({
-    key,
-    label,
-    selected,
-    onPress,
-  }: {
-    key: string;
-    label: string;
-    selected: boolean;
-    onPress: () => void;
-  }) => (
-    <Button key={key} onPress={onPress}>
-      <View style={[styles.menu, selected && styles.selected]}>
-        <Text style={typography.body[1][selected ? 'white' : 'black']}>
-          {label}
-        </Text>
-      </View>
-    </Button>
-  )
-
-  _renderGroup = (group: string) => {
+  getPressHandler(key: string | Menu): () => any {
     const {
-      group: selectedGroup,
       switchGroup,
-    } = this.props
-
-    return this._renderItem({
-      key: group,
-      label: group,
-      selected: group === selectedGroup,
-      onPress: () => {
-        LayoutAnimation.configureNext({
-          duration: 200,
-          update: { type: 'linear' },
-        })
-        switchGroup(group)
-      },
-    })
-  }
-
-  _renderMenu = (menu: Menu) => {
-    const {
-      menu: selectedMenu,
       switchMenu,
       close,
     } = this.props
+    const handlerKey = typeof key === 'string' ? key : key.label
 
-    return this._renderItem({
-      key: `${menu.board}-${menu.label}`,
-      label: menu.label,
-      selected: menu.board === selectedMenu.board && menu.category === selectedMenu.category,
-      onPress: () => {
-        switchMenu(menu)
-        close()
-      },
-    })
+    if (!Object.prototype.hasOwnProperty.call(this.pressHandlers, handlerKey)) {
+      if (typeof key === 'string') {
+        this.pressHandlers[handlerKey] = () => {
+          LayoutAnimation.configureNext({
+            duration: 200,
+            update: { type: 'linear' },
+          })
+          switchGroup(key)
+        }
+      } else {
+        this.pressHandlers[handlerKey] = () => {
+          switchMenu(key)
+          close()
+        }
+      }
+    }
+
+    return this.pressHandlers[handlerKey]
   }
+
+  _renderGroup = (group: string) => (
+    <MenuItem
+      key={group}
+      label={group}
+      selected={group === this.props.group}
+      onPress={this.getPressHandler(group)}
+    />
+  )
+
+  _renderMenu = (menu: Menu) => (
+    <MenuItem
+      key={`${menu.board}-${menu.label}`}
+      label={menu.label}
+      selected={menu.board === this.props.menu.board && menu.category === this.props.menu.category}
+      onPress={this.getPressHandler(menu)}
+    />
+  )
 
   render() {
     const {

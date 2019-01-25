@@ -33,6 +33,7 @@ export { default as HtmlView } from './common/HtmlView'
 export { default as LoadingView } from './common/LoadingView'
 export { default as Section } from './common/Section'
 
+export { default as MenuItem } from './menu/MenuItem'
 export { default as MenuSection } from './menu/MenuSection'
 export { default as MenuSelectModal } from './menu/MenuSelectModal'
 
