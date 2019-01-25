@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
     backgroundColor: palette.white.default,
   },
   contentContainer: {
-    paddingBottom: config.admobEnabled ? 40 : 0,
+    paddingBottom: 0,
   },
   header: {
     padding: 16,

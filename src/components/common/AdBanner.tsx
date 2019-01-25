@@ -16,15 +16,14 @@ const request = new AdRequest()
 
 const styles = StyleSheet.create({
   container: {
-    position: 'absolute',
-    bottom: 0,
-    left: 0,
-    right: 0,
-    zIndex: 1,
     justifyContent: 'center',
     alignItems: 'center',
     borderTopWidth: 1,
     borderTopColor: palette.gray[40],
+    backgroundColor: palette.white.default,
+  },
+  loading: {
+    height: 0,
   },
   banner: {
     justifyContent: 'center',
@@ -32,19 +31,30 @@ const styles = StyleSheet.create({
   },
 })
 
-class AdBanner extends React.PureComponent {
+export interface AdBannerState {
+  isLoaded: boolean
+}
+
+class AdBanner extends React.PureComponent<{}, AdBannerState> {
+  state = {
+    isLoaded: false,
+  }
+
+  _onAdLoaded = () => this.setState({ isLoaded: true })
+
   render() {
     if (!config.admobEnabled) {
       return null
     }
 
     return (
-      <View style={styles.container}>
+      <View style={[styles.container, !this.state.isLoaded && styles.loading]}>
         <Banner
           unitId={ARTICLE_VIEW_UNIT_ID}
           size="SMART_BANNER"
           request={request.build()}
           style={styles.banner}
+          onAdLoaded={this._onAdLoaded}
         />
       </View>
     )
