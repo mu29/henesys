@@ -8,9 +8,9 @@ import { IconButton } from 'src/components'
 class OpenInWebButton extends React.PureComponent<NavigationInjectedProps> {
   _onPress = () => {
     const { navigation } = this.props
-    const href = navigation.state.params && navigation.state.params.pref || ''
+    const href = navigation.state.params && navigation.state.params.href || ''
 
-    navigation.push('WebView', { url: `http://m.inven.co.kr/${href}` })
+    navigation.push('WebView', { url: `http://m.inven.co.kr${href}` })
   }
 
   render() {
