@@ -62,7 +62,7 @@ export interface MenuSelectModalProps {
 }
 
 class MenuSelectModal extends React.PureComponent<MenuSelectModalProps> {
-  pressHandlers: { [key: string]: () => any } = {}
+  _pressHandlers: { [key: string]: () => any } = {}
 
   constructor(props: MenuSelectModalProps) {
     super(props)
@@ -71,7 +71,7 @@ class MenuSelectModal extends React.PureComponent<MenuSelectModalProps> {
     }
   }
 
-  getPressHandler(key: string | Menu): () => any {
+  _getPressHandler(key: string | Menu): () => any {
     const {
       switchGroup,
       switchMenu,
@@ -79,9 +79,9 @@ class MenuSelectModal extends React.PureComponent<MenuSelectModalProps> {
     } = this.props
     const handlerKey = typeof key === 'string' ? key : `${key.board}-${key.label}`
 
-    if (!Object.prototype.hasOwnProperty.call(this.pressHandlers, handlerKey)) {
+    if (!Object.prototype.hasOwnProperty.call(this._pressHandlers, handlerKey)) {
       if (typeof key === 'string') {
-        this.pressHandlers[handlerKey] = () => {
+        this._pressHandlers[handlerKey] = () => {
           LayoutAnimation.configureNext({
             duration: 200,
             update: { type: 'linear' },
@@ -89,14 +89,14 @@ class MenuSelectModal extends React.PureComponent<MenuSelectModalProps> {
           switchGroup(key)
         }
       } else {
-        this.pressHandlers[handlerKey] = () => {
+        this._pressHandlers[handlerKey] = () => {
           switchMenu(key)
           close()
         }
       }
     }
 
-    return this.pressHandlers[handlerKey]
+    return this._pressHandlers[handlerKey]
   }
 
   _renderGroup = (group: string) => (
@@ -104,7 +104,7 @@ class MenuSelectModal extends React.PureComponent<MenuSelectModalProps> {
       key={group}
       label={group}
       selected={group === this.props.group}
-      onPress={this.getPressHandler(group)}
+      onPress={this._getPressHandler(group)}
     />
   )
 
@@ -113,7 +113,7 @@ class MenuSelectModal extends React.PureComponent<MenuSelectModalProps> {
       key={`${menu.board}-${menu.label}`}
       label={menu.label}
       selected={menu.board === this.props.menu.board && menu.category === this.props.menu.category}
-      onPress={this.getPressHandler(menu)}
+      onPress={this._getPressHandler(menu)}
     />
   )
 

@@ -31,7 +31,11 @@ interface ISectionHeader {
   section: SectionListData<MissionType>,
 }
 
-class MissionList extends React.PureComponent<MissionListProps> {
+class MissionList extends React.Component<MissionListProps> {
+  shouldComponentUpdate(nextProps: MissionListProps) {
+    return JSON.stringify(this.props.missions) !== JSON.stringify(nextProps.missions)
+  }
+
   _keyExtractor = (item: MissionType) => item.key
 
   _renderHeader = () => (
@@ -51,6 +55,7 @@ class MissionList extends React.PureComponent<MissionListProps> {
     const sections = missions
       .map(m => ({ title: m.label, data: m.items }))
       .filter(m => m.data.length > 0)
+
     return (
       <DividedSectionList
         sections={sections}

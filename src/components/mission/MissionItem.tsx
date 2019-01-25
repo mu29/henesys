@@ -1,5 +1,4 @@
 import React from 'react'
-import throttle from 'lodash/throttle'
 import HapticFeedback from 'react-native-haptic-feedback'
 import {
   View,
@@ -45,7 +44,7 @@ export interface MissionItemProps {
 }
 
 class MissionItem extends React.PureComponent<MissionItemProps> {
-  _pressWithHaptic = () => {
+  _onPressWithHaptic = () => {
     const { onPress } = this.props
     if (onPress) {
       if (Platform.OS === 'ios') {
@@ -54,9 +53,6 @@ class MissionItem extends React.PureComponent<MissionItemProps> {
       onPress()
     }
   }
-
-  // tslint:disable-next-line
-  _onPress = throttle(this._pressWithHaptic, 100)
 
   renderInner() {
     const {
@@ -80,7 +76,7 @@ class MissionItem extends React.PureComponent<MissionItemProps> {
 
   render() {
     return this.props.onPress ? (
-      <Button onPress={this._onPress}>
+      <Button onPress={this._onPressWithHaptic}>
         {this.renderInner()}
       </Button>
     ) : this.renderInner()
