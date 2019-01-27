@@ -116,8 +116,26 @@ android {
             include "armeabi-v7a", "x86"
         }
     }
-    buildTypes {
+    signingConfigs {
         release {
+            keyAlias YEOUBI_RELEASE_KEY_ALIAS
+            keyPassword YEOUBI_RELEASE_KEY_PASSWORD
+            storeFile file(YEOUBI_RELEASE_STORE_FILE)
+            storePassword YEOUBI_RELEASE_STORE_PASSWORD
+        }
+    }
+    buildTypes {
+        debug {
+            buildConfigField "String", "CODEPUSH_KEY", '""'
+        }
+        releaseStaging {
+            signingConfig signingConfigs.release
+            buildConfigField "String", "CODEPUSH_KEY", '"Toc53-4mRKhEeVmOMD581CbPZhuH180a8f7e-a595-471d-ba74-a122212012fa"'
+            matchingFallbacks = ["release"]
+        }
+        release {
+            signingConfig signingConfigs.release
+            buildConfigField "String", "CODEPUSH_KEY", '"Y1kki6foaOHZAjtnP8z9-o9tCy4s180a8f7e-a595-471d-ba74-a122212012fa"'
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
@@ -161,3 +179,4 @@ task copyDownloadableDepsToLibs(type: Copy) {
 }
 
 apply plugin: 'com.google.gms.google-services'
+com.google.gms.googleservices.GoogleServicesPlugin.config.disableVersionCheck = true

@@ -53,4 +53,7 @@ class App extends React.Component {
   }
 }
 
-export default codePush({ checkFrequency: codePush.CheckFrequency.ON_APP_START })(App)
+export default codePush({
+  checkFrequency: codePush.CheckFrequency.ON_APP_START,
+  installMode: codePush.InstallMode.ON_NEXT_RESTART,
+})(App)

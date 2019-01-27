@@ -10,7 +10,7 @@ const config: {
   all: {
     env: process.env.NODE_ENV || 'development',
     apiUrl: 'http://localhost:3000',
-    admobEnabled: true,
+    admobEnabled: false,
   },
   production: {
     apiUrl: 'https://api.henesys.net',
