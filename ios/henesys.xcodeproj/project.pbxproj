@@ -24,6 +24,8 @@
 		140ED2AC1D01E1AD002B40FF /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		51E804D6A7D3BABD039F956B /* libPods-henesysTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C4B18AFBD68F79A856D583E5 /* libPods-henesysTests.a */; };
+		5B06421521FD6C08001A7016 /* libCodePush.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B0641E521FD6BF4001A7016 /* libCodePush.a */; };
+		5B06421721FD6C22001A7016 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B06421621FD6C22001A7016 /* libz.tbd */; };
 		5B3F4B1C21CCBF3900196B29 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5B3F4AED21CCBF3900196B29 /* GoogleService-Info.plist */; };
 		5B536A4921A67C2900E18BAC /* libART.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B536A4521A67ACE00E18BAC /* libART.a */; };
 		5BF0809921B7902E00CE65B2 /* libRCTPushNotification.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BF0807821B7900D00CE65B2 /* libRCTPushNotification.a */; };
@@ -269,6 +271,20 @@
 			remoteGlobalIDString = 3D3CD9181DE5FBD800167DC4;
 			remoteInfo = "jschelpers-tvOS";
 		};
+		5B0641E421FD6BF4001A7016 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5B0641DD21FD6BF3001A7016 /* CodePush.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 134814201AA4EA6300B7C361;
+			remoteInfo = CodePush;
+		};
+		5B0641E621FD6BF4001A7016 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5B0641DD21FD6BF3001A7016 /* CodePush.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F886647B1F4ADB500036D01B;
+			remoteInfo = "CodePush-tvOS";
+		};
 		5B0BC7FB21CCC0E200424141 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 5E0B21940FDF42E18200DBC5 /* RNFirebase.xcodeproj */;
@@ -404,6 +420,8 @@
 		394D38979D2C4D8E9A2CD3CD /* RNSVG.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNSVG.xcodeproj; path = "../node_modules/react-native-svg/ios/RNSVG.xcodeproj"; sourceTree = "<group>"; };
 		40E3D567208C4F9EAD71FD9B /* RNReactNativeHapticFeedback.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNReactNativeHapticFeedback.xcodeproj; path = "../node_modules/react-native-haptic-feedback/ios/RNReactNativeHapticFeedback.xcodeproj"; sourceTree = "<group>"; };
 		5834345E43EE140B9900B666 /* Pods-henesys.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-henesys.release.xcconfig"; path = "Pods/Target Support Files/Pods-henesys/Pods-henesys.release.xcconfig"; sourceTree = "<group>"; };
+		5B0641DD21FD6BF3001A7016 /* CodePush.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CodePush.xcodeproj; path = "../node_modules/react-native-code-push/ios/CodePush.xcodeproj"; sourceTree = "<group>"; };
+		5B06421621FD6C22001A7016 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		5B3F4AED21CCBF3900196B29 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5B536A3F21A67ACE00E18BAC /* ART.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ART.xcodeproj; path = "../node_modules/react-native/Libraries/ART/ART.xcodeproj"; sourceTree = "<group>"; };
 		5BF0806421B7900C00CE65B2 /* RCTPushNotification.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTPushNotification.xcodeproj; path = "../node_modules/react-native/Libraries/PushNotificationIOS/RCTPushNotification.xcodeproj"; sourceTree = "<group>"; };
@@ -443,6 +461,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B06421721FD6C22001A7016 /* libz.tbd in Frameworks */,
+				5B06421521FD6C08001A7016 /* libCodePush.a in Frameworks */,
 				5BF0809921B7902E00CE65B2 /* libRCTPushNotification.a in Frameworks */,
 				5B536A4921A67C2900E18BAC /* libART.a in Frameworks */,
 				ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */,
@@ -588,6 +608,7 @@
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5B06421621FD6C22001A7016 /* libz.tbd */,
 				2D16E6891FA4F8E400B85C8A /* libReact.a */,
 				15D9B78A9FBC251A1E179766 /* libPods-henesys.a */,
 				26B992BCB5982A3F62BB4147 /* libPods-henesys-tvOS.a */,
@@ -610,6 +631,15 @@
 				18610C7614D7325580F522C8 /* Pods-henesysTests.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		5B0641DE21FD6BF3001A7016 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5B0641E521FD6BF4001A7016 /* libCodePush.a */,
+				5B0641E721FD6BF4001A7016 /* libCodePush.a */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		5B0BC7F821CCC0E100424141 /* Products */ = {
@@ -706,6 +736,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				5B0641DD21FD6BF3001A7016 /* CodePush.xcodeproj */,
 				5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */,
 				146833FF1AC3E56700842450 /* React.xcodeproj */,
 				00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */,
@@ -848,6 +879,10 @@
 				{
 					ProductGroup = 5B536A4021A67ACE00E18BAC /* Products */;
 					ProjectRef = 5B536A3F21A67ACE00E18BAC /* ART.xcodeproj */;
+				},
+				{
+					ProductGroup = 5B0641DE21FD6BF3001A7016 /* Products */;
+					ProjectRef = 5B0641DD21FD6BF3001A7016 /* CodePush.xcodeproj */;
 				},
 				{
 					ProductGroup = 00C302A81ABCB8CE00DB3ED1 /* Products */;
@@ -1149,6 +1184,20 @@
 			fileType = archive.ar;
 			path = libjschelpers.a;
 			remoteRef = 3DAD3EAE1DF850E9000B6D8A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		5B0641E521FD6BF4001A7016 /* libCodePush.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libCodePush.a;
+			remoteRef = 5B0641E421FD6BF4001A7016 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		5B0641E721FD6BF4001A7016 /* libCodePush.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libCodePush.a;
+			remoteRef = 5B0641E621FD6BF4001A7016 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		5B0BC7FC21CCC0E200424141 /* libRNFirebase.a */ = {

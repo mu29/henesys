@@ -3,6 +3,7 @@ import {
   PushNotificationIOS,
   YellowBox,
 } from 'react-native'
+import codePush from 'react-native-code-push'
 import { Provider } from 'react-redux'
 import { PersistGate } from 'redux-persist/integration/react'
 import moment from 'moment'
@@ -52,4 +53,4 @@ class App extends React.Component {
   }
 }
 
-export default App
+export default codePush({ checkFrequency: codePush.CheckFrequency.ON_APP_START })(App)

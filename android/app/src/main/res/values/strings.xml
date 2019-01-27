@@ -1,3 +1,4 @@
 <resources>
+    <string moduleConfig="true" name="reactNativeCodePush_androidDeploymentKey">nh2SdbQC9YTDVt6m8KixjOLI30C1180a8f7e-a595-471d-ba74-a122212012fa</string>
     <string name="app_name">헤네시스</string>
 </resources>
