@@ -1,9 +1,9 @@
 import React from 'react'
 import {
   View,
-  Image,
   StyleSheet,
 } from 'react-native'
+import FastImage from 'react-native-fast-image'
 import {
   Divider,
   Text,
@@ -59,7 +59,7 @@ class CharacterInfo extends React.PureComponent<CharacterInfoProps> {
 
     return (
       <View style={styles.container}>
-        <Image
+        <FastImage
           source={Object.assign({}, imageUrl ? { uri: imageUrl } : {})}
           style={styles.avatar}
         />

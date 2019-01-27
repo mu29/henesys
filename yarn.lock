@@ -5522,6 +5522,11 @@ react-native-extra-dimensions-android@^1.0.0:
   resolved "https://registry.yarnpkg.com/react-native-extra-dimensions-android/-/react-native-extra-dimensions-android-1.0.0.tgz#5575224ad0516293f1ee861ee81a7d05eb5aabfd"
   integrity sha512-+N8a+vAd1+PDR9XuKIpMV/jdx/zNb8kXuwcugcF/Lxb2RV0DIekmu+CQJXEHBEdCWXAsypnITw+wRiiKgC3hcw==
 
+react-native-fast-image@^5.1.2:
+  version "5.1.2"
+  resolved "https://registry.yarnpkg.com/react-native-fast-image/-/react-native-fast-image-5.1.2.tgz#c9b909993e9304736c3d9806df80f7a9705ef829"
+  integrity sha512-NZsuW36I4fqnlOuxh0ZY31Q7wGWSqZMOC0wtp7ZcSG2dmjXSFaSFTdxX2vJx4Dhm0tMT3qG4yrn2ob3BiZEudA==
+
 react-native-firebase@5.1.1:
   version "5.1.1"
   resolved "https://registry.yarnpkg.com/react-native-firebase/-/react-native-firebase-5.1.1.tgz#9dc8fd64238b7f48d63ef088b79a46376fbc9ad7"
@@ -5561,9 +5566,9 @@ react-native-push-notification@3.1.2:
   resolved "https://registry.yarnpkg.com/react-native-push-notification/-/react-native-push-notification-3.1.2.tgz#a6129fb2897773a19c7b42bba1b51a9a4aac7df3"
   integrity sha512-MjjPNXb2Cw7g1D41DtVbTVuGFCAtADxb91pAEFSkQ0AZ2gIooqYkWFHBL6woc15QHhtaZS8VT2GQoyW5OWlxIg==
 
-"react-native-render-html@git+https://github.com/mu29/react-native-render-html.git#fix-issues":
+"react-native-render-html@git+https://github.com/mu29/react-native-render-html.git#for-henesys":
   version "3.10.0"
-  resolved "git+https://github.com/mu29/react-native-render-html.git#d74ee8b6c3c25900eb566c4bcf0234e96bbe877f"
+  resolved "git+https://github.com/mu29/react-native-render-html.git#7dfa22d370f5ce987631cc9af024d2b3cda4cfc2"
   dependencies:
     buffer "^4.5.1"
     events "^1.1.0"

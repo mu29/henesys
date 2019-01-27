@@ -5,13 +5,13 @@ import {
 } from 'react-navigation'
 import {
   View,
-  Image,
   ImageBackground,
   KeyboardAvoidingView,
   TextInput,
   StyleSheet,
   Platform,
 } from 'react-native'
+import FastImage from 'react-native-fast-image'
 import {
   Text,
   Button,
@@ -112,7 +112,7 @@ class AddCharacterView extends React.PureComponent<AddCharacterViewProps> {
             source={{ uri: 'character_bg' }}
             style={[styles.background, styles.center]}
           >
-            <Image
+            <FastImage
               source={Object.assign({}, imageUrl ? { uri: imageUrl } : {})}
               style={styles.avatar}
             />

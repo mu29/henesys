@@ -25,6 +25,7 @@
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		5B06421521FD6C08001A7016 /* libCodePush.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B0641E521FD6BF4001A7016 /* libCodePush.a */; };
 		5B06421721FD6C22001A7016 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B06421621FD6C22001A7016 /* libz.tbd */; };
+		5B0A0D8221FDB8B10005FBF1 /* libFastImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B0A0D5421FDB89F0005FBF1 /* libFastImage.a */; };
 		5B3F4B1C21CCBF3900196B29 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5B3F4AED21CCBF3900196B29 /* GoogleService-Info.plist */; };
 		5B536A4921A67C2900E18BAC /* libART.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B536A4521A67ACE00E18BAC /* libART.a */; };
 		5BF0809921B7902E00CE65B2 /* libRCTPushNotification.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BF0807821B7900D00CE65B2 /* libRCTPushNotification.a */; };
@@ -285,6 +286,13 @@
 			remoteGlobalIDString = F886647B1F4ADB500036D01B;
 			remoteInfo = "CodePush-tvOS";
 		};
+		5B0A0D5321FDB89F0005FBF1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5B0A0D4A21FDB89F0005FBF1 /* FastImage.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A287971D1DE0C0A60081BDFA;
+			remoteInfo = FastImage;
+		};
 		5B0BC7FB21CCC0E200424141 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 5E0B21940FDF42E18200DBC5 /* RNFirebase.xcodeproj */;
@@ -420,6 +428,7 @@
 		575691894E348D21350DE5E4 /* Pods-henesysTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-henesysTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-henesysTests/Pods-henesysTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5B0641DD21FD6BF3001A7016 /* CodePush.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CodePush.xcodeproj; path = "../node_modules/react-native-code-push/ios/CodePush.xcodeproj"; sourceTree = "<group>"; };
 		5B06421621FD6C22001A7016 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		5B0A0D4A21FDB89F0005FBF1 /* FastImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FastImage.xcodeproj; path = "../node_modules/react-native-fast-image/ios/FastImage.xcodeproj"; sourceTree = "<group>"; };
 		5B3F4AED21CCBF3900196B29 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5B536A3F21A67ACE00E18BAC /* ART.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ART.xcodeproj; path = "../node_modules/react-native/Libraries/ART/ART.xcodeproj"; sourceTree = "<group>"; };
 		5BE2B905FA69549330B467FA /* Pods-henesysTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-henesysTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-henesysTests/Pods-henesysTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -457,6 +466,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B0A0D8221FDB8B10005FBF1 /* libFastImage.a in Frameworks */,
 				5B06421721FD6C22001A7016 /* libz.tbd in Frameworks */,
 				5B06421521FD6C08001A7016 /* libCodePush.a in Frameworks */,
 				5BF0809921B7902E00CE65B2 /* libRCTPushNotification.a in Frameworks */,
@@ -621,6 +631,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		5B0A0D4B21FDB89F0005FBF1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5B0A0D5421FDB89F0005FBF1 /* libFastImage.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		5B0BC7F821CCC0E100424141 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -715,6 +733,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				5B0A0D4A21FDB89F0005FBF1 /* FastImage.xcodeproj */,
 				5B0641DD21FD6BF3001A7016 /* CodePush.xcodeproj */,
 				5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */,
 				146833FF1AC3E56700842450 /* React.xcodeproj */,
@@ -875,6 +894,10 @@
 				{
 					ProductGroup = 5B0641DE21FD6BF3001A7016 /* Products */;
 					ProjectRef = 5B0641DD21FD6BF3001A7016 /* CodePush.xcodeproj */;
+				},
+				{
+					ProductGroup = 5B0A0D4B21FDB89F0005FBF1 /* Products */;
+					ProjectRef = 5B0A0D4A21FDB89F0005FBF1 /* FastImage.xcodeproj */;
 				},
 				{
 					ProductGroup = 00C302A81ABCB8CE00DB3ED1 /* Products */;
@@ -1190,6 +1213,13 @@
 			fileType = archive.ar;
 			path = libCodePush.a;
 			remoteRef = 5B0641E621FD6BF4001A7016 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		5B0A0D5421FDB89F0005FBF1 /* libFastImage.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libFastImage.a;
+			remoteRef = 5B0A0D5321FDB89F0005FBF1 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		5B0BC7FC21CCC0E200424141 /* libRNFirebase.a */ = {

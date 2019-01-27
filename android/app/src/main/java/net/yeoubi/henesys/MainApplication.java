@@ -3,6 +3,7 @@ package net.yeoubi.henesys;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.dylanvann.fastimage.FastImageViewPackage;
 import com.microsoft.codepush.react.CodePush;
 import ca.jaysoo.extradimensions.ExtraDimensionsPackage;
 import io.invertase.firebase.RNFirebasePackage;
@@ -39,6 +40,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new FastImageViewPackage(),
             new CodePush(BuildConfig.CODEPUSH_KEY, getApplicationContext(), BuildConfig.DEBUG),
             new ExtraDimensionsPackage(),
             new RNFirebasePackage(),
