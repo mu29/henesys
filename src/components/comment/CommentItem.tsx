@@ -16,6 +16,12 @@ import { palette, typography } from 'src/styles'
 
 const MAX_WIDTH = Dimensions.get('window').width - 56
 
+const TAGS_STYLES = {
+  img: {
+    marginVertical: 4,
+  },
+}
+
 const styles = StyleSheet.create({
   container: {
     marginVertical: 8,
@@ -63,6 +69,7 @@ class CommentItem extends React.PureComponent<CommentItemProps> {
           <HTML
             html={comment.content}
             imagesMaxWidth={MAX_WIDTH - (comment.isReply ? 32 : 0)}
+            tagsStyles={TAGS_STYLES}
             onLinkPress={this._openLink}
           />
         </View>
