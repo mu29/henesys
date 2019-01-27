@@ -34,6 +34,8 @@
 		A92F98B249414D819E61B6AE /* libRNVectorIcons.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 725CD45815F94B3A9A50D2CA /* libRNVectorIcons.a */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
 		D1338AF2436B4E44822E54B7 /* libRNFirebase.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 97AEE870635D4B328D3A3E12 /* libRNFirebase.a */; };
+		D48ED28E10565A273BA401B8 /* libPods-henesysTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1386DD8175426B77FB463ABA /* libPods-henesysTests.a */; };
+		F2B74BA58DFE89E93043C32D /* libPods-henesys.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A1A856361D9C697F9E3BB395 /* libPods-henesys.a */; };
 		F92EBF86CCFD45F4BD9F6FE7 /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A979F1C307E442B6852AE0C4 /* Ionicons.ttf */; };
 /* End PBXBuildFile section */
 
@@ -392,6 +394,7 @@
 
 /* Begin PBXFileReference section */
 		008F07F21AC5B25A0029DE68 /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
+		0090CA0A64F09430F04B59E6 /* Pods-henesys.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-henesys.staging.xcconfig"; path = "Pods/Target Support Files/Pods-henesys/Pods-henesys.staging.xcconfig"; sourceTree = "<group>"; };
 		00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTActionSheet.xcodeproj; path = "../node_modules/react-native/Libraries/ActionSheetIOS/RCTActionSheet.xcodeproj"; sourceTree = "<group>"; };
 		00C302B51ABCB90400DB3ED1 /* RCTGeolocation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTGeolocation.xcodeproj; path = "../node_modules/react-native/Libraries/Geolocation/RCTGeolocation.xcodeproj"; sourceTree = "<group>"; };
 		00C302BB1ABCB91800DB3ED1 /* RCTImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTImage.xcodeproj; path = "../node_modules/react-native/Libraries/Image/RCTImage.xcodeproj"; sourceTree = "<group>"; };
@@ -400,6 +403,7 @@
 		00E356EE1AD99517003FC87E /* henesysTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = henesysTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* henesysTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = henesysTests.m; sourceTree = "<group>"; };
+		1386DD8175426B77FB463ABA /* libPods-henesysTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-henesysTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		139105B61AF99BAD00B5F7CC /* RCTSettings.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTSettings.xcodeproj; path = "../node_modules/react-native/Libraries/Settings/RCTSettings.xcodeproj"; sourceTree = "<group>"; };
 		139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTWebSocket.xcodeproj; path = "../node_modules/react-native/Libraries/WebSocket/RCTWebSocket.xcodeproj"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* henesys.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = henesys.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -410,33 +414,33 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = henesys/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = henesys/main.m; sourceTree = "<group>"; };
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
-		1668B13A1E007B49583DCE40 /* Pods-henesysTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-henesysTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-henesysTests/Pods-henesysTests.release.xcconfig"; sourceTree = "<group>"; };
 		2D16E6891FA4F8E400B85C8A /* libReact.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libReact.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		339DEBBED2814263142673D3 /* Pods-henesys.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-henesys.staging.xcconfig"; path = "Pods/Target Support Files/Pods-henesys/Pods-henesys.staging.xcconfig"; sourceTree = "<group>"; };
 		394D38979D2C4D8E9A2CD3CD /* RNSVG.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNSVG.xcodeproj; path = "../node_modules/react-native-svg/ios/RNSVG.xcodeproj"; sourceTree = "<group>"; };
 		40E3D567208C4F9EAD71FD9B /* RNReactNativeHapticFeedback.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNReactNativeHapticFeedback.xcodeproj; path = "../node_modules/react-native-haptic-feedback/ios/RNReactNativeHapticFeedback.xcodeproj"; sourceTree = "<group>"; };
+		575691894E348D21350DE5E4 /* Pods-henesysTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-henesysTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-henesysTests/Pods-henesysTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5B0641DD21FD6BF3001A7016 /* CodePush.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CodePush.xcodeproj; path = "../node_modules/react-native-code-push/ios/CodePush.xcodeproj"; sourceTree = "<group>"; };
 		5B06421621FD6C22001A7016 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		5B3F4AED21CCBF3900196B29 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5B536A3F21A67ACE00E18BAC /* ART.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ART.xcodeproj; path = "../node_modules/react-native/Libraries/ART/ART.xcodeproj"; sourceTree = "<group>"; };
+		5BE2B905FA69549330B467FA /* Pods-henesysTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-henesysTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-henesysTests/Pods-henesysTests.release.xcconfig"; sourceTree = "<group>"; };
 		5BF0806421B7900C00CE65B2 /* RCTPushNotification.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTPushNotification.xcodeproj; path = "../node_modules/react-native/Libraries/PushNotificationIOS/RCTPushNotification.xcodeproj"; sourceTree = "<group>"; };
 		5E0B21940FDF42E18200DBC5 /* RNFirebase.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNFirebase.xcodeproj; path = "../node_modules/react-native-firebase/ios/RNFirebase.xcodeproj"; sourceTree = "<group>"; };
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
 		725CD45815F94B3A9A50D2CA /* libRNVectorIcons.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNVectorIcons.a; sourceTree = "<group>"; };
-		78A96C5957C11B8068293708 /* Pods-henesysTests.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-henesysTests.staging.xcconfig"; path = "Pods/Target Support Files/Pods-henesysTests/Pods-henesysTests.staging.xcconfig"; sourceTree = "<group>"; };
+		7631D4793C5220B52D9B4033 /* Pods-henesys.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-henesys.debug.xcconfig"; path = "Pods/Target Support Files/Pods-henesys/Pods-henesys.debug.xcconfig"; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
+		8C58C9F4A181C37A858B4EBF /* Pods-henesys.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-henesys.release.xcconfig"; path = "Pods/Target Support Files/Pods-henesys/Pods-henesys.release.xcconfig"; sourceTree = "<group>"; };
 		91C3EF7795EA4B379B0923A3 /* libRNVectorIcons-tvOS.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = "libRNVectorIcons-tvOS.a"; sourceTree = "<group>"; };
 		97AEE870635D4B328D3A3E12 /* libRNFirebase.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNFirebase.a; sourceTree = "<group>"; };
 		9AA96C2310744BCE8B7934CE /* libRNSVG-tvOS.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = "libRNSVG-tvOS.a"; sourceTree = "<group>"; };
 		A11B71FA86AD4A92B7454968 /* libRNReactNativeHapticFeedback.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNReactNativeHapticFeedback.a; sourceTree = "<group>"; };
+		A1A856361D9C697F9E3BB395 /* libPods-henesys.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-henesys.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A979F1C307E442B6852AE0C4 /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
-		C32249EF606E148E0513B5B2 /* Pods-henesys.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-henesys.release.xcconfig"; path = "Pods/Target Support Files/Pods-henesys/Pods-henesys.release.xcconfig"; sourceTree = "<group>"; };
 		D45F6AFA9D4140BD97C948C4 /* libRNSVG.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNSVG.a; sourceTree = "<group>"; };
-		D59518081373F2476346E7C2 /* Pods-henesysTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-henesysTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-henesysTests/Pods-henesysTests.debug.xcconfig"; sourceTree = "<group>"; };
+		D747C042355BDA41404B6961 /* Pods-henesysTests.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-henesysTests.staging.xcconfig"; path = "Pods/Target Support Files/Pods-henesysTests/Pods-henesysTests.staging.xcconfig"; sourceTree = "<group>"; };
 		E7C7593E83804443A8EC41A1 /* RNVectorIcons.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNVectorIcons.xcodeproj; path = "../node_modules/react-native-vector-icons/RNVectorIcons.xcodeproj"; sourceTree = "<group>"; };
-		F0C0572EE685F9B95CCA467F /* Pods-henesys.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-henesys.debug.xcconfig"; path = "Pods/Target Support Files/Pods-henesys/Pods-henesys.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -445,6 +449,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				140ED2AC1D01E1AD002B40FF /* libReact.a in Frameworks */,
+				D48ED28E10565A273BA401B8 /* libPods-henesysTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -472,6 +477,7 @@
 				9C14119557B640E3BCC2CAF0 /* libRNSVG.a in Frameworks */,
 				80EBF1BDA48544FE902EC4D8 /* libRNReactNativeHapticFeedback.a in Frameworks */,
 				D1338AF2436B4E44822E54B7 /* libRNFirebase.a in Frameworks */,
+				F2B74BA58DFE89E93043C32D /* libPods-henesys.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -600,6 +606,8 @@
 			children = (
 				5B06421621FD6C22001A7016 /* libz.tbd */,
 				2D16E6891FA4F8E400B85C8A /* libReact.a */,
+				A1A856361D9C697F9E3BB395 /* libPods-henesys.a */,
+				1386DD8175426B77FB463ABA /* libPods-henesysTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -777,12 +785,12 @@
 		E0747CE9B16251FF7859D37A /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				F0C0572EE685F9B95CCA467F /* Pods-henesys.debug.xcconfig */,
-				C32249EF606E148E0513B5B2 /* Pods-henesys.release.xcconfig */,
-				339DEBBED2814263142673D3 /* Pods-henesys.staging.xcconfig */,
-				D59518081373F2476346E7C2 /* Pods-henesysTests.debug.xcconfig */,
-				1668B13A1E007B49583DCE40 /* Pods-henesysTests.release.xcconfig */,
-				78A96C5957C11B8068293708 /* Pods-henesysTests.staging.xcconfig */,
+				7631D4793C5220B52D9B4033 /* Pods-henesys.debug.xcconfig */,
+				8C58C9F4A181C37A858B4EBF /* Pods-henesys.release.xcconfig */,
+				0090CA0A64F09430F04B59E6 /* Pods-henesys.staging.xcconfig */,
+				575691894E348D21350DE5E4 /* Pods-henesysTests.debug.xcconfig */,
+				5BE2B905FA69549330B467FA /* Pods-henesysTests.release.xcconfig */,
+				D747C042355BDA41404B6961 /* Pods-henesysTests.staging.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -1408,7 +1416,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D59518081373F2476346E7C2 /* Pods-henesysTests.debug.xcconfig */;
+			baseConfigurationReference = 575691894E348D21350DE5E4 /* Pods-henesysTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = AVXKHR4MKC;
@@ -1445,7 +1453,7 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1668B13A1E007B49583DCE40 /* Pods-henesysTests.release.xcconfig */;
+			baseConfigurationReference = 5BE2B905FA69549330B467FA /* Pods-henesysTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
@@ -1479,7 +1487,7 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F0C0572EE685F9B95CCA467F /* Pods-henesys.debug.xcconfig */;
+			baseConfigurationReference = 7631D4793C5220B52D9B4033 /* Pods-henesys.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -1501,7 +1509,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = net.yeoubi.henesys.dev;
+				PRODUCT_BUNDLE_IDENTIFIER = net.yeoubi.henesys;
 				PRODUCT_NAME = henesys;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1510,7 +1518,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C32249EF606E148E0513B5B2 /* Pods-henesys.release.xcconfig */;
+			baseConfigurationReference = 8C58C9F4A181C37A858B4EBF /* Pods-henesys.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -1531,7 +1539,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = net.yeoubi.henesys.dev;
+				PRODUCT_BUNDLE_IDENTIFIER = net.yeoubi.henesys;
 				PRODUCT_NAME = henesys;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1588,7 +1596,7 @@
 		};
 		5B80486321FD90AF00050BCE /* Staging */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 339DEBBED2814263142673D3 /* Pods-henesys.staging.xcconfig */;
+			baseConfigurationReference = 0090CA0A64F09430F04B59E6 /* Pods-henesys.staging.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -1610,7 +1618,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = net.yeoubi.henesys.dev;
+				PRODUCT_BUNDLE_IDENTIFIER = net.yeoubi.henesys;
 				PRODUCT_NAME = henesys;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1619,7 +1627,7 @@
 		};
 		5B80486421FD90AF00050BCE /* Staging */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 78A96C5957C11B8068293708 /* Pods-henesysTests.staging.xcconfig */;
+			baseConfigurationReference = D747C042355BDA41404B6961 /* Pods-henesysTests.staging.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
