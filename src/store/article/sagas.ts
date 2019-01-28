@@ -17,8 +17,8 @@ const getArticleInfoWorker = bindAsyncAction(getArticleInfoActions)(
 )
 
 const getArticleListWorker = bindAsyncAction(getArticleListActions)(
-  function*({ board, category, page }: GetArticleListParams, { parser }: Services): SagaIterator {
-    const result = yield call(parser.getArticleList, board, category, page)
+  function*(params: GetArticleListParams, { parser }: Services): SagaIterator {
+    const result = yield call(parser.getArticleList, params)
     return result
   },
 )

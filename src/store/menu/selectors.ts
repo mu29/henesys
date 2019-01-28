@@ -1,17 +1,13 @@
-import { createSelector } from 'reselect'
-import { denormalize } from 'normalizr'
-import { AppState, getEntity } from 'src/store/selectors'
-import { articleSchema } from '../schemas'
-
 export interface Menu {
-  label: string,
-  board: number,
-  category: string,
+  label: string
+  board: number
+  category: string
 }
 
 export type MenuState = {
   group: string;
   current: Menu;
+  bestOnly: boolean;
 }
 
 const initialState: MenuState = {
@@ -21,6 +17,7 @@ const initialState: MenuState = {
     board: 2299,
     category: '_리부트',
   },
+  bestOnly: false,
 }
 
 export default initialState

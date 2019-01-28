@@ -9,3 +9,5 @@ export type SwitchMenuParams = { menu: Menu }
 export const switchGroupAction = actionCreator<SwitchGroupParams>('SWITCH_GROUP')
 
 export const switchMenuAction = actionCreator<SwitchMenuParams>('SWITCH_MENU')
+
+export const toggleBestOnlyAction = actionCreator('TOGGLE_BEST_ONLY')

@@ -1,6 +1,5 @@
 import { SagaIterator } from 'redux-saga'
 import { put, call, cancelled, Effect } from 'redux-saga/effects'
-import { camelizeKeys, decamelizeKeys } from 'humps'
 
 export interface AnyAction {
   type: any,
@@ -52,14 +51,12 @@ export interface ActionCreatorFactory {
   <Payload = void>(
     type: string,
     commonMeta?: Meta,
-    mapper?: (payload: Payload) => any,
     isError?: boolean,
   ): ActionCreator<Payload>
 
   <Payload = void>(
     type: string,
     commonMeta?: Meta,
-    mapper?: (payload: Payload) => any,
     isError?: (payload: Payload) => boolean,
   ): ActionCreator<Payload>
 
@@ -79,7 +76,6 @@ export function actionCreatorFactory(
   function actionCreator<Payload>(
     type: string,
     commonMeta?: Meta,
-    mapper: (payload: Payload) => any = p => p,
     isError: ((payload: Payload) => boolean) | boolean = defaultIsError,
   ) {
     const fullType = base + type
@@ -96,7 +92,7 @@ export function actionCreatorFactory(
       (payload: Payload, meta?: Meta) => {
         const action: Action<Payload> = {
           type: fullType,
-          payload: mapper(payload),
+          payload,
         }
 
         if (commonMeta || meta) {
@@ -123,12 +119,12 @@ export function actionCreatorFactory(
   ): AsyncActionCreators<Params, Result, Error> {
     return {
       type: base + type,
-      request: actionCreator<Params>(`${type}_REQUEST`, commonMeta, decamelizeKeys, false),
+      request: actionCreator<Params>(`${type}_REQUEST`, commonMeta, false),
       success: actionCreator<Success<Params, Result>>(
-        `${type}_SUCCESS`, commonMeta, camelizeKeys, false,
+        `${type}_SUCCESS`, commonMeta, false,
       ),
       failure: actionCreator<Failure<Params, Error>>(
-        `${type}_FAILURE`, commonMeta, camelizeKeys, true,
+        `${type}_FAILURE`, commonMeta, true,
       ),
     }
   }

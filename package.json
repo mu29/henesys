@@ -1,11 +1,13 @@
 {
   "name": "henesys",
-  "version": "0.0.1",
+  "version": "1.1.0",
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "lint": "tslint src/**/*.{ts,tsx}",
-    "lint:fix": "tslint src/**/*.{ts,tsx} --fix"
+    "lint:fix": "tslint src/**/*.{ts,tsx} --fix",
+    "deploy:android": "code-push release-react Yeoubi/henesys-Android Android",
+    "deploy:ios": "code-push release-react Yeoubi/henesys-iOS iOS"
   },
   "dependencies": {
     "humps": "2.0.1",

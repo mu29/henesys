@@ -1,5 +1,6 @@
 import cheerio from 'react-native-cheerio'
 import { stringify } from 'query-string'
+import { GetArticleListParams } from 'src/store/actions'
 
 const CHARACTER_INFO_URL = 'https://maplestory.nexon.com/Ranking/World/Total'
 const INVEN_BASE_URL = 'http://m.inven.co.kr'
@@ -17,8 +18,14 @@ export class Parser {
     }
   }
 
-  getArticleList = async (board: number, category: string, page: number) => {
-    const $ = await this.parse(`${INVEN_BASE_URL}/board/powerbbs.php?come_idx=${board}&category=${category}&p=${page}`)
+  getArticleList = async ({ board, category, bestOnly, page }: GetArticleListParams) => {
+    const params = {
+      come_idx: board,
+      p: page,
+      my: bestOnly ? 'chuchu' : '',
+      category,
+    }
+    const $ = await this.parse(`${INVEN_BASE_URL}/board/powerbbs.php?${stringify(params)}`)
     const articles = $('li.articleSubject').not('.articleNotice')
 
     return articles

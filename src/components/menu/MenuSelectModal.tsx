@@ -1,6 +1,7 @@
 import React from 'react'
 import {
   View,
+  Switch,
   StyleSheet,
   LayoutAnimation,
   UIManager,
@@ -15,6 +16,11 @@ import { Menu } from 'src/store/selectors'
 import groups from 'src/constants/menus'
 import { palette, typography } from 'src/styles'
 import { isIphoneX } from 'src/utils'
+
+const TRACK_COLOR = {
+  true: palette.primary.light,
+  false: palette.gray[30],
+}
 
 const styles = StyleSheet.create({
   modal: {
@@ -32,6 +38,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingVertical: 24,
     paddingHorizontal: 12,
+  },
+  filter: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingVertical: 12,
+    paddingHorizontal: 20,
   },
   wrapper: {
     paddingVertical: 12,
@@ -58,8 +71,10 @@ export interface MenuSelectModalProps {
   isVisible: boolean,
   group: string,
   menu: Menu,
+  bestOnly: boolean,
   switchGroup: (group: string) => void,
   switchMenu: (menu: Menu) => void,
+  toggleBestOnly: () => void,
   close: () => void,
 }
 
@@ -123,6 +138,8 @@ class MenuSelectModal extends React.PureComponent<MenuSelectModalProps> {
     const {
       isVisible,
       group,
+      bestOnly,
+      toggleBestOnly,
       close,
     } = this.props
 
@@ -146,6 +163,17 @@ class MenuSelectModal extends React.PureComponent<MenuSelectModalProps> {
             </Text>
           </View>
           <View>
+            <MenuSection title="필터" />
+            <View style={styles.filter}>
+              <Text style={typography.body[2].black}>
+                인기 게시글만 보기
+              </Text>
+              <Switch
+                onValueChange={toggleBestOnly}
+                value={bestOnly}
+                trackColor={TRACK_COLOR}
+              />
+            </View>
             <MenuSection title="게시판" />
             <View style={styles.wrapper}>
               <View style={styles.menus}>

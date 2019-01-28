@@ -14,6 +14,7 @@ export type GetArticleInfoResult = Article
 export type GetArticleListParams = {
   board: number;
   category: string;
+  bestOnly: boolean;
   page: number;
 }
 export type GetArticleListResult = Article[]

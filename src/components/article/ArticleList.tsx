@@ -28,6 +28,7 @@ const styles = StyleSheet.create({
 export interface ArticleListProps {
   board: number,
   category: string,
+  bestOnly: boolean,
   articles: Article[],
   isLoading: boolean,
   paginate: (page: number) => void,
@@ -36,6 +37,7 @@ export interface ArticleListProps {
 export interface ArticleListState {
   board: number,
   category: string,
+  bestOnly: boolean,
   page: number,
   isRefreshing: boolean,
 }
@@ -44,6 +46,7 @@ class ArticleList extends React.PureComponent<ArticleListProps, ArticleListState
   state = {
     board: this.props.board,
     category: this.props.category,
+    bestOnly: this.props.bestOnly,
     page: 0,
     isRefreshing: false,
   }
@@ -51,10 +54,11 @@ class ArticleList extends React.PureComponent<ArticleListProps, ArticleListState
   private _listRef = React.createRef<FlatList<Article>>()
 
   static getDerivedStateFromProps(props: ArticleListProps, state: ArticleListState) {
-    if (props.board !== state.board || props.category !== state.category) {
+    if (props.board !== state.board || props.category !== state.category || props.bestOnly !== state.bestOnly) {
       return {
         board: props.board,
         category: props.category,
+        bestOnly: props.bestOnly,
         page: 0,
       }
     }

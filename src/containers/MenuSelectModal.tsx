@@ -7,6 +7,7 @@ import {
   hideModalAction,
   switchGroupAction,
   switchMenuAction,
+  toggleBestOnlyAction,
 } from 'src/store/actions'
 import {
   AppState,
@@ -22,11 +23,13 @@ const mapStateToProps = (state: AppState) => ({
   isVisible: isModalVisible(state, 'MenuSelect'),
   group: state.menu.group,
   menu: state.menu.current,
+  bestOnly: state.menu.bestOnly,
 })
 
 const mapDispatchToProps = (dispatch: Dispatch<Action>) => ({
   switchGroup: (group: string) => dispatch(switchGroupAction({ group })),
   switchMenu: (menu: Menu) => dispatch(switchMenuAction({ menu })),
+  toggleBestOnly: () => dispatch(toggleBestOnlyAction()),
   close: () => dispatch(hideModalAction({ modal: 'MenuSelect' })),
 })
 

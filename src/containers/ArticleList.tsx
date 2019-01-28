@@ -10,6 +10,7 @@ import {
   AppState,
   getIsLoading,
   getArticleList,
+  Article,
 } from 'src/store/selectors'
 
 const ArticleListContainer: React.FunctionComponent<ArticleListProps> = props => (
@@ -17,11 +18,19 @@ const ArticleListContainer: React.FunctionComponent<ArticleListProps> = props =>
 )
 
 const mapStateToProps = (state: AppState) => {
-  const { board, category } = state.menu.current
+  const {
+    current: {
+      board,
+      category,
+    },
+    bestOnly,
+  } = state.menu
   return {
     board,
     category,
-    articles: getArticleList(state, board, category),
+    bestOnly,
+    articles: getArticleList(state, board, category)
+      .filter((article: Article) => bestOnly ? article.voteCount >= 10 : true),
     isLoading: getIsLoading(state.loading, getArticleListActions.type),
   }
 }
@@ -30,9 +39,10 @@ const mapDispatchToProps = (dispatch: Dispatch<Action>) => ({
   paginate: (
     board: number,
     category: string,
+    bestOnly: boolean,
   ) => (
     page: number,
-  ) => dispatch(getArticleListActions.request({ board, category, page })),
+  ) => dispatch(getArticleListActions.request({ board, category, bestOnly, page })),
 })
 
 export default connect(
@@ -42,6 +52,10 @@ export default connect(
     ...stateProps,
     ...dispatchProps,
     ...ownProps,
-    paginate: dispatchProps.paginate(stateProps.board, stateProps.category),
+    paginate: dispatchProps.paginate(
+      stateProps.board,
+      stateProps.category,
+      stateProps.bestOnly,
+    ),
   }),
 )(ArticleListContainer)
