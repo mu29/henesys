@@ -49,13 +49,13 @@ class SettingsList extends React.PureComponent<SettingsListProps> {
   _openTermsPage = () => {
     const { navigation } = this.props
     if (navigation) {
-      navigation.push('WebView', { url: 'https://yeoubi.net/policies/henesys.html' })
+      navigation.push('WebView', { url: 'https://yeoubi.net/assets/policy/henesys.html' })
     }
   }
 
   _share = () => Share.share({
     message: '헤네시스 - 메이플스토리 일과 기록, 통계 및 커뮤니티\n' + Platform.select({
-      ios: 'https://itunes.apple.com/',
+      ios: 'https://itunes.apple.com/kr/app/헤네시스/id1450789993',
       android: 'https://play.google.com/store/apps/details?id=net.yeoubi.henesys',
     }),
   })
