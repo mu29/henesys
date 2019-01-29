@@ -2,7 +2,6 @@ import React from 'react'
 import {
   PushNotificationIOS,
   YellowBox,
-  Platform,
 } from 'react-native'
 import codePush from 'react-native-code-push'
 import { Provider } from 'react-redux'
@@ -55,12 +54,6 @@ class App extends React.Component {
 }
 
 export default codePush({
-  checkFrequency: Platform.select({
-    ios: codePush.CheckFrequency.ON_APP_RESUME,
-    android: codePush.CheckFrequency.ON_APP_START,
-  }),
-  installMode: Platform.select({
-    ios: codePush.InstallMode.ON_NEXT_RESUME,
-    android: codePush.InstallMode.ON_NEXT_RESTART,
-  }),
+  checkFrequency: codePush.CheckFrequency.ON_APP_RESUME,
+  installMode: codePush.InstallMode.ON_NEXT_RESUME,
 })(App)
