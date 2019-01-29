@@ -431,6 +431,7 @@
 		5B0A0D4A21FDB89F0005FBF1 /* FastImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FastImage.xcodeproj; path = "../node_modules/react-native-fast-image/ios/FastImage.xcodeproj"; sourceTree = "<group>"; };
 		5B3F4AED21CCBF3900196B29 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5B536A3F21A67ACE00E18BAC /* ART.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ART.xcodeproj; path = "../node_modules/react-native/Libraries/ART/ART.xcodeproj"; sourceTree = "<group>"; };
+		5B8282E821FF52DA0059223D /* henesys.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = henesys.entitlements; path = henesys/henesys.entitlements; sourceTree = "<group>"; };
 		5BE2B905FA69549330B467FA /* Pods-henesysTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-henesysTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-henesysTests/Pods-henesysTests.release.xcconfig"; sourceTree = "<group>"; };
 		5BF0806421B7900C00CE65B2 /* RCTPushNotification.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTPushNotification.xcodeproj; path = "../node_modules/react-native/Libraries/PushNotificationIOS/RCTPushNotification.xcodeproj"; sourceTree = "<group>"; };
 		5E0B21940FDF42E18200DBC5 /* RNFirebase.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNFirebase.xcodeproj; path = "../node_modules/react-native-firebase/ios/RNFirebase.xcodeproj"; sourceTree = "<group>"; };
@@ -576,6 +577,7 @@
 		13B07FAE1A68108700A75B9A /* henesys */ = {
 			isa = PBXGroup;
 			children = (
+				5B8282E821FF52DA0059223D /* henesys.entitlements */,
 				5B3F4AED21CCBF3900196B29 /* GoogleService-Info.plist */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
@@ -872,6 +874,11 @@
 					13B07F861A680F5B00A75B9A = {
 						DevelopmentTeam = AVXKHR4MKC;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -1520,6 +1527,7 @@
 			baseConfigurationReference = 7631D4793C5220B52D9B4033 /* Pods-henesys.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = henesys/henesys.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1551,6 +1559,7 @@
 			baseConfigurationReference = 8C58C9F4A181C37A858B4EBF /* Pods-henesys.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = henesys/henesys.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1629,6 +1638,7 @@
 			baseConfigurationReference = 0090CA0A64F09430F04B59E6 /* Pods-henesys.staging.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = henesys/henesys.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CONFIGURATION_TEMP_DIR = "$(PROJECT_TEMP_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
