@@ -7,8 +7,32 @@ const INVEN_BASE_URL = 'http://m.inven.co.kr'
 
 export class Parser {
   getCharacterInfo = async (name: string) => {
+    return await this.getWorldCharacterInfo(name) || await this.getRebootCharacterInfo(name)
+  }
+
+  getWorldCharacterInfo = async (name: string) => {
     const $ = await this.parse(`${CHARACTER_INFO_URL}?c=${name}`)
     const search = $('tr.search_com_chk')
+
+    if (search.length === 0) {
+      return undefined
+    }
+
+    return {
+      name,
+      job: search.find('dd').eq(0).text().split('/')[1].trim(),
+      level: parseInt((search.find('td').eq(2).text().match(/\d+/) || ['0'])[0], 10),
+      imageUrl: search.find('.char_img').find('img').attr('src').replace('http:', 'https:').replace('/180/', '/'),
+    }
+  }
+
+  getRebootCharacterInfo = async (name: string) => {
+    const $ = await this.parse(`${CHARACTER_INFO_URL}?c=${name}&w=254`)
+    const search = $('tr.search_com_chk')
+
+    if (search.length === 0) {
+      return undefined
+    }
 
     return {
       name,
