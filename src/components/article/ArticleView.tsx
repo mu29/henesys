@@ -31,6 +31,8 @@ const BASE_FONT_STYLE = { fontSize: 16 }
 
 const IGNORE_STYLES = [
   'font-family',
+  'font-variant',
+  'font-style',
   'line-height',
   'letter-spacing',
   'display',
