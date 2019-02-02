@@ -12,6 +12,7 @@ import {
   Platform,
 } from 'react-native'
 import FastImage from 'react-native-fast-image'
+import debounce from 'lodash/debounce'
 import {
   Text,
   Button,
@@ -71,6 +72,8 @@ export interface AddCharacterViewProps extends Partial<NavigationInjectedProps> 
 }
 
 class AddCharacterView extends React.PureComponent<AddCharacterViewProps> {
+  _onSearch = debounce(this.props.search, 500)
+
   _onConfirm = () => {
     const {
       navigation,
@@ -90,7 +93,7 @@ class AddCharacterView extends React.PureComponent<AddCharacterViewProps> {
   }
 
   render() {
-    const { imageUrl, isLoading, search } = this.props
+    const { imageUrl, isLoading } = this.props
     return (
       <KeyboardAvoidingView
         behavior="padding"
@@ -118,7 +121,7 @@ class AddCharacterView extends React.PureComponent<AddCharacterViewProps> {
             />
           </ImageBackground>
           <TextInput
-            onChangeText={search}
+            onChangeText={this._onSearch}
             placeholder="추가할 캐릭터의 이름을 입력하세요"
             style={[typography.body[1].black, styles.name]}
           />
