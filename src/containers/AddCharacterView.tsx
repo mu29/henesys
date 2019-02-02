@@ -18,6 +18,7 @@ const AddCharacterViewContainer: React.FunctionComponent<AddCharacterViewProps> 
 )
 
 const mapStateToProps = (state: AppState) => ({
+  characters: state.character.characters,
   candidate: state.character.candidate.name,
   imageUrl: state.character.candidate.imageUrl,
   isLoading: getIsLoading(state.loading, searchCharacterInfoActions.type),
@@ -39,7 +40,7 @@ export default connect(
     ...dispatchProps,
     ...ownProps,
     confirm: () => {
-      if (stateProps.candidate) {
+      if (stateProps.candidate && !stateProps.characters.includes(stateProps.candidate)) {
         dispatchProps.confirm(stateProps.candidate)
       }
     },
