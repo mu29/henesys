@@ -25,6 +25,7 @@ const styles = StyleSheet.create({
 
 export interface MissionListProps {
   missions: MissionListType[]
+  weeklyMissions: MissionListType[]
 }
 
 interface ISectionHeader {
@@ -33,7 +34,10 @@ interface ISectionHeader {
 
 class MissionList extends React.Component<MissionListProps> {
   shouldComponentUpdate(nextProps: MissionListProps) {
-    return JSON.stringify(this.props.missions) !== JSON.stringify(nextProps.missions)
+    const { missions, weeklyMissions } = this.props
+
+    return JSON.stringify(missions) !== JSON.stringify(nextProps.missions)
+      || JSON.stringify(weeklyMissions) !== JSON.stringify(nextProps.weeklyMissions)
   }
 
   _keyExtractor = (item: MissionType) => item.key
@@ -51,10 +55,15 @@ class MissionList extends React.Component<MissionListProps> {
   )
 
   render() {
-    const { missions } = this.props
-    const sections = missions
-      .map(m => ({ title: m.label, data: m.items }))
-      .filter(m => m.data.length > 0)
+    const { missions, weeklyMissions } = this.props
+    const sections = [
+      ...missions
+        .map(m => ({ title: m.label, data: m.items }))
+        .filter(m => m.data.length > 0),
+      ...weeklyMissions
+        .map(m => ({ title: m.label, data: m.items }))
+        .filter(m => m.data.length > 0),
+    ]
 
     return (
       <DividedSectionList

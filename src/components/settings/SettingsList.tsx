@@ -77,7 +77,7 @@ class SettingsList extends React.PureComponent<SettingsListProps> {
     return (
       <DividedScrollView contentContainerStyle={styles.contentContainer}>
         <View style={styles.container}>
-          <AccountInfo />
+          {/* <AccountInfo /> */}
           <SettingsSection title="알림">
             <SettingsItem title="우르스 알림" last>
               <Switch

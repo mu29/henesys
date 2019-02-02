@@ -78,20 +78,6 @@ export const boss: MissionList = {
   }],
 }
 
-export const quest: MissionList = {
-  label: '일일 퀘스트',
-  items: [{
-    label: '보급형 에너지 코어 (A급)',
-    key: 'heaven',
-  }, {
-    label: '희미한 낙인의 영혼석',
-    key: 'worldtree',
-  }, {
-    label: '반마력석',
-    key: 'kritias',
-  }],
-}
-
 export const symbol = {
   label: '아케인 심볼',
   items: [{
@@ -112,6 +98,20 @@ export const symbol = {
   }, {
     label: '에스페라',
     key: 'esfera',
+  }],
+}
+
+export const quest: MissionList = {
+  label: '주간 퀘스트',
+  items: [{
+    label: '보급형 에너지 코어 (A급)',
+    key: 'heaven',
+  }, {
+    label: '희미한 낙인의 영혼석',
+    key: 'worldtree',
+  }, {
+    label: '반마력석',
+    key: 'kritias',
   }],
 }
 
@@ -156,6 +156,14 @@ export const hardBoss: MissionList = {
   }],
 }
 
-export const missions = { contents, boss, quest, symbol }
+export const missions = { contents, boss, symbol }
 
-export const missionList = Object.values(missions).reduce((r: string[], c) => [...r, ...c.items.map(i => i.key)], [])
+export const weeklyMissions = { quest, hardBoss }
+
+export const missionList = Object.values(missions)
+  .reduce((r: string[], c) => [...r, ...c.items.map(i => i.key)], [])
+
+export const weeklyMissionList = Object.values(weeklyMissions)
+  .reduce((r: string[], c) => [...r, ...c.items.map(i => i.key)], [])
+
+export const isWeeklyMission = (mission: string) => weeklyMissionList.includes(mission)

@@ -1,7 +1,16 @@
 import { Action } from 'redux'
 import { elevateCandidateAction } from 'src/store/actions'
-import { missionList } from 'src/constants/missions'
-import { datesBetween, today } from 'src/utils'
+import {
+  missionList,
+  weeklyMissionList,
+  isWeeklyMission,
+} from 'src/constants/missions'
+import {
+  daysInWeek,
+  datesBetween,
+  today,
+  objectify,
+} from 'src/utils'
 import { isType } from '../common'
 import {
   addTodoAction,
@@ -58,16 +67,31 @@ export default (state: MissionState = initialState, action: Action): MissionStat
 
   if (isType(action, toggleTodoAction)) {
     const { character, date, name } = action.payload
+
     return {
       ...state,
       records: {
         ...state.records,
         [character]: {
           ...state.records[character],
-          [date]: {
-            ...state.records[character][date],
-            [name]: !state.records[character][date][name],
-          },
+          ...(
+            isWeeklyMission(name)
+              ? daysInWeek(date)
+                .filter(d => d <= today())
+                .map(d => ({
+                  [d]: {
+                    ...(state.records[character][d] || {}),
+                    [name]: !state.records[character][d][name],
+                  },
+                }))
+                .reduce(objectify, {})
+              : {
+                [date]: {
+                  ...state.records[character][date],
+                  [name]: !state.records[character][date][name],
+                },
+              }
+          ),
         },
       },
     }
@@ -77,25 +101,50 @@ export default (state: MissionState = initialState, action: Action): MissionStat
     const characters = Object.keys(state.records)
       .map(character => ({
         name: character,
-        day: Object.keys(state.records[character]).sort().slice(-1)[0],
+        lastDay: Object.keys(state.records[character]).sort().slice(-1)[0],
       }))
-      .map(lastDay => ({
-        name: lastDay.name,
-        dates: datesBetween(lastDay.day, action.payload.to),
+      .map(info => ({
+        ...info,
+        lastWeekdays: info.lastDay
+          ? daysInWeek(info.lastDay).filter(date => date <= today())
+          : [],
+        dates: datesBetween(info.lastDay, action.payload.to),
       }))
+console.log(characters)
     return {
       ...state,
+      todos: characters
+        .map(({ name }) => ({
+          [name]: state.todos[name].filter(todo => missionList.includes(todo) || weeklyMissionList.includes(todo)),
+        }))
+        .reduce(objectify, {}),
       records: characters
         .map(character => {
           const freshTodos = state.todos[character.name].reduce((result, todo) => ({ ...result, [todo]: false }), {})
+          const lastRecords = state.records[character.name][character.lastDay]
+          console.log(lastRecords)
           return {
             [character.name]: {
               ...state.records[character.name],
-              ...character.dates.map(date => ({ [date]: freshTodos })).reduce((r, c) => ({ ...r, ...c }), {}),
+              ...character.dates
+                .map(date => ({ [date]: freshTodos }))
+                .reduce(objectify, {}),
+              ...character.lastWeekdays
+                .map(date => ({
+                  [date]: {
+                    ...freshTodos,
+                    ...(state.records[character.name][date] || {}),
+                    ...Object.keys(lastRecords)
+                      .filter(r => weeklyMissionList.includes(r))
+                      .map(r => ({ [r]: lastRecords[r] }))
+                      .reduce(objectify, {}),
+                  },
+                }))
+                .reduce(objectify, {}),
             },
           }
         })
-        .reduce((r, c) => ({ ...r, ...c }), {}),
+        .reduce(objectify, {}),
     }
   }
 

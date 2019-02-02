@@ -10,7 +10,11 @@ import {
   MissionItem,
 } from 'src/components'
 import { withTopDivider } from 'src/wrappers'
-import { missions, Mission as MissionType } from 'src/constants/missions'
+import {
+  missions,
+  weeklyMissions,
+  Mission as MissionType,
+} from 'src/constants/missions'
 import { palette } from 'src/styles'
 
 const DividedSectionList = withTopDivider(SectionList)
@@ -56,7 +60,10 @@ class EditableMissionList extends React.PureComponent<EditableMissionListProps> 
 
   render() {
     const { footer } = this.props
-    const sections = Object.values(missions).map(m => ({ title: m.label, data: m.items }))
+    const sections = [
+      ...Object.values(missions).map(m => ({ title: m.label, data: m.items })),
+      ...Object.values(weeklyMissions).map(m => ({ title: m.label, data: m.items })),
+    ]
     return (
       <DividedSectionList
         sections={sections}

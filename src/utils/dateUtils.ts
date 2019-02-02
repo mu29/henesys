@@ -29,7 +29,32 @@ export const monthsBetween = (start: string, end: string) => {
   return [...months, end]
 }
 
+export const daysInWeek = (date: Moment | string) => {
+  const targetDate = typeof date === 'string' ? moment(date) : date
+
+  const thursday = 4
+  const now = targetDate.isoWeekday()
+
+  const start = (
+    now < thursday
+      ? targetDate.add(-1, 'weeks').isoWeekday(thursday)
+      : targetDate.isoWeekday(thursday)
+  )
+  const last = start.clone().add(1, 'weeks')
+  return datesBetween(start.add('-1', 'days').format('YYYY-MM-DD'), last.add('-1', 'days').format('YYYY-MM-DD'))
+}
+
 export const today = () => moment().format('YYYY-MM-DD')
+
+export const thisWeek = () => {
+  const thursday = 4
+  const now = moment()
+  return (
+    now.isoWeekday() < thursday
+      ? now.add(-1, 'weeks').isoWeekday(thursday)
+      : now.isoWeekday(thursday)
+  )
+}
 
 export const thisMonth = () => moment().format('YYYY-MM')
 
