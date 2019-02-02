@@ -20,9 +20,6 @@ export const contents: MissionList = {
     label: '마일리지 정산',
     key: 'mileage',
   }, {
-    label: '무릉도장',
-    key: 'mureung',
-  }, {
     label: '몬스터 파크',
     key: 'monsterpark',
   }, {
@@ -78,7 +75,7 @@ export const boss: MissionList = {
   }],
 }
 
-export const symbol = {
+export const symbol: MissionList = {
   label: '아케인 심볼',
   items: [{
     label: '소멸의 여로',
@@ -98,6 +95,14 @@ export const symbol = {
   }, {
     label: '에스페라',
     key: 'esfera',
+  }],
+}
+
+export const weeklyContents: MissionList = {
+  label: '주간 컨텐츠',
+  items: [{
+    label: '무릉도장',
+    key: 'mureung',
   }],
 }
 
@@ -158,7 +163,7 @@ export const hardBoss: MissionList = {
 
 export const missions = { contents, boss, symbol }
 
-export const weeklyMissions = { quest, hardBoss }
+export const weeklyMissions = { weeklyContents, quest, hardBoss }
 
 export const missionList = Object.values(missions)
   .reduce((r: string[], c) => [...r, ...c.items.map(i => i.key)], [])

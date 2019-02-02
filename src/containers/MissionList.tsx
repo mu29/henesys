@@ -7,7 +7,7 @@ import {
   getCurrentDate,
   getRecordOfDate,
 } from 'src/store/selectors'
-import { contents, boss, symbol, quest, hardBoss } from 'src/constants/missions'
+import { contents, boss, symbol, weeklyContents, quest, hardBoss } from 'src/constants/missions'
 
 const MissionListContainer: React.FunctionComponent<MissionListProps> = props => <MissionList { ...props } />
 
@@ -25,6 +25,9 @@ const mapStateToProps = (state: AppState) => {
       items: symbol.items.filter(i => missions.includes(i.key)),
     }],
     weeklyMissions: [{
+      ...weeklyContents,
+      items: weeklyContents.items.filter(i => missions.includes(i.key)),
+    }, {
       ...quest,
       items: quest.items.filter(i => missions.includes(i.key)),
     }, {
