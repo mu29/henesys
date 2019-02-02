@@ -110,7 +110,7 @@ export default (state: MissionState = initialState, action: Action): MissionStat
           : [],
         dates: datesBetween(info.lastDay, action.payload.to),
       }))
-console.log(characters)
+
     return {
       ...state,
       todos: characters
@@ -121,8 +121,8 @@ console.log(characters)
       records: characters
         .map(character => {
           const freshTodos = state.todos[character.name].reduce((result, todo) => ({ ...result, [todo]: false }), {})
-          const lastRecords = state.records[character.name][character.lastDay]
-          console.log(lastRecords)
+          const lastRecords = state.records[character.name][character.lastDay] || {}
+
           return {
             [character.name]: {
               ...state.records[character.name],
@@ -150,7 +150,10 @@ console.log(characters)
 
   if (isType(action, elevateCandidateAction)) {
     const { name } = action.payload
-    const freshTodos = missionList.reduce((result, todo) => ({ ...result, [todo]: false }), {})
+    const freshTodos = {
+      ...missionList.reduce((result, todo) => ({ ...result, [todo]: false }), {}),
+      ...weeklyMissionList.reduce((result, todo) => ({ ...result, [todo]: false }), {}),
+    }
     return {
       ...state,
       todos: {
