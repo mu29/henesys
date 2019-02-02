@@ -15,7 +15,7 @@ import { LoadingView } from 'src/components'
 import { api } from 'src/services/api'
 import { parser } from 'src/services/parser'
 import configureStore from 'src/store/configure'
-import { fillTodoAction } from 'src/store/actions'
+import { fillTodoAction, getCharacterInfoActions } from 'src/store/actions'
 
 import { today } from 'src/utils'
 import Navigator from 'src/Navigator'
@@ -36,14 +36,12 @@ class App extends React.Component {
     })
   }
 
-  _fillTodos = () => store.dispatch(fillTodoAction({ to: today() }))
-
   render() {
     return (
       <Provider store={store}>
         <PersistGate
           persistor={persistor}
-          onBeforeLift={this._fillTodos}
+          onBeforeLift={this.onBeforeLift}
           loading={<LoadingView />}
         >
           <Navigator />
@@ -51,6 +49,16 @@ class App extends React.Component {
       </Provider>
     )
   }
+
+  private onBeforeLift = () => {
+    this.fillTodos()
+    this.fetchCharacterInfos()
+  }
+
+  private fillTodos = () => store.dispatch(fillTodoAction({ to: today() }))
+
+  private fetchCharacterInfos = () => store.getState().character.characters
+    .forEach(character => store.dispatch(getCharacterInfoActions.request({ name: character })))
 }
 
 export default codePush({
