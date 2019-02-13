@@ -123,6 +123,12 @@ export const quest: MissionList = {
 export const hardBoss: MissionList = {
   label: '주간 보스',
   items: [{
+    label: '하드 힐라',
+    key: 'hardhilla',
+  }, {
+    label: '카오스 핑크빈',
+    key: 'chaospinkbean',
+  }, {
     label: '카오스 자쿰',
     key: 'chaoszaqqum',
   }, {
