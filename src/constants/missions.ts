@@ -177,4 +177,14 @@ export const missionList = Object.values(missions)
 export const weeklyMissionList = Object.values(weeklyMissions)
   .reduce((r: string[], c) => [...r, ...c.items.map(i => i.key)], [])
 
+export const weeklyContentsList = Object.values({ weeklyContents, quest })
+  .reduce((r: string[], c) => [...r, ...c.items.map(i => i.key)], [])
+
+export const weeklyBossList = Object.values({ hardBoss })
+  .reduce((r: string[], c) => [...r, ...c.items.map(i => i.key)], [])
+
 export const isWeeklyMission = (mission: string) => weeklyMissionList.includes(mission)
+
+export const isWeeklyContents = (mission: string) => weeklyContentsList.includes(mission)
+
+export const isWeeklyBoss = (mission: string) => weeklyBossList.includes(mission)

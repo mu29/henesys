@@ -6,12 +6,14 @@ import { AddCharacterViewProps } from 'src/components/character/AddCharacterView
 import {
   searchCharacterInfoActions,
   elevateCandidateAction,
+  fillTodoAction,
   getCharacterInfoActions,
 } from 'src/store/actions'
 import {
   AppState,
   getIsLoading,
 } from 'src/store/selectors'
+import { today } from 'src/utils'
 
 const AddCharacterViewContainer: React.FunctionComponent<AddCharacterViewProps> = props => (
   <AddCharacterView { ...props } />
@@ -28,6 +30,7 @@ const mapDispatchToProps = (dispatch: Dispatch<Action>) => ({
   search: (name: string) => dispatch(searchCharacterInfoActions.request({ name })),
   confirm: (name: string) => {
     dispatch(elevateCandidateAction({ name }))
+    dispatch(fillTodoAction({ to: today() }))
     dispatch(getCharacterInfoActions.request({ name }))
   },
 })

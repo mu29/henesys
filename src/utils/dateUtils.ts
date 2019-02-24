@@ -29,16 +29,15 @@ export const monthsBetween = (start: string, end: string) => {
   return [...months, end]
 }
 
-export const daysInWeek = (date: Moment | string) => {
+export const daysInWeek = (date: Moment | string, day: number = 4) => {
   const targetDate = typeof date === 'string' ? moment(date) : date
 
-  const thursday = 4
   const now = targetDate.isoWeekday()
 
   const start = (
-    now < thursday
-      ? targetDate.add(-1, 'weeks').isoWeekday(thursday)
-      : targetDate.isoWeekday(thursday)
+    now < day
+      ? targetDate.add(-1, 'weeks').isoWeekday(day)
+      : targetDate.isoWeekday(day)
   )
   const last = start.clone().add(1, 'weeks')
   return datesBetween(start.add('-1', 'days').format('YYYY-MM-DD'), last.add('-1', 'days').format('YYYY-MM-DD'))

@@ -3,7 +3,8 @@ import { elevateCandidateAction } from 'src/store/actions'
 import {
   missionList,
   weeklyMissionList,
-  isWeeklyMission,
+  isWeeklyContents,
+  isWeeklyBoss,
 } from 'src/constants/missions'
 import {
   daysInWeek,
@@ -75,8 +76,8 @@ export default (state: MissionState = initialState, action: Action): MissionStat
         [character]: {
           ...state.records[character],
           ...(
-            isWeeklyMission(name)
-              ? daysInWeek(date)
+            isWeeklyBoss(name)
+              ? daysInWeek(date, 4)
                 .filter(d => d <= today())
                 .map(d => ({
                   [d]: {
@@ -85,12 +86,22 @@ export default (state: MissionState = initialState, action: Action): MissionStat
                   },
                 }))
                 .reduce(objectify, {})
-              : {
-                [date]: {
-                  ...state.records[character][date],
-                  [name]: !state.records[character][date][name],
-                },
-              }
+              : isWeeklyContents(name)
+                ? daysInWeek(date, 1)
+                  .filter(d => d <= today())
+                  .map(d => ({
+                    [d]: {
+                      ...(state.records[character][d] || {}),
+                      [name]: !state.records[character][d][name],
+                    },
+                  }))
+                  .reduce(objectify, {})
+                : {
+                    [date]: {
+                      ...state.records[character][date],
+                      [name]: !state.records[character][date][name],
+                    },
+                  }
           ),
         },
       },
@@ -105,8 +116,11 @@ export default (state: MissionState = initialState, action: Action): MissionStat
       }))
       .map(info => ({
         ...info,
-        lastWeekdays: info.lastDay
-          ? daysInWeek(info.lastDay).filter(date => date <= today())
+        lastWeekdaysThursday: info.lastDay
+          ? daysInWeek(info.lastDay, 4).filter(date => date <= today())
+          : [],
+        lastWeekdaysSunday: info.lastDay
+          ? daysInWeek(info.lastDay, 1).filter(date => date <= today())
           : [],
         dates: datesBetween(info.lastDay, action.payload.to),
       }))
@@ -129,13 +143,25 @@ export default (state: MissionState = initialState, action: Action): MissionStat
               ...character.dates
                 .map(date => ({ [date]: freshTodos }))
                 .reduce(objectify, {}),
-              ...character.lastWeekdays
+              ...character.lastWeekdaysThursday
                 .map(date => ({
                   [date]: {
                     ...freshTodos,
                     ...(state.records[character.name][date] || {}),
                     ...Object.keys(lastRecords)
-                      .filter(r => weeklyMissionList.includes(r))
+                      .filter(isWeeklyBoss)
+                      .map(r => ({ [r]: lastRecords[r] }))
+                      .reduce(objectify, {}),
+                  },
+                }))
+                .reduce(objectify, {}),
+              ...character.lastWeekdaysSunday
+                .map(date => ({
+                  [date]: {
+                    ...freshTodos,
+                    ...(state.records[character.name][date] || {}),
+                    ...Object.keys(lastRecords)
+                      .filter(isWeeklyContents)
                       .map(r => ({ [r]: lastRecords[r] }))
                       .reduce(objectify, {}),
                   },
@@ -158,7 +184,7 @@ export default (state: MissionState = initialState, action: Action): MissionStat
       ...state,
       todos: {
         ...state.todos,
-        [name]: missionList,
+        [name]: [...missionList, ...weeklyMissionList],
       },
       records: {
         ...state.records,

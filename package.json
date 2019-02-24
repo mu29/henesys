@@ -6,8 +6,8 @@
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "lint": "tslint src/**/*.{ts,tsx}",
     "lint:fix": "tslint src/**/*.{ts,tsx} --fix",
-    "deploy:android": "code-push release-react Yeoubi/henesys-Android Android",
-    "deploy:ios": "code-push release-react Yeoubi/henesys-iOS iOS"
+    "deploy:android": "code-push release-react Yeoubi/henesys-Android Android -m -d \"Production\"",
+    "deploy:ios": "code-push release-react Yeoubi/henesys-iOS iOS -m -d \"Production\""
   },
   "dependencies": {
     "humps": "2.0.1",
