@@ -1,4 +1,6 @@
 import { Action } from 'redux'
+import intersection from 'lodash/intersection'
+import difference from 'lodash/difference'
 import { elevateCandidateAction } from 'src/store/actions'
 import {
   missionList,
@@ -68,6 +70,7 @@ export default (state: MissionState = initialState, action: Action): MissionStat
 
   if (isType(action, toggleTodoAction)) {
     const { character, date, name } = action.payload
+    const firstDate = Object.keys(state.records[character])[0]
 
     return {
       ...state,
@@ -78,21 +81,21 @@ export default (state: MissionState = initialState, action: Action): MissionStat
           ...(
             isWeeklyBoss(name)
               ? daysInWeek(date, 4)
-                .filter(d => d <= today())
+                .filter(d => d <= today() && d >= firstDate)
                 .map(d => ({
                   [d]: {
                     ...(state.records[character][d] || {}),
-                    [name]: !state.records[character][d][name],
+                    [name]: !!!(state.records[character][d] || {})[name],
                   },
                 }))
                 .reduce(objectify, {})
               : isWeeklyContents(name)
                 ? daysInWeek(date, 1)
-                  .filter(d => d <= today())
+                  .filter(d => d <= today() && d >= firstDate)
                   .map(d => ({
                     [d]: {
                       ...(state.records[character][d] || {}),
-                      [name]: !state.records[character][d][name],
+                      [name]: !!!(state.records[character][d] || {})[name],
                     },
                   }))
                   .reduce(objectify, {})
@@ -112,17 +115,18 @@ export default (state: MissionState = initialState, action: Action): MissionStat
     const characters = Object.keys(state.records)
       .map(character => ({
         name: character,
+        firstDay: Object.keys(state.records[character]).sort()[0], 
         lastDay: Object.keys(state.records[character]).sort().slice(-1)[0],
       }))
       .map(info => ({
         ...info,
         lastWeekdaysThursday: info.lastDay
-          ? daysInWeek(info.lastDay, 4).filter(date => date <= today())
+          ? daysInWeek(info.lastDay, 4).filter(date => date <= action.payload.to && date >= info.firstDay)
           : [],
         lastWeekdaysSunday: info.lastDay
-          ? daysInWeek(info.lastDay, 1).filter(date => date <= today())
+          ? daysInWeek(info.lastDay, 1).filter(date => date <= action.payload.to && date >= info.firstDay)
           : [],
-        dates: datesBetween(info.lastDay, action.payload.to),
+        dates: info.lastDay ? datesBetween(info.lastDay, action.payload.to) : [action.payload.to],
       }))
 
     return {
@@ -137,13 +141,33 @@ export default (state: MissionState = initialState, action: Action): MissionStat
           const freshTodos = state.todos[character.name].reduce((result, todo) => ({ ...result, [todo]: false }), {})
           const lastRecords = state.records[character.name][character.lastDay] || {}
 
+          const intersectionOfThursDayAndSunday = intersection(character.lastWeekdaysThursday, character.lastWeekdaysSunday)
+          const thursdayOnly = difference(character.lastWeekdaysThursday, intersectionOfThursDayAndSunday)
+          const sundayOnly = difference(character.lastWeekdaysSunday, intersectionOfThursDayAndSunday)
+
           return {
             [character.name]: {
               ...state.records[character.name],
               ...character.dates
                 .map(date => ({ [date]: freshTodos }))
                 .reduce(objectify, {}),
-              ...character.lastWeekdaysThursday
+              ...intersectionOfThursDayAndSunday
+                .map(date => ({
+                  [date]: {
+                    ...freshTodos,
+                    ...(state.records[character.name][date] || {}),
+                    ...Object.keys(lastRecords)
+                      .filter(isWeeklyBoss)
+                      .map(r => ({ [r]: lastRecords[r] }))
+                      .reduce(objectify, {}),
+                    ...Object.keys(lastRecords)
+                      .filter(isWeeklyContents)
+                      .map(r => ({ [r]: lastRecords[r] }))
+                      .reduce(objectify, {}),
+                  },
+                }))
+                .reduce(objectify, {}),
+              ...thursdayOnly
                 .map(date => ({
                   [date]: {
                     ...freshTodos,
@@ -155,7 +179,7 @@ export default (state: MissionState = initialState, action: Action): MissionStat
                   },
                 }))
                 .reduce(objectify, {}),
-              ...character.lastWeekdaysSunday
+              ...sundayOnly
                 .map(date => ({
                   [date]: {
                     ...freshTodos,
