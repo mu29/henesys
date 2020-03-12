@@ -44,17 +44,16 @@ export class Parser {
 
   getArticleList = async ({ board, category, bestOnly, page }: GetArticleListParams) => {
     const params = {
-      come_idx: board,
       p: page,
       my: bestOnly ? 'chuchu' : '',
       category,
     }
-    const $ = await this.parse(`${INVEN_BASE_URL}/board/powerbbs.php?${stringify(params)}`)
+    const $ = await this.parse(`${INVEN_BASE_URL}/board/maple/${board}?${stringify(params)}`)
     const articles = $('li.articleSubject').not('.articleNotice')
 
     return articles
       .map((_, article) => ({
-        id: Number($(article).find('.subject').eq(0).attr('href').replace(/.*&l=/, '')),
+        id: Number(($(article).find('.subject').eq(0).attr('href').match(/\/board\/maple\/\d+\/(\d+)/) || [])[1]),
         title: $(article).find('.title').eq(0).text().replace(/\[[가-힣\(\)]+\]/, '').trim(),
         author: $(article).find('.writer').eq(0).text().replace(/Lv\.\d+/, '').trim(),
         href: $(article).find('.subject').eq(0).attr('href'),
@@ -68,7 +67,7 @@ export class Parser {
   }
 
   getArticleInfo = async (board: number, category: string, id: number) => {
-    const $ = await this.parse(`${INVEN_BASE_URL}/board/powerbbs.php?come_idx=${board}&l=${id}`)
+    const $ = await this.parse(`${INVEN_BASE_URL}/board/maple/${board}/${id}`)
     const info = $('div.articleSubject')
     const content = ($('div.articleContent').html() || '')
       .replace(/\<br\>\<br\>/g, '<br>')
