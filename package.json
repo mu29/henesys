@@ -21,7 +21,7 @@
     "react-native-cheerio": "1.0.0-rc.4",
     "react-native-code-push": "^5.5.2",
     "react-native-extra-dimensions-android": "^1.0.0",
-    "react-native-fast-image": "^5.1.2",
+    "react-native-fast-image": "^8.3.0",
     "react-native-firebase": "5.1.1",
     "react-native-haptic-feedback": "1.4.2",
     "react-native-modal": "7.0.1",
